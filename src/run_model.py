@@ -23,13 +23,13 @@ def create_trainer(model: BertPreTrainedModel, dataset: Optional[DatasetDict], e
 
         # Decode predicted output
         print(preds)
-        decoded_preds = encoder.batch_decode(preds, from_vocabulary_index=2)
+        decoded_preds = encoder.batch_decode(preds, from_vocabulary_index=1)
         print(decoded_preds[0:1])
 
         # Decode (gold) labels
         print(labels)
         labels = np.where(labels != -100, labels, encoder.PAD_ID)
-        decoded_labels = encoder.batch_decode(labels, from_vocabulary_index=2)
+        decoded_labels = encoder.batch_decode(labels, from_vocabulary_index=1)
         print(decoded_labels[0:1])
 
         return eval_morpheme_glosses(pred_morphemes=decoded_preds, gold_morphemes=decoded_labels)
@@ -44,7 +44,7 @@ def create_trainer(model: BertPreTrainedModel, dataset: Optional[DatasetDict], e
         learning_rate=lr,
         per_device_train_batch_size=batch_size,
         per_device_eval_batch_size=batch_size,
-        gradient_accumulation_steps=1,
+        gradient_accumulation_steps=3,
         weight_decay=0.01,
         save_strategy="epoch",
         save_total_limit=3,
@@ -90,7 +90,7 @@ def main(mode: str, model: str, pretrained_path: str, encoder_path: str, data_pa
 
         create_model = create_flat_model if model == 'flat' else None # TODO FIX ME
         model = create_model(encoder=encoder, sequence_length=MODEL_INPUT_LENGTH).to(device)
-        trainer = create_trainer(model, dataset=dataset, encoder=encoder, batch_size=16, lr=2e-5, max_epochs=80)
+        trainer = create_trainer(model, dataset=dataset, encoder=encoder, batch_size=16, lr=2e-5, max_epochs=30)
 
         print("Training...")
         trainer.train()
