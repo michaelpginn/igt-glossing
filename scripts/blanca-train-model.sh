@@ -17,4 +17,4 @@ module load anaconda
 # Run Python Script
 conda activate AutoIGT
 cd "/projects/migi8081/struct-morph/src"
-python3 run_model.py train flat
+python3 run_model.py train hierarchical
