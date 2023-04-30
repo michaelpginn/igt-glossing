@@ -70,10 +70,10 @@ def eval_stems_grams(pred: List[List[str]], gold: List[List[str]]) -> dict:
 def eval_morpheme_glosses(pred_morphemes: List[List[str]], gold_morphemes: List[List[str]]):
     """Evaluates the performance at the morpheme level"""
     morpheme_eval = eval_accuracy(pred_morphemes, gold_morphemes)
-    class_eval = eval_stems_grams(pred_morphemes, gold_morphemes)
-    bleu = bleu_score(pred_morphemes, [[line] for line in gold_morphemes])
-    return {'morpheme_level': morpheme_eval, 'classes': class_eval, 'bleu': bleu}
-
+    # class_eval = eval_stems_grams(pred_morphemes, gold_morphemes)
+    # bleu = bleu_score(pred_morphemes, [[line] for line in gold_morphemes])
+    # return {'morpheme_level': morpheme_eval, 'classes': class_eval, 'bleu': bleu}
+    return {'morpheme_level': morpheme_eval}
 
 def eval_word_glosses(pred_words: List[List[str]], gold_words: List[List[str]]):
     """Evaluates the performance at the morpheme level"""
