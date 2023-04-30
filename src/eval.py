@@ -27,7 +27,7 @@ def eval_accuracy(pred: List[List[str]], gold: List[List[str]]) -> dict:
         summed_accuracies += entry_accuracy
 
         total_correct_predictions += entry_correct_predictions
-        total_tokens += len(entry_gold)
+        total_tokens += len([token for token in entry_gold if token != '[SEP]'])
 
     total_entries = len(gold)
     average_accuracy = summed_accuracies / total_entries
