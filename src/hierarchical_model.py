@@ -32,7 +32,7 @@ class HierarchicalMorphemeLabelingModel(BertPreTrainedModel):
         def create_subtree(morphology_subtree, layer_hierarchy):
             for index, item in enumerate(morphology_subtree):
                 if isinstance(item, tuple):
-                    subtree_layer = nn.Linear(1, len(item[1]))
+                    subtree_layer = nn.Linear(1, len(item[1])).to(device)
                     subtree_item = (subtree_layer, [])
                     layer_hierarchy.append(subtree_item)
                     create_subtree(item[1], subtree_item[1])
