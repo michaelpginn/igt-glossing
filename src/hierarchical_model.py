@@ -22,7 +22,7 @@ class HierarchicalMorphemeLabelingModel(BertPreTrainedModel):
             config.classifier_dropout if config.classifier_dropout is not None else config.hidden_dropout_prob
         )
         self.dropout = nn.Dropout(classifier_dropout)
-        self.pos_layer = nn.Linear(config.hidden_size, len(morphology))
+        self.pos_layer = nn.Sequential(nn.Linear(config.hidden_size, len(morphology)), nn.ReLU())
 
         # Will contain tuples: (layer, children)
         # layer: the actual nn layer
@@ -32,7 +32,7 @@ class HierarchicalMorphemeLabelingModel(BertPreTrainedModel):
         def create_subtree(morphology_subtree, layer_hierarchy):
             for index, item in enumerate(morphology_subtree):
                 if isinstance(item, tuple):
-                    subtree_layer = nn.Linear(1, len(item[1])).to(device)
+                    subtree_layer = nn.Sequential(nn.Linear(1, len(item[1])), nn.ReLU()).to(device)
                     subtree_item = (subtree_layer, [])
                     layer_hierarchy.append(subtree_item)
                     create_subtree(item[1], subtree_item[1])

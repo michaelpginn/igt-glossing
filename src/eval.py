@@ -18,7 +18,9 @@ def eval_accuracy(pred: List[List[str]], gold: List[List[str]]) -> dict:
 
         for token_index in range(len(entry_gold)):
             # For each token, check if it matches
-            if token_index < len(entry_pred) and entry_pred[token_index] == entry_gold[token_index] and entry_pred[token_index] != '[UNK]':
+            if token_index < len(entry_pred) and \
+                    entry_pred[token_index] == entry_gold[token_index] and \
+                    entry_pred[token_index] not in ['[UNK]', '[SEP]']:
                 entry_correct_predictions += 1
 
         entry_accuracy = (entry_correct_predictions / len(entry_gold))
