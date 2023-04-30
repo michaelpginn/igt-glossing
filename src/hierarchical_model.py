@@ -4,6 +4,7 @@ from transformers import BertModel, BertConfig, BertPreTrainedModel
 from transformers.modeling_outputs import TokenClassifierOutput
 from typing import Optional, Union, Tuple
 from encoder import MultiVocabularyEncoder, special_chars
+from uspanteko_morphology import morphology
 
 class HierarchicalMorphemeLabelingModel(BertPreTrainedModel):
     _keys_to_ignore_on_load_unexpected = [r"pooler"]
@@ -114,3 +115,16 @@ class HierarchicalMorphemeLabelingModel(BertPreTrainedModel):
             attentions=outputs.attentions,
         )
 
+
+def create_model(encoder: MultiVocabularyEncoder, sequence_length) -> BertPreTrainedModel:
+    """Creates the appropriate model"""
+    print("Creating model...")
+    config = BertConfig(
+        vocab_size=encoder.vocab_size(),
+        max_position_embeddings=sequence_length,
+        pad_token_id=encoder.PAD_ID,
+        num_labels=len(encoder.vocabularies[1]) + len(special_chars)
+    )
+    model = HierarchicalMorphemeLabelingModel(config, morphology)
+    print(model.config)
+    return model

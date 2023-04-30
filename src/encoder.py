@@ -59,7 +59,7 @@ class MultiVocabularyEncoder:
         elif vocabulary_index < len(self.vocabularies):
             if word in self.vocabularies[vocabulary_index]:
                 if separate_vocab:
-                    return self.vocabularies[vocabulary_index].index(word) + len(special_chars)
+                    return self.vocabularies[vocabulary_index].index(word)
                 # Otherwise we need the combined index
                 prior_vocab_padding = len(sum(self.vocabularies[:vocabulary_index], []))  # Sums the length of all preceding vocabularies
                 return self.vocabularies[vocabulary_index].index(word) + prior_vocab_padding + len(special_chars)

@@ -1,5 +1,6 @@
 morphology = [
     '???',
+    '[SEP]',
     ('V', [
         ('Abs/Erg', [
             ('Abs', [

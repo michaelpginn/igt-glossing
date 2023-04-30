@@ -6,6 +6,7 @@ from datasets import Dataset, DatasetDict
 import torch
 from encoder import create_vocab, MultiVocabularyEncoder
 from custom_tokenizers import morpheme_tokenize_no_punc as tokenizer
+from uspanteko_morphology import morphology
 
 class IGTLine:
     """A single line of IGT"""
@@ -104,6 +105,19 @@ def create_encoder(train_data: List[IGTLine], threshold: int):
     gloss_data = [line.gloss_list(segmented=True) for line in train_data]
     gloss_vocab = create_vocab(gloss_data, threshold=threshold, should_not_lower=True)
     return MultiVocabularyEncoder(vocabularies=[source_vocab, gloss_vocab], segmented=True)
+
+
+def create_gloss_vocab():
+    def parse_tree(morphology_subtree):
+        all_glosses = []
+        for item in morphology_subtree:
+            if isinstance(item, tuple):
+                all_glosses += parse_tree(item[1])
+            else:
+                all_glosses.append(item)
+        return all_glosses
+
+    return parse_tree(morphology)
 
 
 def prepare_dataset(data: List[IGTLine], encoder: MultiVocabularyEncoder, model_input_length: int, device):
