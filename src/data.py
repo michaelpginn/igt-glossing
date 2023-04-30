@@ -103,7 +103,7 @@ def create_encoder(train_data: List[IGTLine], threshold: int):
     source_vocab = create_vocab([line.morphemes() for line in train_data], threshold=threshold)
 
     gloss_data = [line.gloss_list(segmented=True) for line in train_data]
-    gloss_vocab = create_vocab(gloss_data, threshold=threshold, should_not_lower=True)
+    gloss_vocab = create_gloss_vocab()
     return MultiVocabularyEncoder(vocabularies=[source_vocab, gloss_vocab], segmented=True)
 
 

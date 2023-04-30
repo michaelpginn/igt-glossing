@@ -126,7 +126,7 @@ def create_model(encoder: MultiVocabularyEncoder, sequence_length) -> BertPreTra
         vocab_size=encoder.vocab_size(),
         max_position_embeddings=sequence_length,
         pad_token_id=encoder.PAD_ID,
-        num_labels=len(encoder.vocabularies[1]) + len(special_chars)
+        num_labels=len(encoder.vocabularies[1])
     )
     model = HierarchicalMorphemeLabelingModel(config, morphology)
     print(model.config)
