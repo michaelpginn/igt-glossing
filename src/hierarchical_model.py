@@ -6,6 +6,9 @@ from typing import Optional, Union, Tuple
 from encoder import MultiVocabularyEncoder, special_chars
 from uspanteko_morphology import morphology
 
+device = "cuda:0" if torch.cuda.is_available() else "cpu"
+
+
 class HierarchicalMorphemeLabelingModel(BertPreTrainedModel):
     _keys_to_ignore_on_load_unexpected = [r"pooler"]
 
@@ -58,7 +61,7 @@ class HierarchicalMorphemeLabelingModel(BertPreTrainedModel):
                     outputs.append(next_output)
                 else:
                     outputs.append(inputs[:,:,i:i+1])
-            return torch.cat(outputs, dim=2)
+            return torch.cat(outputs, dim=2).to(device)
 
         return evaluate_recursive(pos_output, self.layer_hierarchy)
 
