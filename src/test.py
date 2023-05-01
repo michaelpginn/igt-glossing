@@ -8,8 +8,8 @@ from eval import eval_accuracy
 INPUT_LENGTH = 512
 data = load_data_file('../data/usp-train-track2-uncovered')
 encoder = create_encoder(data, threshold=1)
-dataset = prepare_dataset(data=data, encoder=encoder,
-                        model_input_length=INPUT_LENGTH,  device='cpu')
+dataset = prepare_dataset(data=[data[0]], encoder=encoder,
+                          model_input_length=INPUT_LENGTH,  device='cpu')
 
 
 config = BertConfig(
@@ -31,7 +31,7 @@ def compute_metrics(eval_preds):
     print('Preds:\t', decoded_preds)
 
     # Decode (gold) labels
-    labels = np.where(labels != -100, labels, encoder.PAD_ID)
+    print(labels)
     decoded_labels = encoder.batch_decode(labels, from_vocabulary_index=1)
     print('Labels:\t', decoded_labels)
 
@@ -44,11 +44,12 @@ def preprocess_logits_for_metrics(logits, labels):
 args = TrainingArguments(
     output_dir=f"../training-checkpoints",
     evaluation_strategy="steps",
-    num_train_epochs=30,
+    num_train_epochs=500,
     per_device_train_batch_size=1, # set batch size to 1
     per_device_eval_batch_size=1,
     warmup_steps=500,
     weight_decay=0.01,
+    eval_steps=20,
     logging_dir='./logs'
 )
 
