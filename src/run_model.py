@@ -29,7 +29,7 @@ def create_trainer(model: BertPreTrainedModel, dataset: Optional[DatasetDict], e
 
         # Decode (gold) labels
         print(labels)
-        labels = np.where(labels != -100, labels, encoder.PAD_ID)
+        # labels = np.where(labels != -100, labels, encoder.PAD_ID)
         decoded_labels = encoder.batch_decode(labels, from_vocabulary_index=1)
         print(decoded_labels[0:1])
 
