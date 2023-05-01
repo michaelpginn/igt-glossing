@@ -3,13 +3,15 @@ from torch import nn
 from transformers import BertModel, BertConfig, BertPreTrainedModel
 from transformers.modeling_outputs import TokenClassifierOutput
 from typing import Optional, Union, Tuple
+import numpy as np
+import pandas as pd
 from encoder import MultiVocabularyEncoder, special_chars
 from uspanteko_morphology import morphology
 
 device = "cuda:0" if torch.cuda.is_available() else "cpu"
 
 
-class HierarchicalMorphemeLabelingModel(BertPreTrainedModel):
+class TaxonomicLossModel(BertPreTrainedModel):
     _keys_to_ignore_on_load_unexpected = [r"pooler"]
 
     def __init__(self, config, morphology):
@@ -22,46 +24,54 @@ class HierarchicalMorphemeLabelingModel(BertPreTrainedModel):
             config.classifier_dropout if config.classifier_dropout is not None else config.hidden_dropout_prob
         )
         self.dropout = nn.Dropout(classifier_dropout)
-        self.pos_layer = nn.Sequential(nn.Linear(config.hidden_size, len(morphology)))
+        self.output_layer = nn.Linear(config.hidden_size, self.num_labels)
 
-        # Will contain tuples: (layer, children)
-        # layer: the actual nn layer
-        # children: a recursive list of tuples if any
-        self.layer_hierarchy = []
-
-        def create_subtree(morphology_subtree, layer_hierarchy):
-            for index, item in enumerate(morphology_subtree):
-                if isinstance(item, tuple):
-                    subtree_layer = nn.Sequential(nn.Linear(1, len(item[1]))).to(device)
-                    subtree_item = (subtree_layer, [])
-                    layer_hierarchy.append(subtree_item)
-                    create_subtree(item[1], subtree_item[1])
-                else:
-                    layer_hierarchy.append(None)
-
-        create_subtree(morphology, self.layer_hierarchy)
+        self.hierarchy_matrix = pd.DataFrame(self.get_hierarchy_matrix(morphology, 66, 5))
 
         # Initialize weights and apply final processing
         self.post_init()
 
+    def get_hierarchy_matrix(self, hierarchy_tree, num_tags, max_depth):
+        """Takes a hierarchical tree, and creates a matrix of a_i,j where i is the tag and j is the level of hierarchy.
+        """
+        matrix = np.zeros((num_tags, max_depth))
 
-    def evaluate_classification_head(self, sequence_output):
-        """Takes the output from the BERT embedder and runs it through the hierarchical tree network"""
-        pos_output = self.pos_layer(sequence_output)
-        def evaluate_recursive(inputs, layer_hierarchy):
-            """Inputs is (batch size x #)"""
-            outputs = []
-            for i in range(inputs.size(dim=2)):
-                if layer_hierarchy[i] is not None:
-                    next_output_layer = layer_hierarchy[i][0]
-                    next_output = evaluate_recursive(next_output_layer(inputs[:,:,i:i+1]), layer_hierarchy[i][1])
-                    outputs.append(next_output)
+        def parse_tree(tree, group_prefix=[], start_tag=0):
+            for group_index, item in enumerate(tree):
+                if start_tag == 0:
+                    start_tag += 1
+                    continue
+                if isinstance(item, tuple):
+                    start_tag = parse_tree(item[1],
+                                           group_prefix=group_prefix + [matrix[start_tag - 1][len(group_prefix)] + 1],
+                                           start_tag=start_tag)
                 else:
-                    outputs.append(inputs[:,:,i:i+1])
-            return torch.cat(outputs, dim=2).to(device)
+                    matrix[start_tag] = matrix[start_tag - 1] + 1
+                    matrix[start_tag][:len(group_prefix)] = group_prefix
+                    start_tag += 1
+            return start_tag
 
-        return evaluate_recursive(pos_output, self.layer_hierarchy)
+        parse_tree(hierarchy_tree)
+        return matrix
 
+
+    def taxonomic_loss(self, logits, labels):
+        labels[labels == -100] = 66
+        loss_fct = nn.CrossEntropyLoss()
+
+        all_loss = None
+
+        for level in range(5):
+            groups = list(self.hierarchy_matrix.groupby(by=level).groups.values())
+            group_logits = torch.transpose(torch.stack([logits[:,group].sum(axis=1) for group in groups]), 0, 1)
+            group_labels = torch.LongTensor(np.vstack([self.hierarchy_matrix, [-100] * self.hierarchy_matrix.shape[1]])[labels, level])
+            level_loss = loss_fct(group_logits, group_labels)
+
+            if all_loss is not None:
+                all_loss += level_loss
+            else:
+                all_loss = level_loss
+        return all_loss
 
     def forward(
         self,
@@ -97,12 +107,11 @@ class HierarchicalMorphemeLabelingModel(BertPreTrainedModel):
         sequence_output = outputs[0]
 
         sequence_output = self.dropout(sequence_output)
-        logits = self.evaluate_classification_head(sequence_output)
+        logits = self.output_layer(sequence_output)
 
         loss = None
         if labels is not None:
-            loss_fct = nn.CrossEntropyLoss()
-            loss = loss_fct(logits.view(-1, self.num_labels), labels.view(-1))
+            loss = self.taxonomic_loss(logits.view(-1, self.num_labels), labels.view(-1))
 
         if not return_dict:
             output = (logits,) + outputs[2:]
@@ -125,6 +134,6 @@ def create_model(encoder: MultiVocabularyEncoder, sequence_length) -> BertPreTra
         pad_token_id=encoder.PAD_ID,
         num_labels=len(encoder.vocabularies[1])
     )
-    model = HierarchicalMorphemeLabelingModel(config, morphology)
+    model = TaxonomicLossModel(config, morphology)
     print(model.config)
     return model
