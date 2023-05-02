@@ -88,9 +88,9 @@ def main(mode: str, model: str, pretrained_path: str, encoder_path: str, data_pa
         dataset['train'] = prepare_dataset(data=train_data, encoder=encoder, model_input_length=MODEL_INPUT_LENGTH, device=device)
         dataset['dev'] = prepare_dataset(data=dev_data, encoder=encoder, model_input_length=MODEL_INPUT_LENGTH, device=device)
 
-        create_model = create_taxonomic_model
+        create_model = create_flat_model
         model = create_model(encoder=encoder, sequence_length=MODEL_INPUT_LENGTH).to(device)
-        trainer = create_trainer(model, dataset=dataset, encoder=encoder, batch_size=16, max_epochs=30)
+        trainer = create_trainer(model, dataset=dataset, encoder=encoder, batch_size=16, max_epochs=60)
 
         print("Training...")
         trainer.train()
