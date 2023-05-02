@@ -65,7 +65,7 @@ class TaxonomicLossModel(BertPreTrainedModel):
             groups = list(self.hierarchy_matrix.groupby(by=level).groups.values())
             group_logits = torch.transpose(torch.stack([logits[:,group].sum(axis=1) for group in groups]), 0, 1)
             group_labels = np.vstack([self.hierarchy_matrix, [-100] * self.hierarchy_matrix.shape[1]])[labels.cpu(), level]
-            group_labels = torch.from_numpy(group_labels).to(device)
+            group_labels = torch.tensor(group_labels, dtype=torch.long).to(device)
             level_loss = loss_fct(group_logits, group_labels)
             print('LEVEL', level, level_loss)
             if all_loss is not None:
