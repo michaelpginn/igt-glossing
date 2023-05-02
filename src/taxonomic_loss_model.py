@@ -66,7 +66,7 @@ class TaxonomicLossModel(BertPreTrainedModel):
             group_logits = torch.transpose(torch.stack([logits[:,group].sum(axis=1) for group in groups]), 0, 1)
             group_labels = torch.LongTensor(np.vstack([self.hierarchy_matrix, [-100] * self.hierarchy_matrix.shape[1]])[labels, level])
             level_loss = loss_fct(group_logits, group_labels)
-
+            print('LEVEL', level, level_loss)
             if all_loss is not None:
                 all_loss += level_loss
             else:
@@ -111,6 +111,8 @@ class TaxonomicLossModel(BertPreTrainedModel):
 
         loss = None
         if labels is not None:
+            print('NORMAL', nn.CrossEntropyLoss()(logits.view(-1, self.num_labels), labels.view(-1)))
+
             loss = self.taxonomic_loss(logits.view(-1, self.num_labels), labels.view(-1))
 
         if not return_dict:

@@ -9,12 +9,12 @@ from data import prepare_dataset, load_data_file, create_encoder, write_predicti
 from encoder import MultiVocabularyEncoder, special_chars, load_encoder
 from flat_model import create_model as create_flat_model
 from taxonomic_loss_model import create_model as create_taxonomic_model
-from eval import eval_morpheme_glosses
+from eval import eval_accuracy
 
 device = "cuda:0" if torch.cuda.is_available() else "cpu"
 
 
-def create_trainer(model: BertPreTrainedModel, dataset: Optional[DatasetDict], encoder: MultiVocabularyEncoder, batch_size, lr, max_epochs):
+def create_trainer(model: BertPreTrainedModel, dataset: Optional[DatasetDict], encoder: MultiVocabularyEncoder, batch_size, max_epochs):
     print("Creating trainer...")
 
     def compute_metrics(eval_preds):
@@ -23,17 +23,17 @@ def create_trainer(model: BertPreTrainedModel, dataset: Optional[DatasetDict], e
             preds = preds[0]
 
         # Decode predicted output
-        print(preds)
+        # print(preds)
         decoded_preds = encoder.batch_decode(preds, from_vocabulary_index=1)
-        print(decoded_preds[0:1])
 
         # Decode (gold) labels
-        print(labels)
-        # labels = np.where(labels != -100, labels, encoder.PAD_ID)
         decoded_labels = encoder.batch_decode(labels, from_vocabulary_index=1)
-        print(decoded_labels[0:1])
 
-        return eval_morpheme_glosses(pred_morphemes=decoded_preds, gold_morphemes=decoded_labels)
+        decoded_preds = [preds[:len(labels)] for preds, labels in zip(decoded_preds, decoded_labels)]
+        print('Preds:\t', decoded_preds[0])
+        print('Labels:\t', decoded_labels[0])
+
+        return eval_accuracy(decoded_preds, decoded_labels)
 
 
     def preprocess_logits_for_metrics(logits, labels):
@@ -42,7 +42,6 @@ def create_trainer(model: BertPreTrainedModel, dataset: Optional[DatasetDict], e
     args = TrainingArguments(
         output_dir=f"../training-checkpoints",
         evaluation_strategy="epoch",
-        learning_rate=lr,
         per_device_train_batch_size=batch_size,
         per_device_eval_batch_size=batch_size,
         gradient_accumulation_steps=3,
@@ -89,9 +88,9 @@ def main(mode: str, model: str, pretrained_path: str, encoder_path: str, data_pa
         dataset['train'] = prepare_dataset(data=train_data, encoder=encoder, model_input_length=MODEL_INPUT_LENGTH, device=device)
         dataset['dev'] = prepare_dataset(data=dev_data, encoder=encoder, model_input_length=MODEL_INPUT_LENGTH, device=device)
 
-        create_model = create_flat_model if model == 'flat' else create_taxonomic_model
+        create_model = create_taxonomic_model
         model = create_model(encoder=encoder, sequence_length=MODEL_INPUT_LENGTH).to(device)
-        trainer = create_trainer(model, dataset=dataset, encoder=encoder, batch_size=16, lr=2e-5, max_epochs=30)
+        trainer = create_trainer(model, dataset=dataset, encoder=encoder, batch_size=2, max_epochs=30)
 
         print("Training...")
         trainer.train()
