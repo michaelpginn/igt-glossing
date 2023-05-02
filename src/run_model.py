@@ -10,6 +10,7 @@ from encoder import MultiVocabularyEncoder, special_chars, load_encoder
 from flat_model import create_model as create_flat_model
 from taxonomic_loss_model import create_model as create_taxonomic_model
 from eval import eval_accuracy
+import random
 
 device = "cuda:0" if torch.cuda.is_available() else "cpu"
 
@@ -67,10 +68,11 @@ def create_trainer(model: BertPreTrainedModel, dataset: Optional[DatasetDict], e
 @click.command()
 @click.argument('mode')
 @click.argument('model')
+@click.option("--train_size", help="Number of items to sample from the training data", type=int)
 @click.option("--pretrained_path", help="Path to pretrained model", type=click.Path(exists=True))
 @click.option("--encoder_path", help="Path to pretrained encoder", type=click.Path(exists=True))
 @click.option("--data_path", help="The dataset to run predictions on. Only valid in predict mode.", type=click.Path(exists=True))
-def main(mode: str, model: str, pretrained_path: str, encoder_path: str, data_path: str):
+def main(mode: str, model: str, pretrained_path: str, train_size: int, encoder_path: str, data_path: str):
     if mode == 'train':
         wandb.init(project="struct-morph", entity="michael-ginn")
 
@@ -84,13 +86,17 @@ def main(mode: str, model: str, pretrained_path: str, encoder_path: str, data_pa
     if mode == 'train':
         encoder = create_encoder(train_data, threshold=1)
         encoder.save()
+
+        if train_size:
+            random.seed(42)
+            train_data = random.sample(train_data, train_size)
         dataset = DatasetDict()
         dataset['train'] = prepare_dataset(data=train_data, encoder=encoder, model_input_length=MODEL_INPUT_LENGTH, device=device)
         dataset['dev'] = prepare_dataset(data=dev_data, encoder=encoder, model_input_length=MODEL_INPUT_LENGTH, device=device)
 
         create_model = create_flat_model
         model = create_model(encoder=encoder, sequence_length=MODEL_INPUT_LENGTH).to(device)
-        trainer = create_trainer(model, dataset=dataset, encoder=encoder, batch_size=16, max_epochs=60)
+        trainer = create_trainer(model, dataset=dataset, encoder=encoder, batch_size=16, max_epochs=30)
 
         print("Training...")
         trainer.train()
