@@ -41,7 +41,7 @@ def create_trainer(model: BertPreTrainedModel, dataset: Optional[DatasetDict], e
 
     args = TrainingArguments(
         output_dir=f"../training-checkpoints",
-        evaluation_strategy="epoch",
+        evaluation_strategy="steps",
         per_device_train_batch_size=batch_size,
         per_device_eval_batch_size=batch_size,
         gradient_accumulation_steps=3,
@@ -50,6 +50,7 @@ def create_trainer(model: BertPreTrainedModel, dataset: Optional[DatasetDict], e
         save_total_limit=3,
         num_train_epochs=max_epochs,
         load_best_model_at_end=True,
+        eval_steps=200,
         report_to="wandb",
     )
 
@@ -90,7 +91,7 @@ def main(mode: str, model: str, pretrained_path: str, encoder_path: str, data_pa
 
         create_model = create_taxonomic_model
         model = create_model(encoder=encoder, sequence_length=MODEL_INPUT_LENGTH).to(device)
-        trainer = create_trainer(model, dataset=dataset, encoder=encoder, batch_size=2, max_epochs=30)
+        trainer = create_trainer(model, dataset=dataset, encoder=encoder, batch_size=16, max_epochs=30)
 
         print("Training...")
         trainer.train()
