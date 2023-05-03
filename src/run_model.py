@@ -74,7 +74,10 @@ def create_trainer(model: BertPreTrainedModel, dataset: Optional[DatasetDict], e
 @click.option("--data_path", help="The dataset to run predictions on. Only valid in predict mode.", type=click.Path(exists=True))
 def main(mode: str, model: str, pretrained_path: str, train_size: int, encoder_path: str, data_path: str):
     if mode == 'train':
-        wandb.init(project="taxo-morph", entity="michael-ginn")
+        wandb.init(project="taxo-morph", entity="michael-ginn", config={
+            "model": model,
+            "train-size": train_size if train_size else "full"
+        })
 
     random.seed(42)
 
