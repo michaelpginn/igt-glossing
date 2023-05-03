@@ -97,7 +97,7 @@ def main(mode: str, model: str, pretrained_path: str, train_size: int, encoder_p
 
         dataset = DatasetDict()
         dataset['train'] = prepare_dataset(data=train_data, encoder=encoder, model_input_length=MODEL_INPUT_LENGTH, mask_tokens_proportion=0.1, device=device)
-        dataset['dev'] = prepare_dataset(data=dev_data, encoder=encoder, model_input_length=MODEL_INPUT_LENGTH, device=device)
+        dataset['dev'] = prepare_dataset(data=dev_data, encoder=encoder, model_input_length=MODEL_INPUT_LENGTH, mask_tokens_proportion=False, device=device)
 
         create_model = create_flat_model if model == 'flat' else create_taxonomic_model
         model = create_model(encoder=encoder, sequence_length=MODEL_INPUT_LENGTH).to(device)
