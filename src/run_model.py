@@ -74,12 +74,17 @@ def create_trainer(model: BertPreTrainedModel, dataset: Optional[DatasetDict], e
 @click.option("--data_path", help="The dataset to run predictions on. Only valid in predict mode.", type=click.Path(exists=True))
 def main(mode: str, model: str, pretrained_path: str, train_size: int, encoder_path: str, data_path: str):
     if mode == 'train':
-        wandb.init(project="struct-morph", entity="michael-ginn")
+        wandb.init(project="taxo-morph", entity="michael-ginn")
+
+    random.seed(42)
 
     MODEL_INPUT_LENGTH = 512
 
     train_data = load_data_file(f"../data/usp-train-track2-uncovered")
     dev_data = load_data_file(f"../data/usp-dev-track2-uncovered")
+
+    if train_size:
+        train_data = random.sample(train_data, train_size)
 
     print("Preparing datasets...")
 
@@ -87,11 +92,8 @@ def main(mode: str, model: str, pretrained_path: str, train_size: int, encoder_p
         encoder = create_encoder(train_data, threshold=1)
         encoder.save()
 
-        if train_size:
-            random.seed(42)
-            train_data = random.sample(train_data, train_size)
         dataset = DatasetDict()
-        dataset['train'] = prepare_dataset(data=train_data, encoder=encoder, model_input_length=MODEL_INPUT_LENGTH, device=device)
+        dataset['train'] = prepare_dataset(data=train_data, encoder=encoder, model_input_length=MODEL_INPUT_LENGTH, mask_tokens_proportion=0.1, device=device)
         dataset['dev'] = prepare_dataset(data=dev_data, encoder=encoder, model_input_length=MODEL_INPUT_LENGTH, device=device)
 
         create_model = create_flat_model if model == 'flat' else create_taxonomic_model

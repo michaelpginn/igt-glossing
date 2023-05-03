@@ -1,6 +1,7 @@
 """Defines models and functions for loading, manipulating, and writing task data"""
 from typing import Optional, List
 import re
+import random
 from functools import reduce
 from datasets import Dataset, DatasetDict
 import torch
@@ -102,7 +103,6 @@ def create_encoder(train_data: List[IGTLine], threshold: int):
     """Creates an encoder with the vocabulary contained in train_data"""
     source_vocab = create_vocab([line.morphemes() for line in train_data], threshold=threshold)
 
-    gloss_data = [line.gloss_list(segmented=True) for line in train_data]
     gloss_vocab = create_gloss_vocab()
     return MultiVocabularyEncoder(vocabularies=[source_vocab, gloss_vocab], segmented=True)
 
@@ -120,7 +120,7 @@ def create_gloss_vocab():
     return parse_tree(morphology)
 
 
-def prepare_dataset(data: List[IGTLine], encoder: MultiVocabularyEncoder, model_input_length: int, device):
+def prepare_dataset(data: List[IGTLine], encoder: MultiVocabularyEncoder, model_input_length: int, mask_tokens_proportion, device):
     """Loads data, creates tokenizer, and creates a dataset object for easy manipulation"""
 
     # Create a dataset
@@ -128,6 +128,10 @@ def prepare_dataset(data: List[IGTLine], encoder: MultiVocabularyEncoder, model_
 
     def process(row):
         source_enc = encoder.encode(row['morphemes'], vocabulary_index=0)
+
+        if mask_tokens_proportion:
+            # Randomly mask some amount of tokens
+            source_enc = [token if random.random() > mask_tokens_proportion else 0 for token in source_enc]
 
         # Pad
         initial_length = len(source_enc)

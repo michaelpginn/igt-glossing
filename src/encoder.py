@@ -36,7 +36,8 @@ class MultiVocabularyEncoder:
         """
         self.vocabularies = vocabularies
         self.all_vocab = special_chars + sum(self.vocabularies, [])
-        self.seg1mented = segmented
+        self.special_chars = special_chars
+        self.segmented = segmented
 
         self.PAD_ID = special_chars.index("[PAD]")
         self.SEP_ID = special_chars.index("[SEP]")

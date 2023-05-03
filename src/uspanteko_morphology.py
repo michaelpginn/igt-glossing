@@ -48,12 +48,12 @@ morphology = [
         ('TAM', [
             ('Aspect', [
                 'COM',
-                'IMP',
                 'INC',
                 'PRG',
             ]),
             ('Mood', [
                 'COND',
+                'IMP',
                 'INT',
             ]),
             'TAM',
