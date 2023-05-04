@@ -145,7 +145,7 @@ def prepare_dataset(data: List[IGTLine], encoder: CustomEncoder, model_input_len
     return raw_dataset.map(process)
 
 
-def write_predictions(path: str, preds, pred_input_data, encoder: MultiVocabularyEncoder, from_vocabulary_index=None):
+def write_predictions(path: str, preds, pred_input_data, encoder: CustomEncoder, from_vocabulary_index=None):
     """Writes the predictions to a new file, which uses the file in `path` as input"""
     def create_gloss_line(glosses, transcription_tokens):
         """
@@ -161,7 +161,7 @@ def write_predictions(path: str, preds, pred_input_data, encoder: MultiVocabular
                 output_line += f" {gloss}"
         return output_line
 
-    decoded_preds = encoder.batch_decode(preds, from_vocabulary_index=from_vocabulary_index)
+    decoded_preds = encoder.batch_decode(preds)
     next_line = 0
     with open(path, 'r') as input:
         with open('usp_output_preds', 'w') as output:
