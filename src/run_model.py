@@ -77,7 +77,8 @@ def main(mode: str, model: str, pretrained_path: str, train_size: int, encoder_p
         wandb.init(project="taxo-morph", entity="michael-ginn", config={
             "model": model,
             "train-size": train_size if train_size else "full",
-            "duplicate-train": True
+            "duplicate-train": False,
+            "bert-size": "full"
         })
 
     random.seed(42)
@@ -97,9 +98,10 @@ def main(mode: str, model: str, pretrained_path: str, train_size: int, encoder_p
         encoder.save()
 
         dataset = DatasetDict()
-        train_masked = prepare_dataset(data=train_data, encoder=encoder, model_input_length=MODEL_INPUT_LENGTH, mask_tokens_proportion=0.1, device=device)
+        # train_masked = prepare_dataset(data=train_data, encoder=encoder, model_input_length=MODEL_INPUT_LENGTH, mask_tokens_proportion=0.1, device=device)
         train_unmasked = prepare_dataset(data=train_data, encoder=encoder, model_input_length=MODEL_INPUT_LENGTH, mask_tokens_proportion=False, device=device)
-        dataset['train'] = concatenate_datasets([train_masked, train_unmasked])
+        # dataset['train'] = concatenate_datasets([train_masked, train_unmasked])
+        dataset['train'] = train_unmasked
         dataset['dev'] = prepare_dataset(data=dev_data, encoder=encoder, model_input_length=MODEL_INPUT_LENGTH, mask_tokens_proportion=False, device=device)
 
         create_model = create_flat_model if model == 'flat' else create_taxonomic_model
