@@ -27,66 +27,48 @@ def create_vocab(sentences: List[List[str]], threshold=2, should_not_lower=False
     return sorted(all_words_list)
 
 
-class MultiVocabularyEncoder:
+class CustomEncoder:
     """Encodes and decodes words to an integer representation"""
 
-    def __init__(self, vocabularies: List[List[str]], segmented=False):
+    def __init__(self, vocabulary: List[str]):
         """
         :param vocabularies: A list of vocabularies for the tokenizer
         """
-        self.vocabularies = vocabularies
-        self.all_vocab = special_chars + sum(self.vocabularies, [])
+        self.vocabulary = vocabulary
         self.special_chars = special_chars
-        self.segmented = segmented
+        self.all_vocab = special_chars + vocabulary
 
         self.PAD_ID = special_chars.index("[PAD]")
         self.SEP_ID = special_chars.index("[SEP]")
         self.BOS_ID = special_chars.index("[BOS]")
         self.EOS_ID = special_chars.index("[EOS]")
 
-    def encode_word(self, word: str, vocabulary_index: int, separate_vocab=False) -> int:
+    def encode_word(self, word: str) -> int:
         """Converts a word to the integer encoding
         :param word: The word to encode
-        :param vocabulary_index: The index of the vocabulary to use
-        :param separate_vocab: If True, get the index of the word in just the specified vocabulary.
         :return: An integer encoding
         """
-        if not word.isupper() and vocabulary_index < 2:
-            # A bit of a hack, but we don't want to lowercase combined glosses, which should be in the third vocab
-            word = word.lower()
 
-        if word in special_chars:
+        if word in self.special_chars:
             return special_chars.index(word)
-        elif vocabulary_index < len(self.vocabularies):
-            if word in self.vocabularies[vocabulary_index]:
-                if separate_vocab:
-                    return self.vocabularies[vocabulary_index].index(word)
-                # Otherwise we need the combined index
-                prior_vocab_padding = len(sum(self.vocabularies[:vocabulary_index], []))  # Sums the length of all preceding vocabularies
-                return self.vocabularies[vocabulary_index].index(word) + prior_vocab_padding + len(special_chars)
-            else:
-                return 0
+        elif word in self.vocabulary:
+            return self.vocabulary.index(word)
         else:
-            # We got a bad vocabulary
-            raise ValueError('Invalid vocabulary index.')
+            return 0
 
     def encode(self, sentence: List[str], vocabulary_index, separate_vocab=False) -> List[int]:
         """Encodes a sentence (a list of strings)"""
-        return [self.encode_word(word, vocabulary_index=vocabulary_index, separate_vocab=separate_vocab) for word in sentence]
+        return [self.encode_word(word) for word in sentence]
 
-    def batch_decode(self, batch, from_vocabulary_index=None):
+    def batch_decode(self, batch):
         """Decodes a batch of indices to the actual words
         :param batch: The batch of ids
-        :param from_vocabulary_index: If provided, returns only words from the specified vocabulary. For instance, id=1 and vocab_index=2 will return the first word in the second vocabulary.
         """
         def decode(seq):
             if isinstance(seq, torch.Tensor):
                 indices = seq.detach().cpu().tolist()
             else:
                 indices = seq.tolist()
-            if from_vocabulary_index is not None:
-                decode_vocab = self.vocabularies[from_vocabulary_index]
-                return [decode_vocab[index] for index in indices if index >= 0 and index < len(decode_vocab)]
             return ['[UNK]' if index == 0 else self.all_vocab[index] for index in indices if (index >= len(special_chars) or index == 0)]
 
         return [decode(seq) for seq in batch]
@@ -100,6 +82,6 @@ class MultiVocabularyEncoder:
             pickle.dump(self, out, pickle.HIGHEST_PROTOCOL)
 
 
-def load_encoder(path) -> MultiVocabularyEncoder:
+def load_encoder(path) -> CustomEncoder:
     with open(path, 'rb') as inp:
         return pickle.load(inp)

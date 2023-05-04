@@ -5,7 +5,7 @@ import random
 from functools import reduce
 from datasets import Dataset, DatasetDict
 import torch
-from encoder import create_vocab, MultiVocabularyEncoder
+from encoder import create_vocab, CustomEncoder
 from custom_tokenizers import morpheme_tokenize_no_punc as tokenizer
 from uspanteko_morphology import morphology
 
@@ -99,14 +99,6 @@ def load_data_file(path: str) -> List[IGTLine]:
     return all_data
 
 
-def create_encoder(train_data: List[IGTLine], threshold: int):
-    """Creates an encoder with the vocabulary contained in train_data"""
-    source_vocab = create_vocab([line.morphemes() for line in train_data], threshold=threshold)
-
-    gloss_vocab = create_gloss_vocab()
-    return MultiVocabularyEncoder(vocabularies=[source_vocab, gloss_vocab], segmented=True)
-
-
 def create_gloss_vocab():
     def parse_tree(morphology_subtree):
         all_glosses = []
@@ -120,7 +112,7 @@ def create_gloss_vocab():
     return parse_tree(morphology)
 
 
-def prepare_dataset(data: List[IGTLine], encoder: MultiVocabularyEncoder, model_input_length: int, mask_tokens_proportion, device):
+def prepare_dataset(data: List[IGTLine], encoder: CustomEncoder, model_input_length: int, device):
     """Loads data, creates tokenizer, and creates a dataset object for easy manipulation"""
 
     # Create a dataset
@@ -128,10 +120,6 @@ def prepare_dataset(data: List[IGTLine], encoder: MultiVocabularyEncoder, model_
 
     def process(row):
         source_enc = encoder.encode(row['morphemes'], vocabulary_index=0)
-
-        if mask_tokens_proportion:
-            # Randomly mask some amount of tokens
-            source_enc = [token if random.random() > mask_tokens_proportion else 0 for token in source_enc]
 
         # Pad
         initial_length = len(source_enc)
@@ -146,13 +134,13 @@ def prepare_dataset(data: List[IGTLine], encoder: MultiVocabularyEncoder, model_
             output_enc = encoder.encode(row['glosses'], vocabulary_index=1, separate_vocab=True)
             output_enc += [-100] * (model_input_length - len(output_enc))
             return { 'input_ids': torch.tensor(source_enc).to(device),
-                    'attention_mask': torch.tensor(attention_mask).to(device),
-                    'labels': torch.tensor(output_enc).to(device)}
+                     'attention_mask': torch.tensor(attention_mask).to(device),
+                     'labels': torch.tensor(output_enc).to(device)}
 
         else:
-            # If we have no glosses, this must be a prediction task
+            # If we have no glosses, this must be a prediction task or language modeling
             return { 'input_ids': torch.tensor(source_enc).to(device),
-                    'attention_mask': torch.tensor(attention_mask).to(device)}
+                     'attention_mask': torch.tensor(attention_mask).to(device)}
 
     return raw_dataset.map(process)
 
