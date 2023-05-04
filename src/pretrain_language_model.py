@@ -10,10 +10,6 @@ import random
 
 device = "cuda:0" if torch.cuda.is_available() else "cpu"
 
-@click.group()
-def cli():
-    pass
-
 @click.command()
 def train():
     MODEL_INPUT_LENGTH = 512
@@ -73,4 +69,4 @@ def train():
 
 
 if __name__ == "__main__":
-    cli()
+    train()
