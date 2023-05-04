@@ -21,7 +21,11 @@ python3 run_model.py train tax --train_size 10
 python3 run_model.py train flat --train_size 10
 python3 run_model.py train tax --train_size 100
 python3 run_model.py train flat --train_size 100
+python3 run_model.py train tax --train_size 500
+python3 run_model.py train flat --train_size 500
 python3 run_model.py train tax --train_size 1000
 python3 run_model.py train flat --train_size 1000
+python3 run_model.py train tax --train_size 5000
+python3 run_model.py train flat --train_size 5000
 python3 run_model.py train tax
 python3 run_model.py train flat
