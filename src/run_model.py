@@ -73,8 +73,10 @@ def create_trainer(model: BertPreTrainedModel, dataset: Optional[DatasetDict], e
 @click.option("--encoder_path", help="Path to pretrained encoder", type=click.Path(exists=True))
 @click.option("--data_path", help="The dataset to run predictions on. Only valid in predict mode.", type=click.Path(exists=True))
 def main(mode: str, model: str, pretrained_path: str, train_size: int, encoder_path: str, data_path: str):
+    run_name = f"{train_size if train_size else 'full'}-{model}"
+
     if mode == 'train':
-        wandb.init(project="taxo-morph", entity="michael-ginn", config={
+        wandb.init(project="taxo-morph", entity="michael-ginn", name=run_name, config={
             "model": model,
             "train-size": train_size if train_size else "full",
             "duplicate-train": False,
@@ -110,9 +112,9 @@ def main(mode: str, model: str, pretrained_path: str, train_size: int, encoder_p
 
         print("Training...")
         trainer.train()
-        print("Saving model to ./output")
-        trainer.save_model('./output')
-        print("Model saved at ./output")
+        print(f"Saving model to ./{run_name}")
+        trainer.save_model(f'./{run_name}')
+        print(f"Model saved at ./{run_name}")
     # elif mode == 'predict':
         # encoder = load_encoder(encoder_path)
         # if not hasattr(encoder, 'segmented'):
