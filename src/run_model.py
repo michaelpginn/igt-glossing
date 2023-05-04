@@ -81,7 +81,7 @@ def main(mode: str, model: str, pretrained_path: str, train_size: int, encoder_p
             "bert-size": "full"
         })
 
-    random.seed(42)
+    random.seed(1)
 
     MODEL_INPUT_LENGTH = 512
 
