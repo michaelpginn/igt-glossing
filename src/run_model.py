@@ -3,7 +3,7 @@ import wandb
 import torch
 import numpy as np
 from transformers import BertPreTrainedModel, TrainingArguments, Trainer, BertForTokenClassification
-from datasets import DatasetDict
+from datasets import DatasetDict, concatenate_datasets
 from typing import Optional
 from data import prepare_dataset, load_data_file, create_encoder, write_predictions
 from encoder import MultiVocabularyEncoder, special_chars, load_encoder
@@ -76,7 +76,8 @@ def main(mode: str, model: str, pretrained_path: str, train_size: int, encoder_p
     if mode == 'train':
         wandb.init(project="taxo-morph", entity="michael-ginn", config={
             "model": model,
-            "train-size": train_size if train_size else "full"
+            "train-size": train_size if train_size else "full",
+            "duplicate-train": True
         })
 
     random.seed(42)
@@ -96,7 +97,9 @@ def main(mode: str, model: str, pretrained_path: str, train_size: int, encoder_p
         encoder.save()
 
         dataset = DatasetDict()
-        dataset['train'] = prepare_dataset(data=train_data, encoder=encoder, model_input_length=MODEL_INPUT_LENGTH, mask_tokens_proportion=0.1, device=device)
+        train_masked = prepare_dataset(data=train_data, encoder=encoder, model_input_length=MODEL_INPUT_LENGTH, mask_tokens_proportion=0.1, device=device)
+        train_unmasked = prepare_dataset(data=train_data, encoder=encoder, model_input_length=MODEL_INPUT_LENGTH, mask_tokens_proportion=False, device=device)
+        dataset['train'] = concatenate_datasets([train_masked, train_unmasked])
         dataset['dev'] = prepare_dataset(data=dev_data, encoder=encoder, model_input_length=MODEL_INPUT_LENGTH, mask_tokens_proportion=False, device=device)
 
         create_model = create_flat_model if model == 'flat' else create_taxonomic_model

@@ -145,15 +145,13 @@ def prepare_dataset(data: List[IGTLine], encoder: MultiVocabularyEncoder, model_
             # For token class., the labels are just the glosses for each word
             output_enc = encoder.encode(row['glosses'], vocabulary_index=1, separate_vocab=True)
             output_enc += [-100] * (model_input_length - len(output_enc))
-            return {
-                    'input_ids': torch.tensor(source_enc).to(device),
+            return { 'input_ids': torch.tensor(source_enc).to(device),
                     'attention_mask': torch.tensor(attention_mask).to(device),
                     'labels': torch.tensor(output_enc).to(device)}
 
         else:
             # If we have no glosses, this must be a prediction task
-            return {'tokenized_transcription': tokenized_transcription,
-                    'input_ids': torch.tensor(source_enc).to(device),
+            return { 'input_ids': torch.tensor(source_enc).to(device),
                     'attention_mask': torch.tensor(attention_mask).to(device)}
 
     return raw_dataset.map(process)
