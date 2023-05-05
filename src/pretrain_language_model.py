@@ -11,13 +11,14 @@ import random
 device = "cuda:0" if torch.cuda.is_available() else "cpu"
 
 @click.command()
-def train():
+@click.option("--arch_size", type=str)
+def train(arch_size: str='full'):
     MODEL_INPUT_LENGTH = 64
     BATCH_SIZE = 64
     EPOCHS = 100
 
     wandb.init(project="taxo-morph-pretrain", entity="michael-ginn", config={
-        "bert-size": "full",
+        "bert-size": arch_size,
         "batch_size": BATCH_SIZE,
         "epochs": EPOCHS
     })
@@ -36,11 +37,21 @@ def train():
     dataset['train']  = prepare_dataset(data=train_data, encoder=encoder, model_input_length=MODEL_INPUT_LENGTH, device=device)
     dataset['dev'] = prepare_dataset(data=dev_data, encoder=encoder, model_input_length=MODEL_INPUT_LENGTH, device=device)
 
-    config = RobertaConfig(
-        vocab_size=encoder.vocab_size(),
-        max_position_embeddings=MODEL_INPUT_LENGTH,
-        pad_token_id=encoder.PAD_ID,
-    )
+    if arch_size == 'full':
+        config = RobertaConfig(
+            vocab_size=encoder.vocab_size(),
+            max_position_embeddings=MODEL_INPUT_LENGTH,
+            pad_token_id=encoder.PAD_ID,
+        )
+    else:
+        config = RobertaConfig(
+            vocab_size=encoder.vocab_size(),
+            max_position_embeddings=MODEL_INPUT_LENGTH,
+            pad_token_id=encoder.PAD_ID,
+            num_hidden_layers=3,
+            hidden_size=100,
+            num_attention_heads=5
+        )
     language_model = RobertaForMaskedLM(config=config)
 
     args = TrainingArguments(
