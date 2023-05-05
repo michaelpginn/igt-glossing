@@ -17,8 +17,8 @@ module load anaconda
 # Run Python Script
 conda activate AutoIGT
 cd "/projects/migi8081/struct-morph/src"
-python3 finetune_token_classifier.py train flat --train_size 10
-python3 finetune_token_classifier.py train flat --train_size 100
-python3 finetune_token_classifier.py train flat --train_size 500
-python3 finetune_token_classifier.py train flat --train_size 1000
-
+python3 finetune_token_classifier.py train flat --train_size 10 --seed 42
+python3 finetune_token_classifier.py train flat --train_size 100 --seed 42
+python3 finetune_token_classifier.py train flat --train_size 500 --seed 42
+python3 finetune_token_classifier.py train flat --train_size 1000 --seed 42
+python3 finetune_token_classifier.py train flat --seed 42

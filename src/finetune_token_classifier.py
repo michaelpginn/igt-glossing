@@ -69,7 +69,8 @@ def cli():
 @cli.command()
 @click.argument('loss', type=click.Choice(['flat', 'tax'], case_sensitive=False))
 @click.option("--train_size", help="Number of items to sample from the training data", type=int)
-def train(loss: str, train_size: int):
+@click.option("--seed", help="Random seed", type=int)
+def train(loss: str, train_size: int, seed: int):
     MODEL_INPUT_LENGTH = 64
     BATCH_SIZE = 64
     EPOCHS = 60
@@ -81,7 +82,7 @@ def train(loss: str, train_size: int):
         "train-size": train_size if train_size else "full",
     })
 
-    random.seed(12)
+    random.seed(seed)
 
     train_data = load_data_file(f"../data/usp-train-track2-uncovered")
     dev_data = load_data_file(f"../data/usp-dev-track2-uncovered")
@@ -99,6 +100,7 @@ def train(loss: str, train_size: int):
     dataset['dev'] = prepare_dataset(data=dev_data, encoder=encoder, model_input_length=MODEL_INPUT_LENGTH, device=device)
 
     if loss == "flat":
+        model = RobertaForTokenClassification.from_pretrained("")
         model = AutoModelForTokenClassification.from_pretrained("michaelginn/uspanteko-roberta-base", num_labels=len(glosses))
     elif loss == "tax":
         model = "TODO"
