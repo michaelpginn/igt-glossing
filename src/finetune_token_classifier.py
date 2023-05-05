@@ -2,11 +2,12 @@ import click
 import wandb
 import torch
 from transformers import AutoModelForTokenClassification, Trainer, TrainingArguments, RobertaForTokenClassification
-from datasets import DatasetDict, concatenate_datasets
+from datasets import DatasetDict
 from typing import Optional
 from data import prepare_dataset, load_data_file, create_vocab, create_gloss_vocab
-from encoder import CustomEncoder, special_chars, load_encoder
+from encoder import CustomEncoder
 from eval import eval_accuracy
+from taxonomic_loss_model import TaxonomicLossModel
 import random
 
 
@@ -80,6 +81,7 @@ def train(loss: str, train_size: int, seed: int):
     wandb.init(project="taxo-morph-finetuning", entity="michael-ginn", name=run_name, config={
         "loss": loss,
         "train-size": train_size if train_size else "full",
+        "seed": seed,
     })
 
     random.seed(seed)
@@ -102,7 +104,7 @@ def train(loss: str, train_size: int, seed: int):
     if loss == "flat":
         model = AutoModelForTokenClassification.from_pretrained("michaelginn/uspanteko-roberta-base", num_labels=len(glosses))
     elif loss == "tax":
-        model = "TODO"
+        model = TaxonomicLossModel.from_pretrained("michaelginn/uspanteko-roberta-base", num_labels=len(glosses))
 
     trainer = create_trainer(model, dataset=dataset, encoder=encoder, batch_size=BATCH_SIZE, max_epochs=EPOCHS)
     trainer.train()

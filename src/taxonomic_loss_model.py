@@ -1,6 +1,6 @@
 import torch
 from torch import nn
-from transformers import BertModel, BertConfig, RobertaPreTrainedModel, AutoModel
+from transformers import RobertaModel, BertConfig, RobertaForTokenClassification, AutoModel
 from transformers.modeling_outputs import TokenClassifierOutput
 from typing import Optional, Union, Tuple
 import numpy as np
@@ -11,20 +11,21 @@ from uspanteko_morphology import morphology
 device = "cuda:0" if torch.cuda.is_available() else "cpu"
 
 
-class TaxonomicLossModel():
+class TaxonomicLossModel(RobertaForTokenClassification):
     _keys_to_ignore_on_load_unexpected = [r"pooler"]
 
-    def __init__(self, morphology):
+    def __init__(self, config):
         super().__init__(config)
         self.num_labels = config.num_labels
+
         self.morphology = morphology
 
-        self.bert = BertModel(config, add_pooling_layer=False)
+        self.roberta = RobertaModel(config, add_pooling_layer=False)
         classifier_dropout = (
             config.classifier_dropout if config.classifier_dropout is not None else config.hidden_dropout_prob
         )
         self.dropout = nn.Dropout(classifier_dropout)
-        self.output_layer = nn.Linear(config.hidden_size, self.num_labels)
+        self.classifier = nn.Linear(config.hidden_size, config.num_labels)
 
         self.hierarchy_matrix = pd.DataFrame(self.get_hierarchy_matrix(morphology, 66, 5))
 
@@ -62,10 +63,17 @@ class TaxonomicLossModel():
         all_loss = None
 
         for level in range(5):
+            # Create groups for this level of hierarchy with indices
             groups = list(self.hierarchy_matrix.groupby(by=level).groups.values())
+
+            # For each group, sum the logits for all items
             group_logits = torch.transpose(torch.stack([logits[:,group].sum(axis=1) for group in groups]), 0, 1)
+
+            # Use the hierarchy matrix to turn node labels into group labels
             group_labels = np.vstack([self.hierarchy_matrix, [-100] * self.hierarchy_matrix.shape[1]])[labels.cpu(), level]
             group_labels = torch.tensor(group_labels, dtype=torch.long).to(device)
+
+            # Calculate crossentropy loss between group logits and group labels
             level_loss = loss_fct(group_logits, group_labels)
             if all_loss is not None:
                 all_loss += level_loss
@@ -92,7 +100,7 @@ class TaxonomicLossModel():
         """
         return_dict = return_dict if return_dict is not None else self.config.use_return_dict
 
-        outputs = self.bert(
+        outputs = self.roberta(
             input_ids,
             attention_mask=attention_mask,
             token_type_ids=token_type_ids,
@@ -107,10 +115,11 @@ class TaxonomicLossModel():
         sequence_output = outputs[0]
 
         sequence_output = self.dropout(sequence_output)
-        logits = self.output_layer(sequence_output)
+        logits = self.classifier(sequence_output)
 
         loss = None
         if labels is not None:
+            labels = labels.to(logits.device)
             loss = self.taxonomic_loss(logits.view(-1, self.num_labels), labels.view(-1))
 
         if not return_dict:
@@ -123,20 +132,3 @@ class TaxonomicLossModel():
             hidden_states=outputs.hidden_states,
             attentions=outputs.attentions,
         )
-
-
-def create_model(encoder: MultiVocabularyEncoder, sequence_length) -> BertPreTrainedModel:
-    """Creates the appropriate model"""
-    print("Creating model...")
-    config = BertConfig(
-        vocab_size=len(encoder.vocabularies[0]) + len(encoder.special_chars),
-        # num_hidden_layers=8,
-        # num_attention_heads=8,
-        # hidden_size=512,
-        max_position_embeddings=sequence_length,
-        pad_token_id=encoder.PAD_ID,
-        num_labels=len(encoder.vocabularies[1])
-    )
-    model = TaxonomicLossModel(config, morphology)
-    print(model.config)
-    return model
