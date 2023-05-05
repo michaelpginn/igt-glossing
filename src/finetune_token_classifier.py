@@ -100,7 +100,6 @@ def train(loss: str, train_size: int, seed: int):
     dataset['dev'] = prepare_dataset(data=dev_data, encoder=encoder, model_input_length=MODEL_INPUT_LENGTH, device=device)
 
     if loss == "flat":
-        model = RobertaForTokenClassification.from_pretrained("")
         model = AutoModelForTokenClassification.from_pretrained("michaelginn/uspanteko-roberta-base", num_labels=len(glosses))
     elif loss == "tax":
         model = "TODO"
