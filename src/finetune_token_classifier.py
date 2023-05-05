@@ -74,7 +74,7 @@ def cli():
 def train(loss: str, train_size: int, seed: int):
     MODEL_INPUT_LENGTH = 64
     BATCH_SIZE = 64
-    EPOCHS = 60
+    EPOCHS = 100
 
     run_name = f"{train_size if train_size else 'full'}-{loss}"
 
