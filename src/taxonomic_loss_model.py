@@ -18,7 +18,8 @@ class TaxonomicLossModel(RobertaForTokenClassification):
         super().__init__(config)
         self.num_labels = config.num_labels
 
-        self.morphology = morphology
+        self.morphology = None
+        self.hierarchy_matrix = None
 
         self.roberta = RobertaModel(config, add_pooling_layer=False)
         classifier_dropout = (
@@ -27,10 +28,13 @@ class TaxonomicLossModel(RobertaForTokenClassification):
         self.dropout = nn.Dropout(classifier_dropout)
         self.classifier = nn.Linear(config.hidden_size, config.num_labels)
 
-        self.hierarchy_matrix = pd.DataFrame(self.get_hierarchy_matrix(morphology, 66, 5))
-
         # Initialize weights and apply final processing
         self.post_init()
+
+    def use_morphology_tree(self, tree, max_depth):
+        self.morphology = tree
+        self.hierarchy_matrix = pd.DataFrame(self.get_hierarchy_matrix(self.morphology, self.num_labels, max_depth))
+
 
     def get_hierarchy_matrix(self, hierarchy_tree, num_tags, max_depth):
         """Takes a hierarchical tree, and creates a matrix of a_i,j where i is the tag and j is the level of hierarchy.

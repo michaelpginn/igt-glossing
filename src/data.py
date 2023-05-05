@@ -7,7 +7,6 @@ from datasets import Dataset, DatasetDict
 import torch
 from encoder import create_vocab, CustomEncoder
 from custom_tokenizers import morpheme_tokenize_no_punc as tokenizer
-from uspanteko_morphology import morphology
 
 class IGTLine:
     """A single line of IGT"""
@@ -99,7 +98,7 @@ def load_data_file(path: str) -> List[IGTLine]:
     return all_data
 
 
-def create_gloss_vocab():
+def create_gloss_vocab(morphology):
     def parse_tree(morphology_subtree):
         all_glosses = []
         for item in morphology_subtree:

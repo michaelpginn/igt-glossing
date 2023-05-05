@@ -8,6 +8,7 @@ from data import prepare_dataset, load_data_file, create_vocab, create_gloss_voc
 from encoder import CustomEncoder
 from eval import eval_accuracy
 from taxonomic_loss_model import TaxonomicLossModel
+from uspanteko_morphology import morphology as full_morphology_tree, simplified_morphology as simplified_morphology_tree
 import random
 
 
@@ -68,7 +69,7 @@ def cli():
 
 
 @cli.command()
-@click.argument('loss', type=click.Choice(['flat', 'tax'], case_sensitive=False))
+@click.argument('loss', type=click.Choice(['flat', 'tax', 'tax_simple'], case_sensitive=False))
 @click.option("--train_size", help="Number of items to sample from the training data", type=int)
 @click.option("--seed", help="Random seed", type=int)
 def train(loss: str, train_size: int, seed: int):
@@ -86,6 +87,8 @@ def train(loss: str, train_size: int, seed: int):
 
     random.seed(seed)
 
+    morphology_tree = simplified_morphology_tree if loss == 'tax_simple' else full_morphology_tree
+
     train_data = load_data_file(f"../data/usp-train-track2-uncovered")
     dev_data = load_data_file(f"../data/usp-dev-track2-uncovered")
 
@@ -94,7 +97,7 @@ def train(loss: str, train_size: int, seed: int):
     if train_size:
         train_data = random.sample(train_data, train_size)
 
-    glosses = create_gloss_vocab()
+    glosses = create_gloss_vocab(morphology_tree)
     encoder = CustomEncoder(vocabulary=train_vocab, output_vocabulary=glosses)
 
     dataset = DatasetDict()
@@ -103,8 +106,9 @@ def train(loss: str, train_size: int, seed: int):
 
     if loss == "flat":
         model = AutoModelForTokenClassification.from_pretrained("michaelginn/uspanteko-roberta-base", num_labels=len(glosses))
-    elif loss == "tax":
+    elif loss == "tax" or loss == "tax_simple":
         model = TaxonomicLossModel.from_pretrained("michaelginn/uspanteko-roberta-base", num_labels=len(glosses))
+        model.use_morphology_tree(morphology_tree, max_depth=1 if loss == 'tax_simple' else 5)
 
     trainer = create_trainer(model, dataset=dataset, encoder=encoder, batch_size=BATCH_SIZE, max_epochs=EPOCHS)
     trainer.train()
