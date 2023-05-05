@@ -1,20 +1,20 @@
 import torch
 from torch import nn
-from transformers import BertModel, BertConfig, BertPreTrainedModel
+from transformers import BertModel, BertConfig, RobertaPreTrainedModel, AutoModel
 from transformers.modeling_outputs import TokenClassifierOutput
 from typing import Optional, Union, Tuple
 import numpy as np
 import pandas as pd
-from encoder import MultiVocabularyEncoder, special_chars
+from encoder import CustomEncoder
 from uspanteko_morphology import morphology
 
 device = "cuda:0" if torch.cuda.is_available() else "cpu"
 
 
-class TaxonomicLossModel(BertPreTrainedModel):
+class TaxonomicLossModel():
     _keys_to_ignore_on_load_unexpected = [r"pooler"]
 
-    def __init__(self, config, morphology):
+    def __init__(self, morphology):
         super().__init__(config)
         self.num_labels = config.num_labels
         self.morphology = morphology

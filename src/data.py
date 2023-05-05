@@ -82,7 +82,7 @@ def load_data_file(path: str) -> List[IGTLine]:
                 current_entry = [None, None, None, None]
             elif line.strip() != "":
                 # Something went wrong
-                print("Skipping line: ", line)
+                continue
             else:
                 if not current_entry == [None, None, None, None]:
                     all_data.append(IGTLine(transcription=current_entry[0],
@@ -119,7 +119,7 @@ def prepare_dataset(data: List[IGTLine], encoder: CustomEncoder, model_input_len
     raw_dataset = Dataset.from_list([line.__dict__() for line in data])
 
     def process(row):
-        source_enc = encoder.encode(row['morphemes'], vocabulary_index=0)
+        source_enc = encoder.encode(row['morphemes'], vocab='input')
 
         # Pad
         initial_length = len(source_enc)
@@ -131,11 +131,11 @@ def prepare_dataset(data: List[IGTLine], encoder: CustomEncoder, model_input_len
         # Encode the output, if present
         if 'glosses' in row:
             # For token class., the labels are just the glosses for each word
-            output_enc = encoder.encode(row['glosses'], vocabulary_index=1, separate_vocab=True)
+            output_enc = encoder.encode(row['glosses'], vocab='output')
             output_enc += [-100] * (model_input_length - len(output_enc))
-            return { 'input_ids': torch.tensor(source_enc).to(device),
+            return { 'input_ids': torch.tensor(source_enc, dtype=torch.long).to(device),
                      'attention_mask': torch.tensor(attention_mask).to(device),
-                     'labels': torch.tensor(output_enc).to(device)}
+                     'labels': torch.tensor(output_enc, dtype=torch.long).to(device)}
 
         else:
             # If we have no glosses, this must be a prediction task or language modeling

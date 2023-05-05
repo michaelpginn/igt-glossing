@@ -30,51 +30,67 @@ def create_vocab(sentences: List[List[str]], threshold=2, should_not_lower=False
 class CustomEncoder:
     """Encodes and decodes words to an integer representation"""
 
-    def __init__(self, vocabulary: List[str]):
+    def __init__(self, vocabulary: List[str], output_vocabulary: List[str]):
         """
         :param vocabularies: A list of vocabularies for the tokenizer
         """
         self.vocabulary = vocabulary
+        self.output_vocabulary = output_vocabulary
         self.special_chars = special_chars
-        self.all_vocab = special_chars + vocabulary
+        self.all_input_vocab = special_chars + vocabulary
 
         self.PAD_ID = special_chars.index("[PAD]")
         self.SEP_ID = special_chars.index("[SEP]")
         self.BOS_ID = special_chars.index("[BOS]")
         self.EOS_ID = special_chars.index("[EOS]")
 
-    def encode_word(self, word: str) -> int:
+    def encode_word(self, word: str, vocab: str) -> int:
         """Converts a word to the integer encoding
         :param word: The word to encode
+        :param vocab: 'input' or 'output
         :return: An integer encoding
         """
-
-        if word in self.special_chars:
-            return special_chars.index(word)
-        elif word in self.vocabulary:
-            return self.vocabulary.index(word)
-        else:
+        if vocab == 'input':
+            if word in self.special_chars:
+                return special_chars.index(word)
+            elif word in self.vocabulary:
+                return self.vocabulary.index(word)
             return 0
+        elif vocab == 'output':
+            if word in self.output_vocabulary:
+                return self.output_vocabulary.index(word)
+            else:
+                print(word)
+        else:
+            raise ValueError("`vocab` must be either 'input' or 'output'")
 
-    def encode(self, sentence: List[str], vocabulary_index, separate_vocab=False) -> List[int]:
-        """Encodes a sentence (a list of strings)"""
-        return [self.encode_word(word) for word in sentence]
+    def encode(self, sentence: List[str], vocab: str) -> List[int]:
+        """Encodes a sentence (a list of strings)
+        :param sentence: The sentence to encode, a list of strings
+        :param vocab: Should be 'input' or 'output'
+        """
+        return [self.encode_word(word, vocab=vocab) for word in sentence]
 
-    def batch_decode(self, batch):
+    def batch_decode(self, batch, vocab: str):
         """Decodes a batch of indices to the actual words
         :param batch: The batch of ids
+        :param vocab: Should be 'input' or 'output'
         """
         def decode(seq):
             if isinstance(seq, torch.Tensor):
                 indices = seq.detach().cpu().tolist()
             else:
                 indices = seq.tolist()
-            return ['[UNK]' if index == 0 else self.all_vocab[index] for index in indices if (index >= len(special_chars) or index == 0)]
+
+            if vocab == 'input':
+                return ['[UNK]' if index == 0 else self.all_input_vocab[index] for index in indices if (index >= len(special_chars) or index == 0)]
+            elif vocab == 'output':
+                return [self.output_vocabulary[index] for index in indices if index < len(self.output_vocabulary) and index >= 0]
 
         return [decode(seq) for seq in batch]
 
     def vocab_size(self):
-        return len(self.all_vocab)
+        return len(self.all_input_vocab)
 
     def save(self):
         """Saves the encoder to a file"""
