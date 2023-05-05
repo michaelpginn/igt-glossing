@@ -13,7 +13,7 @@ device = "cuda:0" if torch.cuda.is_available() else "cpu"
 @click.command()
 def train():
     MODEL_INPUT_LENGTH = 64
-    BATCH_SIZE = 16
+    BATCH_SIZE = 64
     EPOCHS = 100
 
     wandb.init(project="taxo-morph-pretrain", entity="michael-ginn", config={
