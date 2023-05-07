@@ -79,7 +79,7 @@ def train(loss: str, train_size: int, seed: int):
 
     run_name = f"{train_size if train_size else 'full'}-{loss}-{seed}"
 
-    wandb.init(project="taxo-morph-finetuning-final", entity="michael-ginn", name=run_name, config={
+    wandb.init(project="taxo-morph-finetuning-ignore", entity="michael-ginn", name=run_name, config={
         "loss": loss,
         "train-size": train_size if train_size else "full",
         "random-seed": seed,
