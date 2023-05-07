@@ -98,7 +98,7 @@ class CustomEncoder:
             pickle.dump(self, out, pickle.HIGHEST_PROTOCOL)
 
     def random_token_id(self):
-        return random.randint(len(self.special_chars), len(self.special_chars) + len(self.vocabulary))
+        return random.randint(len(self.special_chars), len(self.special_chars) + len(self.vocabulary) - 1)
 
 
 def load_encoder(path) -> CustomEncoder:
