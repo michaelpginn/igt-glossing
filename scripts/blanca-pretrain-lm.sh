@@ -17,4 +17,4 @@ module load anaconda
 # Run Python Script
 conda activate AutoIGT
 cd "/projects/migi8081/struct-morph/src"
-python3 pretrain_language_model.py
+python3 pretrain_language_model.py --arch_size micro

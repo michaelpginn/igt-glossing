@@ -111,8 +111,58 @@ def create_gloss_vocab(morphology):
     return parse_tree(morphology)
 
 
+def prepare_dataset_mlm(data: List[List[str]], encoder: CustomEncoder, model_input_length: int, mlm_probability: float, device):
+    """Encodes, pads, and creates attention mask for input. Also masks tokens and sets labels according"""
+
+    # Create a dataset
+    raw_dataset = Dataset.from_list([{'strs': line} for line in data])
+
+    def process(row):
+        source_enc = encoder.encode(row['strs'], vocab='input')
+        masked_source = []
+        labels = []
+
+        # Mask tokens
+        for token in source_enc:
+            if random.random() < mlm_probability:
+                # Mask the token
+                mask_type_prob = random.random()
+
+                # 80% use MASK, 10% use random token, 10% unchanged
+                if mask_type_prob < 0.8:
+                    masked_source.append(encoder.MASK_ID)
+                elif mask_type_prob < 0.9:
+                    masked_source.append(encoder.random_token_id())
+                else:
+                    masked_source.append(token)
+
+                labels.append(token)
+            else:
+                masked_source.append(token)
+
+                # Ignore non-masked tokens
+                labels.append(-100)
+
+        print(masked_source)
+
+        # Pad
+        initial_length = len(masked_source)
+        masked_source += [encoder.PAD_ID] * (model_input_length - initial_length)
+        labels += [-100] * (model_input_length - initial_length)
+
+        # Create attention mask
+        attention_mask = [1] * initial_length + [0] * (model_input_length - initial_length)
+
+        # Encode the output, if present
+        return { 'input_ids': torch.tensor(masked_source, dtype=torch.long).to(device),
+                 'attention_mask': torch.tensor(attention_mask).to(device),
+                 'labels': torch.tensor(labels, dtype=torch.long).to(device)}
+
+    return raw_dataset.map(process)
+
+
 def prepare_dataset(data: List[IGTLine], encoder: CustomEncoder, model_input_length: int, device):
-    """Loads data, creates tokenizer, and creates a dataset object for easy manipulation"""
+    """Encodes and pads inputs and creates attention mask"""
 
     # Create a dataset
     raw_dataset = Dataset.from_list([line.__dict__() for line in data])

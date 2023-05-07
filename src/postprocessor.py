@@ -6,8 +6,9 @@ import torch
 import math
 from transformers import RobertaConfig, TrainingArguments, Trainer, RobertaForMaskedLM
 from datasets import DatasetDict
-from data import prepare_dataset, load_data_file
+from data import prepare_dataset, load_data_file, create_gloss_vocab
 from encoder import CustomEncoder, create_vocab
+from uspanteko_morphology import  morphology
 import random
 
 device = "cuda:0" if torch.cuda.is_available() else "cpu"
@@ -33,29 +34,21 @@ def train(seed):
 
     print("Preparing datasets...")
 
-    train_vocab = create_vocab([line.morphemes() for line in train_data], threshold=1)
-    encoder = CustomEncoder(vocabulary=train_vocab)
+    glosses = create_gloss_vocab(morphology)
+    encoder = CustomEncoder(vocabulary=glosses)
 
     dataset = DatasetDict()
     dataset['train'] = prepare_dataset(data=train_data, encoder=encoder, model_input_length=MODEL_INPUT_LENGTH, device=device)
     dataset['dev'] = prepare_dataset(data=dev_data, encoder=encoder, model_input_length=MODEL_INPUT_LENGTH, device=device)
 
-    if arch_size == 'full':
-        config = RobertaConfig(
-            vocab_size=encoder.vocab_size(),
-            max_position_embeddings=MODEL_INPUT_LENGTH,
-            pad_token_id=encoder.PAD_ID,
-        )
-    else:
-        config = RobertaConfig(
-            vocab_size=encoder.vocab_size(),
-            max_position_embeddings=MODEL_INPUT_LENGTH,
-            pad_token_id=encoder.PAD_ID,
-            num_hidden_layers=3,
-            hidden_size=100,
-            num_attention_heads=5
-        )
-    language_model = RobertaForMaskedLM(config=config)
+    config = RobertaConfig(
+        vocab_size=len(encoder.output_vocabulary),
+        max_position_embeddings=MODEL_INPUT_LENGTH,
+        pad_token_id=encoder.PAD_ID,
+        num_hidden_layers=3,
+        hidden_size=100,
+        num_attention_heads=5
+    )
 
     args = TrainingArguments(
         output_dir=f"../training-checkpoints",

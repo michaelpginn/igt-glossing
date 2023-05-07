@@ -2,6 +2,7 @@
 from typing import List
 import torch
 import pickle
+import random
 
 special_chars = ["[UNK]", "[SEP]", "[PAD]", "[MASK]", "[BOS]", "[EOS]"]
 
@@ -30,7 +31,7 @@ def create_vocab(sentences: List[List[str]], threshold=2, should_not_lower=False
 class CustomEncoder:
     """Encodes and decodes words to an integer representation"""
 
-    def __init__(self, vocabulary: List[str], output_vocabulary: List[str]):
+    def __init__(self, vocabulary: List[str], output_vocabulary: List[str]=None):
         """
         :param vocabularies: A list of vocabularies for the tokenizer
         """
@@ -41,8 +42,7 @@ class CustomEncoder:
 
         self.PAD_ID = special_chars.index("[PAD]")
         self.SEP_ID = special_chars.index("[SEP]")
-        self.BOS_ID = special_chars.index("[BOS]")
-        self.EOS_ID = special_chars.index("[EOS]")
+        self.MASK_ID = special_chars.index("[MASK]")
 
     def encode_word(self, word: str, vocab: str) -> int:
         """Converts a word to the integer encoding
@@ -96,6 +96,9 @@ class CustomEncoder:
         """Saves the encoder to a file"""
         with open('encoder_data.pkl', 'wb') as out:
             pickle.dump(self, out, pickle.HIGHEST_PROTOCOL)
+
+    def random_token_id(self):
+        return random.randint(len(self.special_chars), len(self.special_chars) + len(self.vocabulary))
 
 
 def load_encoder(path) -> CustomEncoder:

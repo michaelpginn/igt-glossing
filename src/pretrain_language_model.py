@@ -4,7 +4,7 @@ import torch
 import math
 from transformers import RobertaConfig, TrainingArguments, Trainer, RobertaForMaskedLM
 from datasets import DatasetDict
-from data import prepare_dataset, load_data_file
+from data import prepare_dataset, load_data_file, prepare_dataset_mlm
 from encoder import CustomEncoder, create_vocab
 import random
 
@@ -34,8 +34,8 @@ def train(arch_size: str='full'):
     encoder = CustomEncoder(vocabulary=train_vocab)
 
     dataset = DatasetDict()
-    dataset['train'] = prepare_dataset(data=train_data, encoder=encoder, model_input_length=MODEL_INPUT_LENGTH, device=device)
-    dataset['dev'] = prepare_dataset(data=dev_data, encoder=encoder, model_input_length=MODEL_INPUT_LENGTH, device=device)
+    dataset['train'] = prepare_dataset_mlm(data=train_data, encoder=encoder, model_input_length=MODEL_INPUT_LENGTH, mlm_probability=0.15, device=device)
+    dataset['dev'] = prepare_dataset_mlm(data=dev_data, encoder=encoder, model_input_length=MODEL_INPUT_LENGTH, mlm_probability=0.15, device=device)
 
     if arch_size == 'full':
         config = RobertaConfig(
