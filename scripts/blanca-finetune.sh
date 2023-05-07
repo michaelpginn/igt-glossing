@@ -22,12 +22,12 @@ for seed in 100 101 102 103 104 105 106 107 108 109
 do
 #python3 finetune_token_classifier.py train flat --train_size 10 --seed $seed
 #python3 finetune_token_classifier.py train flat --train_size 100 --seed $seed
-#python3 finetune_token_classifier.py train flat --train_size 500 --seed $seed
-#python3 finetune_token_classifier.py train flat --train_size 1000 --seed $seed
-#python3 finetune_token_classifier.py train flat --seed $seed
-python3 finetune_token_classifier.py train tax_simple --train_size 10 --seed $seed
-python3 finetune_token_classifier.py train tax_simple --train_size 100 --seed $seed
-python3 finetune_token_classifier.py train tax_simple --train_size 500 --seed $seed
-python3 finetune_token_classifier.py train tax_simple --train_size 1000 --seed $seed
-python3 finetune_token_classifier.py train tax_simple --seed $seed
+python3 finetune_token_classifier.py train flat --train_size 500 --seed $seed
+python3 finetune_token_classifier.py train flat --train_size 1000 --seed $seed
+python3 finetune_token_classifier.py train flat --seed $seed
+#python3 finetune_token_classifier.py train tax_simple --train_size 10 --seed $seed
+#python3 finetune_token_classifier.py train tax_simple --train_size 100 --seed $seed
+#python3 finetune_token_classifier.py train tax_simple --train_size 500 --seed $seed
+#python3 finetune_token_classifier.py train tax_simple --train_size 1000 --seed $seed
+#python3 finetune_token_classifier.py train tax_simple --seed $seed
 done
