@@ -13,7 +13,7 @@ device = "cuda:0" if torch.cuda.is_available() else "cpu"
 class TaxonomicLossModel(RobertaForTokenClassification):
     _keys_to_ignore_on_load_unexpected = [r"pooler"]
 
-    def __init__(self, config):
+    def __init__(self, config, deeper_classification_head=False):
         super().__init__(config)
         self.num_labels = config.num_labels
 
@@ -25,8 +25,15 @@ class TaxonomicLossModel(RobertaForTokenClassification):
         classifier_dropout = (
             config.classifier_dropout if config.classifier_dropout is not None else config.hidden_dropout_prob
         )
-        self.dropout = nn.Dropout(classifier_dropout)
-        self.classifier = nn.Linear(config.hidden_size, config.num_labels)
+        if not deeper_classification_head:
+            self.classifier = nn.Sequential(nn.Dropout(classifier_dropout), nn.Linear(config.hidden_size, config.num_labels))
+        else:
+            self.classifier = nn.Sequential(nn.Linear(config.hidden_size, config.hidden_size),
+                                            nn.ReLU(),
+                                            nn.Linear(config.hidden_size, config.hidden_size),
+                                            nn.ReLU(),
+                                            nn.Dropout(classifier_dropout),
+                                            nn.Linear(config.hidden_size, config.num_labels))
 
         # Initialize weights and apply final processing
         self.post_init()

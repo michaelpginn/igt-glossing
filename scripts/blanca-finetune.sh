@@ -20,11 +20,11 @@ cd "/projects/migi8081/struct-morph/src"
 
 for seed in 42 43 44 45 46 47 48 49 50 51
 do
-  for size in 10 100 500 1000 full
+  for size in 10 100 500 1000
   do
-    for loss in flat tax tax_simple
+    for loss in tax tax_simple
     do
-      python3 finetune_token_classifier.py train $loss --train_size $size --seed $seed
+      python3 finetune_token_classifier.py train $loss --train_size $size --deeper_classifier true --seed $seed
     done
   done
 done
