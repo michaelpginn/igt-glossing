@@ -15,7 +15,7 @@ device = "cuda:0" if torch.cuda.is_available() else "cpu"
 def train(arch_size: str='full'):
     MODEL_INPUT_LENGTH = 64
     BATCH_SIZE = 64
-    EPOCHS = 100
+    EPOCHS = 200
 
     wandb.init(project="taxo-morph-pretrain", entity="michael-ginn", config={
         "bert-size": arch_size,
@@ -78,6 +78,7 @@ def train(arch_size: str='full'):
     trainer.train()
     eval_results = trainer.evaluate()
     print(f"Perplexity: {math.exp(eval_results['eval_loss']):.2f}")
+    print(eval_results)
 
     trainer.save_model(f'./usp-lang-model')
 
