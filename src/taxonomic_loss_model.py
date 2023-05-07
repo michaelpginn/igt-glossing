@@ -6,7 +6,6 @@ from typing import Optional, Union, Tuple
 import numpy as np
 import pandas as pd
 from encoder import CustomEncoder
-from uspanteko_morphology import morphology
 
 device = "cuda:0" if torch.cuda.is_available() else "cpu"
 
