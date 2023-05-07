@@ -28,12 +28,10 @@ class TaxonomicLossModel(RobertaForTokenClassification):
         if not deeper_classification_head:
             self.classifier = nn.Sequential(nn.Dropout(classifier_dropout), nn.Linear(config.hidden_size, config.num_labels))
         else:
-            self.classifier = nn.Sequential(nn.Linear(config.hidden_size, config.hidden_size),
-                                            nn.ReLU(),
-                                            nn.Linear(config.hidden_size, config.hidden_size),
+            self.classifier = nn.Sequential(nn.Linear(config.hidden_size, config.num_labels),
                                             nn.ReLU(),
                                             nn.Dropout(classifier_dropout),
-                                            nn.Linear(config.hidden_size, config.num_labels))
+                                            nn.Linear(config.num_labels, config.num_labels))
 
         # Initialize weights and apply final processing
         self.post_init()
@@ -125,7 +123,6 @@ class TaxonomicLossModel(RobertaForTokenClassification):
 
         sequence_output = outputs[0]
 
-        sequence_output = self.dropout(sequence_output)
         logits = self.classifier(sequence_output)
 
         loss = None
