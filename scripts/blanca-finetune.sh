@@ -18,16 +18,13 @@ module load anaconda
 conda activate AutoIGT
 cd "/projects/migi8081/struct-morph/src"
 
-for seed in 100 101 102 103 104 105 106 107 108 109
+for seed in 42 43 44 45 46 47 48 49 50 51
 do
-#python3 finetune_token_classifier.py train flat --train_size 10 --seed $seed
-#python3 finetune_token_classifier.py train flat --train_size 100 --seed $seed
-python3 finetune_token_classifier.py train flat --train_size 500 --seed $seed
-python3 finetune_token_classifier.py train flat --train_size 1000 --seed $seed
-python3 finetune_token_classifier.py train flat --seed $seed
-#python3 finetune_token_classifier.py train tax_simple --train_size 10 --seed $seed
-#python3 finetune_token_classifier.py train tax_simple --train_size 100 --seed $seed
-#python3 finetune_token_classifier.py train tax_simple --train_size 500 --seed $seed
-#python3 finetune_token_classifier.py train tax_simple --train_size 1000 --seed $seed
-#python3 finetune_token_classifier.py train tax_simple --seed $seed
+  for size in 10 100 500 1000 full
+  do
+    for loss in flat tax tax_simple
+    do
+      python3 finetune_token_classifier.py train $loss --train_size $size --seed $seed
+    done
+  done
 done
