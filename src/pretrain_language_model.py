@@ -34,8 +34,10 @@ def train(arch_size: str='full'):
     encoder = CustomEncoder(vocabulary=train_vocab)
 
     dataset = DatasetDict()
-    dataset['train'] = prepare_dataset_mlm(data=train_data, encoder=encoder, model_input_length=MODEL_INPUT_LENGTH, mlm_probability=0.15, device=device)
-    dataset['dev'] = prepare_dataset_mlm(data=dev_data, encoder=encoder, model_input_length=MODEL_INPUT_LENGTH, mlm_probability=0.15, device=device)
+    dataset['train'] = prepare_dataset_mlm(data=[line.morphemes() for line in train_data], encoder=encoder,
+                                           model_input_length=MODEL_INPUT_LENGTH, mlm_probability=0.15, device=device)
+    dataset['dev'] = prepare_dataset_mlm(data=[line.morphemes() for line in dev_data], encoder=encoder,
+                                         model_input_length=MODEL_INPUT_LENGTH, mlm_probability=0.15, device=device)
 
     if arch_size == 'full':
         config = RobertaConfig(
