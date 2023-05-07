@@ -123,42 +123,40 @@ def prepare_dataset_mlm(data: List[List[str]], tokenizer: WordLevelTokenizer, de
 
     def process(row):
         source_enc = tokenizer.convert_tokens_to_ids(row['tokens'])
-        labels = source_enc.copy()
 
         # Encode the output, if present
-        return { 'input_ids': torch.tensor(source_enc, dtype=torch.long).to(device), }
-                 # 'labels': torch.tensor(labels, dtype=torch.long).to(device)}
+        return { 'input_ids': torch.tensor(source_enc, dtype=torch.long).to(device) }
 
     return raw_dataset.map(process)
 
 
-def prepare_dataset(data: List[IGTLine], encoder: CustomEncoder, model_input_length: int, device):
+def prepare_dataset(data: List[IGTLine], tokenizer: WordLevelTokenizer, labels: list[str], device):
     """Encodes and pads inputs and creates attention mask"""
 
     # Create a dataset
     raw_dataset = Dataset.from_list([line.__dict__() for line in data])
 
     def process(row):
-        source_enc = encoder.encode(row['morphemes'], vocab='input')
+        source_enc = tokenizer.convert_tokens_to_ids(row['morphemes'])
 
         # Pad
         initial_length = len(source_enc)
-        source_enc += [encoder.PAD_ID] * (model_input_length - initial_length)
+        source_enc += [tokenizer.PAD_ID] * (tokenizer.model_max_length - initial_length)
 
         # Create attention mask
-        attention_mask = [1] * initial_length + [0] * (model_input_length - initial_length)
+        attention_mask = [1] * initial_length + [0] * (tokenizer.model_max_length - initial_length)
 
         # Encode the output, if present
         if 'glosses' in row:
             # For token class., the labels are just the glosses for each word
-            output_enc = encoder.encode(row['glosses'], vocab='output')
-            output_enc += [-100] * (model_input_length - len(output_enc))
+            output_enc = [labels.index(gloss) for gloss in row['glosses']]
+            output_enc += [-100] * (tokenizer.model_max_length - len(output_enc))
             return { 'input_ids': torch.tensor(source_enc, dtype=torch.long).to(device),
                      'attention_mask': torch.tensor(attention_mask).to(device),
                      'labels': torch.tensor(output_enc, dtype=torch.long).to(device)}
 
         else:
-            # If we have no glosses, this must be a prediction task or language modeling
+            # If we have no glosses, this must be a prediction task
             return { 'input_ids': torch.tensor(source_enc).to(device),
                      'attention_mask': torch.tensor(attention_mask).to(device)}
 

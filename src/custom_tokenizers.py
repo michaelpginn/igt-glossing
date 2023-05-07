@@ -1,4 +1,5 @@
 import re
+from abc import ABC
 from functools import reduce
 from transformers import PreTrainedTokenizer
 from typing import List, Dict, Optional, Tuple, Any
@@ -15,7 +16,10 @@ def morpheme_tokenize_no_punc(str: str):
 
 
 class WordLevelTokenizer(PreTrainedTokenizer):
-    """Constructs a tokenizer for Roberta architecture models that just encodes using a simple word-level integer encoding"""
+    """
+    Constructs a tokenizer for Roberta architecture models that just encodes using a simple word-level integer encoding
+    """
+
     model_input_names = ["input_ids", "attention_mask"]
 
     def __init__(self, vocab: List[str], model_max_length: int):
@@ -84,4 +88,7 @@ class WordLevelTokenizer(PreTrainedTokenizer):
         raise NotImplementedError
 
     def tokenize(self, text: str, **kwargs) -> List[str]:
+        raise NotImplementedError
+
+    def save_vocabulary(self, save_directory: str, filename_prefix: Optional[str] = None) -> Tuple[str]:
         raise NotImplementedError
