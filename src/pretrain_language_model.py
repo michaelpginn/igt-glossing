@@ -2,17 +2,18 @@ import click
 import wandb
 import torch
 import math
-from transformers import RobertaConfig, TrainingArguments, Trainer, RobertaForMaskedLM
+from transformers import RobertaConfig, TrainingArguments, Trainer, RobertaForMaskedLM, DataCollatorForLanguageModeling
 from datasets import DatasetDict
 from data import prepare_dataset, load_data_file, prepare_dataset_mlm
 from encoder import CustomEncoder, create_vocab
+from custom_tokenizers import WordLevelTokenizer
 import random
 
 device = "cuda:0" if torch.cuda.is_available() else "cpu"
 
 @click.command()
 @click.option("--arch_size", type=str)
-def train(arch_size: str='full'):
+def train(arch_size: str='micro'):
     MODEL_INPUT_LENGTH = 64
     BATCH_SIZE = 64
     EPOCHS = 200
@@ -31,25 +32,25 @@ def train(arch_size: str='full'):
     print("Preparing datasets...")
 
     train_vocab = create_vocab([line.morphemes() for line in train_data], threshold=1)
-    encoder = CustomEncoder(vocabulary=train_vocab)
+    tokenizer = WordLevelTokenizer(vocab=train_vocab, model_max_length=MODEL_INPUT_LENGTH)
 
     dataset = DatasetDict()
-    dataset['train'] = prepare_dataset_mlm(data=[line.morphemes() for line in train_data], encoder=encoder,
-                                           model_input_length=MODEL_INPUT_LENGTH, mlm_probability=0.15, device=device)
-    dataset['dev'] = prepare_dataset_mlm(data=[line.morphemes() for line in dev_data], encoder=encoder,
-                                         model_input_length=MODEL_INPUT_LENGTH, mlm_probability=0.15, device=device)
+    dataset['train'] = prepare_dataset_mlm(data=[line.morphemes() for line in train_data], tokenizer=tokenizer, device=device)
+    dataset['dev'] = prepare_dataset_mlm(data=[line.morphemes() for line in dev_data], tokenizer=tokenizer, device=device)
+
+    data_collator = DataCollatorForLanguageModeling(tokenizer=tokenizer, mlm_probability=0.15, return_tensors="pt")
 
     if arch_size == 'full':
         config = RobertaConfig(
-            vocab_size=encoder.vocab_size(),
+            vocab_size=tokenizer.vocab_size,
             max_position_embeddings=MODEL_INPUT_LENGTH,
-            pad_token_id=encoder.PAD_ID,
+            pad_token_id=tokenizer.PAD_ID,
         )
     else:
         config = RobertaConfig(
-            vocab_size=encoder.vocab_size(),
+            vocab_size=tokenizer.vocab_size,
             max_position_embeddings=MODEL_INPUT_LENGTH,
-            pad_token_id=encoder.PAD_ID,
+            pad_token_id=tokenizer.PAD_ID,
             num_hidden_layers=3,
             hidden_size=100,
             num_attention_heads=5
@@ -72,7 +73,8 @@ def train(arch_size: str='full'):
         model=language_model,
         args=args,
         train_dataset=dataset['train'],
-        eval_dataset=dataset['dev']
+        eval_dataset=dataset['dev'],
+        data_collator=data_collator
     )
 
     trainer.train()

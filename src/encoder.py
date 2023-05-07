@@ -4,7 +4,7 @@ import torch
 import pickle
 import random
 
-special_chars = ["[UNK]", "[SEP]", "[PAD]", "[MASK]", "[BOS]", "[EOS]"]
+special_chars = ["[UNK]", "[SEP]", "[PAD]", "[MASK]"]
 
 
 def create_vocab(sentences: List[List[str]], threshold=2, should_not_lower=False):
