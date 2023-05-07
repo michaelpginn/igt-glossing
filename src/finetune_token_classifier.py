@@ -8,6 +8,7 @@ from data import prepare_dataset, load_data_file, create_vocab, create_gloss_voc
 from encoder import CustomEncoder
 from eval import eval_accuracy
 from taxonomic_loss_model import TaxonomicLossModel
+from deeper_classification_model import DeeperClassificationHeadModel
 from uspanteko_morphology import morphology as full_morphology_tree, simplified_morphology as simplified_morphology_tree
 import random
 from custom_tokenizers import WordLevelTokenizer
@@ -110,7 +111,10 @@ def train(loss: str, train_size: int, deeper_classifier: bool, seed: int):
     dataset['dev'] = prepare_dataset(data=dev_data, tokenizer=tokenizer, labels=glosses, device=device)
 
     if loss == "flat":
-        model = AutoModelForTokenClassification.from_pretrained("michaelginn/uspanteko-masked-lm", num_labels=len(glosses))
+        if deeper_classifier:
+            model = DeeperClassificationHeadModel.from_pretrained("michaelginn/uspanteko-masked-lm", num_labels=len(glosses))
+        else:
+            model = AutoModelForTokenClassification.from_pretrained("michaelginn/uspanteko-masked-lm", num_labels=len(glosses))
     elif loss == "tax" or loss == "tax_simple":
         model = TaxonomicLossModel.from_pretrained("michaelginn/uspanteko-masked-lm", num_labels=len(glosses), deeper_classification_head=deeper_classifier)
         model.use_morphology_tree(morphology_tree, max_depth=2 if loss == 'tax_simple' else 5)
