@@ -82,7 +82,7 @@ def train(loss: str, train_size: int, loss_sum: str, seed: int):
     BATCH_SIZE = 64
     EPOCHS = 100
 
-    run_name = f"{train_size if train_size else 'full'}-{loss}-{seed}"
+    run_name = f"{train_size if train_size else 'full'}-{loss}-{seed}-{loss_sum}"
 
     wandb.init(project="taxo-morph-finetuning", entity="michael-ginn", name=run_name, config={
         "loss": loss,
