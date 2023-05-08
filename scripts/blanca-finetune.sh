@@ -24,7 +24,7 @@ do
   do
 #    for loss in tax tax_simple
 #    do
-    python3 finetune_token_classifier.py train flat --train_size $size --deeper_classifier true --seed $seed
+    python3 finetune_token_classifier.py train tax --train_size $size --loss_sum harmonic --seed $seed
 #    done
   done
 done
