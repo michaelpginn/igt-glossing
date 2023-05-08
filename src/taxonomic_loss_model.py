@@ -5,7 +5,6 @@ from transformers.modeling_outputs import TokenClassifierOutput
 from typing import Optional, Union, Tuple
 import numpy as np
 import pandas as pd
-from encoder import CustomEncoder
 
 device = "cuda:0" if torch.cuda.is_available() else "cpu"
 

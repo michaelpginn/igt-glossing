@@ -5,8 +5,7 @@ import random
 from functools import reduce
 from datasets import Dataset, DatasetDict
 import torch
-from encoder import create_vocab, CustomEncoder
-from custom_tokenizers import morpheme_tokenize_no_punc as tokenizer, WordLevelTokenizer
+from tokenizer import morpheme_tokenize_no_punc as tokenizer, WordLevelTokenizer
 
 
 special_chars = ["[UNK]", "[SEP]", "[PAD]", "[MASK]"]
@@ -102,6 +101,30 @@ def load_data_file(path: str) -> List[IGTLine]:
     return all_data
 
 
+special_chars = ["[UNK]", "[SEP]", "[PAD]", "[MASK]"]
+
+
+def create_vocab(sentences: List[List[str]], threshold=2, should_not_lower=False):
+    """Creates a set of the unique words in a list of sentences, only including words that exceed the threshold"""
+    all_words = dict()
+    for sentence in sentences:
+        if sentence is None:
+            continue
+        for word in sentence:
+            # Grams should stay uppercase, stems should be lowered
+            if not word.isupper() and not should_not_lower:
+                word = word.lower()
+            if word not in special_chars:
+                all_words[word] = all_words.get(word, 0) + 1
+
+    all_words_list = []
+    for word, count in all_words.items():
+        if count >= threshold:
+            all_words_list.append(word)
+
+    return sorted(all_words_list)
+
+
 def create_gloss_vocab(morphology):
     def parse_tree(morphology_subtree):
         all_glosses = []
@@ -161,35 +184,3 @@ def prepare_dataset(data: List[IGTLine], tokenizer: WordLevelTokenizer, labels: 
                      'attention_mask': torch.tensor(attention_mask).to(device)}
 
     return raw_dataset.map(process)
-
-
-def write_predictions(path: str, preds, pred_input_data, encoder: CustomEncoder, from_vocabulary_index=None):
-    """Writes the predictions to a new file, which uses the file in `path` as input"""
-    def create_gloss_line(glosses, transcription_tokens):
-        """
-        Write a gloss for each transcription token
-        We should never write more glosses than there are tokens
-        If tokens are segmented, write morphemes together
-        """
-        output_line = ''
-        for (token, gloss) in zip(transcription_tokens, glosses):
-            if token[0] == '-':
-                output_line += f"-{gloss}"
-            else:
-                output_line += f" {gloss}"
-        return output_line
-
-    decoded_preds = encoder.batch_decode(preds)
-    next_line = 0
-    with open(path, 'r') as input:
-        with open('usp_output_preds', 'w') as output:
-            for line in input:
-                line_prefix = line[:2]
-                if line_prefix == '\\g':
-                    output_line = create_gloss_line(glosses=decoded_preds[next_line], transcription_tokens=pred_input_data[next_line]['tokenized_transcription'])
-                    output_line = line_prefix + output_line + '\n'
-                    output.write(output_line)
-                    next_line += 1
-                else:
-                    output.write(line)
-    print(f"Predictions written to ./usp_output_preds")

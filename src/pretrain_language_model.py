@@ -4,9 +4,9 @@ import torch
 import math
 from transformers import RobertaConfig, TrainingArguments, Trainer, RobertaForMaskedLM, DataCollatorForLanguageModeling
 from datasets import DatasetDict
-from data import prepare_dataset, load_data_file, prepare_dataset_mlm
-from encoder import CustomEncoder, create_vocab
-from custom_tokenizers import WordLevelTokenizer
+from data import load_data_file, prepare_dataset_mlm
+from data import create_vocab
+from tokenizer import WordLevelTokenizer
 import random
 
 device = "cuda:0" if torch.cuda.is_available() else "cpu"
@@ -83,6 +83,7 @@ def train(arch_size: str='micro'):
     print(eval_results)
 
     trainer.save_model(f'./usp-lang-model')
+
 
 if __name__ == "__main__":
     train()

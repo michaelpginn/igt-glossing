@@ -1,7 +1,7 @@
 """Contains the evaluation scripts for comparing predicted and gold IGT"""
 
 from typing import List
-from data import IGTLine, load_data_file
+from data import load_data_file
 from torchtext.data.metrics import bleu_score
 import click
 import json

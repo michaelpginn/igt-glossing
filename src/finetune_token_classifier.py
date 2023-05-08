@@ -5,13 +5,11 @@ from transformers import AutoModelForTokenClassification, Trainer, TrainingArgum
 from datasets import DatasetDict
 from typing import Optional, List
 from data import prepare_dataset, load_data_file, create_vocab, create_gloss_vocab
-from encoder import CustomEncoder
 from eval import eval_accuracy
 from taxonomic_loss_model import TaxonomicLossModel
-from deeper_classification_model import DeeperClassificationHeadModel
 from uspanteko_morphology import morphology as full_morphology_tree, simplified_morphology as simplified_morphology_tree
 import random
-from custom_tokenizers import WordLevelTokenizer
+from tokenizer import WordLevelTokenizer
 
 
 device = "cuda:0" if torch.cuda.is_available() else "cpu"
