@@ -13,25 +13,21 @@ device = "cuda:0" if torch.cuda.is_available() else "cpu"
 class TaxonomicLossModel(RobertaForTokenClassification):
     _keys_to_ignore_on_load_unexpected = [r"pooler"]
 
-    def __init__(self, config, deeper_classification_head=False):
+    def __init__(self, config, loss_sum='linear'):
         super().__init__(config)
         self.num_labels = config.num_labels
 
         self.morphology = None
         self.hierarchy_matrix = None
         self.max_depth = None
+        self.loss_sum = loss_sum
 
         self.roberta = RobertaModel(config, add_pooling_layer=False)
         classifier_dropout = (
             config.classifier_dropout if config.classifier_dropout is not None else config.hidden_dropout_prob
         )
-        if not deeper_classification_head:
-            self.classifier = nn.Sequential(nn.Dropout(classifier_dropout), nn.Linear(config.hidden_size, config.num_labels))
-        else:
-            self.classifier = nn.Sequential(nn.Linear(config.hidden_size, config.num_labels),
-                                            nn.ReLU(),
-                                            nn.Dropout(classifier_dropout),
-                                            nn.Linear(config.num_labels, config.num_labels))
+        self.dropout = nn.Dropout(classifier_dropout)
+        self.classifier = nn.Linear(config.hidden_size, config.num_labels)
 
         # Initialize weights and apply final processing
         self.post_init()
@@ -84,6 +80,12 @@ class TaxonomicLossModel(RobertaForTokenClassification):
 
             # Calculate crossentropy loss between group logits and group labels
             level_loss = loss_fct(group_logits, group_labels)
+
+            if self.loss_sum == 'harmonic':
+                divisor = self.max_depth - level
+                level_loss = torch.div(level_loss, divisor)
+
+            print("LEVEL", level, level_loss)
             if all_loss is not None:
                 all_loss += level_loss
             else:
@@ -123,6 +125,7 @@ class TaxonomicLossModel(RobertaForTokenClassification):
 
         sequence_output = outputs[0]
 
+        sequence_output = self.dropout(sequence_output)
         logits = self.classifier(sequence_output)
 
         loss = None

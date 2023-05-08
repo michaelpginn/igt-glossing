@@ -74,20 +74,20 @@ def cli():
 
 @cli.command()
 @click.argument('loss', type=click.Choice(['flat', 'tax', 'tax_simple'], case_sensitive=False))
+@click.option('--loss_sum', type=click.Choice(['linear', 'harmonic'], case_sensitive=False))
 @click.option("--train_size", help="Number of items to sample from the training data", type=int)
-@click.option("--deeper_classifier", help="If true, use a multilayer classification head", type=bool)
 @click.option("--seed", help="Random seed", type=int)
-def train(loss: str, train_size: int, deeper_classifier: bool, seed: int):
+def train(loss: str, train_size: int, loss_sum: str, seed: int):
     MODEL_INPUT_LENGTH = 64
     BATCH_SIZE = 64
-    EPOCHS = 150
+    EPOCHS = 100
 
     run_name = f"{train_size if train_size else 'full'}-{loss}-{seed}"
 
     wandb.init(project="taxo-morph-finetuning", entity="michael-ginn", name=run_name, config={
         "loss": loss,
+        "loss_sum": loss_sum,
         "train-size": train_size if train_size else "full",
-        "classifier-head": "deep" if deeper_classifier else "shallow",
         "random-seed": seed,
     })
 
@@ -111,12 +111,9 @@ def train(loss: str, train_size: int, deeper_classifier: bool, seed: int):
     dataset['dev'] = prepare_dataset(data=dev_data, tokenizer=tokenizer, labels=glosses, device=device)
 
     if loss == "flat":
-        if deeper_classifier:
-            model = DeeperClassificationHeadModel.from_pretrained("michaelginn/uspanteko-masked-lm", num_labels=len(glosses))
-        else:
-            model = AutoModelForTokenClassification.from_pretrained("michaelginn/uspanteko-masked-lm", num_labels=len(glosses))
+        model = AutoModelForTokenClassification.from_pretrained("michaelginn/uspanteko-masked-lm", num_labels=len(glosses))
     elif loss == "tax" or loss == "tax_simple":
-        model = TaxonomicLossModel.from_pretrained("michaelginn/uspanteko-masked-lm", num_labels=len(glosses), deeper_classification_head=deeper_classifier)
+        model = TaxonomicLossModel.from_pretrained("michaelginn/uspanteko-masked-lm", num_labels=len(glosses), loss_sum=loss_sum)
         model.use_morphology_tree(morphology_tree, max_depth=2 if loss == 'tax_simple' else 5)
     else:
         raise ValueError("Invalid loss provided.")
