@@ -78,16 +78,14 @@ def cli():
 def train(loss: str, train_size: int, loss_sum: str, seed: int):
     MODEL_INPUT_LENGTH = 64
     BATCH_SIZE = 64
-    EPOCHS = 100
+    EPOCHS = 30
 
     run_name = f"{train_size if train_size else 'full'}-{loss}-{seed}-{loss_sum}"
 
-    wandb.init(project="taxo-morph-finetuning", entity="michael-ginn", name=run_name, config={
-        "loss": loss,
-        "loss_sum": loss_sum,
+    wandb.init(project="taxo-morph-finetuning-larger", entity="michael-ginn", name=run_name, config={
+        "loss": loss + '-' + loss_sum,
         "train-size": train_size if train_size else "full",
-        "random-seed": seed,
-        "arch-size": "large"
+        "random-seed": seed
     })
 
     random.seed(seed)
