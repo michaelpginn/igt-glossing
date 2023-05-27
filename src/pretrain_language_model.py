@@ -82,7 +82,7 @@ def train(arch_size: str='micro'):
     print(f"Perplexity: {math.exp(eval_results['eval_loss']):.2f}")
     print(eval_results)
 
-    trainer.save_model(f'./usp-lang-model')
+    trainer.save_model(f'./models/usp-lang-model')
 
 
 if __name__ == "__main__":

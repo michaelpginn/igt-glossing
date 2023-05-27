@@ -87,6 +87,7 @@ def train(loss: str, train_size: int, loss_sum: str, seed: int):
         "loss_sum": loss_sum,
         "train-size": train_size if train_size else "full",
         "random-seed": seed,
+        "arch-size": "large"
     })
 
     random.seed(seed)
@@ -109,9 +110,9 @@ def train(loss: str, train_size: int, loss_sum: str, seed: int):
     dataset['dev'] = prepare_dataset(data=dev_data, tokenizer=tokenizer, labels=glosses, device=device)
 
     if loss == "flat":
-        model = AutoModelForTokenClassification.from_pretrained("michaelginn/uspanteko-masked-lm", num_labels=len(glosses))
+        model = AutoModelForTokenClassification.from_pretrained("michaelginn/uspanteko-mlm-large", num_labels=len(glosses))
     elif loss == "tax" or loss == "tax_simple":
-        model = TaxonomicLossModel.from_pretrained("michaelginn/uspanteko-masked-lm", num_labels=len(glosses), loss_sum=loss_sum)
+        model = TaxonomicLossModel.from_pretrained("michaelginn/uspanteko-mlm-large", num_labels=len(glosses), loss_sum=loss_sum)
         model.use_morphology_tree(morphology_tree, max_depth=2 if loss == 'tax_simple' else 5)
     else:
         raise ValueError("Invalid loss provided.")
