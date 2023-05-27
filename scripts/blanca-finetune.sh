@@ -20,14 +20,17 @@ cd "/projects/migi8081/struct-morph/src"
 
 for seed in 42 43 44 45 46
 do
-  for size in 10 100 500 1000
-  do
-    python3 finetune_token_classifier.py train flat --train_size $size --loss_sum linear --seed $seed
-    python3 finetune_token_classifier.py train tax --train_size $size --loss_sum linear --seed $seed
-    python3 finetune_token_classifier.py train tax --train_size $size --loss_sum harmonic --seed $seed
-  done
+#  for size in 10 100 500 1000
+#  do
+#    python3 finetune_token_classifier.py train flat --train_size $size --loss_sum linear --seed $seed
+#    python3 finetune_token_classifier.py train tax --train_size $size --loss_sum linear --seed $seed
+#    python3 finetune_token_classifier.py train tax --train_size $size --loss_sum harmonic --seed $seed
+#  done
+  python3 finetune_token_classifier.py train flat --train_size 10 --loss_sum linear --seed $seed
+  python3 finetune_token_classifier.py train tax --train_size 10 --loss_sum linear --seed $seed
+  python3 finetune_token_classifier.py train tax --train_size 10 --loss_sum harmonic --seed $seed
 done
 
-python3 finetune_token_classifier.py train flat --loss_sum linear --seed 1
-python3 finetune_token_classifier.py train tax --loss_sum linear --seed 1
-python3 finetune_token_classifier.py train tax --loss_sum harmonic --seed 1
+#python3 finetune_token_classifier.py train flat --loss_sum linear --seed 1
+#python3 finetune_token_classifier.py train tax --loss_sum linear --seed 1
+#python3 finetune_token_classifier.py train tax --loss_sum harmonic --seed 1
