@@ -18,7 +18,7 @@ module load anaconda
 conda activate AutoIGT
 cd "/projects/migi8081/struct-morph/src"
 
-for seed in 42 43 44 45 46 47 48 49 50 51
+for seed in 42 43 44 45 46
 do
   for size in 10 100 500 1000
   do
