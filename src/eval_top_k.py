@@ -127,4 +127,4 @@ for size in [10, 100, 500, 1000, 'full']:
 
 df = pd.DataFrame(all_results)
 df.applymap(lambda x: (round(x[0], 3), round(x[1], 3), round(x[2], 3)))
-df.to_excel("topk.xlsx")
+df.to_csv("topk.csv")
