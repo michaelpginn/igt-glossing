@@ -64,53 +64,64 @@ args = TrainingArguments(
     report_to="wandb",
 )
 
+def _top_k_accuracy(size, k, seed):
+    tax_model = TaxonomicLossModel.from_pretrained(f"./models/{size}-tax-{seed}", num_labels=len(glosses))
+    tax_model.use_morphology_tree(morphology, 5)
+
+    harmonic_tax_model = TaxonomicLossModel.from_pretrained(f"./models/{size}-tax-{seed}-harmonic",
+                                                            num_labels=len(glosses))
+    harmonic_tax_model.use_morphology_tree(morphology, 5)
+
+    flat_model = AutoModelForTokenClassification.from_pretrained(f"./models/{size}-flat-{seed}-linear",
+                                                                 num_labels=len(glosses))
+
+    tax_trainer = Trainer(
+        tax_model,
+        args,
+        compute_metrics=compute_metrics,
+        preprocess_logits_for_metrics=preprocess_logits_for_metrics(k),
+    )
+
+    harmonic_trainer = Trainer(
+        harmonic_tax_model,
+        args,
+        compute_metrics=compute_metrics,
+        preprocess_logits_for_metrics=preprocess_logits_for_metrics(k),
+    )
+
+    flat_trainer = Trainer(
+        flat_model,
+        args,
+        compute_metrics=compute_metrics,
+        preprocess_logits_for_metrics=preprocess_logits_for_metrics(k),
+    )
+
+    flat_acc = flat_trainer.evaluate(dataset['dev'])['eval_topkaccuracy']
+    tax_acc = tax_trainer.evaluate(dataset['dev'])['eval_topkaccuracy']
+    harmonic_acc = harmonic_trainer.evaluate(dataset['dev'])['eval_topkaccuracy']
+    return (flat_acc, tax_acc, harmonic_acc)
+
+
 def eval_topk(size, k):
     tax_accs = []
     harmonic_accs = []
     flat_accs = []
 
     for seed in range(42, 47):
-        tax_model = TaxonomicLossModel.from_pretrained(f"./models/{size}-tax-{seed}", num_labels=len(glosses))
-        tax_model.use_morphology_tree(morphology, 5)
+        flat_acc, tax_acc, harmonic_acc = _top_k_accuracy(size, k, seed)
 
-        harmonic_tax_model = TaxonomicLossModel.from_pretrained(f"./models/{size}-tax-{seed}-harmonic", num_labels=len(glosses))
-        harmonic_tax_model.use_morphology_tree(morphology, 5)
-
-        flat_model = AutoModelForTokenClassification.from_pretrained(f"./models/{size}-flat-{seed}-linear", num_labels=len(glosses))
-
-        tax_trainer = Trainer(
-            tax_model,
-            args,
-            compute_metrics=compute_metrics,
-            preprocess_logits_for_metrics=preprocess_logits_for_metrics(k),
-        )
-
-        harmonic_trainer = Trainer(
-            harmonic_tax_model,
-            args,
-            compute_metrics=compute_metrics,
-            preprocess_logits_for_metrics=preprocess_logits_for_metrics(k),
-        )
-
-        flat_trainer = Trainer(
-            flat_model,
-            args,
-            compute_metrics=compute_metrics,
-            preprocess_logits_for_metrics=preprocess_logits_for_metrics(k),
-        )
-
-        flat_accs.append(flat_trainer.evaluate(dataset['dev'])['eval_topkaccuracy'])
-        tax_accs.append(tax_trainer.evaluate(dataset['dev'])['eval_topkaccuracy'])
-        harmonic_accs.append(harmonic_trainer.evaluate(dataset['dev'])['eval_topkaccuracy'])
+        flat_accs.append(flat_acc)
+        tax_accs.append(tax_acc)
+        harmonic_accs.append(harmonic_acc)
 
     return sum(flat_accs) / len(flat_accs), sum(tax_accs) / len(tax_accs), sum(harmonic_accs) / len(harmonic_accs)
 
 all_results = []
 
-for size in [10, 100, 500, 1000]:
+for size in [10, 100, 500, 1000, 'full']:
     size_results = []
     for k in [1, 2, 3, 4, 5, 6]:
-        flat_score, tax_score, harmonic_score = eval_topk(size, k)
+        flat_score, tax_score, harmonic_score = eval_topk(size, k) if size != 'full' else _top_k_accuracy(size, k, 1)
         size_results.append((flat_score, tax_score, harmonic_score))
     all_results.append(size_results)
 
