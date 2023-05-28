@@ -65,7 +65,7 @@ args = TrainingArguments(
 )
 
 def _top_k_accuracy(size, k, seed):
-    tax_model = TaxonomicLossModel.from_pretrained(f"./models/{size}-tax-{seed}", num_labels=len(glosses))
+    tax_model = TaxonomicLossModel.from_pretrained(f"./models/{size}-tax-{seed}-linear", num_labels=len(glosses))
     tax_model.use_morphology_tree(morphology, 5)
 
     harmonic_tax_model = TaxonomicLossModel.from_pretrained(f"./models/{size}-tax-{seed}-harmonic",
