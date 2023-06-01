@@ -117,7 +117,7 @@ def train(loss: str, train_size: int, loss_sum: str, seed: int):
 
     trainer = create_trainer(model, dataset=dataset, tokenizer=tokenizer, labels=glosses, batch_size=BATCH_SIZE, max_epochs=EPOCHS)
     trainer.train()
-    trainer.save_model(f'./models/{run_name}')
+    trainer.save_model(f'../models/{run_name}')
 
 
 if __name__ == "__main__":
