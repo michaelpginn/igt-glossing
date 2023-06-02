@@ -31,7 +31,7 @@ def eval_model(seed, all_glosses, train_data, dataset, tokenizer):
     print(f"Train data includes {len(train_seen_glosses)}/{len(all_glosses)} of possible labels")
 
     # Run prediction on the dev set
-    model = AutoModelForTokenClassification.from_pretrained(f"../../models/10-flat-{seed}-linear", num_labels=len(all_glosses))
+    model = AutoModelForTokenClassification.from_pretrained(f"../models/10-flat-{seed}-linear", num_labels=len(all_glosses))
     trainer = create_trainer(model, dataset=dataset, tokenizer=tokenizer, labels=all_glosses, batch_size=64, max_epochs=30)
     preds = trainer.predict(dataset['dev'])
 
