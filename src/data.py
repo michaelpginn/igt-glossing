@@ -5,6 +5,7 @@ import random
 from functools import reduce
 from datasets import Dataset, DatasetDict
 import torch
+import pandas as pd
 from tokenizer import morpheme_tokenize_no_punc as tokenizer, WordLevelTokenizer
 
 
@@ -177,6 +178,49 @@ def prepare_dataset(data: List[IGTLine], tokenizer: WordLevelTokenizer, labels: 
             return { 'input_ids': torch.tensor(source_enc, dtype=torch.long).to(device),
                      'attention_mask': torch.tensor(attention_mask).to(device),
                      'labels': torch.tensor(output_enc, dtype=torch.long).to(device)}
+
+        else:
+            # If we have no glosses, this must be a prediction task
+            return { 'input_ids': torch.tensor(source_enc).to(device),
+                     'attention_mask': torch.tensor(attention_mask).to(device)}
+
+    return raw_dataset.map(process)
+
+
+def prepare_multitask_dataset(data: List[IGTLine], tokenizer: WordLevelTokenizer, labels: list[str], device):
+    """Encodes and pads inputs and creates attention mask"""
+
+    # Create a dataset
+    raw_dataset = Dataset.from_list([line.__dict__() for line in data])
+
+    morphology = pd.read_csv('./uspanteko_morphology.csv')
+
+    def process(row):
+        source_enc = tokenizer.convert_tokens_to_ids(row['morphemes'])
+
+        # Pad
+        initial_length = len(source_enc)
+        source_enc += [tokenizer.PAD_ID] * (tokenizer.model_max_length - initial_length)
+
+        # Create attention mask
+        attention_mask = [1] * initial_length + [0] * (tokenizer.model_max_length - initial_length)
+
+        # Encode the output, if present
+        if 'glosses' in row:
+            all_labels_enc = []
+
+            # Create labels for every level of hierarchy in the morphology
+            for level in range(morphology.shape[1]):
+                if level == 0:
+                    output_enc = [labels.index(gloss) for gloss in row['glosses']]
+                else:
+                    output_enc = [morphology[morphology['Gloss'] == gloss].iloc[0, level] for gloss in row['glosses']]
+                output_enc += [-100] * (tokenizer.model_max_length - len(output_enc))
+                all_labels_enc.append(torch.tensor(output_enc, dtype=torch.long))
+
+            return { 'input_ids': torch.tensor(source_enc, dtype=torch.long).to(device),
+                     'attention_mask': torch.tensor(attention_mask).to(device),
+                     'labels': torch.stack(all_labels_enc).to(device)}
 
         else:
             # If we have no glosses, this must be a prediction task
