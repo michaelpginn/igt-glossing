@@ -23,7 +23,7 @@ class MultitaskModel(RobertaForTokenClassification):
         self.dropout = nn.Dropout(classifier_dropout)
 
         self.classifier_head_sizes = classifier_head_sizes
-        self.classifier_heads = [nn.Linear(config.hidden_size, head_size) for head_size in classifier_head_sizes]
+        self.classifier_heads = [nn.Linear(config.hidden_size, head_size).to(device) for head_size in classifier_head_sizes]
 
         # Initialize weights and apply final processing
         self.post_init()
@@ -60,6 +60,7 @@ class MultitaskModel(RobertaForTokenClassification):
         )
         sequence_output = outputs[0]
         sequence_output = self.dropout(sequence_output)
+        sequence_output.to(device)
 
         # Get logits for all classifier heads
         all_classifier_logits = []
