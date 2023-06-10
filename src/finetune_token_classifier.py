@@ -23,7 +23,9 @@ def create_trainer(model: RobertaForTokenClassification, dataset: Optional[Datas
         if isinstance(preds, tuple):
             preds = preds[0]
 
-        if len(gold_labels.size) > 2:
+        print("PREDS", preds)
+        print("LABELS", gold_labels)
+        if len(gold_labels.shape) > 2:
             gold_labels = gold_labels[0].select(1, 0)
 
         # Decode predicted output
