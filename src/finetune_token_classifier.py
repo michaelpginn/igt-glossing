@@ -96,7 +96,7 @@ def train(train_size: int, type: bool, seed: int):
         # "loss": loss + '-' + loss_sum,
         "train-size": train_size if train_size else "full",
         "random-seed": seed,
-        "type": type
+        "multitask": type
     })
 
     random.seed(seed)
