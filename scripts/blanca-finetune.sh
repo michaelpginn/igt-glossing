@@ -25,8 +25,9 @@ for seed in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
 do
   for size in 10 100 500 1000
   do
-    python3 finetune_token_classifier.py train flat --train_size $size --multitask false --seed $seed
-    python3 finetune_token_classifier.py train flat --train_size $size --multitask true --seed $seed
+#    python3 finetune_token_classifier.py train flat --train_size $size --multitask false --seed $seed
+#    python3 finetune_token_classifier.py train flat --train_size $size --multitask true --seed $seed
+    python3 finetune_token_classifier.py train --train_size $size --type multistage --seed $seed
   done
 #  python3 finetune_token_classifier.py train flat --train_size 10 --loss_sum linear --seed $seed
 #  python3 finetune_token_classifier.py train tax --train_size 10 --loss_sum linear --seed $seed

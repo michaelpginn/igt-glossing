@@ -11,6 +11,7 @@ from uspanteko_morphology import morphology as full_morphology_tree, simplified_
 import random
 from tokenizer import WordLevelTokenizer
 from multitask_model import MultitaskModel
+from multistage_model import MultistageModel
 
 device = "cuda:0" if torch.cuda.is_available() else "cpu"
 
@@ -79,28 +80,28 @@ def cli():
 
 
 @cli.command()
-@click.argument('loss', type=click.Choice(['flat', 'tax', 'tax_simple'], case_sensitive=False))
-@click.option('--multitask', type=bool)
-@click.option('--loss_sum', type=click.Choice(['linear', 'harmonic'], case_sensitive=False))
+# @click.argument('loss', type=click.Choice(['flat', 'tax', 'tax_simple'], case_sensitive=False))
+@click.option('--type', type=click.Choice(['flat', 'multitask', 'multistage']))
+# @click.option('--loss_sum', type=click.Choice(['linear', 'harmonic'], case_sensitive=False))
 @click.option("--train_size", help="Number of items to sample from the training data", type=int)
 @click.option("--seed", help="Random seed", type=int)
-def train(loss: str, train_size: int, loss_sum: str, multitask: bool, seed: int):
+def train(train_size: int, type: bool, seed: int):
     MODEL_INPUT_LENGTH = 64
     BATCH_SIZE = 64
     EPOCHS = 30
 
-    run_name = f"{train_size if train_size else 'full'}-{'multi' if multitask else 'single'}-{seed}"
+    run_name = f"{train_size if train_size else 'full'}-{type}-{seed}"
 
     wandb.init(project="taxo-morph-finetuning-v3", entity="michael-ginn", name=run_name, config={
         # "loss": loss + '-' + loss_sum,
         "train-size": train_size if train_size else "full",
         "random-seed": seed,
-        "multitask": multitask
+        "type": type
     })
 
     random.seed(seed)
 
-    morphology_tree = simplified_morphology_tree if loss == 'tax_simple' else full_morphology_tree
+    morphology_tree = full_morphology_tree
 
     train_data = load_data_file(f"../data/usp-train-track2-uncovered")
     dev_data = load_data_file(f"../data/usp-dev-track2-uncovered")
@@ -115,7 +116,7 @@ def train(loss: str, train_size: int, loss_sum: str, multitask: bool, seed: int)
 
     dataset = DatasetDict()
 
-    if not multitask:
+    if type == 'flat':
         dataset['train'] = prepare_dataset(data=train_data, tokenizer=tokenizer, labels=glosses, device=device)
         dataset['dev'] = prepare_dataset(data=dev_data, tokenizer=tokenizer, labels=glosses, device=device)
     else:
@@ -130,13 +131,23 @@ def train(loss: str, train_size: int, loss_sum: str, multitask: bool, seed: int)
     # else:
     #     raise ValueError("Invalid loss provided.")
 
-    if multitask:
-        model = MultitaskModel.from_pretrained("michaelginn/uspanteko-mlm-large", classifier_head_sizes=[66, 21, 19, 10])
-    else:
-        model = AutoModelForTokenClassification.from_pretrained("michaelginn/uspanteko-mlm-large", num_labels=len(glosses))
+    if type != 'multistage':
+        if type == 'multitask':
+            model = MultitaskModel.from_pretrained("michaelginn/uspanteko-mlm-large", classifier_head_sizes=[66, 21, 19, 10])
+        else:
+            model = AutoModelForTokenClassification.from_pretrained("michaelginn/uspanteko-mlm-large", num_labels=len(glosses))
 
-    trainer = create_trainer(model, dataset=dataset, tokenizer=tokenizer, labels=glosses, batch_size=BATCH_SIZE, max_epochs=EPOCHS)
-    trainer.train()
+        trainer = create_trainer(model, dataset=dataset, tokenizer=tokenizer, labels=glosses, batch_size=BATCH_SIZE, max_epochs=EPOCHS)
+        trainer.train()
+    else:
+        # Train in multiple stages
+        model = MultistageModel.from_pretrained("michaelginn/uspanteko-mlm-large", classifier_head_sizes=[66, 21, 19, 10])
+        trainer = create_trainer(model, dataset=dataset, tokenizer=tokenizer, labels=glosses, batch_size=BATCH_SIZE, max_epochs=EPOCHS)
+
+        for stage in range(4):
+            trainer.train()
+            model.current_stage -= 1
+
     trainer.save_model(f'../models/{run_name}')
 
 
