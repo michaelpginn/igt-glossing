@@ -142,9 +142,10 @@ def train(train_size: int, type: bool, seed: int):
     else:
         # Train in multiple stages
         model = MultistageModel.from_pretrained("michaelginn/uspanteko-mlm-large", classifier_head_sizes=[66, 21, 19, 10])
-        trainer = create_trainer(model, dataset=dataset, tokenizer=tokenizer, labels=glosses, batch_size=BATCH_SIZE, max_epochs=EPOCHS)
 
         for stage in range(4):
+            trainer = create_trainer(model, dataset=dataset, tokenizer=tokenizer, labels=glosses, batch_size=BATCH_SIZE,
+                                     max_epochs=EPOCHS)
             trainer.train()
             model.current_stage -= 1
 
