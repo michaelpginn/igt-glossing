@@ -9,6 +9,7 @@ from eval import eval_accuracy
 from taxonomic_loss_model import TaxonomicLossModel
 from uspanteko_morphology import morphology as full_morphology_tree, simplified_morphology as simplified_morphology_tree
 import random
+import os
 from tokenizer import WordLevelTokenizer
 from multitask_model import MultitaskModel
 from multistage_model import MultistageModel
@@ -92,6 +93,8 @@ def train(train_size: int, type: bool, seed: int):
 
     run_name = f"{train_size if train_size else 'full'}-{type}-{seed}"
 
+    os.environ["WANDB_DISABLED"] = "true"
+
     wandb.init(project="taxo-morph-finetuning-v3", entity="michael-ginn", name=run_name, config={
         # "loss": loss + '-' + loss_sum,
         "train-size": train_size if train_size else "full",
@@ -146,7 +149,7 @@ def train(train_size: int, type: bool, seed: int):
         for stage in [3, 2, 1, 0]:
             model.current_stage = stage
             trainer = create_trainer(model, dataset=dataset, tokenizer=tokenizer, labels=glosses, batch_size=BATCH_SIZE,
-                                     max_epochs=EPOCHS, report_to=['wandb'] if stage == 0 else None)
+                                     max_epochs=EPOCHS, report_to='wandb' if stage == 0 else None)
             trainer.train()
 
     trainer.save_model(f'../models/{run_name}')
