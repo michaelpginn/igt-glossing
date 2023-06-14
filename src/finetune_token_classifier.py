@@ -16,7 +16,7 @@ from multistage_model import MultistageModel
 device = "cuda:0" if torch.cuda.is_available() else "cpu"
 
 
-def create_trainer(model: RobertaForTokenClassification, dataset: Optional[DatasetDict], tokenizer: WordLevelTokenizer, labels: List[str], batch_size, max_epochs):
+def create_trainer(model: RobertaForTokenClassification, dataset: Optional[DatasetDict], tokenizer: WordLevelTokenizer, labels: List[str], batch_size, max_epochs, report_to):
     print("Creating trainer...")
 
     def compute_metrics(eval_preds):
@@ -60,7 +60,7 @@ def create_trainer(model: RobertaForTokenClassification, dataset: Optional[Datas
         num_train_epochs=max_epochs,
         load_best_model_at_end=True,
         logging_strategy='epoch',
-        report_to="wandb",
+        report_to=report_to,
     )
 
     trainer = Trainer(
@@ -137,17 +137,17 @@ def train(train_size: int, type: bool, seed: int):
         else:
             model = AutoModelForTokenClassification.from_pretrained("michaelginn/uspanteko-mlm-large", num_labels=len(glosses))
 
-        trainer = create_trainer(model, dataset=dataset, tokenizer=tokenizer, labels=glosses, batch_size=BATCH_SIZE, max_epochs=EPOCHS)
+        trainer = create_trainer(model, dataset=dataset, tokenizer=tokenizer, labels=glosses, batch_size=BATCH_SIZE, max_epochs=EPOCHS, report_to='wandb')
         trainer.train()
     else:
         # Train in multiple stages
         model = MultistageModel.from_pretrained("michaelginn/uspanteko-mlm-large", classifier_head_sizes=[66, 21, 19, 10])
 
-        for stage in range(4):
+        for stage in [3, 2, 1, 0]:
+            model.current_stage = stage
             trainer = create_trainer(model, dataset=dataset, tokenizer=tokenizer, labels=glosses, batch_size=BATCH_SIZE,
-                                     max_epochs=EPOCHS)
+                                     max_epochs=EPOCHS, report_to=['wandb'] if stage == 0 else None)
             trainer.train()
-            model.current_stage -= 1
 
     trainer.save_model(f'../models/{run_name}')
 
