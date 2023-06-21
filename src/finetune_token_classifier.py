@@ -82,7 +82,7 @@ def cli():
 
 @cli.command()
 # @click.argument('loss', type=click.Choice(['flat', 'tax', 'tax_simple'], case_sensitive=False))
-@click.option('--type', type=click.Choice(['flat', 'multitask', 'multistage']))
+@click.option('--type', type=click.Choice(['flat', 'tax', 'tax-harmonic']))
 # @click.option('--loss_sum', type=click.Choice(['linear', 'harmonic'], case_sensitive=False))
 @click.option("--train_size", help="Number of items to sample from the training data", type=int)
 @click.option("--seed", help="Random seed", type=int)
@@ -93,11 +93,10 @@ def train(train_size: int, type: bool, seed: int):
 
     run_name = f"{train_size if train_size else 'full'}-{type}-{seed}"
 
-    wandb.init(project="taxo-morph-finetuning-v3", entity="michael-ginn", name=run_name, config={
-        # "loss": loss + '-' + loss_sum,
+    wandb.init(project="taxo-morph-finetuning-emnlp", entity="michael-ginn", name=run_name, config={
         "train-size": train_size if train_size else "full",
         "random-seed": seed,
-        "multitask": type
+        "type": type
     })
 
     random.seed(seed)
@@ -117,38 +116,20 @@ def train(train_size: int, type: bool, seed: int):
 
     dataset = DatasetDict()
 
-    if type == 'flat':
-        dataset['train'] = prepare_dataset(data=train_data, tokenizer=tokenizer, labels=glosses, device=device)
-        dataset['dev'] = prepare_dataset(data=dev_data, tokenizer=tokenizer, labels=glosses, device=device)
+    dataset['train'] = prepare_dataset(data=train_data, tokenizer=tokenizer, labels=glosses, device=device)
+    dataset['dev'] = prepare_dataset(data=dev_data, tokenizer=tokenizer, labels=glosses, device=device)
+
+    if type == "flat":
+        model = AutoModelForTokenClassification.from_pretrained("michaelginn/uspanteko-mlm-large", num_labels=len(glosses))
+    elif type == "tax" or type == 'tax-harmonic':
+        model = TaxonomicLossModel.from_pretrained("michaelginn/uspanteko-mlm-large", num_labels=len(glosses), loss_sum='linear' if type == 'tax' else 'harmonic')
+        model.use_morphology_tree(morphology_tree, max_depth=2 if type == 'tax_simple' else 5)
     else:
-        dataset['train'] = prepare_multitask_dataset(data=train_data, tokenizer=tokenizer, labels=glosses, device=device)
-        dataset['dev'] = prepare_multitask_dataset(data=dev_data, tokenizer=tokenizer, labels=glosses, device=device)
+        raise ValueError("Invalid loss provided.")
 
-    # if loss == "flat":
-    #     model = AutoModelForTokenClassification.from_pretrained("michaelginn/uspanteko-mlm-large", num_labels=len(glosses))
-    # elif loss == "tax" or loss == "tax_simple":
-    #     model = TaxonomicLossModel.from_pretrained("michaelginn/uspanteko-mlm-large", num_labels=len(glosses), loss_sum=loss_sum)
-    #     model.use_morphology_tree(morphology_tree, max_depth=2 if loss == 'tax_simple' else 5)
-    # else:
-    #     raise ValueError("Invalid loss provided.")
-
-    if type != 'multistage':
-        if type == 'multitask':
-            model = MultitaskModel.from_pretrained("michaelginn/uspanteko-mlm-large", classifier_head_sizes=[66, 21, 19, 10])
-        else:
-            model = AutoModelForTokenClassification.from_pretrained("michaelginn/uspanteko-mlm-large", num_labels=len(glosses))
-
-        trainer = create_trainer(model, dataset=dataset, tokenizer=tokenizer, labels=glosses, batch_size=BATCH_SIZE, max_epochs=EPOCHS, report_to='wandb')
-        trainer.train()
-    else:
-        # Train in multiple stages
-        model = MultistageModel.from_pretrained("michaelginn/uspanteko-mlm-large", classifier_head_sizes=[66, 21, 19, 10])
-
-        for stage in [3, 2, 1, 0]:
-            model.current_stage = stage
-            trainer = create_trainer(model, dataset=dataset, tokenizer=tokenizer, labels=glosses, batch_size=BATCH_SIZE,
-                                     max_epochs=EPOCHS, report_to='wandb' if stage == 0 else "none")
-            trainer.train()
+    trainer = create_trainer(model, dataset=dataset, tokenizer=tokenizer, labels=glosses, batch_size=BATCH_SIZE,
+                             max_epochs=EPOCHS, report_to='wandb')
+    trainer.train()
 
     trainer.save_model(f'../models/{run_name}')
 

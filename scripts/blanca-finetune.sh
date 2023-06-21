@@ -18,20 +18,19 @@ module load anaconda
 conda activate AutoIGT
 cd "/projects/migi8081/taxo-morph/src"
 
-#python3 finetune_token_classifier.py train flat --multitask false --seed 1
+python3 finetune_token_classifier.py train --type flat --seed 1
+python3 finetune_token_classifier.py train --type tax --seed 1
+python3 finetune_token_classifier.py train --type tax-harmonic --seed 1
 
-for seed in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
-do
-  for size in 10 100 500 1000
-  do
+#for seed in 42 43 44 45 46 47 48 49 50 51
+#do
+#  for size in 10 100 500 1000
+#  do
 #    python3 finetune_token_classifier.py train flat --train_size $size --multitask false --seed $seed
 #    python3 finetune_token_classifier.py train flat --train_size $size --multitask true --seed $seed
-    python3 finetune_token_classifier.py train --train_size $size --type multistage --seed $seed
-  done
+#    python3 finetune_token_classifier.py train --train_size $size --type multistage --seed $seed
+#  done
 #  python3 finetune_token_classifier.py train flat --train_size 10 --loss_sum linear --seed $seed
 #  python3 finetune_token_classifier.py train tax --train_size 10 --loss_sum linear --seed $seed
 #  python3 finetune_token_classifier.py train tax --train_size 10 --loss_sum harmonic --seed $seed
-done
-
-#python3 finetune_token_classifier.py train tax --loss_sum harmonic --seed 1
-python3 finetune_token_classifier.py train --type multistage --seed 1
+#done
