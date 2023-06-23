@@ -118,7 +118,8 @@ def eval_topk(size, k):
 
 all_results = []
 
-for size in [10, 100, 500, 1000, 'full']:
+# for size in [10, 100, 500, 1000, 'full']:
+for size in ['full']:
     size_results = []
     for k in [1, 2, 3, 4, 5, 6]:
         flat_score, tax_score, harmonic_score = eval_topk(size, k) if size != 'full' else _top_k_accuracy(size, k, 1)
