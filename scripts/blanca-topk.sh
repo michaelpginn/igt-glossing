@@ -5,8 +5,8 @@
 #SBATCH --mem=32G
 #SBATCH --time=12:00:00          # Max walltime              # Specify QOS
 #SBATCH --qos=blanca-kann
-#SBATCH --out=train_structmorph.%j.out      # Output file name
-#SBATCH --error=train_structmorph.%j.err
+#SBATCH --out=eval_structmorph.%j.out      # Output file name
+#SBATCH --error=eval_structmorph.%j.err
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=michael.ginn@colorado.edu
 
@@ -16,5 +16,5 @@ module purge
 module load anaconda
 # Run Python Script
 conda activate AutoIGT
-cd "/projects/migi8081/struct-morph/src"
+cd "/projects/migi8081/taxo-morph/src"
 python3 eval_top_k.py
