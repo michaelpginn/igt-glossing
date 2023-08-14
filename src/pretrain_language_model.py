@@ -1,24 +1,33 @@
-import click
-import wandb
-import torch
 import math
-from transformers import RobertaConfig, TrainingArguments, Trainer, RobertaForMaskedLM, DataCollatorForLanguageModeling
-from datasets import DatasetDict
-from data import load_data_file, prepare_dataset_mlm
-from data import create_vocab
-from tokenizer import WordLevelTokenizer
 import random
+
+import click
+import torch
+from datasets import DatasetDict
+from transformers import RobertaConfig, TrainingArguments, Trainer, RobertaForMaskedLM, DataCollatorForLanguageModeling
+
+import wandb
+from data import create_vocab
+from data import load_data_file, prepare_dataset_mlm
+from tokenizer import WordLevelTokenizer
 
 device = "cuda:0" if torch.cuda.is_available() else "cpu"
 
+
 @click.command()
 @click.option("--arch_size", type=str)
-def train(arch_size: str='micro'):
+@click.option("--project", type=str)
+@click.option("--train_data", type=click.Path(exists=True))
+@click.option("--eval_data", type=click.Path(exists=True))
+def train(arch_size: str = 'micro',
+          project: str = 'taxo-morph-pretrain',
+          train_data: str = "../data/usp-train-track2-uncovered",
+          eval_data: str = "../data/usp-dev-track2-uncovered"):
     MODEL_INPUT_LENGTH = 64
     BATCH_SIZE = 64
     EPOCHS = 200
 
-    wandb.init(project="taxo-morph-pretrain", entity="michael-ginn", config={
+    wandb.init(project=project, entity="michael-ginn", config={
         "bert-size": arch_size,
         "batch_size": BATCH_SIZE,
         "epochs": EPOCHS
@@ -26,8 +35,8 @@ def train(arch_size: str='micro'):
 
     random.seed(13)
 
-    train_data = load_data_file(f"../data/usp-train-track2-uncovered")
-    dev_data = load_data_file(f"../data/usp-dev-track2-uncovered")
+    train_data = load_data_file(train_data)
+    dev_data = load_data_file(eval_data)
 
     print("Preparing datasets...")
 
@@ -35,8 +44,10 @@ def train(arch_size: str='micro'):
     tokenizer = WordLevelTokenizer(vocab=train_vocab, model_max_length=MODEL_INPUT_LENGTH)
 
     dataset = DatasetDict()
-    dataset['train'] = prepare_dataset_mlm(data=[line.morphemes() for line in train_data], tokenizer=tokenizer, device=device)
-    dataset['dev'] = prepare_dataset_mlm(data=[line.morphemes() for line in dev_data], tokenizer=tokenizer, device=device)
+    dataset['train'] = prepare_dataset_mlm(data=[line.morphemes() for line in train_data], tokenizer=tokenizer,
+                                           device=device)
+    dataset['dev'] = prepare_dataset_mlm(data=[line.morphemes() for line in dev_data], tokenizer=tokenizer,
+                                         device=device)
 
     data_collator = DataCollatorForLanguageModeling(tokenizer=tokenizer, mlm_probability=0.15, return_tensors="pt")
 

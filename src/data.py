@@ -1,20 +1,23 @@
 """Defines models and functions for loading, manipulating, and writing task data"""
-from typing import Optional, List
+import os.path
 import re
-import random
 from functools import reduce
-from datasets import Dataset, DatasetDict
-import torch
-import pandas as pd
-from tokenizer import morpheme_tokenize_no_punc as tokenizer, WordLevelTokenizer
+from typing import Optional, List
 
+import pandas as pd
+import torch
+from datasets import Dataset
+
+from tokenizer import morpheme_tokenize_no_punc as tokenizer, WordLevelTokenizer
 
 special_chars = ["[UNK]", "[SEP]", "[PAD]", "[MASK]"]
 
 
 class IGTLine:
     """A single line of IGT"""
-    def __init__(self, transcription: str, segmentation: Optional[str], glosses: Optional[str], translation: Optional[str]):
+
+    def __init__(self, transcription: str, segmentation: Optional[str], glosses: Optional[str],
+                 translation: Optional[str]):
         self.transcription = transcription
         self.segmentation = segmentation
         self.glosses = glosses
@@ -35,9 +38,10 @@ class IGTLine:
         else:
             words = re.split("\s+", self.glosses)
             glosses = [re.split("-", word) for word in words]
-            glosses = [[gloss for gloss in word_glosses if gloss != ''] for word_glosses in glosses] # Remove empty glosses introduced by faulty segmentation
+            glosses = [[gloss for gloss in word_glosses if gloss != ''] for word_glosses in
+                       glosses]  # Remove empty glosses introduced by faulty segmentation
             glosses = [word_glosses for word_glosses in glosses if word_glosses != []]
-            glosses = reduce(lambda a,b: a + ['[SEP]'] + b, glosses) # Add separator for word boundaries
+            glosses = reduce(lambda a, b: a + ['[SEP]'] + b, glosses)  # Add separator for word boundaries
             return glosses
 
     def morphemes(self) -> Optional[List[str]]:
@@ -45,7 +49,6 @@ class IGTLine:
         if self.segmentation is None:
             return None
         return tokenizer(self.segmentation)
-
 
     def __dict__(self):
         d = {'transcription': self.transcription, 'translation': self.translation}
@@ -61,6 +64,14 @@ def load_data_file(path: str) -> List[IGTLine]:
     """Loads a file containing IGT data into a list of entries."""
     all_data = []
 
+    # If we have a directory, recursively load all files and concat together
+    if os.path.isdir(path):
+        for file in os.listdir(path):
+            if file.endswith(".txt"):
+                all_data.extend(load_data_file(os.path.join(path, file)))
+        return all_data
+
+    # If we have one file, read in line by line
     with open(path, 'r') as file:
         current_entry = [None, None, None, None]  # transc, segm, gloss, transl
 
@@ -149,7 +160,7 @@ def prepare_dataset_mlm(data: List[List[str]], tokenizer: WordLevelTokenizer, de
         source_enc = tokenizer.convert_tokens_to_ids(row['tokens'])
 
         # Encode the output, if present
-        return { 'input_ids': torch.tensor(source_enc, dtype=torch.long).to(device) }
+        return {'input_ids': torch.tensor(source_enc, dtype=torch.long).to(device)}
 
     return raw_dataset.map(process)
 
@@ -175,14 +186,14 @@ def prepare_dataset(data: List[IGTLine], tokenizer: WordLevelTokenizer, labels: 
             # For token class., the labels are just the glosses for each word
             output_enc = [labels.index(gloss) for gloss in row['glosses']]
             output_enc += [-100] * (tokenizer.model_max_length - len(output_enc))
-            return { 'input_ids': torch.tensor(source_enc, dtype=torch.long).to(device),
-                     'attention_mask': torch.tensor(attention_mask).to(device),
-                     'labels': torch.tensor(output_enc, dtype=torch.long).to(device)}
+            return {'input_ids': torch.tensor(source_enc, dtype=torch.long).to(device),
+                    'attention_mask': torch.tensor(attention_mask).to(device),
+                    'labels': torch.tensor(output_enc, dtype=torch.long).to(device)}
 
         else:
             # If we have no glosses, this must be a prediction task
-            return { 'input_ids': torch.tensor(source_enc).to(device),
-                     'attention_mask': torch.tensor(attention_mask).to(device)}
+            return {'input_ids': torch.tensor(source_enc).to(device),
+                    'attention_mask': torch.tensor(attention_mask).to(device)}
 
     return raw_dataset.map(process)
 
@@ -218,13 +229,13 @@ def prepare_multitask_dataset(data: List[IGTLine], tokenizer: WordLevelTokenizer
                 output_enc += [-100] * (tokenizer.model_max_length - len(output_enc))
                 all_labels_enc.append(torch.tensor(output_enc, dtype=torch.long))
 
-            return { 'input_ids': torch.tensor(source_enc, dtype=torch.long).to(device),
-                     'attention_mask': torch.tensor(attention_mask).to(device),
-                     'labels': torch.stack(all_labels_enc).to(device)}
+            return {'input_ids': torch.tensor(source_enc, dtype=torch.long).to(device),
+                    'attention_mask': torch.tensor(attention_mask).to(device),
+                    'labels': torch.stack(all_labels_enc).to(device)}
 
         else:
             # If we have no glosses, this must be a prediction task
-            return { 'input_ids': torch.tensor(source_enc).to(device),
-                     'attention_mask': torch.tensor(attention_mask).to(device)}
+            return {'input_ids': torch.tensor(source_enc).to(device),
+                    'attention_mask': torch.tensor(attention_mask).to(device)}
 
     return raw_dataset.map(process)
