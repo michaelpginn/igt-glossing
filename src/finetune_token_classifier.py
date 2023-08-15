@@ -3,10 +3,10 @@ from typing import Optional, List
 
 import click
 import torch
+import wandb
 from datasets import DatasetDict
 from transformers import AutoModelForTokenClassification, Trainer, TrainingArguments, RobertaForTokenClassification
 
-import wandb
 from data import prepare_dataset, load_data_file, create_vocab, create_gloss_vocab, prepare_multitask_dataset
 from eval import eval_accuracy
 from multistage_model import MultistageModel
@@ -96,7 +96,7 @@ def train(model_type: str, train_size: int, seed: int,
     BATCH_SIZE = 64
     EPOCHS = 30
 
-    run_name = f"{train_size if train_size else 'full'}-{type}-{seed}"
+    run_name = f"{train_size if train_size else 'full'}-{model_type}-{seed}"
 
     wandb.init(project="genbench-taxo-morph-finetuning", entity="michael-ginn", name=run_name, config={
         "train-size": train_size if train_size else "full",
