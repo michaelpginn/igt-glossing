@@ -1,23 +1,25 @@
-import click
-import wandb
-import torch
-from transformers import AutoModelForTokenClassification, Trainer, TrainingArguments, RobertaForTokenClassification
-from datasets import DatasetDict
+import random
 from typing import Optional, List
+
+import click
+import torch
+from datasets import DatasetDict
+from transformers import AutoModelForTokenClassification, Trainer, TrainingArguments, RobertaForTokenClassification
+
+import wandb
 from data import prepare_dataset, load_data_file, create_vocab, create_gloss_vocab, prepare_multitask_dataset
 from eval import eval_accuracy
-from taxonomic_loss_model import TaxonomicLossModel
-from uspanteko_morphology import morphology as full_morphology_tree, simplified_morphology as simplified_morphology_tree
-import random
-import os
-from tokenizer import WordLevelTokenizer
-from multitask_model import MultitaskModel
 from multistage_model import MultistageModel
+from multitask_model import MultitaskModel
+from taxonomic_loss_model import TaxonomicLossModel
+from tokenizer import WordLevelTokenizer
+from uspanteko_morphology import morphology as full_morphology_tree
 
 device = "cuda:0" if torch.cuda.is_available() else "cpu"
 
 
-def create_trainer(model: RobertaForTokenClassification, dataset: Optional[DatasetDict], tokenizer: WordLevelTokenizer, labels: List[str], batch_size, max_epochs, report_to):
+def create_trainer(model: RobertaForTokenClassification, dataset: Optional[DatasetDict], tokenizer: WordLevelTokenizer,
+                   labels: List[str], batch_size, max_epochs, report_to):
     print("Creating trainer...")
 
     def compute_metrics(eval_preds):
@@ -36,7 +38,8 @@ def create_trainer(model: RobertaForTokenClassification, dataset: Optional[Datas
         decoded_preds = [[labels[index] for index in pred_seq if len(labels) > index >= 0] for pred_seq in preds]
 
         # Decode (gold) labels
-        decoded_labels = [[labels[index] for index in label_seq if len(labels) > index >= 0] for label_seq in gold_labels]
+        decoded_labels = [[labels[index] for index in label_seq if len(labels) > index >= 0] for label_seq in
+                          gold_labels]
 
         # Trim preds to the same length as the labels
         decoded_preds = [pred_seq[:len(label_seq)] for pred_seq, label_seq in zip(decoded_preds, decoded_labels)]
@@ -81,31 +84,32 @@ def cli():
 
 
 @cli.command()
-# @click.argument('loss', type=click.Choice(['flat', 'tax', 'tax_simple'], case_sensitive=False))
-@click.option('--type', type=click.Choice(['flat', 'multitask', 'multistage']))
-# @click.option('--loss_sum', type=click.Choice(['linear', 'harmonic'], case_sensitive=False))
+@click.option('--model_type', type=click.Choice(['flat', 'multitask', 'multistage', 'tax_loss', 'harmonic_loss']))
 @click.option("--train_size", help="Number of items to sample from the training data", type=int)
+@click.option("--train_data", type=click.Path(exists=True))
+@click.option("--eval_data", type=click.Path(exists=True))
 @click.option("--seed", help="Random seed", type=int)
-def train(train_size: int, type: bool, seed: int):
+def train(model_type: str, train_size: int, seed: int,
+          train_data: str = "../data/usp-train-track2-uncovered",
+          eval_data: str = "../data/usp-dev-track2-uncovered"):
     MODEL_INPUT_LENGTH = 64
     BATCH_SIZE = 64
     EPOCHS = 30
 
     run_name = f"{train_size if train_size else 'full'}-{type}-{seed}"
 
-    wandb.init(project="taxo-morph-finetuning-v3", entity="michael-ginn", name=run_name, config={
-        # "loss": loss + '-' + loss_sum,
+    wandb.init(project="genbench-taxo-morph-finetuning", entity="michael-ginn", name=run_name, config={
         "train-size": train_size if train_size else "full",
         "random-seed": seed,
-        "multitask": type
+        "type": model_type
     })
 
     random.seed(seed)
 
     morphology_tree = full_morphology_tree
 
-    train_data = load_data_file(f"../data/usp-train-track2-uncovered")
-    dev_data = load_data_file(f"../data/usp-dev-track2-uncovered")
+    train_data = load_data_file(train_data)
+    dev_data = load_data_file(eval_data)
 
     train_vocab = create_vocab([line.morphemes() for line in train_data], threshold=1)
     tokenizer = WordLevelTokenizer(vocab=train_vocab, model_max_length=MODEL_INPUT_LENGTH)
@@ -117,32 +121,37 @@ def train(train_size: int, type: bool, seed: int):
 
     dataset = DatasetDict()
 
-    if type == 'flat':
+    if model_type == 'flat' or model_type == 'tax_loss' or model_type == 'harmonic_loss':
         dataset['train'] = prepare_dataset(data=train_data, tokenizer=tokenizer, labels=glosses, device=device)
         dataset['dev'] = prepare_dataset(data=dev_data, tokenizer=tokenizer, labels=glosses, device=device)
     else:
-        dataset['train'] = prepare_multitask_dataset(data=train_data, tokenizer=tokenizer, labels=glosses, device=device)
+        dataset['train'] = prepare_multitask_dataset(data=train_data, tokenizer=tokenizer, labels=glosses,
+                                                     device=device)
         dataset['dev'] = prepare_multitask_dataset(data=dev_data, tokenizer=tokenizer, labels=glosses, device=device)
 
-    # if loss == "flat":
-    #     model = AutoModelForTokenClassification.from_pretrained("michaelginn/uspanteko-mlm-large", num_labels=len(glosses))
-    # elif loss == "tax" or loss == "tax_simple":
-    #     model = TaxonomicLossModel.from_pretrained("michaelginn/uspanteko-mlm-large", num_labels=len(glosses), loss_sum=loss_sum)
-    #     model.use_morphology_tree(morphology_tree, max_depth=2 if loss == 'tax_simple' else 5)
-    # else:
-    #     raise ValueError("Invalid loss provided.")
-
-    if type != 'multistage':
-        if type == 'multitask':
-            model = MultitaskModel.from_pretrained("michaelginn/uspanteko-mlm-large", classifier_head_sizes=[66, 21, 19, 10])
+    if model_type != 'multistage':
+        if model_type == 'multitask':
+            model = MultitaskModel.from_pretrained("michaelginn/uspanteko-mlm-large",
+                                                   classifier_head_sizes=[66, 21, 19, 10])
+        elif model_type == 'flat':
+            model = AutoModelForTokenClassification.from_pretrained("michaelginn/uspanteko-mlm-large",
+                                                                    num_labels=len(glosses))
         else:
-            model = AutoModelForTokenClassification.from_pretrained("michaelginn/uspanteko-mlm-large", num_labels=len(glosses))
+            if model_type == 'tax_loss':
+                model = TaxonomicLossModel.from_pretrained("michaelginn/uspanteko-mlm-large", num_labels=len(glosses),
+                                                           loss_sum='linear')
+            elif model_type == 'harmonic_loss':
+                model = TaxonomicLossModel.from_pretrained("michaelginn/uspanteko-mlm-large", num_labels=len(glosses),
+                                                           loss_sum='harmonic')
+            model.use_morphology_tree(morphology_tree, max_depth=5)
 
-        trainer = create_trainer(model, dataset=dataset, tokenizer=tokenizer, labels=glosses, batch_size=BATCH_SIZE, max_epochs=EPOCHS, report_to='wandb')
+        trainer = create_trainer(model, dataset=dataset, tokenizer=tokenizer, labels=glosses, batch_size=BATCH_SIZE,
+                                 max_epochs=EPOCHS, report_to='wandb')
         trainer.train()
     else:
         # Train in multiple stages
-        model = MultistageModel.from_pretrained("michaelginn/uspanteko-mlm-large", classifier_head_sizes=[66, 21, 19, 10])
+        model = MultistageModel.from_pretrained("michaelginn/uspanteko-mlm-large",
+                                                classifier_head_sizes=[66, 21, 19, 10])
 
         for stage in [3, 2, 1, 0]:
             model.current_stage = stage
