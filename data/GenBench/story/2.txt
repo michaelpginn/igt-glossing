@@ -1,0 +1,1434 @@
+\t wi' juun wunaq juun ajk'aayb'.
+\m wi' juun wunaq juun aj-k'aay-b'
+\p EXS num s num AGT-s-PL
+\g EXS uno hombre uno AGT-venta-PL
+\l Un tiempos pasados, había un hombre vendedor
+
+\t Pe laq tilmiit,
+\m pet laq tilmiit
+\p vi PREP s
+\g venir PREP pueblo
+\l venía al pueblo.
+
+\t Juun ajk'aay b'i ke tpe' este kla' chi r-qan,
+\m juun aj-k'aay b'i ke t-pet este kla' chi r-aqan
+\p num AGT-s DIR part INC-vi dem adv PREP E3S-s
+\g uno AGT-venta DIR que INC-venir este allí PREP E3S-pie
+\l Era un vendedor que venía desde allá a pie
+
+\t iqaa-l-ch r-iqaan jwi'l.
+\m iqa-l-ch r-iqaan j-wi'l
+\p vt-PP-DIR E3S-s E3S-srel
+\g cargar-PP-DIR E3S-carga E3S-SR
+\l Traía cargada su carga
+
+\t ajk'aay t'u'y,
+\m aj-k'aay t'u'y
+\p AGT-s s
+\g AGT-venta ollita
+\l Vendedor de ollas
+
+\t ajk'aay xaar,
+\m aj-k'aay xaar
+\p AGT-s s
+\g AGT-venta jarro
+\l Vendedor de jarras
+
+\t tz'aq-oom xaar,
+\m tz'aq-oom xaar
+\p s-PP s
+\g muro-PP jarro
+\l Jarras de barro
+
+\t tz'aqoom t'u'y.
+\m tz'aq-oom t'u'y
+\p s-PP s
+\g muro-PP ollita
+\l Ollas de barro
+
+\t lamaas ti-k'ayee-j wuw
+\m lamaas ti-k'ayee-j wi
+\p adv INC-vt-SC PART
+\g dónde INC-vender-SC PART
+\l Donde lo vende.
+
+\t jk'aay k'amel
+\m j-k'aay k'am-el
+\p E3S-s vt-AGT
+\g E3S-venta recibir-AGT
+\l Trae su venta
+
+\t iqel jwi'l
+\m iqe-l j-wi'l
+\p vt-PP E3S-srel
+\g cargar-PP E3S-SR
+\l Lo tiene cargado
+
+\t lamaas titaw li k'aay,
+\m lamaas ti-taw li k'aay
+\p adv INC-vi PREP s
+\g dónde INC-llegar PREP venta
+\l Donde llega a vender,
+
+\t wunaq rik'i ra jtaqo'n.
+\m wunaq r-ik'il ra j-taqo'n
+\p s E3S-srel DIM E3S-s
+\g hombre E3S-SR DIM E3S-mensajero
+\l EL hombre con su hijo.
+
+\t wunaq x-e' jtokik jsii' xaq' chee', r-e nuk' b'i r-e ajq'aaq' r-e miq' b'i r-e jwaa.
+\m wunaq x-b'e j-tok-ik j-sii' xaq' chee' r-e nuk' b'i r-e aj-q'aaq' r-e miq' b'i r-e j-waa
+\p s COM-vi E3S-vt-SV E3S-s error s E3S-srel vt DIR E3S-srel AGT-s E3S-srel vt DIR E3S-srel E3S-s
+\g hombre COM-ir E3S-buscar-SV E3S-leña *** árbol E3S-SR unir/juntar DIR E3S-SR AGT-fuego E3S-SR calentar DIR E3S-SR E3S-tortilla
+\l Al hombre se fue a buscar su leña bajo los árboles para juntar fuego para calentar su tortilla.
+
+\t lamaas x-tok-ew sii',
+\m lamaas x-tok-ew sii'
+\p adv COM-vt-AP s
+\g dónde COM-buscar-AP leña
+\l Donde fue a buscar leña
+
+\t x-te' juun setaaj saqmo'l,
+\m x-ta' juun set-aaj saqmólb'
+\p COM-vt num pos-MED s
+\g COM-encontrar uno círculo-MED huevo
+\l Fue a encontar un montón de huevos.
+
+\t juun mulaaj saqmo'l xte' xaq' chee'.
+\m juun mul-aaj saqmólb' x-ta' xaq' chee'
+\p num med-MED s COM-vt error s
+\g uno montón-MED huevo COM-encontrar *** árbol
+\l Un montón de huevos encontró bajo los árboles.
+
+\t Sib'laj ti-ki'kot xte' juun mulaaj saqmo'l,
+\m seb'laj ti-ki'kot x-ta' juun mul-aaj saqmólb'
+\p ITS INC-vi COM-vt num med-MED s
+\g ITS INC-alegrarse COM-encontrar uno montón-MED huevo
+\l Se alegró al encontar los huevos.
+
+\t x-q'aluu-j-x juun q'aleen jsii',
+\m x-q'alu-j x-juun q'aleen j-sii'
+\p COM-vt-SC DIR-num med E3S-s
+\g COM-abrazar-SC DIR-uno brazada E3S-leña
+\l Trajo su leña
+
+\t sib'laj tkikot, sib'laj tkikot.
+\m seb'laj t-ki'kot seb'laj t-ki'kot
+\p ITS INC-vi ITS INC-vi
+\g ITS INC-alegrarse ITS INC-alegrarse
+\l Se alegro demasiado.
+
+\t Xta' b'i nik'ij saqmo'l xaq' chee',
+\m x-ta' b'i ník'ij saqmólb' xaq' chee'
+\p COM-vt DIR adv s error s
+\g COM-encontrar DIR algunos huevo *** árbol
+\l Por haber encontrado huevos bajo los árboles.
+
+\t lamaas k'amol b'i jk'aay jwi'l.
+\m lamaas k'am-ol b'i j-k'aay j-wi'l
+\p adv vt-AGT DIR E3S-s E3S-srel
+\g dónde recibir-AGT DIR E3S-venta E3S-SR
+\l Donde llevaba su venta
+
+\t X-ok xtaqiik jk'aat,
+\m x-ok ch-taq-iik j-k'aat
+\p COM-vi PRE-vt-SV E3S-s
+\g COM-entrar PRE-mandar-SV E3S-red
+\l Empezó a desatar su red.
+
+\t x-r-esaa-j-ch juun t'u'y laj laj k'aat.
+\m x-r-esaa-j-ch juun t'u'y laj laj k'aat
+\p COM-E3S-vt-SC-DIR num s PRE PRE s
+\g COM-E3S-sacar-SC-DIR uno ollita PRE PRE red
+\l Sacó una olla de su red.
+
+\t cheq t-jomiin jq'aaq',
+\m chaq t-jomin j-q'aaq'
+\p PART INC-vi E3S-s
+\g PART INC-arder@fuego E3S-fuego
+\l Cuando ya ardía su fuego,
+
+\t Tzaq ja' xilij
+\m tzaq ja' xílij
+\p vt s srel
+\g hechar agua adentro
+\l e echó agua
+
+\t xpe' jpoq'oow ja',
+\m x-pet j-poq'ow ja'
+\p COM-vi E3S-vi s
+\g COM-venir E3S-hervir agua
+\l Empezó a hervir el agua
+
+\t xpaq' nik'ij maq saqmo'l xilij li ja'.
+\m x-paq' ník'ij maq saqmólb' xílij li ja'
+\p COM-vt adv ART s srel DEM s
+\g COM-rajar algunos ART huevo adentro DEM agua
+\l quebró algunos huevos en el agua
+
+\t juntir maq saqmo'l xpaq' li ja',
+\m juntiir maq saqmólb' x-paq' li ja'
+\p adv ART s COM-vt PREP s
+\g todo ART huevo COM-rajar PREP agua
+\l Todos los huevos quebró en el agua.
+
+\t kwando xpaq' maq saqmo'l li ja',
+\m kwaand x-paq' maq saqmólb' li ja'
+\p adv COM-vt ART s DEM s
+\g cuándo COM-rajar ART huevo DEM agua
+\l Cuando quebró los huevos en el agua
+
+\t sib'laj t-aseyitiin jb'a ja' jwi'l maq saqmo'l.
+\m seb'laj t-aseyitin j-b'a ja' j-wi'l maq saqmólb'
+\p ITS INC-vi E3S-srel s E3S-srel ART s
+\g ITS INC-engrasar E3S-SR agua E3S-SR ART huevo
+\l Se engrasaba el agua por los huevos
+
+\t Kwando xcheq' maq saqmo'l li ja',
+\m kwaand x-cheq' maq saqmólb' li ja'
+\p adv COM-vt ART s DEM s
+\g cuándo COM-tropezar ART huevo DEM agua
+\l Cuando se cocieron los huevos en el agua
+
+\t sib'laj tkikot wunaq,
+\m seb'laj t-ki'kot wunaq
+\p ITS INC-vi s
+\g ITS INC-alegrarse hombre
+\l El hombre se puso feliz
+
+\t wi' rikiil jwaa.
+\m wi' rikiil j-waa
+\p EXS s E3S-s
+\g EXS comida E3S-tortilla
+\l Tenia comida
+
+\t xtzaaq sib'laj iik rik'iil.
+\m x-tzaq seb'laj iik r-ik'iil
+\p COM-vi ITS s E3S-srel
+\g COM-caerse ITS chile E3S-SR
+\l Le echó bastante chile
+
+\t xkub'er xaq' chee',
+\m x-kub'-er xaq' chee'
+\p COM-pos-ITR srel s
+\g COM-sentar-ITR SR árbol
+\l Se sentó bajo los árboles
+
+\t xok chi wik' rik'iil ra jtaqo'n
+\m x-ok chi wiik' r-ik'iil ra j-taqo'n
+\p COM-vi PREP s E3S-srel DIM E3S-s
+\g COM-entrar PREP comer E3S-SR DIM E3S-mensajero
+\l Empezó a comer junto a su hijo.
+
+\t tiij awe, tiij awe sib'laj galan jtiijiik,
+\m tiij aw-e tiij aw-e seb'laj galaan j-tiij-iik
+\p s E2S-srel s E2S-srel ITS adj E3S-s-SV
+\g comer E2S-SR comer E2S-SR ITS galan E3S-comer-SV
+\l Comé, es demasiado sabroso.
+
+\t ri r-e chi ka'n
+\m ri r-e chi ka'n
+\p DEM E3S-srel PREP s
+\g DEM E3S-SR PREP animal
+\l Talvez es de animales
+
+\t che' r-e.
+\m che' r-e
+\p vi E3S-srel
+\g decir E3S-SR
+\l le dijo.
+
+\t ta' tatiij
+\m ta' t-a-tiij
+\p NEG INC-E2S-vt
+\g NEG INC-E2S-comer
+\l No lo comas,
+
+\t che r-e,
+\m cha' r-e
+\p vi E3S-srel
+\g decir E3S-SR
+\l le dijo
+
+\t tiij awe, tiij awe
+\m tiij aw-e tiij aw-e
+\p s E2S-srel s E2S-srel
+\g comer E2S-SR comer E2S-SR
+\l Comé tuyo, come tuyo.
+
+\t jor galan jtiijik.
+\m jor galaan j-tiij-ik
+\p error adj E3S-s-SV
+\g *** galan E3S-comer-SV
+\l Es bien sabroso
+
+\t che' r-e,
+\m cha' r-e
+\p vi E3S-srel
+\g decir E3S-SR
+\l le dijo
+
+\t tiij aat we tatiij,
+\m tiij aat we t-a-tij
+\p s pron COND INC-E2S-vt
+\g comer tú/usted COND INC-E2S-comer
+\l Come vos si lo comes
+
+\t in ta' tantiij
+\m iin ta' t-an-tiij
+\p pron NEG INC-E1S-vt
+\g yo NEG INC-E1S-comer
+\l yo no lo voy a comer
+
+\t che' ra jtaqo'n r-e.
+\m cha' ra j-taqo'n r-e
+\p vi DIM E3S-s E3S-srel
+\g decir DIM E3S-mensajero E3S-SR
+\l le dijo su hijo.
+
+\t in ta' tantiij.
+\m iin ta' t-an-tiij
+\p pron NEG INC-E1S-vt
+\g yo NEG INC-E1S-comer
+\l yo no lo como.
+
+\t Tink'is b'i juntir ch aw-ch
+\m t-in-k'is b'i juntiir chi aw-ch
+\p INC-E1S-vt DIR adv PREP E2S-srel
+\g INC-E1S-terminar DIR todo PREP E2S-SR
+\l Lo voy a terminar, y no te dejo nada,
+
+\t che' r-e
+\m cha' r-e
+\p vi E3S-srel
+\g decir E3S-SR
+\l le dijo
+
+\t juun mulaaj saqmo'l xtiij b'ik.
+\m juun mul-aaj saqmólb' x-tiij b'ik
+\p num med-MED s COM-s DIR
+\g uno montón-MED huevo COM-comer DIR
+\l Un montón de huevos se comió
+
+\t kwando x-kolaa-j chi waa,
+\m kwaand x-kolaa-j chi waa
+\p adv COM-vt-SC PREP s
+\g cuándo COM-terminar@de@comer-SC PREP tortilla
+\l Cuando terminó de comer
+
+\t x-e' uxlan xaq' chee',
+\m x-b'e uxlan xaq' chee'
+\p COM-vi vi srel s
+\g COM-ir descansar SR árbol
+\l Fue a descanzar bajo los árboles.
+
+\t che' r-e laj k'ajool.
+\m cha' r-e laj k'ajool
+\p vi E3S-srel PRE s
+\g decir E3S-SR PRE hijo.de.hombre
+\l le dijo a su hijo
+
+\t che' r-e ra jk'ajool r-e,
+\m cha' r-e ra j-k'ajool r-e
+\p vi E3S-srel DIM E3S-s E3S-srel
+\g decir E3S-SR DIM E3S-hijo.de.hombre E3S-SR
+\l Le dijo su hijo.
+
+\t xpak'er b'i re re
+\m x-pak'-er b'i re re
+\p COM-pos-ITR DIR pron pron
+\g COM-boca@arriba-ITR DIR él/ella él/ella
+\l Se puso boca arriba.
+
+\t xya' jq'ab' ch-relaj jb'aa,
+\m x-ya' j-q'ab' ch-r--elaj j-b'aa
+\p COM-vt E3S-s INC-E3S--SR E3S-s
+\g COM-dar E3S-mano INC-E3S--SR E3S-cabeza
+\l Puso sus manos bajo su cabeza
+
+\t inwer na
+\m in-wer na
+\p A1S-vi PART
+\g A1S-dormir PART
+\l Voy a dormir.
+
+\t jqaaj na ren chik ra jtaqo'n.
+\m j-qaaj na r-b'an chik ra j-taqo'n
+\p E3S-s PART E3S-vt PART DIM E3S-s
+\g E3S-papá PART E3S-hacer PART DIM E3S-mensajero
+\l Al mismo tiempo se durmió su hijo.
+
+\t X-e' k'u juun patiin re.
+\m x-b'e k'u juun pu-at-iin re
+\p COM-vi PART num PREP-A2S-pron pron
+\g COM-ir PART uno PREP-A2S-yo él/ella
+\l Le dió un mareo
+
+\t sib'laj ti-'el jk'a tra jk'atool,
+\m seb'laj ti-el j-k'a ra j-k'atool
+\p ITS INC-vi E3S-adj DIM E3S-s
+\g ITS INC-salir E3S-amargo DIM E3S-sudor
+\l Le salí bastante sudor
+
+\t sib'laj ti-'el jk'atool.
+\m seb'laj ti-el j-k'atool
+\p ITS INC-vi E3S-s
+\g ITS INC-salir E3S-sudor
+\l Le salía demasiado sudor
+
+\t sib'laj tyuq r-iib'
+\m seb'laj t-yuq r-iib'
+\p ITS INC-vt E3S-RFX
+\g ITS INC-estirar E3S-RFX
+\l Se estiraba mucho
+
+\t tons kom ti-jyuq r-iib',
+\m entoons koom ti-j-yuq r-iib'
+\p adv part INC-E3S-vt E3S-RFX
+\g entonces como INC-E3S-estirar E3S-RFX
+\l Entonces, como se estiraba
+
+\t k'is li k'eten,
+\m k'is li k'eten
+\p PL PREP adj
+\g PL PREP caliente
+\l Se llenaba de sudor
+
+\t t-k'is li k'eten.
+\m t-k'is li k'eten
+\p INC-vt PREP adj
+\g INC-terminar PREP caliente
+\l Se llenaba de sudor
+
+\t nab'e weel xyuq r-iib'
+\m nab'e weel x-yuq r-iib'
+\p num adv COM-vt E3S-RFX
+\g primero vez COM-estirar E3S-RFX
+\l Primera vez se estiró
+
+\t ch'otow, ch'otow li k'eten.
+\m ch'ot-ow ch'ot-ow li k'eten
+\p vt-AP vt-AP PREP adj
+\g cortar-AP cortar-AP PREP caliente
+\l Brotaba en sudor
+
+\t x-uquqee-j r-iib'
+\m x-uq-uqee-j r-iib'
+\p COM-pers-TRN-SC E3S-RFX
+\g COM-estirar-TRN-SC E3S-RFX
+\l Se estiró
+
+\t xwuux xwuux kumetz.
+\m x-wux x-wux kumatz
+\p COM-vi COM-vi s
+\g COM-convertir COM-convertir culebra
+\l Se convirtió en culebra.
+
+\t Jtaqo'n x-tzaq jch'ool
+\m j-taqo'n x-tzaq j-ch'ool
+\p E3S-s COM-vi E3S-s
+\g E3S-mensajero COM-caerse E3S-estómago
+\l Su hijo se asustó
+
+\t ta' chik i'
+\m ta' chik i'
+\p NEG PART ENF
+\g NEG PART ENF
+\l No hay
+
+\t ta' neen tren rik'an rik'iil jqaaj.
+\m ta' neen t-r-b'an r-ik'aan r-ik'iil j-qaaj
+\p NEG INT INC-E3S-vt E3S-srel E3S-srel E3S-s
+\g NEG INT INC-E3S-hacer E3S-solo E3S-SR E3S-papá
+\l No encontraba solo con su papá
+
+\t saach jch'ool jtaqo'n.
+\m saach j-ch'ool j-taqo'n
+\p vi E3S-s E3S-s
+\g perder E3S-estómago E3S-mensajero
+\l Se quedó quieto su hijo
+
+\t Ta' chik i' ta' neen tren,
+\m ta' chik i' ta' neen t-r-b'an
+\p NEG PART ENF NEG INT INC-E3S-vt
+\g NEG PART ENF NEG INT INC-E3S-hacer
+\l ya no encontraba que hacer.
+
+\t neen ti-ch'ab'ej chik xaq' chee'.
+\m neen t-ch'ab'ee-j chik xaq' chee'
+\p INT INC-vt-SC PART srel s
+\g INT INC-hablarle-SC PART SR árbol
+\l A quéi hablaba bajo los árboles
+
+\t qech'olxik wi' x-k'amsaaj taq b'ik,
+\m qe-ech'elxik wi' x-k'am-saj taq b'ik
+\p error-error EXS COM-vt-PAS PL DIR
+\g ***-*** EXS COM-recibir-PAS PL DIR
+\l Paisanos que solo fueron llevados
+
+\t wi' xmol qe b'i r-iib'-aq.
+\m wi' x-mol qe b'i r-iib'-aq
+\p EXS COM-vt PART DIR E3S-RFX-PL
+\g EXS COM-juntar PART DIR E3S-RFX-PL
+\l Algunos solos se juntaron
+
+\t r-aaj ti r-anm-aq, juntir kristyan x-e' chi r-il-iik,
+\m r-aaj ti' r-anm-aq juntiir kirtyaan x-b'e chi r-il-iik
+\p E3S-vt error E3S-s-PL adv s COM-vi PREP E3S-vt-SV
+\g E3S-querer *** E3S-alma-PL todo persona COM-ir PREP E3S-ver-SV
+\l Deseaban que toda le genta hubieran hido a ver.
+
+\t raaj ka' wi' juun much'
+\m raaj ka' wi' juun much'
+\p adv PART EXS num num
+\g tal@vez PART EXS uno cien
+\l Tal vez habían cién.
+
+\t raaj ka' wi' kiib' much' kristyan x-e' taq r-il-iik man awaaj.
+\m raaj ka' wi' kiib' much' kirtyaan x-b'e taq r-il-iik man awaj
+\p adv PART EXS num num s COM-vi PL E3S-vt-SV ART s
+\g tal@vez PART EXS dos cien persona COM-ir PL E3S-ver-SV ART animal
+\l Talves habían doscientas personas fueron a ver al animal
+
+\t X-e' taq r-il-iik juun nimlaj awaaj,
+\m x-b'e taq r-il-iik juun nim-laj awaj
+\p COM-vi PL E3S-vt-SV num adj-ITS s
+\g COM-ir PL E3S-ver-SV uno grande-ITS animal
+\l fueron a ver a un garan animal
+
+\t r-aaj ti r-anm-aq x-e' taaj.
+\m r-aaj ti' r-anm-aq x-b'e ???
+\p E3S-vt error E3S-s-PL COM-vi error
+\g E3S-querer *** E3S-alma-PL COM-ir ***
+\l Deseaban se hubiera ido
+
+\t Xim taq, xim taq man awaaj
+\m xim taq xim taq man awaj
+\p vt PL vt PL ART s
+\g amarrar PL amarrar PL ART animal
+\l amarraron al animal.
+
+\t R-aaj ti r-anm-aq xk'am taqch laq tilmiit,
+\m r-aaj ti' r-anm-aq x-k'am taq-ch laq tilmiit
+\p E3S-vt error E3S-s-PL COM-vt PL-DIR PREP s
+\g E3S-querer *** E3S-alma-PL COM-recibir PL-DIR PREP pueblo
+\l Querían traer al pueblo
+
+\t sib'laj nimlaj chooq'aab' wi' rik'iil.
+\m seb'laj nim-laj choq'aab' wi' r-ik'iil
+\p ITS adj-ITS s EXS E3S-srel
+\g ITS grande-ITS fuerza EXS E3S-SR
+\l Pero el animal tenía demasiada fuerza
+
+\t kwando r-aaj x-k'am taqch,
+\m kwaand r-aaj x-k'am taq-ch
+\p adv E3S-vt COM-vt PL-DIR
+\g cuándo E3S-querer COM-recibir PL-DIR
+\l Cuando lo querían traer
+
+\t juraaj taqch x-tze'n rik'iilaq.
+\m juraa-j taq-ch x-tze'n r-ik'iil-aq
+\p vt-SC PL-DIR COM-vi E3S-srel-PL
+\g jalar-SC PL-DIR COM-reirse E3S-SR-PL
+\l lo jalaron, se rió con ellos
+
+\t X-iij r-e chaq,
+\m x-iij r-e chaq
+\p COM-vt E3S-srel PART
+\g COM-decir E3S-SR PART
+\l Les dijo.
+
+\t ta' atkwiin taq, ch-in-k'am-iik,
+\m ta' at-kwin taq ch-in-k'am-iik
+\p NEG A2S-vi PL PREP-E1S-vt-SV
+\g NEG A2S-poder PL PREP-E1S-recibir-SV
+\l No pueden llevarme
+
+\t che' r-e chaq,
+\m cha' r-e chaq
+\p vi E3S-srel PART
+\g decir E3S-SR PART
+\l les dijo
+
+\t kom kayb'el kristyan wi' r-e,
+\m koom kay-b'il kirtyaan wi' r-e
+\p part vi-INS s EXS E3S-srel
+\g como mirar-INS persona EXS E3S-SR
+\l Tenía cara de gente.
+
+\t xaq jnimaal kumetz
+\m xaq j-nim-aal kumatz
+\p part E3S-adj-SAB s
+\g solo E3S-grande-SAB culebra
+\l Solo el resto era culebra
+
+\t x-tze'j qe jwichaq.
+\m x-tze'j qe j-wiich-aq
+\p COM-vt PART E3S-srel-PL
+\g COM-reirse PART E3S-SR-PL
+\l Solo se rió de ellos
+
+\t Ta' atkwin taq chi ink'amik,
+\m ta' at-kwin taq chi in-k'am-ik
+\p NEG A2S-vi PL PREP E1S-vt-SV
+\g NEG A2S-poder PL PREP E1S-recibir-SV
+\l No pueden llevarme
+
+\t che' r-e chaq.
+\m cha' r-e chaq
+\p vi E3S-srel PART
+\g decir E3S-SR PART
+\l Les dijo a ellos
+
+\t Kwando x-juraa-j taqch,
+\m kwaand x-jura-j taq-ch
+\p adv COM-vt-SC PL-DIR
+\g cuándo COM-jalar-SC PL-DIR
+\l Cuando lo jalaron
+
+\t x-tiij j-choq'b' man awaaj rik'iilaq.
+\m x-tiij j-choq'aab' man awaj r-ik'iil-aq
+\p COM-s E3S-s ART s E3S-srel-PL
+\g COM-comer E3S-fuerza ART animal E3S-SR-PL
+\l Echó fuerzas el animal con ellos
+
+\t X-jura-j b'ik sib'laj kristyan li ja',
+\m x-jura-j b'ik seb'laj kirtyaan li ja'
+\p COM-vt-SC DIR ITS s DEM s
+\g COM-jalar-SC DIR ITS persona DEM agua
+\l Jaló a mucha gente en el agua.
+
+\t x-jura-j b'i juun k'ulaaj b'oyix li ja',
+\m x-jura-j b'i juun k'ulaaj b'oyix li ja'
+\p COM-vt-SC DIR num s s PREP s
+\g COM-jalar-SC DIR uno pareja buey PREP agua
+\l Jaló a una pareja de bueyes al agua.
+
+\t sib'laj choq'ab' wi' rik'iil.
+\m seb'laj choq'aab' wi' r-ik'iil
+\p ITS s EXS E3S-srel
+\g ITS fuerza EXS E3S-SR
+\l Tenía mucha fuerza.
+
+\t Kwando xu' taq kristyan chi ri ch-och-aq,
+\m kwaand x-yu' taq kirtyaan chi ri ch-och-aq
+\p adv COM-vi PL s PREP DEM PRE-srel-PL
+\g cuándo COM-llegar.aquí PL persona PREP DEM PRE-SR-PL
+\l Cuando vino la gente a sus casas
+
+\t xpe' sib'laj q'aaq' chi r-iij-aq,
+\m x-pet seb'laj q'aaq' chi r-iij-aq
+\p COM-vi ITS s PREP E3S-srel-PL
+\g COM-venir ITS fuego PREP E3S-SR-PL
+\l Les salió calentura
+
+\t wi' nik'ij qawa'xik, xkwin b'i chi juraj b'i li ja',
+\m wi' ník'ij qa-wa'x-ik x-kwin b'i chi juraj b'i li ja'
+\p EXS adv E1P-vi-SC COM-vi DIR PREP vt DIR PREP s
+\g EXS algunos E1P-estar-SC COM-poder DIR PREP jalar DIR PREP agua
+\l Algunas de nuestra gente pudo jalarlos al agua.
+
+\t xkwin b'i xjuraj b'i li suwaan.
+\m x-kwin b'i x-juraj b'i li suwaan
+\p COM-vi DIR COM-vt DIR PREP s
+\g COM-poder DIR COM-jalar DIR PREP barranco
+\l Pudo jalarlos al barranco.
+
+\t Neen jrub' xen taq guynar, xpe' taq,
+\m neen juruub' x-b'an taq ***-ar x-pet taq
+\p INT adv COM-vt PL error-ITR COM-vi PL
+\g INT cuanto COM-hacer PL ***-ITR COM-venir PL
+\l Todos los que lograron venir
+
+\t xu' chi r-ichooch-aq.
+\m x-yu' chi r-ichooch-aq
+\p COM-vi PREP E3S-s-PL
+\g COM-llegar.aquí PREP E3S-casa-PL
+\l Vinieron a sus casas
+
+\t xkam taq wi' rexteew,
+\m x-kam taq wi' rexteew
+\p COM-vi PL EXS s
+\g COM-morir PL EXS paludismo
+\l Se murieron por paludismo.
+
+\t xkam taq wi' q'aaq'.
+\m x-kam taq wi' q'aaq'
+\p COM-vi PL EXS s
+\g COM-morir PL EXS fuego
+\l Se murieron por calentura.
+
+\t Neen pe' jrub' kristyan x-e' taq, chi r-il-iik k'ii r-ib'-il-aq xkaam taq.
+\m neen pet juruub' kirtyaan x-b'e taq chi r-il-iik k'ii r-iib'-iil-aq x-kam taq
+\p INT vi adv s COM-vi PL PREP E3S-vt-SV adv E3S-RFX-SAB-PL COM-vi PL
+\g INT venir cuanto persona COM-ir PL PREP E3S-ver-SV mucho E3S-RFX-SAB-PL COM-morir PL
+\l Cuanta gente, quienes fueron a verlo, muchos murieron.
+
+\t yo'l x-ta' rexteew
+\m yo'l x-ta' rexteew
+\p adj COM-vt s
+\g vivo COM-encontrar paludismo
+\l Vivo encontró paludismo
+
+\t neen tzaq jch'ool tiq'aax chib',
+\m neen tzaq j-ch'ool t-q'ax chib'
+\p INT vi E3S-s INC-vi srel
+\g INT caerse E3S-estómago INC-pasar SR:sobre
+\l Quien tiene miedo traspasarlo.
+
+\t neen titzaaq jch'ool tatin xij li
+\m neen t-tzaaq j-ch'ool t-atin xílij li
+\p INT INC-vt E3S-s INC-vi srel DEM
+\g INT INC-perder E3S-estómago INC-bañar adentro DEM
+\l Quien tien miedo nadar en el
+
+\t ti-maj-a' rexteew.
+\m t-maj-a' rexteew
+\p INC-vt-SC s
+\g INC-comenzar-SC paludismo
+\l Le pega paludismo
+
+\t ti-ya' na q'aaq',
+\m t-ya' na q'aaq'
+\p INC-vt PART s
+\g INC-dar PART fuego
+\l Aún da calentura.
+
+\t ti-ya' na rexteew,
+\m t-ya' na rexteew
+\p INC-vt PART s
+\g INC-dar PART paludismo
+\l Aún da paludismo.
+
+\t komo yo'l na r-oojwu',
+\m koom yo'l na r-ajáw
+\p part adj PART E3S-s
+\g como vivo PART E3S-dueño
+\l Como aún vive el dueño.
+
+\t wi' na r-oojwu',
+\m wi' na r-ajáw
+\p EXS PART E3S-s
+\g EXS PART E3S-dueño
+\l Aún tiene dueño
+
+\t kristyan i'n r-ajwu'.
+\m kirtyaan i'n r-ajáw
+\p s ENF E3S-s
+\g persona ENF E3S-dueño
+\l Gente es su dueño
+
+\t juun ajk'aay b'o'j i'n,
+\m juun aj-k'aay b'o'j i'n
+\p num AGT-s s ENF
+\g uno AGT-venta olla ENF
+\l Es un vendedor de ollas
+
+\t juun ajk'aay t'u'y i'n.
+\m juun aj-k'aay t'u'y i'n
+\p num AGT-s s ENF
+\g uno AGT-venta ollita ENF
+\l Es un vendedor de ollitas.
+
+\t X-tiij saqmo'l,
+\m x-tiij saqmólb'
+\p COM-s s
+\g COM-comer huevo
+\l Comió huevo
+
+\t xwuux kumetz,
+\m x-wux kumatz
+\p COM-vi s
+\g COM-convertir culebra
+\l Se comvirtió en culebra.
+
+\t xwuux kumetz.
+\m x-wux kumatz
+\p COM-vi s
+\g COM-convertir culebra
+\l Se convirtió en culebra.
+
+\t ri re re x-kan-koj-e' r-iib' pi ka'n-iil ja',
+\m ri re re x-kan-koj-e' r-iib' pi ka'n-iil ja'
+\p DEM pron pron COM-DIR-ITS-SC E3S-RFX PREP s-SAB s
+\g DEM él/ella él/ella COM-DIR-ITS-SC E3S-RFX PREP animal-SAB agua
+\l El se convirtió en animal del agua.
+
+\t man j-ka'n-iil ja' li jyo'l na lq'ori.
+\m man j-ka'n-iil ja' li j-yo'l na lajori
+\p ART E3S-s-SAB s PREP E3S-adj PART adv
+\g ART E3S-animal-SAB agua PREP E3S-vivo PART ahora
+\l Ese animal del agua hoy día aún vive.
+
+\t wi' ka'n rik'iil ch'aw na,
+\m wi' ka'n r-ik'iil ch'aw na
+\p EXS s E3S-srel vi PART
+\g EXS animal E3S-SR hablar PART
+\l ( hay animales, con el habla todavía)
+
+\t wi' li lamaas wi' jsook.
+\m wi' li lamaas wi' j-sook
+\p EXS PREP adv EXS E3S-s
+\g EXS PREP dónde EXS E3S-nido
+\l Habrá donde tiene su nido
+
+\t Lamaas xwux wu ka'n,
+\m lamaas x-wux wi ka'n
+\p adv COM-vi PART s
+\g dónde COM-convertir PART animal
+\l Donde se convirtió animal
+
+\t lamaas xwux wu kumetz.
+\m lamaas x-wux wi kumatz
+\p adv COM-vi PART s
+\g dónde COM-convertir PART culebra
+\l Donde se convirtió en culebra.
+
+\t Sib'laj qawa'xik
+\m seb'laj qa-wa'x-ik
+\p ITS E1P-vi-SV
+\g ITS E1P-estar-SV
+\l Muchas personas
+
+\t sib'laj qoch'olxiik
+\m seb'laj q-ech'elxiik
+\p ITS E1P-s
+\g ITS E1P-familiar
+\l Muchos familiares
+
+\t neen jb'anik x-eel ranmaq r-e jk'aam taqch.
+\m neen j-b'an-ik x-el r-anm-aq r-e j-k'am taq-ch
+\p INT E3S-vt-SV COM-vi E3S-s-PL E3S-srel E3S-vt PL-DIR
+\g INT E3S-hacer-SV COM-salir E3S-alma-PL E3S-SR E3S-recibir PL-DIR
+\l Desearon haber hecho todo lo posible poderlo traer
+
+\t Xim taq sib'laj kloob' chi r-iij neen pe' jrub' kristyan,
+\m xim taq seb'laj kolob' chi r-iij neen pet juruub' kirtyaan
+\p vt PL ITS s PREP E3S-srel INT vi adv s
+\g amarrar PL ITS lazo PREP E3S-SR INT venir cuanto persona
+\l Toda la gente le amarraron varios lazos
+
+\t neen pe' jrub' q-ech'elxiik, raaj, xk'am taqch
+\m neen pet juruub' q-ech'elxiik raaj x-k'am taq-ch
+\p INT vi adv E1P-s adv COM-vt PL-DIR
+\g INT venir cuanto E1P-familiar tal@vez COM-recibir PL-DIR
+\l Saber cuanta gente quisieron traaerlo
+
+\t juun nimlaj awaaj i'n,
+\m juun nim-laj awaj i'n
+\p num adj-ITS s ENF
+\g uno grande-ITS animal ENF
+\l Es un gran animal
+
+\t juun nimlaj ka'n i'n
+\m juun nim-laj ka'n i'n
+\p num adj-ITS s ENF
+\g uno grande-ITS animal ENF
+\l Es un gran animal
+
+\t ri' jk'iiyaal j-choq' wu x-el-iik.
+\m ri' j-k'iy-aal j-choq'aab' wi x-el-iik
+\p dem E3S-vi-SAB E3S-s PART COM-vi-SV
+\g eso@es E3S-crecer-SAB E3S-fuerza PART COM-salir-SV
+\l Toda su fuerza salió
+
+\t Wi' nik'iij qawa'xik chik,
+\m wi' ník'ij qa-wa'x-ik chik
+\p EXS adv E1P-vi-SV PART
+\g EXS algunos E1P-estar-SV PART
+\l Había otras personas
+
+\t neen chakuuj in-a-k'am taq b'ik
+\m neen chaak-uu-j in-a-k'am taq b'ik
+\p INT s-TR-SC A1S-E2S-vt PL DIR
+\g INT trabajo-TR-SC A1S-E2S-recibir PL DIR
+\l Para qué me llevan
+
+\t che' r-e chaq
+\m cha' r-e chaq
+\p vi E3S-srel PART
+\g decir E3S-SR PART
+\l les dijo
+
+\t neen ch-aw-aaj-aq chu-w-e,
+\m neen chi w-e
+\p INT PREP E1S-srel
+\g INT PREP E1S-SR
+\l Para qué me quieren
+
+\t che' r-e chaq.
+\m cha' r-e chaq
+\p vi E3S-srel PART
+\g decir E3S-SR PART
+\l Les dijo
+
+\t x-tiij taq j-choq' w-aq
+\m x-tiij taq j-choq'aab' ???
+\p COM-s PL E3S-s error
+\g COM-comer PL E3S-fuerza ***
+\l Echaron fuerzas.
+
+\t sib'laj choq'aab', xtiij taqch chi j-k'am-ik.
+\m seb'laj choq'aab' x-tiij taq-ch chi j-k'am-ik
+\p ITS s COM-s PL-DIR PREP E3S-vt-SV
+\g ITS fuerza COM-comer PL-DIR PREP E3S-recibir-SV
+\l Mucha fuerza echaron para traerlo.
+
+\t ya juun k'ulaaj b'oyix xjuraj b'i li ja'
+\m ya juun k'ulaaj b'oyix x-juraj b'i li ja'
+\p voc num s s COM-vt DIR PREP s
+\g ya uno pareja buey COM-jalar DIR PREP agua
+\l Ya la pareja de bueyes los jaló al agua.
+
+\t xjuraj b'i li suwaan juun nimlaj choq'aab' wi' rik'iil,
+\m x-juraj b'i li suwaan juun nim-laj choq'aab' wi' r-ik'iil
+\p COM-vt DIR PREP s num adj-ITS s EXS E3S-srel
+\g COM-jalar DIR PREP barranco uno grande-ITS fuerza EXS E3S-SR
+\l Los jaló al barranco, tenía una gran fuerza.
+
+\t juun sib'laj choq'aab' wi' rik'iil.
+\m juun seb'laj choq'aab' wi' r-ik'iil
+\p num ITS s EXS E3S-srel
+\g uno ITS fuerza EXS E3S-SR
+\l Tenía una garaan fuerza.
+
+\t kiib',
+\m kiib'
+\p num
+\g dos
+\l dos,
+
+\t uxiib',
+\m oxib'
+\p num
+\g tres
+\l tres
+
+\t x-kan-j-ne' taq guynar,
+\m x-kan-j-ne' taq ***-ar
+\p COM-DIR-SC-vt PL error-ITR
+\g COM-DIR-SC-hacer PL ***-ITR
+\l se salvaron
+
+\t ta' chik i' jk'iiyalaq,
+\m ta' chik i' j-k'iy-aal-aq
+\p NEG PART ENF E3S-vi-SAB-PL
+\g NEG PART ENF E3S-crecer-SAB-PL
+\l Ya no eran muchos
+
+\t jk'iyalaq.
+\m j-k'iyaal-aq
+\p E3S-s-PL
+\g E3S-mayoría-PL
+\l Sus cantidades
+
+\t Xkaam taq jwi'l rexteew,
+\m x-kam taq j-wi'l rexteew
+\p COM-vi PL E3S-srel s
+\g COM-morir PL E3S-SR paludismo
+\l Se murieron por paludismo.
+
+\t jwi'l q'aaq'.
+\m j-wi'l q'aaq'
+\p E3S-srel s
+\g E3S-SR fuego
+\l por calentura
+
+\t natun chi chi r-iij j-tze'n-ch jwichaq,
+\m natun chi chi r-iij j-tze'j-ch j-wiich-aq
+\p vi PREP PREP E3S-srel E3S-vi-DIR E3S-srel-PL
+\g mirar PREP PREP E3S-SR E3S-reirse-DIR E3S-SR-PL
+\l Les quedaba viendo, se reía de ellos
+
+\t che' r-e chaq,
+\m cha' r-e chaq
+\p vi E3S-srel PART
+\g decir E3S-SR PART
+\l Les dijo
+
+\t che' r-e chaq
+\m cha' r-e chaq
+\p vi E3S-srel PART
+\g decir E3S-SR PART
+\l Les dijo
+
+\t in ta' chik i' qleen tren falta chu-w-e.
+\m iin ta' chik i' qeleen t-r-b'an faalt chi-w-e
+\p pron NEG PART ENF s INC-E3S-vt *** PREP-E1S-srel
+\g yo NEG PART ENF cosa INC-E3S-hacer falta PREP-E1S-SR
+\l A mí ya no fe hace falta nada.
+
+\t Che' r-e chaq,
+\m cha' r-e chaq
+\p vi E3S-srel PART
+\g decir E3S-SR PART
+\l Les dijo
+
+\t cheq natun taq b'i chi r-iij
+\m chaq natun taq b'i chi r-iij
+\p PART vi PL DIR PREP E3S-srel
+\g PART mirar PL DIR PREP E3S-SR
+\l Solo se le quedaban viendo.
+
+\t sib'laj timayon taq.
+\m seb'laj t-may-on taq
+\p ITS INC-vi-AP PL
+\g ITS INC-extrañarse-AP PL
+\l Cómo se extrañaban
+
+\t Neen k'u jb'aniik juun ka'n ri
+\m neen k'u j-b'an-iik juun ka'n ri
+\p INT PART E3S-vt-SV num s DEM
+\g INT PART E3S-hacer-SV uno animal DEM
+\l De qué está echo este animal,
+
+\t che' taq,
+\m cha' taq
+\p vi PL
+\g decir PL
+\l Decían.
+
+\t neen k'u jb'aniik juun awaaj ri
+\m neen k'u j-b'an-iik juun awaj ri
+\p INT PART E3S-vt-SV num s DEM
+\g INT PART E3S-hacer-SV uno animal DEM
+\l Que será este animal
+
+\t che' taq qawa'xk
+\m cha' taq qa-wa'x-ik
+\p vi PL E1P-vi-SC
+\g decir PL E1P-estar-SC
+\l Decían nustra gente.
+
+\t qoch'olxiik.
+\m q-ech'elxiik
+\p E1P-s
+\g E1P-familiar
+\l Nuestros familiares
+
+\t xkan re, re ch-il-ik ra jk'ajool.
+\m x-kan re re ch-iil-iik ra j-k'ajool
+\p COM-vi pron pron PREP-SAB-SV DIM E3S-s
+\g COM-quedar él/ella él/ella PREP-SAB-SV DIM E3S-hijo.de.hombre
+\l Su hijo se le quedó viendo.
+
+\t X-iij r-e chaq qawa'xk q-och'olxik,
+\m x-iij r-e chaq qa-wa'x-ik q-ech'elxiik
+\p COM-vt E3S-srel PART E1P-vi-SC E1P-s
+\g COM-decir E3S-SR PART E1P-estar-SC E1P-familiar
+\l Le dijo a nuestra gente.
+
+\t ne moo ti-'an chik, inb'e chi wichooch,
+\m neen mood t-b'an chik in-b'e chi w-ichooch
+\p INT adv INC-vt PART A1S-vi PREP E1S-s
+\g INT modo INC-hacer PART A1S-ir PREP E1S-casa
+\l Cómo le hago para ir a mi casa
+
+\t w-ik'aan cheq
+\m w-ik'aan chaq
+\p E1S-srel PART
+\g E1S-solo PART
+\l Ya soy solo
+
+\t che'.
+\m cha'
+\p vi
+\g decir
+\l Dijo.
+
+\t qoch'olxik re, xk'am taqch rik'iilaq,
+\m q-ech'elxiik re x-k'am taq-ch r-ik'iil-aq
+\p E1P-s pron COM-vt PL-DIR E3S-srel-PL
+\g E1P-familiar él/ella COM-recibir PL-DIR E3S-SR-PL
+\l Nuestros familiares, lo trajeron con ellos.
+
+\t xq'aax lari laj qatilmiit.
+\m x-q'ax lari laj qa-tilmiit
+\p COM-vi error PRE E1P-s
+\g COM-pasar *** PRE E1P-pueblo
+\l Estuvo en nuestro pueblo.
+
+\t Usiil xtaq taq, b'íj-ik rk'i roch'olxik,
+\m usiil x-taq taq b'ij-iik r-k'i r-ech'elxiik
+\p adv COM-vt PL vt-SV E3S-srel E3S-s
+\g despacio COM-mandar PL decir-SV E3S-SR E3S-familiar
+\l Poco a poco mandaron el aviso con sus familiares.
+
+\t xtaq taq, b'iij j-k'il jwinaq
+\m x-taq taq b'ij j-k'il j-wunaq
+\p COM-vt PL vt E3S-srel E3S-s
+\g COM-mandar PL decir E3S-SR E3S-hombre
+\l Mandaron el aviso con su gente
+
+\t Ya r-ajwu mundo,
+\m ya r-ajáw muund
+\p voc E3S-s s
+\g ya E3S-dueño mundo
+\l Ya dueño del mundo
+
+\t ya r-ajwu ja'
+\m ya r-ajáw ja'
+\p voc E3S-s s
+\g ya E3S-dueño agua
+\l Ya dueño de agua
+
+\t cha' taq.
+\m cha' taq
+\p vi PL
+\g decir PL
+\l Dicen
+
+\t ta' chik i' jpeech
+\m ta' chik i' j-peech
+\p NEG PART ENF E3S-s
+\g NEG PART ENF E3S-compañía
+\l Ya no tiene compañero.
+
+\t ta' chik i' jqaaj.
+\m ta' chik i' j-qaaj
+\p NEG PART ENF E3S-s
+\g NEG PART ENF E3S-papá
+\l YA no tiene papá. T
+
+\t wi' juun sib'laj choq'aab' rik'iil,
+\m wi' juun seb'laj choq'aab' r-ik'iil
+\p EXS num ITS s E3S-srel
+\g EXS uno ITS fuerza E3S-SR
+\l Tenía una gran fuerza.
+
+\t wi' juun sib'laj nimaal,
+\m wi' juun seb'laj nim-aal
+\p EXS num ITS adj-SAB
+\g EXS uno ITS grande-SAB
+\l Tiene un gran tamaño.
+
+\t neen jnimal, ri ri jnimal ka'niil xye'w.
+\m neen j-nim-aal ri ri j-nim-aal ka'n-iil x-ye'-w
+\p INT E3S-adj-SAB DEM DEM E3S-adj-SAB s-SAB COM-vt-PART
+\g INT E3S-grande-SAB DEM DEM E3S-grande-SAB animal-SAB COM-dar-PART
+\l De su tamaño, es el tamaño del animal que dió.
+
+\t Kwando xyuq r-iib',
+\m kwaand x-yuq r-iib'
+\p adv COM-vt E3S-RFX
+\g cuándo COM-estirar E3S-RFX
+\l Cuando se estiró
+
+\t xnek' r-iib' jq'ab' peech jtyo'jl.
+\m x-nek' r-iib' j-q'ab' peech j-tyo'j-l
+\p COM-vt E3S-RFX E3S-s s E3S-s-PP
+\g COM-pegar E3S-RFX E3S-mano compañía E3S-gordo-PP
+\l Se juntaron sus manos con su cuerpo.
+
+\t x-eel wuw juun nimlaj awaaj, x-eel wuw.
+\m x-el wi juun nim-laj awaj x-el wi
+\p COM-vi PART num adj-ITS s COM-vi PART
+\g COM-salir PART uno grande-ITS animal COM-salir PART
+\l Un gran animal salió.
+
+\t juun wunaq i'n xwuux awaaj.
+\m juun wunaq i'n x-wux awaj
+\p num s ENF COM-vi s
+\g uno hombre ENF COM-convertir animal
+\l Es un hombre y se convirtió en aniumal
+
+\t Ch-uch q'iij saq
+\m ch-uch q'iij saq
+\p PREP-srel s adj
+\g PREP-SR día blanco
+\l En el mundo.
+
+\t qoch'olxik.
+\m q-ech'elxiik
+\p E1P-s
+\g E1P-familiar
+\l Nuestras familias.
+
+\t Ójor taq tziij kwando qawa'xk raaj, xk'am taqch ta' loq',
+\m ójor taq tziij kwaand qa-wa'x-ik raaj x-k'am taq-ch ta' looq'
+\p adv PL s adv E1P-vi-SV adv COM-vt PL-DIR NEG adv
+\g antiguamente PL palabra cuándo E1P-estar-SV tal@vez COM-recibir PL-DIR NEG posible
+\l Aquel día cuando nuestra gente quisieron traerlo pero no se pudo.
+
+\t chi k'amiik
+\m chi k'am-iik
+\p PREP vt-SV
+\g PREP recibir-SV
+\l por traerlo
+
+\t r-e chi' ja',
+\m r-e chi ja'
+\p E3S-srel PREP s
+\g E3S-SR PREP agua
+\l Es del agua
+
+\t kla' mismo x-kan-eel wiw.
+\m kla' miim-ow x-kan-eel wi
+\p adv adv-AP COM-DIR-SAB PART
+\g allí lo@mismo-AP COM-DIR-SAB PART
+\l Ahí mismo se quedó.
+
+\t x-kan jne' pi k'asleem ja',
+\m x-kan j-b'an pi k'aslaam ja'
+\p COM-DIR E3S-vt PREP adj s
+\g COM-DIR E3S-hacer PREP viviente agua
+\l Lo dejó echo agua viva.
+
+\t ti-ye' na rexteew ja' kla',
+\m t-ye' na rexteew ja' kla'
+\p INC-vt PART s s adv
+\g INC-dar PART paludismo agua allí
+\l Aún da paludismo por ahí.
+
+\t Neen qawa'xk xtzaq jch'ool ch-uch,
+\m neen qa-wa'x-ik x-tzaq j-ch'ool ch-uch
+\p INT E1P-vi-SC COM-vi E3S-s PREP-srel
+\g INT E1P-estar-SC COM-caerse E3S-estómago PREP-SR
+\l La gente se asustó de él,
+
+\t ti-ye' na rexteew r-e chaq,
+\m t-ye' na rexteew r-e chaq
+\p INC-vt PART s E3S-srel PART
+\g INC-dar PART paludismo E3S-SR PART
+\l Aún les da paludismo.
+
+\t jyo'l na rajwu.
+\m j-yo'l na r-ajáw
+\p E3S-adj PART E3S-s
+\g E3S-vivo PART E3S-dueño
+\l Aún vive el dueño.
+
+\t Jyo'l na jka'niil
+\m j-yo'l na j-ka'n-iil
+\p E3S-adj PART E3S-s-SAB
+\g E3S-vivo PART E3S-animal-SAB
+\l aún vive su animal.
+
+\t ji'non li lq'ori.
+\m jii'n li lajori
+\p adv DEM adv
+\g mero DEM ahora
+\l Así es ahora.
+
+\t ta' retamaq.
+\m ta' r-etaam-aq
+\p NEG E3S-s-PL
+\g NEG E3S-saber-PL
+\l No lo saben
+
+\t Wi' na ju juun qawa'xk
+\m wi' na jun juun qa-wa'x-ik
+\p EXS PART num num E1P-vi-SV
+\g EXS PART uno uno E1P-estar-SV
+\l Aún existen algunas personas
+
+\t che' taq,
+\m cha' taq
+\p vi PL
+\g decir PL
+\l Dicen,
+
+\t jwi'l tzaqom ch'olaal
+\m j-wi'l tzaq-oom ch'ool-aal
+\p E3S-srel vi-PP s-SAB
+\g E3S-SR caerse-PP estómago-SAB
+\l Por el susto,
+
+\t che' taq.
+\m cha' taq
+\p vi PL
+\g decir PL
+\l Dicen
+
+\t yo'l na jka'niil
+\m yo'l na j-ka'n-iil
+\p adj PART E3S-s-SAB
+\g vivo PART E3S-animal-SAB
+\l Aún vive su animal.
+
+\t ta' taq rexteew,
+\m ta' taq rexteew
+\p NEG PL s
+\g NEG PL paludismo
+\l Les da paludimo.
+
+\t Jwi'l k'u qe jno li
+\m j-wi'l k'u qe jono li
+\p E3S-srel PART PART adv DEM
+\g E3S-SR PART PART cualquier@parte DEM
+\l Nada más es por eso.
+
+\t wi' rajwu ja'
+\m wi' r-ajáw ja'
+\p EXS E3S-s s
+\g EXS E3S-dueño agua
+\l Tiene dueño el agua
+
+\t yo'l i'n,
+\m yo'l i'n
+\p adj ENF
+\g vivo ENF
+\l Vive.
+
+\t kristyan i'n.
+\m kirtyaan i'n
+\p s ENF
+\g persona ENF
+\l Es gente.
+
+\t jnimaal qe kumetz.
+\m j-nim-aal qe kumatz
+\p E3S-adj-SAB PART s
+\g E3S-grande-SAB PART culebra
+\l Solo su resto era culebra.
+
+\t ójor taq tziij,
+\m ójor taq tziij
+\p adv PL s
+\g antiguamente PL palabra
+\l En aquellos días.
+
+\t xtiij saqmo'l r-e kumetz,
+\m x-tiij saqmólb' r-e kumatz
+\p COM-s s E3S-srel s
+\g COM-comer huevo E3S-SR culebra
+\l Comió huevo de culebra.
+
+\t wi' nika' li neen tijb'aniik raajwu' saqmo'l,
+\m wi' nika' li neen t-j-b'an-iik r-ajáw saqmólb'
+\p EXS error DEM INT INC-E3S-vt-SV E3S-s s
+\g EXS *** DEM INT INC-E3S-hacer-SV E3S-dueño huevo
+\l Saber como es el dueño del huevo.
+
+\t R-e ri li laj qatilmiit
+\m r-e ri li laj qa-tilmiit
+\p E3S-srel DEM DEM PRE E1P-s
+\g E3S-SR DEM DEM PRE E1P-pueblo
+\l Para en nuestro pueblo
+
+\t r-il-a' tqa' neen jwiich
+\m r-il-a' taq-a' neen j-wiich
+\p E3S-vt-SC PL-SC INT E3S-srel
+\g E3S-ver-SC PL-SC INT E3S-SR
+\l Vieron Cómo es
+
+\t neen jb'aniik juun nimlaj awaaj,
+\m neen j-b'an-iik juun nim-laj awaj
+\p INT E3S-vt-SV num adj-ITS s
+\g INT E3S-hacer-SV uno grande-ITS animal
+\l Cómo estaba echo un gran animal.
+
+\t juun nimlaj kumetz,
+\m juun nim-laj kumatz
+\p num adj-ITS s
+\g uno grande-ITS culebra
+\l Una gran culebra.
+
+\t kristyan i'n xwuux qe kumetz.
+\m kirtyaan i'n x-wux qe kumatz
+\p s ENF COM-vi PART s
+\g persona ENF COM-convertir PART culebra
+\l Es gente, solo se convirtií en culebra.
+
+\t Xtiij qe saqmo'l,
+\m x-tiij qe saqmólb'
+\p COM-s PART s
+\g COM-comer PART huevo
+\l Solo comió huevo
+
+\t jinon li tyool taq qámam qátit',
+\m jilon li t-yol taq qa-maam qa-tiit'
+\p adv DEM INC-vt PL E1P-s E1P-s
+\g asi DEM INC-contar PL E1P-abuelo E1P-abuela
+\l Así cuentan nuestros abuelos, abuelas.
+
+\t t-yool taq juun wunaq,
+\m t-yol taq juun wunaq
+\p INC-vt PL num s
+\g INC-contar PL uno hombre
+\l Cuentan un hombre
+
+\t xtiij saqmo'l
+\m x-tiij saqmólb'
+\p COM-s s
+\g COM-comer huevo
+\l Comió huevo
+
+\t che',
+\m cha'
+\p vi
+\g decir
+\l Dice
+
+\t wi' na li ja',
+\m wi' na li ja'
+\p EXS PART PREP s
+\g EXS PART PREP agua
+\l Está aún en el agua.
+
+\t wi' na jsook,
+\m wi' na j-sook
+\p EXS PART E3S-s
+\g EXS PART E3S-nido
+\l Aún tiene su nido
+
+\t Ch'aw na juun taq b'weelt,
+\m ch'aw na juun taq b'weelt
+\p vi PART num PL adv
+\g hablar PART uno PL ves
+\l Algunas veces, aún habla.
+
+\t tiq'ax lamaas tiq'ax wuw, ajyo'l i'n,
+\m t-q'ax lamaas t-q'ax wi aj-yo'l i'n
+\p INC-vi adv INC-vi PART AGT-adj ENF
+\g INC-pasar dónde INC-pasar PART AGT-vivo ENF
+\l PAsa donde pasa, aún vive.
+
+\t re re ta' kamnaq lq'ori,
+\m re re ta' kamnaq lajori
+\p pron pron NEG s adv
+\g él/ella él/ella NEG muerto ahora
+\l él no está muerto ahora.
+
+\t kla' yo'l wuw,
+\m kla' yo'l wi
+\p adv adj PART
+\g allí vivo PART
+\l Allá vive
+
+\t k'u ta na r-iib' ch-uch jujuun qawa'xk,
+\m k'u ta na r-iib' ch-uch ju-juun qa-wa'x-ik
+\p PART PART PART E3S-RFX INC-srel num-num E1P-vi-SV
+\g PART PART PART E3S-RFX INC-SR uno-uno E1P-estar-SV
+\l Aún se enseña delante algunas personas.
+
+\t rexteew,
+\m rexteew
+\p s
+\g paludismo
+\l PAludismo
+
+\t peech ra jtaqo'n,
+\m peech ra j-taqo'n
+\p s DIM E3S-s
+\g compañía DIM E3S-mensajero
+\l Con su hijo.
+
+\t juun ajk'aay i'n.
+\m juun aj-k'aay i'n
+\p num AGT-s ENF
+\g uno AGT-venta ENF
+\l Es un vendedor.
+
+\t Juun aj Maax i'n,
+\m juun aj Maax i'n
+\p num GNT nom ENF
+\g uno GNT Tomas ENF
+\l Es un Maxeño
+
+\t xwuux kumetz.
+\m x-wux kumatz
+\p COM-vi s
+\g COM-convertir culebra
+\l Se convirtió en culebra..
+
