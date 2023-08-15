@@ -294,7 +294,7 @@
 
 \t A, k'omo chawe
 \m a k'omo ***
-\p PREP ADV ERROR
+\p PREP ADV ???
 \g a gracias ***
 \l A muchas gracias
 
@@ -324,7 +324,7 @@
 
 \t i chij je' man kumetz
 \m i *** *** man kumatz
-\p CONJ ERROR ERROR ART S
+\p CONJ ??? ??? ART S
 \g CONJ *** *** ART culebra
 \l y en la cola de la culebra
 
@@ -480,13 +480,13 @@
 
 \t i ke si ke ma tz'et ta' re'
 \m i ke si ke ma tz'eet ta' re
-\p CONJ PAR ADV PART NEG ITS NEG PRON
+\p CONJ PART ADV PART NEG ITS NEG PRON
 \g CONJ que si que NEG ITS NEG él/ella
 \l y que si no hera cierto él
 
 \t ri' xek' xe' chi rqan.
 \m ri' xeek' xe' chi naj
-\p DEM VI SREL PRE S
+\p DEM VI SREL PREP S
 \g eso@es se@fue SR PRE pies
 \l él se fue a pie.
 
@@ -684,13 +684,13 @@
 
 \t Tawen ba, k'omo chawe.
 \m tawen baa k'omo ***
-\p ADV VOC ADV ERROR
+\p ADV VOC ADV ???
 \g esta@bien baya gracias ***
 \l Esta bien bya te lo agradesco.
 
 \t o a la seys
 \m o' a la seys
-\p CONJ PREP PRE NUM
+\p CONJ PREP PREP NUM
 \g o a PRE seis
 \l o a las seis
 

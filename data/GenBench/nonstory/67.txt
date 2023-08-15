@@ -132,7 +132,7 @@
 
 \t i wi' ween taq chee' chuch,
 \m i wi' ween taq chee' ch-uch
-\p CONJ EXS ADV PL S PREP-ERROR
+\p CONJ EXS ADV PL S PREP-???
 \g CONJ EXS bueno PL rbol PREP-***
 \l Y hay buenos rboles.
 
@@ -162,37 +162,37 @@
 
 \t k'is kla' sol k'is, k'is Us
 \m k'is kla' sol k'is k'is Us
-\p PL ADV PART PL PL APELL
+\p PL ADV PART PL PL ???
 \g PL all PART PL PL Us
 \l de all solo los Uses.
 
 \t i k'is Pachek wi' taq jiri,
 \m i k'is Pachek wi' taq jari
-\p CONJ PL APELL EXS PL ADV
+\p CONJ PL ??? EXS PL ADV
 \g CONJ PL Pachecos EXS PL por@aqu
 \l Y los de apellidos Pachecos que estan de este lado.
 
 \t Ntons niri oj sol oj Kixtan
 \m ntons niri oj sol oj Kixtan
-\p ADV ADV PRON ADV PRON APELL
+\p ADV ADV PRON ADV PRON ???
 \g entonces aqui nosotros solo nosotros Quixtan
 \l Entonces aqu nosotros solo somos de apellidos Kixtn.
 
 \t i Pachek
 \m i Pachek
-\p CONJ APELL
+\p CONJ ???
 \g CONJ Pachecos
 \l Y Pachecos.
 
 \t i niri sol k'is Kixtan
 \m i niri sol k'is Kixtan
-\p CONJ ADV ADV PL APELL
+\p CONJ ADV ADV PL ???
 \g CONJ aqui solo PL Quixtan
 \l Y aqu solo los Kixtan.
 
 \t i Pacheko
 \m i Pacheko
-\p CONJ APELL
+\p CONJ ???
 \g CONJ Pacheco
 \l Y Pachecos.
 
@@ -580,6 +580,12 @@
 \g CONJ bien bonito
 \l Y bien bonito.
 
+\t porke, ya xi' komo k'ijab' tokads oj pe kla',
+\m porke ya xi' komo k'ijab' tokads oj pe kla'
+\p ADV VOC ??? ADV NUM S PRON VI ADV
+\g porque ya ir como cuatro tocadas nosotros venir all
+\l porque ya hemos ido cuatro veces
+
 \t porke, Eskipulas wi', wi' Sikache.
 \m porke Eskipulas wi' wi' Sikache
 \p ADV S EXS EXS TOP
@@ -630,13 +636,13 @@
 
 \t kas xaq laq tilmit wi' Damyan na.
 \m kas xaq laq tilmit wi' Damyan na
-\p ADV PART PREP S EXS APELL PART
+\p ADV PART PREP S EXS ??? PART
 \g casi PART PREP pueblo EXS Damian PART
 \l Casi solo en el pueblo hay Damin todava.
 
 \t kasi xaq oj qe oj Damyan,
 \m kasi xaq oj qe oj Damyan
-\p ADV PART PRON SREL PRON APELL
+\p ADV PART PRON SREL PRON ???
 \g casi PART nosotros SR nosotros Damian
 \l casi solo nosotros somos Damianes.
 
@@ -654,13 +660,13 @@
 
 \t los Kixtaanes
 \m los Kixtanes
-\p ART APELL
+\p ART ???
 \g ART Quixtanes
 \l Los Quixtanes.
 
 \t i Damyanes
 \m i Damyanes
-\p CONJ APELL
+\p CONJ ???
 \g CONJ Damianes
 \l Y Damianes.
 
@@ -702,7 +708,7 @@
 
 \t ya Los Internasyonale Damyanes chaq.
 \m ya Los Internasyonale Damyanes chaq
-\p VOC ART ADJ APELL PART
+\p VOC ART ADJ ??? PART
 \g ya ART Internacionales Damianes PART
 \l Ya Los Internacionales Damianes son.
 
@@ -780,7 +786,7 @@
 
 \t Santa Jetrudes chirqan jun
 \m Santa Jetrudes chi-r-qan jun
-\p S NOM PREP-E3S-PERS NUM
+\p S NOM PREP-E3S-??? NUM
 \g Santa Gertrudis* PREP-E3S-aqan uno
 \l a Santa Gestrudis* a pie.
 
@@ -948,13 +954,13 @@
 
 \t niri kasi solo oj Pinula
 \m niri kasi sol oj Pinula
-\p ADV ADV ADV PRON APELL
+\p ADV ADV ADV PRON ???
 \g aqui casi solo nosotros Pinnula
 \l Aqu casi solo somos Pinula.
 
 \t i Damyan,
 \m i Damyan
-\p CONJ APELL
+\p CONJ ???
 \g CONJ Damián
 \l Y Damianes.
 

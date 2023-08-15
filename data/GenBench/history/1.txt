@@ -1,6 +1,6 @@
 \t Wataq juntir chi'ntayik,
 \m w-a-aq juntiir ch-in-tay-ik
-\p EXS-A2-PL ADV PRE-E1S-VT-SV
+\p EXS-???-PL ADV PREP-E1S-VT-SV
 \g EXS-A2-PL todo PRE-E1S-escuchar-SV
 \l Todos los que me estn escuchando.
 
@@ -12,7 +12,7 @@
 
 \t ch-uuch aw-anm-aq.
 \m ch-uuch aw-anm-aq
-\p PRE-SREL E2S-S-PL
+\p PREP-SREL E2S-S-PL
 \g PRE-SR E2S-alma-PL
 \l ante ustedes.
 
@@ -36,7 +36,7 @@
 
 \t Qaqaaj Simiyeel chi' B'ooy,
 \m waqaq\a-aaj Simiyeel chi ***
-\p NUM-MED S PREP ERROR
+\p NUM-MED S PREP ???
 \g seis-MED San@Miguel PREP ***
 \l Nuestro padre Sn Mihguel de Chiboy
 
@@ -48,7 +48,7 @@
 
 \t ji' wi' re chi' B'ooy, jor taq tziij
 \m ji' wi' re chi *** jor taq tziij
-\p ERROR EXS PRON PREP ERROR ADV PL S
+\p ??? EXS PRON PREP ??? ADV PL S
 \g *** EXS l/ella PREP *** antiguamente PL palabra
 \l Se encontraba en Chiboy en tiempos pasados.
 
@@ -108,7 +108,7 @@
 
 \t xwa'x laj xool-aq,
 \m x-wa'x laj xo'l-aq
-\p COM-VI PRE SREL-PL
+\p COM-VI PREP SREL-PL
 \g COM-estar PRE SR-PL
 \l estuvo entre ellos
 
@@ -120,7 +120,7 @@
 
 \t tijin taq li xaq chi'yin-iik,
 \m tijin taq li xaq ???
-\p PRG PL PREP PART ERROR
+\p PRG PL PREP PART ???
 \g PRG PL PREP solo ***
 \l Estaban en conversaciones
 
@@ -138,7 +138,7 @@
 
 \t r-aj ti ranm re re, x-yesaa-j ti jun kiitz ruk'a,
 \m r-aj ti r-anm re re x-ye'-saa-j ti jun kiitz ruk'a
-\p E3S-VT ERROR E3S-S PRON PRON COM-VT-CAU-SC ERROR NUM ADV PART
+\p E3S-VT ??? E3S-S PRON PRON COM-VT-CAU-SC ??? NUM ADV PART
 \g E3S-querer ??? E3S-alma l/ella l/ella COM-dar-CAU-SC ??? uno poco PART
 \l El deseaba, que le hubieran dado un poco de bebida.
 
@@ -168,7 +168,7 @@
 
 \t t-qeej-ch jtzaam laj chi'.
 \m t-qeej-ch j-tzaam laj chi'
-\p INC-VI-DIR E3S-S PRE S
+\p INC-VI-DIR E3S-S PREP S
 \g INC-bajar-DIR E3S-nariz PRE boca
 \l Le bajaban los mocos en su voca
 
@@ -228,7 +228,7 @@
 
 \t ne jruub' te jnimal rikiil-aq wi',
 \m neen jruub' te j-nim-al rikiil-aq wi'
-\p INT *** ERROR E3S-ADJ-SAB S-PL EXS
+\p INT ??? ??? E3S-ADJ-SAB S-PL EXS
 \g INT cunto ? E3S-grande-SAB comida-PL EXS
 \l Haber cunta comida estaba
 
@@ -252,13 +252,13 @@
 
 \t r-e chaq, xkan jne' juun k'ex r-e chaq,
 \m r-e chaq x-kan ??? juun k'ex r-e chaq
-\p E3S-SREL PART COM-VI ERROR NUM ADJ E3S-SREL PL
+\p E3S-SREL PART COM-VI ??? NUM ADJ E3S-SREL PL
 \g E3S-SR PART COM-quedar *** uno dao E3S-SR PL
 \l a ellos, les dej echo un dao
 
 \t xkan-much-e' laj rikiilaq.
 \m x-kan-much-e' laj rikiil-aq
-\p COM-DIR-VT-SC PRE S-PL
+\p COM-DIR-VT-SC PREP S-PL
 \g COM-DIR-pedacear-SC PRE comida-PL
 \l Lo dejo pedaciado en sus comidas.
 
@@ -270,7 +270,7 @@
 
 \t xaq met' laj rikilaq.
 \m xaq met' laj rikil-aq
-\p PART S PRE S-PL
+\p PART S PREP S-PL
 \g solo tabaco PRE comida-PL
 \l haba tabaco en sus comnidas
 
@@ -288,13 +288,13 @@
 
 \t xen taq per ta' chik-i' loq',
 \m x-b'an taq per ta' chik-i' looq'
-\p COM-VT PL ERROR NEG PART-ENF ADV
+\p COM-VT PL ??? NEG PART-ENF ADV
 \g COM-hacer PL *** NEG PART-ENF posible
 \l Hicieron pero ya no se pudo
 
 \t ta' chik-i' laj xo'laq.
 \m ta' chik-i' laj xo'l-aq
-\p NEG PART-ENF PRE SREL-PL
+\p NEG PART-ENF PREP SREL-PL
 \g NEG PART-ENF PRE SR-PL
 \l Ya no estaba en medio de ellos
 
@@ -318,25 +318,25 @@
 
 \t Ji' k'u jno li qaqaaj Simiyeel,
 \m ji' k'u jono li qa-qaaj Simiyeel
-\p ERROR PART ADV DEM E1P-CLAS S
+\p ??? PART ADV DEM E1P-CLAS S
 \g *** PART cualquier@parte DEM E1P-seor San@Miguel
 \l Es as nuestro padre San Miguel
 
 \t xuqeej lari qatilmiit,
 \m x-u-qeej lari qa-tilmiit
-\p COM-DIR-VI ERROR E1P-S
+\p COM-DIR-VI ??? E1P-S
 \g COM-DIR-bajar *** E1P-pueblo
 \l Lleg en nuestro pueblo
 
 \t xuqeej lari qatilmiit.
 \m x-u-qeej lari qa-tilmiit
-\p COM-DIR-VI ERROR E1P-S
+\p COM-DIR-VI ??? E1P-S
 \g COM-DIR-bajar *** E1P-pueblo
 \l Lleg en nuestro pueblo
 
 \t jor taq tziij ri' Li'y Kantel wi' laj qatilmiit,
 \m jor taq tziij ri' Li'y kanteel wi' laj qa-tilmiit
-\p ADV PL S DEM NOM S EXS PRE E1P-S
+\p ADV PL S DEM NOM S EXS PREP E1P-S
 \g antiguamente PL palabra eso@es mara candela EXS PRE E1P-pueblo
 \l En tiempos pasados, Mara Candelaria estaba en buestro pueblo.
 
@@ -348,7 +348,7 @@
 
 \t Qaqaaj Simiyeel xkanel laj nari laj qatilmiit.
 \m qa-qaaj Simiyeel x-kan-el laj niri laj qa-tilmiit
-\p E1P-CLAS S COM-DIR-VI PRE ADV PRE E1P-S
+\p E1P-CLAS S COM-DIR-VI PREP ADV PREP E1P-S
 \g E1P-seor San@Miguel COM-DIR-salir PRE aqui PRE E1P-pueblo
 \l Nuestro Padre San Miguel se qued aqu en nuestro pueblo
 
@@ -372,13 +372,13 @@
 
 \t I ji' k'u non li qaqaaj Simiyeel,
 \m i ji' k'u jilon li qa-qaaj Simiyeel
-\p CONJ ERROR PART ADV DEM E1P-CLAS S
+\p CONJ ??? PART ADV DEM E1P-CLAS S
 \g CONJ *** PART asi DEM E1P-seor San@Miguel
 \l as es nuestro padre san Miguel
 
 \t ji' xwa'x ch-elaaj jun nim-laaj tz'ite',
 \m ji' x-wa'x ch-elaaj jun nim-laj tz'ite'
-\p ERROR COM-VI PREP-SREL NUM ADJ-ITS S
+\p ??? COM-VI PREP-SREL NUM ADJ-ITS S
 \g *** COM-estar PREP-SR uno grande-ITS palo@de@pito
 \l estubo debajo de un gran palo de pito
 
@@ -396,13 +396,13 @@
 
 \t I ji k'u non qaqaaj Simiyeel,
 \m i ji' k'u jilon qa-qaaj Simiyeel
-\p CONJ ERROR PART ADV E1P-CLAS S
+\p CONJ ??? PART ADV E1P-CLAS S
 \g CONJ *** PART asi E1P-seor San@Miguel
 \l As nuestro psdre San Miguel
 
 \t Ji k'u jnon ri qaqaaj Simiyeel,
 \m ji k'u jilon ri qa-qaaj Simiyeel
-\p ERROR PART ADV DEM E1P-CLAS S
+\p ??? PART ADV DEM E1P-CLAS S
 \g *** PART asi DEM E1P-seor San@Miguel
 \l Es asi nuestro Padre san Miguel
 
@@ -462,7 +462,7 @@
 
 \t Tb'eek, ti-'el b'i laj chtix,
 \m t-b'ee-ik t-el b'i laj chtix
-\p INC-VI-SC INC-VI DIR PRE S
+\p INC-VI-SC INC-VI DIR PREP S
 \g INC-ir-SC INC-salir DIR PRE iglesia
 \l Se va, se sale de la iglesia
 
@@ -510,13 +510,13 @@
 
 \t sib'laj ka'n wi' laj chtich,
 \m seb'laj ka'n wi' laj chtix
-\p ITS S EXS PRE S
+\p ITS S EXS PREP S
 \g ITS animal EXS PRE iglesia
 \l Haban muchos animales en la iglesia
 
 \t ne jruub' te ka'n,
 \m neen juruub' ta' ka'n
-\p INT ADV ERROR S
+\p INT ADV ??? S
 \g INT cuanto *** animal
 \l Saber cuantos animales
 
@@ -534,7 +534,7 @@
 
 \t wi' te ne' jruub' j-wiich ka'n wi'.
 \m wi' ta' ne' juruub' j-wiich ka'n wi'
-\p EXS ERROR PART ADV E3S-SREL S EXS
+\p EXS ??? PART ADV E3S-SREL S EXS
 \g EXS *** PART cuanto E3S-SR animal EXS
 \l Haban cuantas clases de animales
 
@@ -552,37 +552,37 @@
 
 \t wi' te ne' jruub' ka'n wi' taq.
 \m wi' ta' ne' juruub' ka'n wi' taq
-\p EXS ERROR PART ADV S EXS PL
+\p EXS ??? PART ADV S EXS PL
 \g EXS *** PART cuanto animal EXS PL
 \l Hubieran cuantos animales haban
 
 \t wi' k'iti' wuron,
 \m wi' ??? ???
-\p EXS ERROR ERROR
+\p EXS ??? ???
 \g EXS *** ***
 \l haban montes
 
 \t wi' k'iti' chee'.
 \m wi' ??? chee'
-\p EXS ERROR S
+\p EXS ??? S
 \g EXS *** rbol
 \l haban rboles
 
 \t ne jruub' ti j-wiich ka'n,
 \m neen juruub' ti' j-wiich ka'n
-\p INT ADV ERROR E3S-SREL S
+\p INT ADV ??? E3S-SREL S
 \g INT cuanto *** E3S-SR animal
 \l Cuantas clases de animales sern
 
 \t ne jruub' ti j-wiich nojeel qleen wi' taq.
 \m neen juruub' ti' j-wiich nojeel qeleen wi' taq
-\p INT ADV ERROR E3S-SREL ADV S EXS PL
+\p INT ADV ??? E3S-SREL ADV S EXS PL
 \g INT cuanto *** E3S-SR todo cosa EXS PL
 \l Cuantas clases de cosas habran.
 
 \t xwa'x-k qaqaaj Simiyeel laj qatilmiit.
 \m x-wa'x-ik qa-qaaj Simiyeel laj qa-tilmiit
-\p COM-VI-SC E1P-CLAS S PRE E1P-S
+\p COM-VI-SC E1P-CLAS S PREP E1P-S
 \g COM-estar-SC E1P-seor San@Miguel PRE E1P-pueblo
 \l estuvo nuestro padre San Miguel en nuestro pueblo
 
@@ -606,13 +606,13 @@
 
 \t wi' te ne' jruub' raaj juun.
 \m wi' ta' ne' juruub' raaj juun
-\p EXS ERROR PART ADV ADV NUM
+\p EXS ??? PART ADV ADV NUM
 \g EXS *** PART cuanto tal@vez uno
 \l tiene cuantas cosas quiere uno
 
 \t Per qawinaq jor taq tziij,
 \m per qa-winaaq jor taq tziij
-\p ERROR E1P-S VT PL S
+\p ??? E1P-S VT PL S
 \g *** E1P-gente perforar PL palabra
 \l Pero nuestra gente en aquel entonces
 
@@ -630,7 +630,7 @@
 
 \t Qaqaaj Simiyeel wi' li laj chtix,
 \m qa-qaaj Simiyeel wi' li laj chtix
-\p E1P-CLAS S EXS DEM PRE S
+\p E1P-CLAS S EXS DEM PREP S
 \g E1P-seor San@Miguel EXS DEM PRE iglesia
 \l Nuestro padre San Miguel est alli en la iglesia
 
@@ -702,7 +702,7 @@
 
 \t aj ruk' re' b'ee taq laj chaakaq,
 \m aj ruk' re' b'e taq laj chaak-aq
-\p PART PART PART VI PL PRE S-PL
+\p PART PART PART VI PL PREP S-PL
 \g PART PART PART ir PL PRE trabajo-PL
 \l Despus se iban a sus trabajos
 
@@ -804,7 +804,7 @@
 
 \t nojel i' jel-aam nik'iij tilmiit chik.
 \m nojeel i' jaw-el-eem nk'ij tilmiit chik
-\p ADV ENF ERROR-ERROR-ERROR ADV S PART
+\p ADV ENF ???-???-??? ADV S PART
 \g todo ENF ***-***-*** algunos pueblo PART
 \l Todo se cambi a ostros pueblos
 
@@ -954,7 +954,7 @@
 
 \t xwa'x laj qatilmit,
 \m x-wa'x laj qa-tinmit
-\p COM-VI PRE E1P-S
+\p COM-VI PREP E1P-S
 \g COM-estar PRE E1P-pueblo
 \l estuvo en nuestro pueblo.
 
@@ -1032,7 +1032,7 @@
 
 \t ch'ejeej sib'laj utiiw x-el taqch laj chtix,
 \m ch'ejee-j seb'laj utiiw x-el taq-ch laj chtix
-\p VI-SC ITS S COM-VI PL-DIR PRE S
+\p VI-SC ITS S COM-VI PL-DIR PREP S
 \g canto@guacamaya-SC ITS coyote COM-salir PL-DIR PRE iglesia
 \l Gritaban mnuchos coyotes salieron de la iglesia.
 
@@ -1044,13 +1044,13 @@
 
 \t sib'laj ch'ejeej taq x-el taq laj chtix.
 \m seb'laj ch'ej-j taq x-el taq laj chtix
-\p ITS VI-SC PL COM-VI PL PRE S
+\p ITS VI-SC PL COM-VI PL PREP S
 \g ITS canto@guacamaya-SC PL COM-salir PL PRE iglesia
 \l Gritaban mucho al salir de la iglesia.
 
 \t neen ti jruub' kristyan wi' taq li miix
 \m neen ti' juruub' kirtyaan wi' taq li miix
-\p INT ERROR ADV S EXS PL DEM S
+\p INT ??? ADV S EXS PL DEM S
 \g INT *** cuanto persona EXS PL DEM misa
 \l Saber cuanta genta estaban en la misa
 
@@ -1170,7 +1170,7 @@
 
 \t xwa'x na laj qatilmiit,
 \m x-wa'x na laj qa-tilmiit
-\p COM-VI PART PRE E1P-S
+\p COM-VI PART PREP E1P-S
 \g COM-estar PART PRE E1P-pueblo
 \l Todava estuvo en nuestro pueblo
 
@@ -1206,7 +1206,7 @@
 
 \t juun k'aslaam laj tiyoox i'n,
 \m juun k'aslaam laj tyox i'n
-\p NUM ADJ PRE S ENF
+\p NUM ADJ PREP S ENF
 \g uno viviente PRE santo ENF
 \l Es un Santo viviente.
 
@@ -1362,7 +1362,7 @@
 
 \t ne mo xu' laj qatilmiit.
 \m neen mood x-yu' laj qa-tilmiit
-\p INT ADV COM-VI PRE E1P-S
+\p INT ADV COM-VI PREP E1P-S
 \g INT modo COM-llegar.aqu PRE E1P-pueblo
 \l Cmo vino en nestro pueblo
 

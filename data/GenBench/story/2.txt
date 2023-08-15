@@ -78,7 +78,7 @@
 
 \t wunaq x-e' jtokik jsii' xaq' chee', r-e nuk' b'i r-e ajq'aaq' r-e miq' b'i r-e jwaa.
 \m wunaq x-b'e j-tok-ik j-sii' xaq' chee' r-e nuk' b'i r-e aj-q'aaq' r-e miq' b'i r-e j-waa
-\p S COM-VI E3S-VT-SV E3S-S ERROR S E3S-SREL VT DIR E3S-SREL AGT-S E3S-SREL VT DIR E3S-SREL E3S-S
+\p S COM-VI E3S-VT-SV E3S-S ??? S E3S-SREL VT DIR E3S-SREL AGT-S E3S-SREL VT DIR E3S-SREL E3S-S
 \g hombre COM-ir E3S-buscar-SV E3S-leña *** árbol E3S-SR unir/juntar DIR E3S-SR AGT-fuego E3S-SR calentar DIR E3S-SR E3S-tortilla
 \l Al hombre se fue a buscar su leña bajo los árboles para juntar fuego para calentar su tortilla.
 
@@ -96,7 +96,7 @@
 
 \t juun mulaaj saqmo'l xte' xaq' chee'.
 \m juun mul-aaj saqmólb' x-ta' xaq' chee'
-\p NUM MED-MED S COM-VT ERROR S
+\p NUM MED-MED S COM-VT ??? S
 \g uno montón-MED huevo COM-encontrar *** árbol
 \l Un montón de huevos encontró bajo los árboles.
 
@@ -120,7 +120,7 @@
 
 \t Xta' b'i nik'ij saqmo'l xaq' chee',
 \m x-ta' b'i ník'ij saqmólb' xaq' chee'
-\p COM-VT DIR ADV S ERROR S
+\p COM-VT DIR ADV S ??? S
 \g COM-encontrar DIR algunos huevo *** árbol
 \l Por haber encontrado huevos bajo los árboles.
 
@@ -132,13 +132,13 @@
 
 \t X-ok xtaqiik jk'aat,
 \m x-ok ch-taq-iik j-k'aat
-\p COM-VI PRE-VT-SV E3S-S
+\p COM-VI PREP-VT-SV E3S-S
 \g COM-entrar PRE-mandar-SV E3S-red
 \l Empezó a desatar su red.
 
 \t x-r-esaa-j-ch juun t'u'y laj laj k'aat.
 \m x-r-esaa-j-ch juun t'u'y laj laj k'aat
-\p COM-E3S-VT-SC-DIR NUM S PRE PRE S
+\p COM-E3S-VT-SC-DIR NUM S PREP PREP S
 \g COM-E3S-sacar-SC-DIR uno ollita PRE PRE red
 \l Sacó una olla de su red.
 
@@ -258,7 +258,7 @@
 
 \t jor galan jtiijik.
 \m jor galaan j-tiij-ik
-\p ERROR ADJ E3S-S-SV
+\p ??? ADJ E3S-S-SV
 \g *** galan E3S-comer-SV
 \l Es bien sabroso
 
@@ -324,7 +324,7 @@
 
 \t che' r-e laj k'ajool.
 \m cha' r-e laj k'ajool
-\p VI E3S-SREL PRE S
+\p VI E3S-SREL PREP S
 \g decir E3S-SR PRE hijo.de.hombre
 \l le dijo a su hijo
 
@@ -342,7 +342,7 @@
 
 \t xya' jq'ab' ch-relaj jb'aa,
 \m x-ya' j-q'ab' ch-r--elaj j-b'aa
-\p COM-VT E3S-S INC-E3S--SR E3S-S
+\p COM-VT E3S-S INC-E3S--??? E3S-S
 \g COM-dar E3S-mano INC-E3S--SR E3S-cabeza
 \l Puso sus manos bajo su cabeza
 
@@ -414,7 +414,7 @@
 
 \t x-uquqee-j r-iib'
 \m x-uq-uqee-j r-iib'
-\p COM-PERS-TRN-SC E3S-RFX
+\p COM-???-TRN-SC E3S-RFX
 \g COM-estirar-TRN-SC E3S-RFX
 \l Se estiró
 
@@ -462,7 +462,7 @@
 
 \t qech'olxik wi' x-k'amsaaj taq b'ik,
 \m qe-ech'elxik wi' x-k'am-saj taq b'ik
-\p ERROR-ERROR EXS COM-VT-PAS PL DIR
+\p ???-??? EXS COM-VT-PAS PL DIR
 \g ***-*** EXS COM-recibir-PAS PL DIR
 \l Paisanos que solo fueron llevados
 
@@ -474,7 +474,7 @@
 
 \t r-aaj ti r-anm-aq, juntir kristyan x-e' chi r-il-iik,
 \m r-aaj ti' r-anm-aq juntiir kirtyaan x-b'e chi r-il-iik
-\p E3S-VT ERROR E3S-S-PL ADV S COM-VI PREP E3S-VT-SV
+\p E3S-VT ??? E3S-S-PL ADV S COM-VI PREP E3S-VT-SV
 \g E3S-querer *** E3S-alma-PL todo persona COM-ir PREP E3S-ver-SV
 \l Deseaban que toda le genta hubieran hido a ver.
 
@@ -498,7 +498,7 @@
 
 \t r-aaj ti r-anm-aq x-e' taaj.
 \m r-aaj ti' r-anm-aq x-b'e ???
-\p E3S-VT ERROR E3S-S-PL COM-VI ERROR
+\p E3S-VT ??? E3S-S-PL COM-VI ???
 \g E3S-querer *** E3S-alma-PL COM-ir ***
 \l Deseaban se hubiera ido
 
@@ -510,7 +510,7 @@
 
 \t R-aaj ti r-anm-aq xk'am taqch laq tilmiit,
 \m r-aaj ti' r-anm-aq x-k'am taq-ch laq tilmiit
-\p E3S-VT ERROR E3S-S-PL COM-VT PL-DIR PREP S
+\p E3S-VT ??? E3S-S-PL COM-VT PL-DIR PREP S
 \g E3S-querer *** E3S-alma-PL COM-recibir PL-DIR PREP pueblo
 \l Querían traer al pueblo
 
@@ -612,7 +612,7 @@
 
 \t Kwando xu' taq kristyan chi ri ch-och-aq,
 \m kwaand x-yu' taq kirtyaan chi ri ch-och-aq
-\p ADV COM-VI PL S PREP DEM PRE-SREL-PL
+\p ADV COM-VI PL S PREP DEM PREP-SREL-PL
 \g cuándo COM-llegar.aquí PL persona PREP DEM PRE-SR-PL
 \l Cuando vino la gente a sus casas
 
@@ -636,7 +636,7 @@
 
 \t Neen jrub' xen taq guynar, xpe' taq,
 \m neen juruub' x-b'an taq ***-ar x-pet taq
-\p INT ADV COM-VT PL ERROR-ITR COM-VI PL
+\p INT ADV COM-VT PL ???-ITR COM-VI PL
 \g INT cuanto COM-hacer PL ***-ITR COM-venir PL
 \l Todos los que lograron venir
 
@@ -840,7 +840,7 @@
 
 \t neen chakuuj in-a-k'am taq b'ik
 \m neen chaak-uu-j in-a-k'am taq b'ik
-\p INT S-TR-SC A1S-E2S-VT PL DIR
+\p INT S-???-SC A1S-E2S-VT PL DIR
 \g INT trabajo-TR-SC A1S-E2S-recibir PL DIR
 \l Para qué me llevan
 
@@ -864,7 +864,7 @@
 
 \t x-tiij taq j-choq' w-aq
 \m x-tiij taq j-choq'aab' ???
-\p COM-S PL E3S-S ERROR
+\p COM-S PL E3S-S ???
 \g COM-comer PL E3S-fuerza ***
 \l Echaron fuerzas.
 
@@ -906,7 +906,7 @@
 
 \t x-kan-j-ne' taq guynar,
 \m x-kan-j-ne' taq ***-ar
-\p COM-DIR-SC-VT PL ERROR-ITR
+\p COM-DIR-SC-VT PL ???-ITR
 \g COM-DIR-SC-hacer PL ***-ITR
 \l se salvaron
 
@@ -954,7 +954,7 @@
 
 \t in ta' chik i' qleen tren falta chu-w-e.
 \m iin ta' chik i' qeleen t-r-b'an faalt chi-w-e
-\p PRON NEG PART ENF S INC-E3S-VT *** PREP-E1S-SREL
+\p PRON NEG PART ENF S INC-E3S-VT ??? PREP-E1S-SREL
 \g yo NEG PART ENF cosa INC-E3S-hacer falta PREP-E1S-SR
 \l A mí ya no fe hace falta nada.
 
@@ -1044,7 +1044,7 @@
 
 \t xq'aax lari laj qatilmiit.
 \m x-q'ax lari laj qa-tilmiit
-\p COM-VI ERROR PRE E1P-S
+\p COM-VI ??? PREP E1P-S
 \g COM-pasar *** PRE E1P-pueblo
 \l Estuvo en nuestro pueblo.
 
@@ -1296,13 +1296,13 @@
 
 \t wi' nika' li neen tijb'aniik raajwu' saqmo'l,
 \m wi' nika' li neen t-j-b'an-iik r-ajáw saqmólb'
-\p EXS ERROR DEM INT INC-E3S-VT-SV E3S-S S
+\p EXS ??? DEM INT INC-E3S-VT-SV E3S-S S
 \g EXS *** DEM INT INC-E3S-hacer-SV E3S-dueño huevo
 \l Saber como es el dueño del huevo.
 
 \t R-e ri li laj qatilmiit
 \m r-e ri li laj qa-tilmiit
-\p E3S-SREL DEM DEM PRE E1P-S
+\p E3S-SREL DEM DEM PREP E1P-S
 \g E3S-SR DEM DEM PRE E1P-pueblo
 \l Para en nuestro pueblo
 
