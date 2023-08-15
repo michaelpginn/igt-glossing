@@ -38,7 +38,7 @@ class IGTLine:
         else:
             words = re.split("\s+", self.glosses)
             glosses = [re.split("-", word) for word in words]
-            glosses = [[gloss for gloss in word_glosses if gloss != ''] for word_glosses in
+            glosses = [[gloss.replace('.', '') for gloss in word_glosses if gloss != ''] for word_glosses in
                        glosses]  # Remove empty glosses introduced by faulty segmentation
             glosses = [word_glosses for word_glosses in glosses if word_glosses != []]
             glosses = reduce(lambda a, b: a + ['[SEP]'] + b, glosses)  # Add separator for word boundaries
