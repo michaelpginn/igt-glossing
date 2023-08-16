@@ -20,7 +20,7 @@ cd "/projects/migi8081/taxo-morph/src"
 
 for type in flat tax_loss harmonic_loss multitask multistage
 do
-  python3 finetune_token_classifier.py train --model_type $type --seed $seed --train_data ../data/GenBench/story --eval_data ../data/GenBench/nonstory --epochs 200
+  python3 finetune_token_classifier.py train --model_type $type --seed 1 --train_data ../data/GenBench/story --eval_data ../data/GenBench/nonstory --epochs 200
 done
 
 for size in 100 500 1000
@@ -29,7 +29,7 @@ do
   do
     for type in flat tax_loss harmonic_loss multitask multistage
     do
-      python3 finetune_token_classifier.py train --model_type $type --train_size $size --seed $seed --train_data ../data/GenBench/story --eval_data ../data/GenBench/nonstory --epoch 200
+      python3 finetune_token_classifier.py train --model_type $type --train_size $size --seed $seed --train_data ../data/GenBench/story --eval_data ../data/GenBench/nonstory --epochs 200
     done
   done
 done
