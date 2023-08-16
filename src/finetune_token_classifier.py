@@ -93,7 +93,7 @@ def cli():
 def train(model_type: str, train_size: int, seed: int,
           train_data: str = "../data/usp-train-track2-uncovered",
           eval_data: str = "../data/usp-dev-track2-uncovered",
-          epochs: int = 30):
+          epochs: int = 200):
     MODEL_INPUT_LENGTH = 64
     BATCH_SIZE = 64
 

@@ -23,7 +23,7 @@ do
   python3 finetune_token_classifier.py train --model_type $type --seed $seed --train_data ../data/GenBench/story --eval_data ../data/GenBench/nonstory
 done
 
-for size in 10 100 500 1000
+for size in 100 500 1000
 do
   for seed in 1 2 3 4 5
   do
