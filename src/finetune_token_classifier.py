@@ -89,19 +89,21 @@ def cli():
 @click.option("--train_data", type=click.Path(exists=True))
 @click.option("--eval_data", type=click.Path(exists=True))
 @click.option("--seed", help="Random seed", type=int)
+@click.option("--epochs", help="Max # epochs", type=int)
 def train(model_type: str, train_size: int, seed: int,
           train_data: str = "../data/usp-train-track2-uncovered",
-          eval_data: str = "../data/usp-dev-track2-uncovered"):
+          eval_data: str = "../data/usp-dev-track2-uncovered",
+          epochs: int = 30):
     MODEL_INPUT_LENGTH = 64
     BATCH_SIZE = 64
-    EPOCHS = 30
 
     run_name = f"{train_size if train_size else 'full'}-{model_type}-{seed}"
 
     wandb.init(project="genbench-taxo-morph-finetuning", entity="michael-ginn", name=run_name, config={
         "train-size": train_size if train_size else "full",
         "random-seed": seed,
-        "type": model_type
+        "type": model_type,
+        "epochs": epochs
     })
 
     random.seed(seed)
@@ -146,7 +148,7 @@ def train(model_type: str, train_size: int, seed: int,
             model.use_morphology_tree(morphology_tree, max_depth=5)
 
         trainer = create_trainer(model, dataset=dataset, tokenizer=tokenizer, labels=glosses, batch_size=BATCH_SIZE,
-                                 max_epochs=EPOCHS, report_to='wandb')
+                                 max_epochs=epochs, report_to='wandb')
         trainer.train()
     else:
         # Train in multiple stages
@@ -156,7 +158,7 @@ def train(model_type: str, train_size: int, seed: int,
         for stage in [3, 2, 1, 0]:
             model.current_stage = stage
             trainer = create_trainer(model, dataset=dataset, tokenizer=tokenizer, labels=glosses, batch_size=BATCH_SIZE,
-                                     max_epochs=EPOCHS, report_to='wandb' if stage == 0 else "none")
+                                     max_epochs=epochs, report_to='wandb' if stage == 0 else "none")
             trainer.train()
 
     trainer.save_model(f'../models/{run_name}')
