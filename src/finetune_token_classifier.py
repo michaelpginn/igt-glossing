@@ -99,7 +99,7 @@ def train(model_type: str, train_size: int, seed: int,
 
     run_name = f"{train_size if train_size else 'full'}-{model_type}-{seed}"
 
-    wandb.init(project="genbench-taxo-morph-finetuning", entity="michael-ginn", name=run_name, config={
+    wandb.init(project="genbench-taxo-morph-finetuning-2", entity="michael-ginn", name=run_name, config={
         "train-size": train_size if train_size else "full",
         "random-seed": seed,
         "type": model_type,
