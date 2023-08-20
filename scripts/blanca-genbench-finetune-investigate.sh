@@ -19,10 +19,10 @@ conda activate AutoIGT
 cd "/projects/migi8081/taxo-morph/src"
 
 
-for size in 500 1000
+for size in 100 500
 do
   for seed in 1 2 3 4 5
   do
-    python3 finetune_token_classifier.py train --model_type flat --train_size $size --seed $seed --train_data ../data/GenBench/story --eval_data ../data/GenBench/nonstory --epochs 120
+    python3 finetune_token_classifier.py train --model_type flat --train_size $size --seed $seed --train_data ../data/GenBench/story --eval_data ../data/GenBench/nonstory --epochs 800
   done
 done
