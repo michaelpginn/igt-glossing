@@ -7,7 +7,7 @@ from datasets import DatasetDict
 from transformers import RobertaConfig, TrainingArguments, Trainer, RobertaForMaskedLM, DataCollatorForLanguageModeling
 
 import wandb
-from src.data import load_data_file, prepare_dataset_mlm, create_vocab
+from data import load_data_file, prepare_dataset_mlm, create_vocab
 from tokenizer import WordLevelTokenizer
 
 device = "cuda:0" if torch.cuda.is_available() else "cpu"

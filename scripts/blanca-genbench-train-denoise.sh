@@ -5,8 +5,8 @@
 #SBATCH --mem=32G
 #SBATCH --time=12:00:00          # Max walltime              # Specify QOS
 #SBATCH --qos=blanca-kann
-#SBATCH --out=train_genbench_pretrain.%j.out      # Output file name
-#SBATCH --error=train_genbench_pretrain.%j.err
+#SBATCH --out=train_genbench_train_denoiser.%j.out      # Output file name
+#SBATCH --error=train_genbench_train_denoiser.%j.err
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=michael.ginn@colorado.edu
 
