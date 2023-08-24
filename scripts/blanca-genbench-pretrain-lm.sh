@@ -17,4 +17,4 @@ module load anaconda
 # Run Python Script
 conda activate AutoIGT
 cd "/projects/migi8081/taxo-morph/src"
-python3 pretrain_language_model.py --arch_size micro --project genbench-taxo-morph --train_data ../data/GenBench/story --eval_data ../data/GenBench/nonstory
+python3 pretrain_language_model.py --arch_size micro --project genbench-taxo-morph --train_data ../data/GenBench/story_advice_personal --eval_data ../data/GenBench/history

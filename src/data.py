@@ -151,7 +151,7 @@ def create_gloss_vocab(morphology):
 
 
 def prepare_dataset_mlm(data: List[List[str]], tokenizer: WordLevelTokenizer, device):
-    """Encodes, pads, and creates attention mask for input. Also masks tokens and sets labels according"""
+    """Encodes, pads, and creates attention mask for input."""
 
     # Create a dataset
     raw_dataset = Dataset.from_list([{'tokens': line} for line in data])
