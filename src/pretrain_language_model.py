@@ -74,7 +74,7 @@ def train(arch_size: str = 'micro',
     language_model = RobertaForMaskedLM(config=config)
 
     args = TrainingArguments(
-        output_dir=f"../training-checkpoints",
+        output_dir=f"../pretrain-training-checkpoints",
         evaluation_strategy="epoch",
         per_device_train_batch_size=BATCH_SIZE,
         per_device_eval_batch_size=BATCH_SIZE,

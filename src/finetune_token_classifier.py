@@ -54,7 +54,7 @@ def create_trainer(model: RobertaForTokenClassification, dataset: Optional[Datas
         return logits.argmax(dim=2)
 
     args = TrainingArguments(
-        output_dir=f"../training-checkpoints",
+        output_dir=f"../finetune-training-checkpoints",
         evaluation_strategy="epoch",
         per_device_train_batch_size=batch_size,
         per_device_eval_batch_size=batch_size,
