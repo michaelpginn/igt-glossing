@@ -86,8 +86,8 @@ class DenoisedModel(RobertaForTokenClassification):
         preds[preds < 0] = 2
 
         # Cut off end of sequence (always garbage)
-        # preds = preds.narrow(-1, 0, 60)
-        # attention_mask = attention_mask.narrow(-1, 0, 60)
+        preds = preds.narrow(-1, 0, 60)
+        attention_mask = attention_mask.narrow(-1, 0, 60)
 
         # Run denoiser model on preds
         denoised_logits = self.denoiser.forward(input_ids=preds, attention_mask=attention_mask).logits
