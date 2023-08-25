@@ -5,8 +5,11 @@ from transformers.modeling_outputs import TokenClassifierOutput
 from typing import Optional, Union, Tuple
 import numpy as np
 import pandas as pd
+import copy
 
 device = "cuda:0" if torch.cuda.is_available() else "cpu"
+
+denoiser = AutoModelForMaskedLM.from_pretrained("michaelginn/usp-gloss-denoiser")
 
 
 class DenoisedModel(RobertaForTokenClassification):
@@ -22,8 +25,6 @@ class DenoisedModel(RobertaForTokenClassification):
         )
         self.dropout = nn.Dropout(classifier_dropout)
         self.classifier = nn.Linear(config.hidden_size, config.num_labels)
-
-        self.denoiser = AutoModelForMaskedLM.from_pretrained("michaelginn/usp-gloss-denoiser")
 
         # Initialize weights and apply final processing
         self.post_init()
@@ -73,9 +74,6 @@ class DenoisedModel(RobertaForTokenClassification):
         # Get predictions from logits
         preds = logits.max(-1).indices
 
-        if labels is not None:
-            print("Preds before processing", preds)
-
         # Increase all input ids (except SEP token) by 4 to account for special tokens
         preds[preds != 1] = preds[preds != 1] + 4
 
@@ -89,26 +87,20 @@ class DenoisedModel(RobertaForTokenClassification):
         preds = preds.narrow(-1, 0, 60)
         attention_mask = attention_mask.narrow(-1, 0, 60)
 
-        if labels is not None:
-            print("Preds before denoising", preds)
-
         # Run denoiser model on preds
-        denoised_logits = self.denoiser.forward(input_ids=preds, attention_mask=attention_mask).logits
+        denoised_logits = denoiser.forward(input_ids=preds, attention_mask=attention_mask).logits
 
         # Cut off the special tokens
         # TODO: Copy the logits column in 1 to the column in 5 for the [SEP] token
         denoised_logits = denoised_logits.narrow(-1, 4, 64)
 
-        if labels is not None:
-            print("Preds after denoising", denoised_logits.max(-1).indices)
-
         if not return_dict:
-            output = (logits,) + outputs[2:]
+            output = (denoised_logits,) + outputs[2:]
             return ((loss,) + output) if loss is not None else output
 
         return TokenClassifierOutput(
             loss=loss,
-            logits=logits,
+            logits=denoised_logits,
             hidden_states=outputs.hidden_states,
             attentions=outputs.attentions,
         )
