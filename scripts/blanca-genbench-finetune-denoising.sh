@@ -18,18 +18,7 @@ module load anaconda
 conda activate AutoIGT
 cd "/projects/migi8081/taxo-morph/src"
 
-for type in flat tax_loss harmonic_loss multitask multistage
+for type in flat denoised
 do
-  python3 finetune_token_classifier.py train --model_type $type --seed 1 --train_data ../data/GenBench/story --eval_data ../data/GenBench/nonstory --epochs 600
-done
-
-for size in 100 500 1000
-do
-  for seed in 1 2 3 4 5
-  do
-    for type in flat tax_loss harmonic_loss multitask multistage
-    do
-      python3 finetune_token_classifier.py train --model_type $type --train_size $size --seed $seed --train_data ../data/GenBench/story --eval_data ../data/GenBench/nonstory --epochs 600
-    done
-  done
+  python3 finetune_token_classifier.py train --model_type $type --seed 1 --train_data ../data/GenBench/story_advice_personal --eval_data ../data/GenBench/history --epochs 600 --project genbench-denoising-experiment
 done
