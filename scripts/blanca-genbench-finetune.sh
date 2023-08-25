@@ -19,7 +19,7 @@ conda activate AutoIGT
 cd "/projects/migi8081/taxo-morph/src"
 
 
-python3 finetune_token_classifier.py train --project genbench-taxo-morph-finetune-final --model_type flat --seed 1 --train_data ../data/GenBench/story --eval_data ../data/GenBench/eval_ID --epochs 300
+python3 finetune_token_classifier.py train --project genbench-taxo-morph-finetune-final --model_type flat --seed 1 --train_data ../data/GenBench/story --eval_data ../data/GenBench/eval_ID --epochs 100
 
 
 #for type in flat tax_loss harmonic_loss multitask multistage
