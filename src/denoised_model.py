@@ -96,15 +96,15 @@ class DenoisedModel(RobertaForTokenClassification):
         # TODO: Copy the logits column in 1 to the column in 5 for the [SEP] token
         denoised_logits = denoised_logits.narrow(-1, 4, 64)
 
-        # print("Preds after denoising", denoised_logits.max(-1).indices)
+        print("Preds after denoising", denoised_logits.max(-1).indices)
 
         if not return_dict:
-            output = (denoised_logits,) + outputs[2:]
+            output = (logits,) + outputs[2:]
             return ((loss,) + output) if loss is not None else output
 
         return TokenClassifierOutput(
             loss=loss,
-            logits=denoised_logits,
+            logits=logits,
             hidden_states=outputs.hidden_states,
             attentions=outputs.attentions,
         )
