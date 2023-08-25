@@ -20,5 +20,5 @@ cd "/projects/migi8081/taxo-morph/src"
 
 for type in flat denoised
 do
-  python3 finetune_token_classifier.py train --model_type $type --seed 1 --train_data ../data/GenBench/story_advice_personal --eval_data ../data/GenBench/history --epochs 600 --project genbench-denoising-experiment
+  python3 finetune_token_classifier.py train --model_type $type --seed 1 --train_data ../data/GenBench/story_advice_personal --eval_data ../data/GenBench/history --epochs 100 --project genbench-denoising-experiment
 done
