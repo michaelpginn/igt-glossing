@@ -9,7 +9,7 @@ import copy
 
 device = "cuda:0" if torch.cuda.is_available() else "cpu"
 
-denoiser = AutoModelForMaskedLM.from_pretrained("michaelginn/usp-gloss-denoiser")
+denoiser = AutoModelForMaskedLM.from_pretrained("michaelginn/usp-gloss-denoiser").to(device)
 
 
 class DenoisedModel(RobertaForTokenClassification):
