@@ -73,7 +73,8 @@ class DenoisedModel(RobertaForTokenClassification):
         # Get predictions from logits
         preds = logits.max(-1).indices
 
-        print("Preds before denoising", preds)
+        if labels is not None:
+            print("Preds before denoising", preds)
 
         # Increase all input ids (except SEP token) by 4 to account for special tokens
         preds[preds != 1] = preds[preds != 1] + 4
@@ -81,9 +82,12 @@ class DenoisedModel(RobertaForTokenClassification):
         # Replace any glosses for unknown tokens with MASK
         preds[input_ids == 0] = 3
 
+        # Re-encode pad tokens
+        preds[preds < 0] = 2
+
         # Cut off end of sequence (always garbage)
-        preds = preds.narrow(-1, 0, 60)
-        attention_mask = attention_mask.narrow(-1, 0, 60)
+        # preds = preds.narrow(-1, 0, 60)
+        # attention_mask = attention_mask.narrow(-1, 0, 60)
 
         # Run denoiser model on preds
         denoised_logits = self.denoiser.forward(input_ids=preds, attention_mask=attention_mask).logits
