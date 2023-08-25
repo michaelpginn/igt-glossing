@@ -78,7 +78,7 @@ class DenoisedModel(RobertaForTokenClassification):
         preds[preds != 1] = preds[preds != 1] + 4
 
         # Replace any glosses for unknown tokens with MASK
-        preds[input_ids == 0] = 3
+        # preds[input_ids == 0] = 3
 
         # Re-encode pad tokens
         preds[preds < 0] = 2
