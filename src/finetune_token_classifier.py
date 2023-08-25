@@ -14,6 +14,7 @@ from multitask_model import MultitaskModel
 from taxonomic_loss_model import TaxonomicLossModel
 from tokenizer import WordLevelTokenizer
 from uspanteko_morphology import morphology as full_morphology_tree
+from denoised_model import DenoisedModel
 
 device = "cuda:0" if torch.cuda.is_available() else "cpu"
 
@@ -84,22 +85,25 @@ def cli():
 
 
 @cli.command()
-@click.option('--model_type', type=click.Choice(['flat', 'multitask', 'multistage', 'tax_loss', 'harmonic_loss']))
+@click.option('--model_type',
+              type=click.Choice(['flat', 'multitask', 'multistage', 'tax_loss', 'harmonic_loss', 'denoised']))
 @click.option("--train_size", help="Number of items to sample from the training data", type=int)
 @click.option("--train_data", type=click.Path(exists=True))
 @click.option("--eval_data", type=click.Path(exists=True))
 @click.option("--seed", help="Random seed", type=int)
 @click.option("--epochs", help="Max # epochs", type=int)
+@click.option("--project", type=str)
 def train(model_type: str, train_size: int, seed: int,
           train_data: str = "../data/usp-train-track2-uncovered",
           eval_data: str = "../data/usp-dev-track2-uncovered",
-          epochs: int = 200):
+          epochs: int = 200,
+          project: str = 'taxo-morph-finetune'):
     MODEL_INPUT_LENGTH = 64
     BATCH_SIZE = 64
 
     run_name = f"{train_size if train_size else 'full'}-{model_type}-{seed}"
 
-    wandb.init(project="genbench-taxo-morph-finetuning-2", entity="michael-ginn", name=run_name, config={
+    wandb.init(project=project, entity="michael-ginn", name=run_name, config={
         "train-size": train_size if train_size else "full",
         "random-seed": seed,
         "type": model_type,
@@ -123,7 +127,7 @@ def train(model_type: str, train_size: int, seed: int,
 
     dataset = DatasetDict()
 
-    if model_type == 'flat' or model_type == 'tax_loss' or model_type == 'harmonic_loss':
+    if model_type == 'flat' or model_type == 'tax_loss' or model_type == 'harmonic_loss' or model_type == 'denoised':
         dataset['train'] = prepare_dataset(data=train_data, tokenizer=tokenizer, labels=glosses, device=device)
         dataset['dev'] = prepare_dataset(data=dev_data, tokenizer=tokenizer, labels=glosses, device=device)
     else:
@@ -138,6 +142,9 @@ def train(model_type: str, train_size: int, seed: int,
         elif model_type == 'flat':
             model = AutoModelForTokenClassification.from_pretrained("michaelginn/uspanteko-mlm-large",
                                                                     num_labels=len(glosses))
+        elif model_type == 'denoised':
+            model = DenoisedModel.from_pretrained("michaelginn/uspanteko-mlm-large",
+                                                  num_labels=len(glosses))
         else:
             if model_type == 'tax_loss':
                 model = TaxonomicLossModel.from_pretrained("michaelginn/uspanteko-mlm-large", num_labels=len(glosses),

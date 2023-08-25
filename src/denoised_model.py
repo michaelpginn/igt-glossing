@@ -70,15 +70,26 @@ class DenoisedModel(RobertaForTokenClassification):
             labels = labels.to(logits.device)
             loss = loss_fct(logits.view(-1, self.num_labels), labels.view(-1))
 
-        # Run denoiser model
+        # Get predictions from logits
+        preds = logits.max(-1).indices
+
+        # Replace any glosses for unknown tokens with MASK
+        preds[input_ids == 0] = 3
+
+        # Cut off end of sequence (always garbage)
+        preds = preds.narrow(-1, 0, 60)
+        attention_mask = attention_mask.narrow(-1, 0, 60)
+
+        # Run denoiser model on preds
+        denoised_logits = self.denoiser.forward(input_ids=preds, attention_mask=attention_mask)
 
         if not return_dict:
-            output = (logits,) + outputs[2:]
+            output = (denoised_logits,) + outputs[2:]
             return ((loss,) + output) if loss is not None else output
 
         return TokenClassifierOutput(
             loss=loss,
-            logits=logits,
+            logits=denoised_logits,
             hidden_states=outputs.hidden_states,
             attentions=outputs.attentions,
         )
