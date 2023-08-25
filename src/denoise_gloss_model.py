@@ -20,12 +20,12 @@ device = "cuda:0" if torch.cuda.is_available() else "cpu"
 @click.option("--train_data", type=click.Path(exists=True))
 @click.option("--eval_data", type=click.Path(exists=True))
 def train(arch_size: str = 'micro',
-          project: str = 'taxo-morph-denoise',
+          project: str = 'taxo-morph-train-denoiser',
           train_data: str = "../data/usp-train-track2-uncovered",
           eval_data: str = "../data/usp-dev-track2-uncovered"):
     MODEL_INPUT_LENGTH = 64
     BATCH_SIZE = 64
-    EPOCHS = 2000
+    EPOCHS = 300
 
     wandb.init(project=project, entity="michael-ginn", config={
         "bert-size": arch_size,
@@ -33,7 +33,7 @@ def train(arch_size: str = 'micro',
         "epochs": EPOCHS
     })
 
-    random.seed(13)
+    random.seed(1)
 
     train_data = load_data_file(train_data)
     dev_data = load_data_file(eval_data)
