@@ -18,18 +18,22 @@ module load anaconda
 conda activate AutoIGT
 cd "/projects/migi8081/taxo-morph/src"
 
-for type in flat tax_loss harmonic_loss multitask multistage
-do
-  python3 finetune_token_classifier.py train --model_type $type --seed 1 --train_data ../data/GenBench/story --eval_data ../data/GenBench/nonstory --epochs 600
-done
 
-for size in 100 500 1000
-do
-  for seed in 1 2 3 4 5
-  do
-    for type in flat tax_loss harmonic_loss multitask multistage
-    do
-      python3 finetune_token_classifier.py train --model_type $type --train_size $size --seed $seed --train_data ../data/GenBench/story --eval_data ../data/GenBench/nonstory --epochs 600
-    done
-  done
-done
+python3 finetune_token_classifier.py train --project genbench-taxo-morph-finetune-final --model_type flat --seed 1 --train_data ../data/GenBench/story --eval_data ../data/GenBench/eval_ID --epochs 300
+
+
+#for type in flat tax_loss harmonic_loss multitask multistage
+#do
+#  python3 finetune_token_classifier.py train --model_type $type --seed 1 --train_data ../data/GenBench/story --eval_data ../data/GenBench/nonstory --epochs 600
+#done
+
+#for size in 100 500 1000
+#do
+#  for seed in 1 2 3 4 5
+#  do
+#    for type in flat tax_loss harmonic_loss multitask multistage
+#    do
+#      python3 finetune_token_classifier.py train --model_type $type --train_size $size --seed $seed --train_data ../data/GenBench/story --eval_data ../data/GenBench/nonstory --epochs 600
+#    done
+#  done
+#done
