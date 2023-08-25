@@ -73,6 +73,9 @@ class DenoisedModel(RobertaForTokenClassification):
         # Get predictions from logits
         preds = logits.max(-1).indices
 
+        # Increase all input ids (except SEP token) by 4 to account for special tokens
+        preds[preds != 1] = preds[preds != 1] + 4
+
         # Replace any glosses for unknown tokens with MASK
         preds[input_ids == 0] = 3
 
