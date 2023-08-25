@@ -19,10 +19,12 @@ device = "cuda:0" if torch.cuda.is_available() else "cpu"
 @click.option("--project", type=str)
 @click.option("--train_data", type=click.Path(exists=True))
 @click.option("--eval_data", type=click.Path(exists=True))
+@click.option("--position_embeddings", type=str)
 def train(arch_size: str = 'micro',
           project: str = 'taxo-morph-pretrain',
           train_data: str = "../data/usp-train-track2-uncovered",
-          eval_data: str = "../data/usp-dev-track2-uncovered"):
+          eval_data: str = "../data/usp-dev-track2-uncovered",
+          position_embeddings: str = "absolute"):
     MODEL_INPUT_LENGTH = 64
     BATCH_SIZE = 64
     EPOCHS = 200
@@ -30,7 +32,8 @@ def train(arch_size: str = 'micro',
     wandb.init(project=project, entity="michael-ginn", config={
         "bert-size": arch_size,
         "batch_size": BATCH_SIZE,
-        "epochs": EPOCHS
+        "epochs": EPOCHS,
+        "position_embeddings": position_embeddings
     })
 
     random.seed(13)
@@ -56,6 +59,7 @@ def train(arch_size: str = 'micro',
             vocab_size=tokenizer.vocab_size,
             max_position_embeddings=MODEL_INPUT_LENGTH,
             pad_token_id=tokenizer.PAD_ID,
+            position_embedding_type=position_embeddings
         )
     else:
         config = RobertaConfig(
@@ -64,7 +68,8 @@ def train(arch_size: str = 'micro',
             pad_token_id=tokenizer.PAD_ID,
             num_hidden_layers=3,
             hidden_size=100,
-            num_attention_heads=5
+            num_attention_heads=5,
+            position_embedding_type=position_embeddings
         )
     language_model = RobertaForMaskedLM(config=config)
 
