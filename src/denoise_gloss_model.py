@@ -7,8 +7,9 @@ from datasets import DatasetDict
 from transformers import RobertaConfig, TrainingArguments, Trainer, RobertaForMaskedLM, DataCollatorForLanguageModeling
 
 import wandb
-from data import load_data_file, prepare_dataset_mlm, create_vocab
+from data import load_data_file, prepare_dataset_mlm, create_vocab, create_gloss_vocab
 from tokenizer import WordLevelTokenizer
+from uspanteko_morphology import morphology
 
 device = "cuda:0" if torch.cuda.is_available() else "cpu"
 
@@ -39,8 +40,8 @@ def train(arch_size: str = 'micro',
 
     print("Preparing datasets...")
 
-    train_vocab = create_vocab([line.gloss_list(segmented=True) for line in train_data], threshold=1)
-    tokenizer = WordLevelTokenizer(vocab=train_vocab, model_max_length=MODEL_INPUT_LENGTH)
+    glosses = create_gloss_vocab(morphology)
+    tokenizer = WordLevelTokenizer(vocab=glosses, model_max_length=MODEL_INPUT_LENGTH)
 
     dataset = DatasetDict()
     dataset['train'] = prepare_dataset_mlm(data=[line.gloss_list(segmented=True) for line in train_data],
