@@ -1,0 +1,1026 @@
+\t wi' jun menjon jiri,
+\m wi' jun menjon jiri
+\p EXS NUM S DEM
+\g EXS uno mojon DEM
+\l donde hay un monjon alli.
+
+\t cha' taq re
+\m cha' taq re
+\p TOP PL PRON
+\g decir PL l/ella
+\l le dicen.
+
+\t yo'l anm, doa Koncha,
+\m yo'l nim doa Koncha
+\p ADJ S CLAS NOM
+\g vivir mujer CLAS Concha
+\l esta viva la mujer doa Concha.
+
+\t jun Xena oj, cha' re
+\m jun Xena oj cha' re
+\p NUM NOM PRON VI PRON
+\g uno Xena nosotros decir l/ella
+\l Una le decimos Xena. (Arcenia)
+
+\t i wi' chiki' jun doa Koncha
+\m i wi' chk-i' jun doa Koncha
+\p CONJ EXS PART-ENF NUM CLAS NOM
+\g CONJ EXS PART-ENF uno CLAS Concha
+\l Y hay otra doa Concha.
+
+\t ri' doa Koncha yo'l lajori.
+\m ri' doa Koncha yo'l lajori
+\p DEM CLAS NOM ADJ ADV
+\g DEM CLAS Concha vivir ahora
+\l Es doa Concha que esta viva ahora.
+
+\t de ke mas jor niri,
+\m de ke mas jor niri
+\p CONJ ADV ADV ADV ADV
+\g CONJ que ms antiguamente aqui
+\l de que mas antes,
+
+\t ji'n oj b'e taq niri
+\m ji'n oj b'e taq niri
+\p AFI PRON VI PL ADV
+\g AFI nosotros ir PL aqui
+\l Asi nosotros nos vamos aqu.
+
+\t ji'n oj b'e Li bentos.
+\m ji'n oj b'e li bentos
+\p AFI PRON VI PREP TOP
+\g AFI nosotros ir PREP ventosa
+\l Asi nosotros nos vamos en la ventosa.
+
+\t porke jor re chi' finka ri' il,
+\m porke jor re chi finka ri' il
+\p ADV ADV PART PREP S DEM VT
+\g porque antiguament PART PREP finca DEM ver
+\l porque antiguamente de la finca es esto.
+
+\t Tons ji'non qe li
+\m tons ji'non qe li
+\p ADV AFI PART DEM
+\g entonces AFI PART DEM
+\l Entoces asi fue,
+
+\t i ajsik tambyen apart ajq'e ajsik
+\m i ajsik tambyen apart aj-q'e ajsik
+\p CONJ ADV ADV ADV PART-S ADV
+\g CONJ arriba tambin aparte PART-dueo arriba
+\l Y arriba tambin es aparte el dueo arriba.
+
+\t wi' chiki' kla' ma laj part ta' chiki' finka
+\m wi' chk-i' kla' ma la-j part ta' chik-i' finka
+\p EXS PART-ENF ADV NEG PREP-E3S SREL NEG PREP-ENF S
+\g EXS PART-ENF all NEG PREP-E3S parte NEG PREP-ENF finca
+\l Ava otro, pero ya no es parte de la finca.
+
+\t si no ke jun kristyan chaq,
+\m si no ke jun kristyan chaq
+\p ADV ADV ADV NUM S PART
+\g si no que uno persona PART
+\l Si no que ye es otra persona.
+
+\t porke ya loq'an chaq,
+\m porke ya loq'an chaq
+\p ADV VOC VT PART
+\g porque ya comprar PART
+\l Porque ya esta coprado.
+
+\t cha' re, kla'
+\m cha' re kla'
+\p VI PRON ADV
+\g decir l/ella all
+\l Le decimos all.
+
+\t tamyen xo'l kurs,
+\m tamyen xo'l kurs
+\p ADV SREL TOP
+\g tambien SR cruz
+\l Tambin en medio de la cruz.
+
+\t cha' taq re
+\m cha' taq re
+\p VI PL PRON
+\g decir PL l/ella
+\l Le dicen.
+
+\t Pero ajsik wi'na
+\m pero ajsik wi'-na
+\p ADV ADV EXS-PART
+\g pero arriba EXS-PART
+\l Pero arriba hay todavia.
+
+\t sol alixiik oj prim
+\m sol alixiik oj prim
+\p ADV S PRON S
+\g solo familia nosotros primos
+\l Solo familiares estamos como primos.
+
+\t porke kom jun qe q'etzen inmaam
+\m porke kom jun qe q'etzen in-maam
+\p ADV ADV NUM PART ADJ E1S-S
+\g porque como uno PART finado E1S-abuelo
+\l Porque como solo uno era mi abuelo.
+
+\t de ke pwes
+\m de ke pwes
+\p ADV ADV ADV
+\g de que pues
+\l De que pues,
+
+\t i wi' ween taq chee' chuch,
+\m i wi' ween taq chee' ch-uch
+\p CONJ EXS ADV PL S PREP-???
+\g CONJ EXS bueno PL rbol PREP-***
+\l Y hay buenos rboles.
+
+\t i wi' chiki' jari ikim niri laq miq'in tambyen
+\m i wi' chik-i' jari ikim niri laq miq'in tambyeen
+\p CONJ EXS PART-ENF ADV ADV ADV PREP ADJ ADV
+\g CONJ EXS PART-ENF por@aqui abajo aqui PREP caliente tambin
+\l Y hay mas aya abajo, por aqui en tierra caliente tambin.
+
+\t ya kwando ya,
+\m ya kwando ya
+\p VOC ADV VOC
+\g ya cuando ya
+\l Ya cuando ya
+
+\t ya oj chaq prim oj,
+\m ya oj chaq prim oj
+\p VOC PRON PART S PRON
+\g ya nosotros PART primos nosotros
+\l Ya nosotros somos primos nosotros.
+
+\t Pero si ulew ri wi' jtitulo
+\m pero si ulew ri wi' j-titulo
+\p ADV ADV S DEM EXS E3S-S
+\g pero si tierra DEM EXS E3S-titulo
+\l Pero si esta tierra tiene titulo.
+
+\t k'is kla' sol k'is, k'is Us
+\m k'is kla' sol k'is k'is Us
+\p PL ADV PART PL PL ???
+\g PL all PART PL PL Us
+\l de all solo los Uses.
+
+\t i k'is Pachek wi' taq jiri,
+\m i k'is Pachek wi' taq jari
+\p CONJ PL ??? EXS PL ADV
+\g CONJ PL Pachecos EXS PL por@aqu
+\l Y los de apellidos Pachecos que estan de este lado.
+
+\t Ntons niri oj sol oj Kixtan
+\m ntons niri oj sol oj Kixtan
+\p ADV ADV PRON ADV PRON ???
+\g entonces aqui nosotros solo nosotros Quixtan
+\l Entonces aqu nosotros solo somos de apellidos Kixtn.
+
+\t i Pachek
+\m i Pachek
+\p CONJ ???
+\g CONJ Pachecos
+\l Y Pachecos.
+
+\t i niri sol k'is Kixtan
+\m i niri sol k'is Kixtan
+\p CONJ ADV ADV PL ???
+\g CONJ aqui solo PL Quixtan
+\l Y aqu solo los Kixtan.
+
+\t i Pacheko
+\m i Pacheko
+\p CONJ ???
+\g CONJ Pacheco
+\l Y Pachecos.
+
+\t Tonses ta' chiki'
+\m tonses ta' chik-i'
+\p ADV NEG PART-ENF
+\g entonces NEG PART-ENF
+\l Entonces ya no.
+
+\t porke mas jor si ke La Bentos niri
+\m porke mas jor si ke la Bentos niri
+\p ADV ADV ADV ADV PART ART TOP ADV
+\g porque ms antiguamente si que ART Ventosa aqui
+\l Porque ms antes, si que la Ventosa se llamaba aqu.
+
+\t si no ke ya San Antonyo chaq,
+\m si no ke ya San Antonyo chaq
+\p ADV ADV PART VOC CLAS NOM PART
+\g si no que ya San Antonio PART
+\l si no que ya San Antonio.
+
+\t Li Bentosa,
+\m li Bentosa
+\p PREP TOP
+\g PREP Ventosa
+\l En la bentosa
+
+\t cha' taq,
+\m cha' taq
+\p VI PL
+\g decir PL
+\l dicen.
+
+\t neriyi'n,
+\m neri-yi'n
+\p ADV-ENF
+\g aqu-ENF
+\l Aqui es.
+
+\t tons o jo' xo'l kurs,
+\m tons o jo' xo'l kurs
+\p ADV CONJ VI SREL TOP
+\g entonces CONJ ir SR cruz
+\l Entonces o vamos en medio de la cruz.
+
+\t tons jali chiki'
+\m tons jali chik-i'
+\p ADV ADV PART-ENF
+\g entonces por@all PART-ENF
+\l Entonces all es.
+
+\t xo'l kurs jali
+\m xo'l kurs jali
+\p SREL TOP ADV
+\g SR cruz all
+\l En medio de la cruz all.
+
+\t wi' jun ab'aj kla'
+\m wi' jun ab'aj kla'
+\p EXS NUM S ADV
+\g EXS uno piedra all
+\l Que ava una piedra all, que tena una cruz,
+
+\t de ke wi' jun ra kurs la' jun ab'aj
+\m de ke wi' jun ra kurs la' jun ab'aj
+\p PREP ADV EXS NUM DIM S PREP NUM S
+\g PREP que EXS uno DIM cruz PREP uno piedra
+\l que ava una cruz en una piedra.
+
+\t o k'is kirtyan ya San Antonyo chaq.
+\m o k'is kirtyan ya San Antonyo chaq
+\p CONJ PL S VOC CLAS NOM PART
+\g CONJ PL persona ya San Antonio PART
+\l O muchas personas ya dicen San Antonio,
+
+\t niri San Antonyo,
+\m niri San Antonyo
+\p ADV CLAS NOM
+\g aqui San Antonio
+\l Aqu San Antonio,
+
+\t jo' taq San Antonyo niriyin
+\m jo' taq San Antonyo niri-yi'n
+\p VI PL CLAS NOM ADV-ENF
+\g ir PL San Antonio aqui-ENF
+\l vamos a San Antonio aqu es.
+
+\t i ajsik tambyen,
+\m i ajsik tambyen
+\p CONJ ADV ADV
+\g CONJ arriba tambin
+\l Y arriba tambin
+
+\t pwes de ke loq'laj tyoox li
+\m pwes de ke loq'laj tyoox li
+\p ADV PART ADV ADJ S DEM
+\g pues de que santo santo DEM
+\l Pues el santo ese.
+
+\t i ri' li San Antonyo.
+\m i ri' li San Antonyo
+\p CONJ DEM DEM CLAS NOM
+\g CONJ DEM DEM San Antonio
+\l Y eso es San Antonio.
+
+\t cha' taq,
+\m cha' taq
+\p VI PL
+\g decir PL
+\l Dicen.
+
+\t ri, ri
+\m ri ri
+\p DEM DEM
+\g DEM DEM
+\l Esto es.
+
+\t tons tqa, oj q'ojomaan oj
+\m tons t-qa oj q'ojoma-an oj
+\p ADV INC-E1P PRON VT-AP PRON
+\g entonces INC-E1P nosotros ejecutar@instrumentos-AP nosotros
+\l Entonces nosotros ejecutamos la marimba.
+
+\t cha', taq.
+\m cha' taq
+\p VI PL
+\g decir PL
+\l Decian.
+
+\t cha',
+\m cha'
+\p VI
+\g decir
+\l Dice.
+
+\t i juntir
+\m i juntir
+\p CONJ ADV
+\g CONJ todo
+\l Y todos.
+
+\t i ya
+\m i ya
+\p CONJ VOC
+\g CONJ ya
+\l Y ya.
+
+\t kada junaab' chaq, kada junaab',
+\m kada junaab' chaq kada junaab'
+\p ADV S PART ADV S
+\g cada ao PART cada ao
+\l Cada ao lo hacen cada ao.
+
+\t i niri t'el b'ik
+\m i niri t'-el b'ik
+\p CONJ ADV INC-VI DIR
+\g CONJ aqui INC-salir DIR
+\l Y de aqu salen.
+
+\t or dos ao,
+\m or dos ao
+\p ADV NUM S
+\g ahora dos aos
+\l Hace dos aos.
+
+\t porke, el onse,
+\m porke el onse
+\p ADV ART NUM
+\g porque ART once
+\l Porque el once,
+
+\t el onse desfile
+\m el onse desfile
+\p ART NUM S
+\g ART once desfile
+\l el once desfile.
+
+\t i el, el dose man kombite
+\m i el el dose man kombite
+\p CONJ ART ART NUM ART S
+\g CONJ ART ART doce ART comvite
+\l Y el doce es el combite.
+
+\t i el trese ya k'isb're loq'laj miix
+\m i el trese ya k'is-b'-re loq'laj miix
+\p CONJ VI NUM VOC VT-INS-SREL ADJ S
+\g CONJ salir trece ya terminar-INS-SR santo misa
+\l Y el trece ya es la finalizacion de la santa misa.
+
+\t cha'.
+\m cha'
+\p VI
+\g decir
+\l Dice.
+
+\t ya el trese li iglesiya wi' konjunto katolika
+\m ya el trese li iglesiya wi' konjunto katolika
+\p VOC ART NUM PREP S EXS S S
+\g ya ART trece PREP iglesia EXS Conjunto catlico
+\l Ya el trece en la iglesia hay conjuntos catlicos.
+
+\t ya li salon tambyen wi' q'ojoom,
+\m ya li salon tambyen wi' q'ojoom
+\p VOC PREP S ADV EXS S
+\g ya PREP salon tambin EXS marimba
+\l Ya en el salon tambin hay marimba.
+
+\t kwand ajki' mas kirtyan
+\m kwand ajki' mas kirtyan
+\p ADV PART ADV S
+\g cuando PART ms persona
+\l Cuando no haba ms gente.
+
+\t kib', uxib' qe kita' desfile
+\m kib' uxib' qe kita' desfile
+\p NUM NUM PART NEG S
+\g dos tres PART NEG desfile
+\l Solamente dos tres no hay desfile.
+
+\t kita' koronasyon chup lajori
+\m kita' koronasyon chup lajori
+\p NEG S VT ADV
+\g NEG coronacin apagar ahora
+\l No hay coronacin como ahora.
+
+\t wi' reyna,
+\m wi' reyna
+\p EXS S
+\g EXS reyna
+\l Hay reina.
+
+\t reyna indigena
+\m reyna indigena
+\p S ADJ
+\g reina indgena
+\l Reina indigena.
+
+\t i wi' madrina deporte
+\m i wi' madrina deporte
+\p CONJ EXS S S
+\g CONJ EXS madrina deporte
+\l Y hay madrina del deporte.
+
+\t wi' flor de Junyo.
+\m wi' flor de junyo
+\p EXS S PART S
+\g EXS flor de junio
+\l Hay flor de junio.
+
+\t Kita'n
+\m kita'n
+\p NEG
+\g NEG
+\l No hay.
+
+\t porke jor kita' eskwela,
+\m porke jor kita' eskwela
+\p ADV ADV NEG S
+\g porque antiguamente NEG escuela
+\l Porque antiguamente no hay escuela.
+
+\t wi' chaq k'is maestr ya,
+\m wi' chaq k'is maestr ya
+\p EXS PART PL S VOC
+\g EXS PART PL maestro ya
+\l Ya hay maestros ya,
+
+\t ya k'is kristyan,
+\m ya k'is kristyan
+\p VOC PL S
+\g ya PL persona
+\l ya la gente.
+
+\t kita' pwaq.
+\m kita' pwaq
+\p NEG S
+\g NEG dinero
+\l No habia dinero.
+
+\t kwand ya k'ojol wunaq taq chaq.
+\m kwand ya k'ojol wunaq taq chaq
+\p ADV VOC S S PL PART
+\g cuando ya joven hombre PL PART
+\l Cuando ya heran jovenes.
+
+\t Wewetenang
+\m Wewetenang
+\p TOP
+\g Huehuetenango
+\l Huehuetenango.
+
+\t oj chaal na
+\m oj chaal na
+\p PRON ADJ PART
+\g nosotros pequeo PART
+\l Nosotros hramos pequeos
+
+\t oj na
+\m oj na
+\p PRON PART
+\g nosotros PART
+\l todava.
+
+\t laq tib'itqa, tb'itqa
+\m laq ti-b'i-tq-a t-b'i-tq-a
+\p PREP INC-DIR-PL-ENF INC-DIR-PL-ENF
+\g PREP INC-DIR-PL-ENF INC-DIR-PL-ENF
+\l Se van en se van.
+
+\t komo laq Krus
+\m komo laq Krus
+\p ADV PREP TOP
+\g como PREP Cruz
+\l Como en la Cruz.
+
+\t o laq Konsepsyon
+\m o laq konsepsyon
+\p CONJ PREP NOM
+\g o PREP concepcin
+\l O en Concepcin.
+
+\t jarii li montaa
+\m jarii li montaa
+\p ADV PREP S
+\g por@aqu PREP montaa
+\l en la monta.
+
+\t porke k'is weetz pwes mas sikee,
+\m porke k'is weetz pwes mas sikee
+\p ADV PL S ADV ADV ADV
+\g porque PL hermano@mayor pues ms si@que
+\l Porque mis hermanos pues son meros.
+
+\t I tb'i'tqa' naj
+\m i t-b'i'-tq-a' naj
+\p CONJ INC-DIR-PL-ENF ADV
+\g CONJ INC-DIR-PL-ENF lejos
+\l Y se van lejos.
+
+\t usil kwand ya xe' kib', uxib' iik'
+\m usil kwand ya xe' kib' uxib' iik'
+\p ADV ADV VOC VI NUM NUM S
+\g despacio cuando ya ir dos tres mes
+\l despues de unos dos tres meses.
+
+\t pur oj nuch' na.
+\m pur oj nuch' na
+\p ADV PRON ADJ PART
+\g puro nosotros pequeo PART
+\l Hramos muy pequeos.
+
+\t i wi' bes ta' tz'aqataq
+\m i wi' bes ta' tz'aqataq
+\p CONJ EXS ADV NEG ADV
+\g CONJ EXS veces NEG completos
+\l Y aveces no se copletan.
+
+\t loke kib' mas ri'j,
+\m loke kib' mas ri'j
+\p ADV NUM ADV S
+\g loque dos ms viejo
+\l Los dos ms viejos.
+
+\t tambyen laj qakomunida.
+\m tambyen la-j qa-komunida
+\p ADV PREP-E3S E3S-S
+\g tambin PREP-E3S E3S-comunidad
+\l Tambin aqui en nuestra comunidad.
+
+\t laq kumple ao,
+\m laq kumple ao
+\p PREP VT S
+\g PREP cumple aos
+\l y en los cumple aos.
+
+\t wi' jun kasamyent kla',
+\m wi' jun kasamyent kla'
+\p EXS NUM S ADV
+\g EXS uno casamineto all
+\l Hay un casamiento, all
+
+\t i byeen bonito,
+\m i byeen bonito
+\p CONJ ADV ADV
+\g CONJ bien bonito
+\l Y bien bonito.
+
+\t porke, ya xi' komo k'ijab' tokads oj pe kla',
+\m porke ya xi' komo k'ijab' tokads oj pe kla'
+\p ADV VOC ??? ADV NUM S PRON VI ADV
+\g porque ya ir como cuatro tocadas nosotros venir all
+\l porque ya hemos ido cuatro veces
+
+\t porke, Eskipulas wi', wi' Sikache.
+\m porke Eskipulas wi' wi' Sikache
+\p ADV S EXS EXS TOP
+\g porque Esquipulas EXS EXS Sicach
+\l Porque Esquipulas es el que est en Sicach,
+
+\t i xojb'e tambyen
+\m i x-oj-b'e tambyen
+\p CONJ COM-PRON-VT ADV
+\g CONJ COM-nosotros-ir tambin
+\l Y nos fuimos tambin.
+
+\t i lajori el kinse de Septyembre
+\m i lajori el kinse de septyembre
+\p CONJ ADV ART NUM CONJ S
+\g CONJ ahora ART quince CONJ septiembre
+\l Y ahora el quince de Septiembre.
+
+\t de Chipaj
+\m de Chipaj
+\p CONJ TOP
+\g CONJ Chipaj
+\l De Chipaj.
+
+\t de niri los Platano,
+\m de niri los platano
+\p CONJ ADV ART TOP
+\g CONJ aqui los platano
+\l De aqui los Platanos.
+
+\t ni Yano Grande
+\m ni yano Grande
+\p CONJ S TOP
+\g CONJ llano Grande
+\l Ni llano Grande.
+
+\t ni Chikaman,
+\m ni Chikaman
+\p CONJ TOP
+\g CONJ Chicamn
+\l Ni Chicamn.
+
+\t ni Likrus,
+\m ni Li-krus
+\p CONJ PREP-TOP
+\g CONJ PREP-cruz
+\l Ni en la Cruz.
+
+\t kas xaq laq tilmit wi' Damyan na.
+\m kas xaq laq tilmit wi' Damyan na
+\p ADV PART PREP S EXS ??? PART
+\g casi PART PREP pueblo EXS Damian PART
+\l Casi solo en el pueblo hay Damin todava.
+
+\t kasi xaq oj qe oj Damyan,
+\m kasi xaq oj qe oj Damyan
+\p ADV PART PRON SREL PRON ???
+\g casi PART nosotros SR nosotros Damian
+\l casi solo nosotros somos Damianes.
+
+\t oj ne' taq kontratar,
+\m oj ne' taq kontratar
+\p PRON VT PL VT
+\g nosotros hacer PL contratar
+\l Nos vienen a contratar.
+
+\t cha' taq
+\m cha' taq
+\p VI PL
+\g decir PL
+\l dice ellos.
+
+\t los Kixtaanes
+\m los Kixtanes
+\p ART ???
+\g ART Quixtanes
+\l Los Quixtanes.
+
+\t i Damyanes
+\m i Damyanes
+\p CONJ ???
+\g CONJ Damianes
+\l Y Damianes.
+
+\t el primero de Mayo
+\m el primero de mayo
+\p ART NUM PART S
+\g ART primero de mayo
+\l El primero de mayo.
+
+\t ji' xoj el Chikaman
+\m ji' xo-j el Chikaman
+\p AFI COM-E1P VI TOP
+\g AFI COM.-E1P salir Chicamn
+\l Pasamos por Chicamn,
+
+\t cha' taq re,
+\m cha' taq re
+\p VI PL PRON
+\g decir PL l/ella
+\l Le dicen.
+
+\t i kla' kristyan kla'
+\m i kla' kristyan kla'
+\p CONJ ADV S ADV
+\g CONJ all persona all
+\l Y all las personas all.
+
+\t i ocho de Oktubre
+\m i ocho de oktubre
+\p CONJ NUM PART S
+\g CONJ ocho de octubre
+\l Y ocho de octubre.
+
+\t i jori kom wi' na uxib' qatokad ya kontratad chaq.
+\m i jori kom wi' na uxib' qa-tokad ya kontratad chaq
+\p CONJ ADV ADV EXS PART NUM E1P-S VOC ADJ PART
+\g CONJ ahora como EXS PART tres E1P-tocada ya contratado PART
+\l Y ahora todava tenemos como tres tocadas ya estamos contratados.
+
+\t ya Los Internasyonale Damyanes chaq.
+\m ya Los Internasyonale Damyanes chaq
+\p VOC ART ADJ ??? PART
+\g ya ART Internacionales Damianes PART
+\l Ya Los Internacionales Damianes son.
+
+\t eske, pareseke wi',
+\m eske parese-ke wi'
+\p ADV ADJ-ADV EXS
+\g es@que parece-que EXS
+\l Es que parece que hay.
+
+\t ta' k'ex tqatij.
+\m ta' k'ex t-qa-tij
+\p NEG ADJ INC-E3S-VT
+\g NEG dolor INC-E3S-comer
+\l No nos castaba mucho.
+
+\t Enkamby lajori wi' bes
+\m enkamby lajori wi' bes
+\p ADV ADV EXS ADV
+\g encambio ahora EXS veces
+\l Encambio ahora hay veses.
+
+\t cha' taq
+\m cha' taq
+\p VT PL
+\g decir PL
+\l Dicen ellos.
+
+\t i kom wi' qaq'ojm.
+\m i kom wi' qa-q'ojm
+\p CONJ ADV EXS E1P-S
+\g CONJ como EXS E1P-marimba
+\l Y como tenemos nuestra marimba.
+
+\t i entons nonli
+\m i entons nonli
+\p CONJ ADV DEM
+\g CONJ entonces DEM
+\l Y entonces asi es.
+
+\t i es bonit man q'ojoom tijch'eb'a jun k'is lugares naj,
+\m i es bonit man q'ojoom ti-j-ch'eb'-a' jun k'is lugares naj
+\p CONJ ADV ADV ART S INC-E3S-VT-ENF NUM SREL S ADV
+\g CONJ es bonito ART marimba INC-E3S-conocer-ENF uno SR lugares lejos
+\l Y es bonito tocar marimba, porque uno conoce uno lugares lejos.
+
+\t ke wi' jun makina kla' nim.
+\m ke wi' jun makina kla' nim
+\p ADV EXS NUM S ADV ADJ
+\g que EXS uno mquina all grande
+\l Que hay una maquina all grande.
+
+\t Ajkixal xojyuq ne'taq kontratar
+\m Aj-kixal x-oj-yuq ne'-taq kontratar
+\p GNT-TOP COM-PRON-VI VT-PL VT
+\g GNT-kixal COM-nosotros-llegar hacer-PL contratar
+\l Los de Kixal nos vienieron a contratar.
+
+\t xoj k'am taq b'i jalii li Kixal
+\m x-oj k'am taq b'i jalii li Kixal
+\p COM-PRON VT PL DIR DEM DEM TOP
+\g COM-nosotros reciibir PL DIR DEM DEM Quixal
+\l Nos llevaron aya en kixal.
+
+\t i xoj q'ax li man ja' Chixoy
+\m i x-oj q'ax li man ja' Chixoy
+\p CONJ COM-PRON VT DEM ART S TOP
+\g CONJ COM-nosotros pasar DEM ART ro Chixoy
+\l Y pasamos por el ro Chixoy.
+
+\t niri xoj q'ax San Kristobal
+\m niri x-oj q'ax San Kristobal
+\p ADV COM-PRON VT CLAS NOM
+\g aqui COM-nosotros pasar San Cristobal
+\l Pasamos por San Cristobal.
+
+\t Santa Jetrudes chirqan jun
+\m Santa Jetrudes chi-r-qan jun
+\p S NOM PREP-E3S-??? NUM
+\g Santa Gertrudis* PREP-E3S-aqan uno
+\l a Santa Gestrudis* a pie.
+
+\t i xoj me' taq
+\m i x-oj me' taq
+\p CONJ COM-PRON VT PL
+\g CONJ COM-nosotors traer PL
+\l Y nos vinieron a traer.
+
+\t cha' taq chi qe
+\m cha' taq chi qe
+\p VI PL PREP SREL
+\g decir PL PREP SR
+\l Nos decian.
+
+\t xojtaw asta Santa Jetrudes
+\m x-oj-taw asta Santa Jetrudes
+\p COM-PRON-VI ADV S NOM
+\g COM-nosotros-llegar asta Santa Gertrudis*
+\l Llegamos asta Santa Gertrudis*.
+
+\t porke xulani'n
+\m porke xulan-i'n
+\p ADV POS-ENF
+\g porque bajada-ENF
+\l Porque es bajada.
+
+\t kla' byeen bonitos lugares kla'.
+\m kla' byeen bonitos lugarres kla'
+\p ADV ADV ADV S ADV
+\g all bien bonitos lugares all
+\l All hay bonitos lugares all.
+
+\t I xoj q'ojman kla'
+\m i x-oj q'ojma-n kla'
+\p CONJ COM-PRON VT-AP ADV
+\g CONJ COM-nosotors tocar-AP all
+\l Y tocamos all.
+
+\t i kla' alegre porke,
+\m i kla' alegre porke
+\p CONJ ADV ADV ADV
+\g CONJ all alegre porque
+\l Y all es alegre porque.
+
+\t jnon jun lugar,
+\m jnon jun lugar
+\p DEM NUM S
+\g DEM uno lugar
+\l asi es un lugar
+
+\t jnon chik jun lugar
+\m jnon chik jun lugar
+\p DEM PART NUM S
+\g DEM PART uno lugar
+\l y asi es un lugar.
+
+\t porke kla' Beleju jali
+\m porke kla' Beleju jali
+\p ADV ADV TOP ADV
+\g porque all Beleju all
+\l Porque all en Beleju all.
+
+\t cha' taq re,
+\m cha' taq re
+\p VI PL PRON
+\g decir PL l/ella
+\l Le dicen.
+
+\t man, man komid li.
+\m man man komid li
+\p ART ART S DEM
+\g ART ART comida DEM
+\l A esa comida.
+
+\t pero rechaq tziyin
+\m pero rechaq tzi-yin
+\p ADV PRON ADV-ENF
+\g pero ellos/ellas bueno-ENF
+\l Pero para ellos si esta bien.
+
+\t i tambyen qakompromis.
+\m i tambyen qa-kompromis
+\p CONJ ADV E1P-S
+\g CONJ tambin E1P-compromiso
+\l Y tambien es nuestro compromizo.
+
+\t niri wi' uxib' konjunt,
+\m niri wi' uxib' konjunt
+\p ADV EXS NUM S
+\g aqui EXS tres conjuntos
+\l Aqu hay tres conjuntos.
+
+\t wi' uxib' konjunt niri,
+\m wi' uxib' konjunt niri
+\p EXS NUM S ADV
+\g EXS tres conjuntos aqui
+\l Hay tres conjuntos aqu.
+
+\t wi' chiki' jun ajsik,
+\m wi' chik-i' jun ajsik
+\p EXS PART-ENF NUM ADV
+\g EXS PART-ENF uno arriba
+\l Hay uno ms ariba.
+
+\t wi' chiki' jun ra, ra kib' konjunt
+\m wi' chik-i' jun ra ra kib' konjunt
+\p EXS PART-ENF NUM DIM DIM NUM S
+\g EXS PART-ENF uno DIM DIM dos conjuntos
+\l Hay otros dos conjuntos.
+
+\t wi' ajsik.
+\m wi' ajsik
+\p EXS ADV
+\g EXS arriba
+\l Hay arriba.
+
+\t Pero abes ke kwand ta' oj tz'aqat
+\m pero abes ke kwand ta' oj tz'aqat
+\p ADV ADV PART ADV NEG PRON ADV
+\g pero aveces que cuando NEG nosotros completos
+\l Pero aveces, cuando no nos completamos.
+
+\t siyempre chup tqa'ij
+\m siyempre chup t-qa-ij
+\p ADV VT INC-E1P-VT
+\g siempre apagar INC-E1P-decir
+\l Siempre como decimos.
+
+\t i wi' bes oj q'ax laq aldeyas
+\m i wi' bes oj q'ax laq aldeyas
+\p CONJ EXS ADV PRON VI PREP S
+\g CONJ EXS ves nosotros pasar PREP aldeas
+\l Y hay veces nos pasamos en las aldeas.
+
+\t o laq komunidades
+\m o laq komunidades
+\p CONJ PREP S
+\g o PREP comunidades
+\l O en las comunidades.
+
+\t wi' bes itz'ab'
+\m wi' bes itz'ab'
+\p EXS ADV S
+\g EXS veces juguete
+\l Hay veces bromiamos.
+
+\t alg jun aq'ab'.
+\m alg jun aq'ab'
+\p ADV NUM ADV
+\g algo uno noche
+\l Algo una noche.
+
+\t I ya ke jori ya maq ra lek'l
+\m i ya ke jori ya maq ra lek'l
+\p CONJ VOC PART ADV VOC ART DIM S
+\g CONJ ya que ahora ya ART DIM nio
+\l Y ya que ahora ya los nios.
+
+\t oj ni niri,
+\m oj ni niri
+\p PRON CONJ ADV
+\g nosotros ni aqui
+\l Nosotros aqu.
+
+\t niri kasi solo oj Pinula
+\m niri kasi sol oj Pinula
+\p ADV ADV ADV PRON ???
+\g aqui casi solo nosotros Pinnula
+\l Aqu casi solo somos Pinula.
+
+\t i Damyan,
+\m i Damyan
+\p CONJ ???
+\g CONJ Damián
+\l Y Damianes.
+
+\t de ke chup tqab'ij,
+\m de ke chup t-qa-b'ij
+\p ADV ADV VT INC-E1P-VT
+\g de que apagar INC-E1P-decir
+\l De como decimos.
+
+\t jbid jun wunaq
+\m j-bid jun wunaq
+\p E3S-S NUM S
+\g E3S-vida uno hombre
+\l La vida de un hombre.
+
+\t i jbid jun anm
+\m i j-bid jun nim
+\p CONJ E3S-S NUM S
+\g CONJ E3S-vida uno mujer
+\l Y la vida de una mujer.
+
+\t Tons re, re xuq niri,
+\m tons re re x-uq niri
+\p ADV PRON PRON COM-VI ADV
+\g entonces l/ella l/ella COM-llegasr aqui
+\l Entonces ella ella vino aqu.
+
+\t sol k'is oj alixiik,
+\m sol k'is oj alixiik
+\p ADV PL PRON S
+\g solo PL nosotros familia
+\l Solo familiares somos.
+
+\t kasi juntir laq komunidad niri
+\m kasi juntir laq komunidad niri
+\p ADV ADV PREP S ADV
+\g casi todo PREP comunidad aqui
+\l Casi todos en la comunidades aqu.
+
+\t kasi sol oj primos
+\m kasi sol oj primos
+\p ADV ADV PRON S
+\g casi solo nosotros primos
+\l Casi solo somos primos.
+
+\t Porke kasi juntir solo oj imaam chaq,
+\m porke kasi juntir solo oj imaam chaq
+\p ADV ADV ADV ADV PRON S PART
+\g porque casi todo solo nosotros nieto PART
+\l Porque casi todos somos nietos ya.
+
+\t I jnon qe rii,
+\m i jnon qe rii
+\p CONJ DEM PART DEM
+\g CONJ DEM PART DEM
+\l Y solo asi.
+
+\t ri' qe li qaj Balo.
+\m ri' qe li qaj Bado
+\p DEM PART DEM CLAS NOM
+\g DEM PART DEM seor Oswaldo
+\l solo eso es seor Oswaldo.
+
