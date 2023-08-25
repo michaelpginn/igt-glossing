@@ -91,9 +91,12 @@ class DenoisedModel(RobertaForTokenClassification):
 
         # Run denoiser model on preds
         denoised_logits = self.denoiser.forward(input_ids=preds, attention_mask=attention_mask).logits
+
+        # Cut off the special tokens
+        # TODO: Copy the logits column in 1 to the column in 5 for the [SEP] token
         denoised_logits = denoised_logits.narrow(-1, 4, 64)
 
-        print("Preds after denoising", denoised_logits.max(-1).indices)
+        # print("Preds after denoising", denoised_logits.max(-1).indices)
 
         if not return_dict:
             output = (denoised_logits,) + outputs[2:]
