@@ -81,7 +81,7 @@ class DenoisedModel(RobertaForTokenClassification):
         attention_mask = attention_mask.narrow(-1, 0, 60)
 
         # Run denoiser model on preds
-        denoised_logits = self.denoiser.forward(input_ids=preds, attention_mask=attention_mask)
+        denoised_logits = self.denoiser.forward(input_ids=preds, attention_mask=attention_mask).logits
 
         if not return_dict:
             output = (denoised_logits,) + outputs[2:]
