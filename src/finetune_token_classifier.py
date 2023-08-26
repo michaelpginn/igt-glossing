@@ -16,7 +16,7 @@ from tokenizer import WordLevelTokenizer
 from uspanteko_morphology import morphology as full_morphology_tree
 from denoised_model import DenoisedModel
 
-device = "cuda:0" if torch.cuda.is_available() else "cpu"
+device = "cuda:0" if torch.cuda.is_available() else "mps"
 
 
 def create_trainer(model: RobertaForTokenClassification, dataset: Optional[DatasetDict], tokenizer: WordLevelTokenizer,
