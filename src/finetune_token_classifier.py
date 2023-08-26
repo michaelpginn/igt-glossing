@@ -147,7 +147,7 @@ def train(model_type: str, train_size: int, seed: int,
             model = DenoisedModel.from_pretrained("michaelginn/uspanteko-mlm-large",
                                                   num_labels=len(glosses))
         elif model_type == 'relative_position_embeddings':
-            model = AutoModelForTokenClassification.from_pretrained("../models/usp-lang-model-relative_key_query-micro",
+            model = AutoModelForTokenClassification.from_pretrained("michaelginn/usp-lang-relative_key_query-micro",
                                                                     num_labels=len(glosses))
         elif model_type == 'larger':
             model = AutoModelForTokenClassification.from_pretrained("../models/usp-lang-model-absolute-full",
