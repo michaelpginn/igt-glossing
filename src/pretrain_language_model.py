@@ -83,7 +83,8 @@ def train(arch_size: str = 'micro',
         save_strategy="epoch",
         save_total_limit=3,
         num_train_epochs=EPOCHS,
-        report_to="wandb",
+        load_best_model_at_end=True,
+        report_to="wandb"
     )
     trainer = Trainer(
         model=language_model,

@@ -20,7 +20,7 @@ device = "cuda:0" if torch.cuda.is_available() else "mps"
 
 
 def create_trainer(model: RobertaForTokenClassification, dataset: Optional[DatasetDict], tokenizer: WordLevelTokenizer,
-                   labels: List[str], batch_size, max_epochs, report_to):
+                   labels: List[str], batch_size, max_epochs, weight_decay, report_to):
     print("Creating trainer...")
 
     def compute_metrics(eval_preds):
@@ -59,7 +59,7 @@ def create_trainer(model: RobertaForTokenClassification, dataset: Optional[Datas
         per_device_train_batch_size=batch_size,
         per_device_eval_batch_size=batch_size,
         gradient_accumulation_steps=3,
-        weight_decay=0.01,
+        weight_decay=weight_decay,
         save_strategy="epoch",
         save_total_limit=3,
         num_train_epochs=max_epochs,
@@ -87,17 +87,19 @@ def cli():
 @cli.command()
 @click.option('--model_type',
               type=click.Choice(['flat', 'multitask', 'multistage', 'tax_loss', 'harmonic_loss', 'denoised',
-                                 'relative_position_embeddings', 'larger']))
+                                 'relative_position_embeddings']))
 @click.option("--train_size", help="Number of items to sample from the training data", type=int)
 @click.option("--train_data", type=click.Path(exists=True))
 @click.option("--eval_data", type=click.Path(exists=True))
 @click.option("--seed", help="Random seed", type=int)
 @click.option("--epochs", help="Max # epochs", type=int)
+@click.option("--weight_decay", help="Fraction of weight decay", type=float)
 @click.option("--project", type=str)
 def train(model_type: str, train_size: int, seed: int,
           train_data: str = "../data/usp-train-track2-uncovered",
           eval_data: str = "../data/usp-dev-track2-uncovered",
           epochs: int = 200,
+          weight_decay: float = 0,
           project: str = 'taxo-morph-finetune'):
     MODEL_INPUT_LENGTH = 64
     BATCH_SIZE = 64
@@ -108,7 +110,8 @@ def train(model_type: str, train_size: int, seed: int,
         "train-size": train_size if train_size else "full",
         "random-seed": seed,
         "type": model_type,
-        "epochs": epochs
+        "epochs": epochs,
+        "weight_decay": weight_decay,
     })
 
     random.seed(seed)
@@ -138,26 +141,23 @@ def train(model_type: str, train_size: int, seed: int,
 
     if model_type != 'multistage':
         if model_type == 'multitask':
-            model = MultitaskModel.from_pretrained("michaelginn/usp-mlm-genbench",
+            model = MultitaskModel.from_pretrained("../models/usp-mlm-absolute-full",
                                                    classifier_head_sizes=[66, 21, 19, 10])
         elif model_type == 'flat':
-            model = AutoModelForTokenClassification.from_pretrained("michaelginn/usp-mlm-genbench",
+            model = AutoModelForTokenClassification.from_pretrained("../models/usp-mlm-absolute-full",
                                                                     num_labels=len(glosses))
         elif model_type == 'denoised':
-            model = DenoisedModel.from_pretrained("michaelginn/usp-mlm-genbench",
+            model = DenoisedModel.from_pretrained("../models/usp-mlm-absolute-full",
                                                   num_labels=len(glosses))
         elif model_type == 'relative_position_embeddings':
-            model = AutoModelForTokenClassification.from_pretrained("michaelginn/usp-lang-relative_key_query-micro",
-                                                                    num_labels=len(glosses))
-        elif model_type == 'larger':
-            model = AutoModelForTokenClassification.from_pretrained("../models/usp-lang-absolute-full",
+            model = AutoModelForTokenClassification.from_pretrained("michaelginn/usp-lang-relative_key_query-full",
                                                                     num_labels=len(glosses))
         else:
             if model_type == 'tax_loss':
-                model = TaxonomicLossModel.from_pretrained("michaelginn/usp-mlm-genbench", num_labels=len(glosses),
+                model = TaxonomicLossModel.from_pretrained("../models/usp-mlm-absolute-full", num_labels=len(glosses),
                                                            loss_sum='linear')
             elif model_type == 'harmonic_loss':
-                model = TaxonomicLossModel.from_pretrained("michaelginn/usp-mlm-genbench", num_labels=len(glosses),
+                model = TaxonomicLossModel.from_pretrained("../models/usp-mlm-absolute-full", num_labels=len(glosses),
                                                            loss_sum='harmonic')
             model.use_morphology_tree(morphology_tree, max_depth=5)
 
@@ -166,16 +166,17 @@ def train(model_type: str, train_size: int, seed: int,
         trainer.train()
     else:
         # Train in multiple stages
-        model = MultistageModel.from_pretrained("michaelginn/usp-mlm-genbench",
+        model = MultistageModel.from_pretrained("../models/usp-mlm-absolute-full",
                                                 classifier_head_sizes=[66, 21, 19, 10])
 
         for stage in [3, 2, 1, 0]:
             model.current_stage = stage
             trainer = create_trainer(model, dataset=dataset, tokenizer=tokenizer, labels=glosses, batch_size=BATCH_SIZE,
-                                     max_epochs=epochs, report_to='wandb' if stage == 0 else "none")
+                                     max_epochs=epochs, weight_decay=weight_decay,
+                                     report_to='wandb' if stage == 0 else "none")
             trainer.train()
 
-    trainer.save_model(f'../models/{run_name}')
+    trainer.save_model(f'../models/{run_name}-{weight_decay}wd')
 
 
 if __name__ == "__main__":
