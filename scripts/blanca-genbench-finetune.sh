@@ -19,8 +19,8 @@ conda activate AutoIGT
 cd "/projects/migi8081/taxo-morph/src"
 
 
-python3 finetune_token_classifier.py train --project genbench-taxo-morph-finetune-final --model_type flat --seed 1 --train_data ../data/GenBench/story --eval_data ../data/GenBench/eval_ID --epochs 100
-python3 finetune_token_classifier.py train --project genbench-taxo-morph-finetune-final --model_type harmonic_loss --seed 1 --train_data ../data/GenBench/story --eval_data ../data/GenBench/eval_ID --epochs 100
-#python3 finetune_token_classifier.py train --project genbench-taxo-morph-finetune-final --model_type denoised --seed 1 --train_data ../data/GenBench/story --eval_data ../data/GenBench/eval_ID --epochs 100
-python3 finetune_token_classifier.py train --project genbench-taxo-morph-finetune-final --model_type relative_position_embeddings --seed 1 --train_data ../data/GenBench/story --eval_data ../data/GenBench/eval_ID --epochs 100
-python3 finetune_token_classifier.py train --project genbench-taxo-morph-finetune-final --model_type larger --seed 1 --train_data ../data/GenBench/story --eval_data ../data/GenBench/eval_ID --epochs 100
+python3 finetune_token_classifier.py train --project genbench-taxo-morph-finetune-final --model_type flat --seed 1 --train_data ../data/GenBench/story --eval_data ../data/GenBench/eval_ID --epochs 25
+python3 finetune_token_classifier.py train --project genbench-taxo-morph-finetune-final --model_type harmonic_loss --seed 1 --train_data ../data/GenBench/story --eval_data ../data/GenBench/eval_ID --epochs 25
+#python3 finetune_token_classifier.py train --project genbench-taxo-morph-finetune-final --model_type denoised --seed 1 --train_data ../data/GenBench/story --eval_data ../data/GenBench/eval_ID --epochs 25
+python3 finetune_token_classifier.py train --project genbench-taxo-morph-finetune-final --model_type relative_position_embeddings --seed 1 --train_data ../data/GenBench/story --eval_data ../data/GenBench/eval_ID --epochs 25
+python3 finetune_token_classifier.py train --project genbench-taxo-morph-finetune-final --model_type larger --seed 1 --train_data ../data/GenBench/story --eval_data ../data/GenBench/eval_ID --epochs 25
