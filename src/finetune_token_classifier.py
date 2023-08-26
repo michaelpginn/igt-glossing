@@ -162,7 +162,7 @@ def train(model_type: str, train_size: int, seed: int,
             model.use_morphology_tree(morphology_tree, max_depth=5)
 
         trainer = create_trainer(model, dataset=dataset, tokenizer=tokenizer, labels=glosses, batch_size=BATCH_SIZE,
-                                 max_epochs=epochs, report_to='wandb')
+                                 max_epochs=epochs, weight_decay=weight_decay, report_to='wandb')
         trainer.train()
     else:
         # Train in multiple stages
