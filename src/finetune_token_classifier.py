@@ -86,7 +86,8 @@ def cli():
 
 @cli.command()
 @click.option('--model_type',
-              type=click.Choice(['flat', 'multitask', 'multistage', 'tax_loss', 'harmonic_loss', 'denoised']))
+              type=click.Choice(['flat', 'multitask', 'multistage', 'tax_loss', 'harmonic_loss', 'denoised',
+                                 'relative_position_embeddings']))
 @click.option("--train_size", help="Number of items to sample from the training data", type=int)
 @click.option("--train_data", type=click.Path(exists=True))
 @click.option("--eval_data", type=click.Path(exists=True))
