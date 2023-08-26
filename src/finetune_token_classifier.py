@@ -87,7 +87,7 @@ def cli():
 @cli.command()
 @click.option('--model_type',
               type=click.Choice(['flat', 'multitask', 'multistage', 'tax_loss', 'harmonic_loss', 'denoised',
-                                 'relative_position_embeddings']))
+                                 'relative_position_embeddings', 'larger']))
 @click.option("--train_size", help="Number of items to sample from the training data", type=int)
 @click.option("--train_data", type=click.Path(exists=True))
 @click.option("--eval_data", type=click.Path(exists=True))
@@ -148,6 +148,9 @@ def train(model_type: str, train_size: int, seed: int,
                                                   num_labels=len(glosses))
         elif model_type == 'relative_position_embeddings':
             model = AutoModelForTokenClassification.from_pretrained("../models/usp-lang-model-relative_key_query-micro",
+                                                                    num_labels=len(glosses))
+        elif model_type == 'larger':
+            model = AutoModelForTokenClassification.from_pretrained("../models/usp-lang-model-absolute-full",
                                                                     num_labels=len(glosses))
         else:
             if model_type == 'tax_loss':
