@@ -128,36 +128,36 @@ def train(model_type: str, train_size: int, seed: int,
 
     dataset = DatasetDict()
 
-    if model_type == 'flat' or model_type == 'tax_loss' or model_type == 'harmonic_loss' or model_type == 'denoised':
-        dataset['train'] = prepare_dataset(data=train_data, tokenizer=tokenizer, labels=glosses, device=device)
-        dataset['dev'] = prepare_dataset(data=dev_data, tokenizer=tokenizer, labels=glosses, device=device)
-    else:
+    if model_type == 'multitask' or model_type == 'multistage':
         dataset['train'] = prepare_multitask_dataset(data=train_data, tokenizer=tokenizer, labels=glosses,
                                                      device=device)
         dataset['dev'] = prepare_multitask_dataset(data=dev_data, tokenizer=tokenizer, labels=glosses, device=device)
+    else:
+        dataset['train'] = prepare_dataset(data=train_data, tokenizer=tokenizer, labels=glosses, device=device)
+        dataset['dev'] = prepare_dataset(data=dev_data, tokenizer=tokenizer, labels=glosses, device=device)
 
     if model_type != 'multistage':
         if model_type == 'multitask':
-            model = MultitaskModel.from_pretrained("michaelginn/uspanteko-mlm-large",
+            model = MultitaskModel.from_pretrained("michaelginn/usp-mlm-genbench",
                                                    classifier_head_sizes=[66, 21, 19, 10])
         elif model_type == 'flat':
-            model = AutoModelForTokenClassification.from_pretrained("michaelginn/uspanteko-mlm-large",
+            model = AutoModelForTokenClassification.from_pretrained("michaelginn/usp-mlm-genbench",
                                                                     num_labels=len(glosses))
         elif model_type == 'denoised':
-            model = DenoisedModel.from_pretrained("michaelginn/uspanteko-mlm-large",
+            model = DenoisedModel.from_pretrained("michaelginn/usp-mlm-genbench",
                                                   num_labels=len(glosses))
         elif model_type == 'relative_position_embeddings':
             model = AutoModelForTokenClassification.from_pretrained("michaelginn/usp-lang-relative_key_query-micro",
                                                                     num_labels=len(glosses))
         elif model_type == 'larger':
-            model = AutoModelForTokenClassification.from_pretrained("../models/usp-lang-model-absolute-full",
+            model = AutoModelForTokenClassification.from_pretrained("../models/usp-lang-absolute-full",
                                                                     num_labels=len(glosses))
         else:
             if model_type == 'tax_loss':
-                model = TaxonomicLossModel.from_pretrained("michaelginn/uspanteko-mlm-large", num_labels=len(glosses),
+                model = TaxonomicLossModel.from_pretrained("michaelginn/usp-mlm-genbench", num_labels=len(glosses),
                                                            loss_sum='linear')
             elif model_type == 'harmonic_loss':
-                model = TaxonomicLossModel.from_pretrained("michaelginn/uspanteko-mlm-large", num_labels=len(glosses),
+                model = TaxonomicLossModel.from_pretrained("michaelginn/usp-mlm-genbench", num_labels=len(glosses),
                                                            loss_sum='harmonic')
             model.use_morphology_tree(morphology_tree, max_depth=5)
 
@@ -166,7 +166,7 @@ def train(model_type: str, train_size: int, seed: int,
         trainer.train()
     else:
         # Train in multiple stages
-        model = MultistageModel.from_pretrained("michaelginn/uspanteko-mlm-large",
+        model = MultistageModel.from_pretrained("michaelginn/usp-mlm-genbench",
                                                 classifier_head_sizes=[66, 21, 19, 10])
 
         for stage in [3, 2, 1, 0]:
