@@ -14,6 +14,7 @@
 module purge
 # Load the python module
 module load anaconda
+
 # Run Python Script
 conda activate AutoIGT
 cd "/projects/migi8081/taxo-morph/src"

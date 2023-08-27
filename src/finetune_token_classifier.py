@@ -5,7 +5,8 @@ import click
 import torch
 import wandb
 from datasets import DatasetDict
-from transformers import AutoModelForTokenClassification, Trainer, TrainingArguments, RobertaForTokenClassification
+from transformers import AutoModelForTokenClassification, Trainer, TrainingArguments, RobertaForTokenClassification, \
+    RobertaForMaskedLM, RobertaConfig
 
 from data_handling import prepare_dataset, load_data_file, create_vocab, create_gloss_vocab, prepare_multitask_dataset
 from eval import eval_accuracy
@@ -65,7 +66,7 @@ def create_trainer(model: RobertaForTokenClassification, dataset: Optional[Datas
         num_train_epochs=max_epochs,
         load_best_model_at_end=True,
         logging_strategy='epoch',
-        report_to=report_to,
+        report_to=report_to
     )
 
     trainer = Trainer(
@@ -87,7 +88,7 @@ def cli():
 @cli.command()
 @click.option('--model_type',
               type=click.Choice(['flat', 'multitask', 'multistage', 'tax_loss', 'harmonic_loss', 'denoised',
-                                 'relative_position_embeddings']))
+                                 'relative_position_embeddings', 'no_pretrained']))
 @click.option("--train_size", help="Number of items to sample from the training data", type=int)
 @click.option("--train_data", type=click.Path(exists=True))
 @click.option("--eval_data", type=click.Path(exists=True))
@@ -152,6 +153,14 @@ def train(model_type: str, train_size: int, seed: int,
         elif model_type == 'relative_position_embeddings':
             model = AutoModelForTokenClassification.from_pretrained("../models/usp-mlm-relative_key_query-full",
                                                                     num_labels=len(glosses))
+        elif model_type == 'no_pretrained':
+            config = RobertaConfig(
+                vocab_size=tokenizer.vocab_size,
+                max_position_embeddings=MODEL_INPUT_LENGTH,
+                pad_token_id=tokenizer.PAD_ID,
+                position_embedding_type='absolute'
+            )
+            model = RobertaForMaskedLM(config=config)
         else:
             if model_type == 'tax_loss':
                 model = TaxonomicLossModel.from_pretrained("../models/usp-mlm-absolute-full", num_labels=len(glosses),
