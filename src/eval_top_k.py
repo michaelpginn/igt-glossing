@@ -1,4 +1,4 @@
-from data import prepare_dataset, create_vocab, create_gloss_vocab, special_chars, load_data_file
+from data_handling import prepare_dataset, create_vocab, create_gloss_vocab, special_chars, load_data_file
 import random
 from tokenizer import WordLevelTokenizer
 from uspanteko_morphology import morphology
@@ -44,9 +44,11 @@ def compute_metrics(eval_preds):
 
     return {'accuracy': total_correct / total_morphemes, 'topkaccuracy': total_top_5_correct / total_morphemes}
 
+
 def preprocess_logits_for_metrics(topk):
     def _preprocess_logits_for_metrics(logits, labels):
         return torch.topk(logits, topk, dim=2).indices
+
     return _preprocess_logits_for_metrics
 
 
@@ -63,6 +65,7 @@ args = TrainingArguments(
     load_best_model_at_end=True,
     report_to="wandb",
 )
+
 
 def _top_k_accuracy(size, k, seed):
     tax_model = TaxonomicLossModel.from_pretrained(f"./models/{size}-tax-{seed}-linear", num_labels=len(glosses))
@@ -115,6 +118,7 @@ def eval_topk(size, k):
         harmonic_accs.append(harmonic_acc)
 
     return sum(flat_accs) / len(flat_accs), sum(tax_accs) / len(tax_accs), sum(harmonic_accs) / len(harmonic_accs)
+
 
 all_results = []
 

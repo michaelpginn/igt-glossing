@@ -7,7 +7,7 @@ import wandb
 from datasets import DatasetDict
 from transformers import AutoModelForTokenClassification, Trainer, TrainingArguments, RobertaForTokenClassification
 
-from data import prepare_dataset, load_data_file, create_vocab, create_gloss_vocab, prepare_multitask_dataset
+from data_handling import prepare_dataset, load_data_file, create_vocab, create_gloss_vocab, prepare_multitask_dataset
 from eval import eval_accuracy
 from multistage_model import MultistageModel
 from multitask_model import MultitaskModel

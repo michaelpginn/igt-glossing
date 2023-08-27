@@ -5,11 +5,10 @@ import pandas as pd
 from datasets import DatasetDict
 from transformers import AutoModelForTokenClassification
 
-from data import prepare_dataset, create_vocab, create_gloss_vocab, special_chars, load_data_file
+from data_handling import prepare_dataset, create_vocab, create_gloss_vocab, special_chars, load_data_file
 from tokenizer import WordLevelTokenizer
 from uspanteko_morphology import morphology
 from finetune_token_classifier import create_trainer
-
 
 device = "cuda:0" if torch.cuda.is_available() else "cpu"
 
@@ -31,8 +30,10 @@ def eval_model(seed, all_glosses, train_data, dataset, tokenizer):
     print(f"Train data includes {len(train_seen_glosses)}/{len(all_glosses)} of possible labels")
 
     # Run prediction on the dev set
-    model = AutoModelForTokenClassification.from_pretrained(f"../models/10-flat-{seed}-linear", num_labels=len(all_glosses))
-    trainer = create_trainer(model, dataset=dataset, tokenizer=tokenizer, labels=all_glosses, batch_size=64, max_epochs=30)
+    model = AutoModelForTokenClassification.from_pretrained(f"../models/10-flat-{seed}-linear",
+                                                            num_labels=len(all_glosses))
+    trainer = create_trainer(model, dataset=dataset, tokenizer=tokenizer, labels=all_glosses, batch_size=64,
+                             max_epochs=30)
     preds = trainer.predict(dataset['dev'])
 
     # Evaluate correct predictions on unseen morphemes

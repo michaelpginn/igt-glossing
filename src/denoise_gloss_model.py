@@ -7,7 +7,7 @@ from datasets import DatasetDict
 from transformers import RobertaConfig, TrainingArguments, Trainer, RobertaForMaskedLM, DataCollatorForLanguageModeling
 
 import wandb
-from data import load_data_file, prepare_dataset_mlm, create_vocab, create_gloss_vocab
+from data_handling import load_data_file, prepare_dataset_mlm, create_vocab, create_gloss_vocab
 from tokenizer import WordLevelTokenizer
 from uspanteko_morphology import morphology
 

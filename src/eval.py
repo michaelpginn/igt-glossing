@@ -1,7 +1,7 @@
 """Contains the evaluation scripts for comparing predicted and gold IGT"""
 
 from typing import List
-from data import load_data_file
+from data_handling import load_data_file
 from torchtext.data.metrics import bleu_score
 import click
 import json
@@ -79,6 +79,7 @@ def eval_morpheme_glosses(pred_morphemes: List[List[str]], gold_morphemes: List[
     # return {'morpheme_level': morpheme_eval, 'classes': class_eval, 'bleu': bleu}
     return {'morpheme_level': morpheme_eval}
 
+
 def eval_word_glosses(pred_words: List[List[str]], gold_words: List[List[str]]):
     """Evaluates the performance at the morpheme level"""
     word_eval = eval_accuracy(pred_words, gold_words)
@@ -102,10 +103,10 @@ def evaluate_igt(pred: str, gold: str):
     pred_morphemes = [line.gloss_list(segmented=True) for line in pred]
     gold_morphemes = [line.gloss_list(segmented=True) for line in gold]
 
-    all_eval = {'word_level': word_eval, **eval_morpheme_glosses(pred_morphemes=pred_morphemes, gold_morphemes=gold_morphemes)}
+    all_eval = {'word_level': word_eval,
+                **eval_morpheme_glosses(pred_morphemes=pred_morphemes, gold_morphemes=gold_morphemes)}
     print(json.dumps(all_eval, sort_keys=True, indent=4))
 
 
 if __name__ == '__main__':
     evaluate_igt()
-
