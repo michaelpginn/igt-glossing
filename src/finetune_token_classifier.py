@@ -99,7 +99,7 @@ def train(model_type: str, train_size: int, seed: int,
           train_data: str = "../data/usp-train-track2-uncovered",
           eval_data: str = "../data/usp-dev-track2-uncovered",
           epochs: int = 200,
-          weight_decay: float = 0,
+          weight_decay: float = 0.1,
           project: str = 'taxo-morph-finetune'):
     MODEL_INPUT_LENGTH = 64
     BATCH_SIZE = 64
@@ -150,7 +150,7 @@ def train(model_type: str, train_size: int, seed: int,
             model = DenoisedModel.from_pretrained("../models/usp-mlm-absolute-full",
                                                   num_labels=len(glosses))
         elif model_type == 'relative_position_embeddings':
-            model = AutoModelForTokenClassification.from_pretrained("michaelginn/usp-lang-relative_key_query-full",
+            model = AutoModelForTokenClassification.from_pretrained("../models/usp-mlm-relative_key_query-full",
                                                                     num_labels=len(glosses))
         else:
             if model_type == 'tax_loss':
