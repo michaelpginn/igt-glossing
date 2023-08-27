@@ -21,3 +21,4 @@ cd "/projects/migi8081/taxo-morph/src"
 python3 finetune_token_classifier.py train --project genbench-taxo-morph-exp1 --model_type flat --seed 1 --epochs 50 --weight_decay 0 --train_data ../data/GenBench/train --eval_data ../data/GenBench/eval_OOD
 python3 finetune_token_classifier.py train --project genbench-taxo-morph-exp1 --model_type flat --seed 1 --epochs 50 --weight_decay 0.01 --train_data ../data/GenBench/train --eval_data ../data/GenBench/eval_OOD
 python3 finetune_token_classifier.py train --project genbench-taxo-morph-exp1 --model_type flat --seed 1 --epochs 50 --weight_decay 0.1 --train_data ../data/GenBench/train --eval_data ../data/GenBench/eval_OOD
+python3 finetune_token_classifier.py train --project genbench-taxo-morph-exp1 --model_type flat --seed 1 --epochs 50 --weight_decay 0.5 --train_data ../data/GenBench/train --eval_data ../data/GenBench/eval_OOD
