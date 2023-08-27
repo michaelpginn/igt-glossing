@@ -82,7 +82,7 @@ def train(arch_size: str = 'micro',
         save_strategy="epoch",
         save_total_limit=3,
         num_train_epochs=EPOCHS,
-        load_best_model_at_end=True,
+        load_best_model_at_end=False,
         report_to="wandb"
     )
     trainer = Trainer(
