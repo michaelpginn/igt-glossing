@@ -9,6 +9,7 @@
 #SBATCH --mail-user=michael.ginn@colorado.edu
 
 # Load the python module
+module load gcc/9.3.0 arrow/8
 module load python/3.10
 module load scipy-stack
 
