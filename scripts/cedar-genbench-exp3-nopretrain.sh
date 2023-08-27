@@ -8,8 +8,6 @@
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=michael.ginn@colorado.edu
 
-# purge all existing modules
-module purge
 # Load the python module
 module load python/3.10
 module load scipy-stack
@@ -18,9 +16,9 @@ module load scipy-stack
 virtualenv --no-download $SLURM_TMPDIR/env
 source $SLURM_TMPDIR/env/bin/activate
 pip install --no-index --upgrade pip
-pip install --no-index -r ~/scratch/taxo-morph/requirements.txt
+pip install -r ~/scratch/taxo-morph/requirements.txt
 
 # Run Python Script
-cd ~/scratch/taxo-morph
+cd ~/scratch/taxo-morph/src
 
 python3 finetune_token_classifier.py train --project genbench-taxo-morph-exp1 --model_type no_pretrained --seed 1 --epochs 100 --weight_decay 0.1 --train_data ../data/GenBench/train --eval_data ../data/GenBench/eval_OOD
