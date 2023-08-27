@@ -26,7 +26,7 @@ def train(arch_size: str = 'micro',
           position_embeddings: str = "absolute"):
     MODEL_INPUT_LENGTH = 64
     BATCH_SIZE = 64
-    EPOCHS = 100
+    EPOCHS = 50
 
     wandb.init(project=project, entity="michael-ginn", config={
         "bert-size": arch_size,

@@ -3,7 +3,7 @@
 #SBATCH --gres=gpu:v100
 #SBATCH --ntasks=4          # Number of requested cores
 #SBATCH --mem=32G
-#SBATCH --time=12:00:00          # Max walltime              # Specify QOS
+#SBATCH --time=1:00:00          # Max walltime              # Specify QOS
 #SBATCH --qos=blanca-kann
 #SBATCH --out=train_genbench_pretrain.%j.out      # Output file name
 #SBATCH --error=train_genbench_pretrain.%j.err
