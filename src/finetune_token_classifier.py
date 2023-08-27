@@ -64,7 +64,7 @@ def create_trainer(model: RobertaForTokenClassification, dataset: Optional[Datas
         save_strategy="epoch",
         save_total_limit=3,
         num_train_epochs=max_epochs,
-        load_best_model_at_end=True,
+        load_best_model_at_end=False,
         logging_strategy='epoch',
         report_to=report_to
     )
