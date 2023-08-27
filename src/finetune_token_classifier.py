@@ -142,13 +142,13 @@ def train(model_type: str, train_size: int, seed: int,
 
     if model_type != 'multistage':
         if model_type == 'multitask':
-            model = MultitaskModel.from_pretrained("../models/usp-mlm-absolute-full",
+            model = MultitaskModel.from_pretrained("../models/usp-mlm-absolute-micro",
                                                    classifier_head_sizes=[66, 21, 19, 10])
         elif model_type == 'flat':
-            model = AutoModelForTokenClassification.from_pretrained("../models/usp-mlm-absolute-full",
+            model = AutoModelForTokenClassification.from_pretrained("../models/usp-mlm-absolute-micro",
                                                                     num_labels=len(glosses))
         elif model_type == 'denoised':
-            model = DenoisedModel.from_pretrained("../models/usp-mlm-absolute-full",
+            model = DenoisedModel.from_pretrained("../models/usp-mlm-absolute-micro",
                                                   num_labels=len(glosses))
         elif model_type == 'relative_position_embeddings':
             model = AutoModelForTokenClassification.from_pretrained("../models/usp-mlm-relative_key_query-full",
@@ -158,15 +158,18 @@ def train(model_type: str, train_size: int, seed: int,
                 vocab_size=tokenizer.vocab_size,
                 max_position_embeddings=MODEL_INPUT_LENGTH,
                 pad_token_id=tokenizer.PAD_ID,
+                num_hidden_layers=3,
+                hidden_size=100,
+                num_attention_heads=5,
                 position_embedding_type='absolute'
             )
             model = RobertaForMaskedLM(config=config)
         else:
             if model_type == 'tax_loss':
-                model = TaxonomicLossModel.from_pretrained("../models/usp-mlm-absolute-full", num_labels=len(glosses),
+                model = TaxonomicLossModel.from_pretrained("../models/usp-mlm-absolute-micro", num_labels=len(glosses),
                                                            loss_sum='linear')
             elif model_type == 'harmonic_loss':
-                model = TaxonomicLossModel.from_pretrained("../models/usp-mlm-absolute-full", num_labels=len(glosses),
+                model = TaxonomicLossModel.from_pretrained("../models/usp-mlm-absolute-micro", num_labels=len(glosses),
                                                            loss_sum='harmonic')
             model.use_morphology_tree(morphology_tree, max_depth=5)
 
@@ -175,7 +178,7 @@ def train(model_type: str, train_size: int, seed: int,
         trainer.train()
     else:
         # Train in multiple stages
-        model = MultistageModel.from_pretrained("../models/usp-mlm-absolute-full",
+        model = MultistageModel.from_pretrained("../models/usp-mlm-absolute-micro",
                                                 classifier_head_sizes=[66, 21, 19, 10])
 
         for stage in [3, 2, 1, 0]:
