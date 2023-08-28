@@ -276,5 +276,5 @@ def write_igt(data: List[IGTLine], out_path):
             # Write the data in the appropriate format
             outfile.write("\\t " + line.transcription)
             outfile.write("\n\\m " + line.segmentation)
-            outfile.write("\n\\g " + line.glosses)
+            outfile.write("\n\\p " + line.glosses)
             outfile.write("\n\\l " + line.translation + "\n\n")
