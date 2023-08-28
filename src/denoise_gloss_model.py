@@ -11,7 +11,7 @@ from data_handling import load_data_file, prepare_dataset_mlm, create_vocab, cre
 from tokenizer import WordLevelTokenizer
 from uspanteko_morphology import morphology
 
-device = "cuda:0" if torch.cuda.is_available() else "cpu"
+device = "cuda:0" if torch.cuda.is_available() else "mps"
 
 
 @click.command()
@@ -25,7 +25,7 @@ def train(arch_size: str = 'micro',
           eval_data: str = "../data/usp-dev-track2-uncovered"):
     MODEL_INPUT_LENGTH = 64
     BATCH_SIZE = 64
-    EPOCHS = 100
+    EPOCHS = 300
 
     wandb.init(project=project, entity="michael-ginn", config={
         "bert-size": arch_size,
@@ -51,7 +51,7 @@ def train(arch_size: str = 'micro',
                                          tokenizer=tokenizer,
                                          device=device)
 
-    data_collator = DataCollatorForLanguageModeling(tokenizer=tokenizer, mlm_probability=0.15, return_tensors="pt")
+    data_collator = DataCollatorForLanguageModeling(tokenizer=tokenizer, mlm_probability=0.3, return_tensors="pt")
 
     if arch_size == 'full':
         config = RobertaConfig(
