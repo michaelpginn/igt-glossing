@@ -2,7 +2,7 @@
 #SBATCH --nodes=1           # Number of requested nodes
 #SBATCH --gpus-per-node=v100l:1
 #SBATCH --mem=32G
-#SBATCH --time=12:00:00          # Max walltime
+#SBATCH --time=1:00:00          # Max walltime
 #SBATCH --out=train_genbench_exp3.%j.out      # Output file name
 #SBATCH --error=train_genbench_exp3.%j.err
 #SBATCH --mail-type=ALL
@@ -22,4 +22,5 @@ pip install -r ~/scratch/taxo-morph/requirements.txt
 # Run Python Script
 cd ~/scratch/taxo-morph/src
 
-python3 finetune_token_classifier.py train --project genbench-taxo-morph-exp1 --model_type no_pretrained --seed 1 --epochs 100 --weight_decay 0.1 --train_data ../data/GenBench/train --eval_data ../data/GenBench/eval_OOD
+python3 finetune_token_classifier.py train --project genbench-taxo-morph-exp1 --model_type flat --seed 1 --epochs 50 --weight_decay 0.75 --train_data ../data/GenBench/train.txt --additional_train_data ../data/GenBench/pred_eval_ood_it1.txt --eval_data ../data/GenBench/eval_ood.txt
+
