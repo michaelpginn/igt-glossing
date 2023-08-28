@@ -268,3 +268,13 @@ def write_predictions(data: List[IGTLine], tokenizer, trainer: Trainer, labels, 
 
             outfile.write(line_pred_string)
             outfile.write("\\l " + line.translation + "\n")
+
+
+def write_igt(data: List[IGTLine], out_path):
+    with open(out_path, 'w') as outfile:
+        for line in data:
+            # Write the data in the appropriate format
+            outfile.write("\\t " + line.transcription)
+            outfile.write("\n\\m " + line.segmentation)
+            outfile.write("\n\\g " + line.glosses)
+            outfile.write("\n\\l " + line.translation + "\n\n")
