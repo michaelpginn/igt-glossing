@@ -252,12 +252,12 @@ def write_predictions(data: List[IGTLine], tokenizer, trainer: Trainer, labels, 
         for line, line_preds in zip(data, decoded_preds):
             # Write the data in the appropriate format
             outfile.write("\\t " + line.transcription)
-            outfile.write("\\m " + line.segmentation)
+            outfile.write("\n\\m " + line.segmentation)
 
             # Trim preds to the number of morphemes
             line_preds = line_preds[:len(line.morphemes())]
             # Combine predictions into a string
-            line_pred_string = "\\p "
+            line_pred_string = "\n\\p "
             for pred_gloss in line_preds:
                 if pred_gloss == "[SEP]":
                     line_pred_string += " "
@@ -267,7 +267,7 @@ def write_predictions(data: List[IGTLine], tokenizer, trainer: Trainer, labels, 
                     line_pred_string += "-" + pred_gloss
 
             outfile.write(line_pred_string)
-            outfile.write("\\l " + line.translation + "\n")
+            outfile.write("\n\\l " + line.translation + "\n\n")
 
 
 def write_igt(data: List[IGTLine], out_path):

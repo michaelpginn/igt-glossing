@@ -22,7 +22,9 @@ pip install -r ~/scratch/taxo-morph/requirements.txt
 # Run Python Script
 cd ~/scratch/taxo-morph/src
 
-python3 finetune_token_classifier.py train --project genbench-taxo-morph-exp1 --model_type flat --seed 1 --epochs 50 --weight_decay 0 --train_data ../data/GenBench/train.txt --eval_data ../data/GenBench/eval_ood.txt
-python3 finetune_token_classifier.py train --project genbench-taxo-morph-exp1 --model_type flat --seed 1 --epochs 50 --weight_decay 0.01 --train_data ../data/GenBench/train.txt --eval_data ../data/GenBench/eval_ood.txt
-python3 finetune_token_classifier.py train --project genbench-taxo-morph-exp1 --model_type flat --seed 1 --epochs 50 --weight_decay 0.1 --train_data ../data/GenBench/train.txt --eval_data ../data/GenBench/eval_ood.txt
-python3 finetune_token_classifier.py train --project genbench-taxo-morph-exp1 --model_type flat --seed 1 --epochs 50 --weight_decay 0.5 --train_data ../data/GenBench/train.txt --eval_data ../data/GenBench/eval_ood.txt
+# python3 finetune_token_classifier.py train --project genbench-taxo-morph-exp1 --model_type flat --seed 1 --epochs 50 --weight_decay 0 --train_data ../data/GenBench/train.txt --eval_data ../data/GenBench/eval_ood.txt
+# python3 finetune_token_classifier.py train --project genbench-taxo-morph-exp1 --model_type flat --seed 1 --epochs 50 --weight_decay 0.01 --train_data ../data/GenBench/train.txt --eval_data ../data/GenBench/eval_ood.txt
+# python3 finetune_token_classifier.py train --project genbench-taxo-morph-exp1 --model_type flat --seed 1 --epochs 50 --weight_decay 0.1 --train_data ../data/GenBench/train.txt --eval_data ../data/GenBench/eval_ood.txt
+# python3 finetune_token_classifier.py train --project genbench-taxo-morph-exp1 --model_type flat --seed 1 --epochs 50 --weight_decay 0.5 --train_data ../data/GenBench/train.txt --eval_data ../data/GenBench/eval_ood.txt
+python3 finetune_token_classifier.py train --project genbench-taxo-morph-exp1 --model_type flat --seed 1 --epochs 50 --weight_decay 0.75 --train_data ../data/GenBench/train.txt --eval_data ../data/GenBench/eval_ood.txt
+python3 finetune_token_classifier.py train --project genbench-taxo-morph-exp1 --model_type flat --seed 1 --epochs 50 --weight_decay 1 --train_data ../data/GenBench/train.txt --eval_data ../data/GenBench/eval_ood.txt
