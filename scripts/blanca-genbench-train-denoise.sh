@@ -17,4 +17,4 @@ module load anaconda
 # Run Python Script
 conda activate AutoIGT
 cd "/projects/migi8081/taxo-morph/src"
-python3 denoise_gloss_model.py --arch_size full --project genbench-taxo-morph-denoiser --train_data ../data/GenBench/story --eval_data ../data/GenBench/history
+python3 denoise_gloss_model.py --arch_size full --project genbench-taxo-morph-denoiser --train_data ../data/GenBench/train.txt --eval_data ../data/GenBench/eval_id.txt
