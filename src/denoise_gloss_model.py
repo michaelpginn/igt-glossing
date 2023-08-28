@@ -25,7 +25,7 @@ def train(arch_size: str = 'micro',
           eval_data: str = "../data/usp-dev-track2-uncovered"):
     MODEL_INPUT_LENGTH = 64
     BATCH_SIZE = 64
-    EPOCHS = 300
+    EPOCHS = 100
 
     wandb.init(project=project, entity="michael-ginn", config={
         "bert-size": arch_size,
@@ -51,7 +51,7 @@ def train(arch_size: str = 'micro',
                                          tokenizer=tokenizer,
                                          device=device)
 
-    data_collator = DataCollatorForLanguageModeling(tokenizer=tokenizer, mlm_probability=0.3, return_tensors="pt")
+    data_collator = DataCollatorForLanguageModeling(tokenizer=tokenizer, mlm_probability=0.15, return_tensors="pt")
 
     if arch_size == 'full':
         config = RobertaConfig(
@@ -76,7 +76,7 @@ def train(arch_size: str = 'micro',
         per_device_train_batch_size=BATCH_SIZE,
         per_device_eval_batch_size=BATCH_SIZE,
         gradient_accumulation_steps=3,
-        weight_decay=0.01,
+        weight_decay=0.75,
         save_strategy="epoch",
         save_total_limit=3,
         num_train_epochs=EPOCHS,
