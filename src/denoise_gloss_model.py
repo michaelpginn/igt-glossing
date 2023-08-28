@@ -25,7 +25,7 @@ def train(arch_size: str = 'micro',
           eval_data: str = "../data/usp-dev-track2-uncovered"):
     MODEL_INPUT_LENGTH = 64
     BATCH_SIZE = 64
-    EPOCHS = 300
+    EPOCHS = 100
 
     wandb.init(project=project, entity="michael-ginn", config={
         "bert-size": arch_size,
