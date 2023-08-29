@@ -91,23 +91,27 @@ def cli():
                                  'relative_position_embeddings', 'no_pretrained']))
 @click.option("--train_size", help="Number of items to sample from the training data", type=int)
 @click.option("--train_data", type=click.Path(exists=True))
-@click.option("--additional_train_data", type=click.Path(exists=True))
 @click.option("--eval_data", type=click.Path(exists=True))
 @click.option("--seed", help="Random seed", type=int)
+@click.option("--additional_train_data", type=click.Path(exists=True))
 @click.option("--epochs", help="Max # epochs", type=int)
 @click.option("--weight_decay", help="Fraction of weight decay", type=float)
+@click.option("--pretrained", type=str)
 @click.option("--project", type=str)
 def train(model_type: str, train_size: int, seed: int,
           train_data: str = "../data/usp-train-track2-uncovered",
-          additional_train_data: str = None,
           eval_data: str = "../data/usp-dev-track2-uncovered",
+          additional_train_data: str = None,
           epochs: int = 200,
           weight_decay: float = 0.1,
+          pretrained: str = None,
           project: str = 'taxo-morph-finetune'):
     MODEL_INPUT_LENGTH = 64
     BATCH_SIZE = 64
 
-    run_name = f"{train_size if train_size else 'full'}-{model_type}-{seed}"
+    run_name = f"{train_size if train_size else 'full'}-{model_type}-{seed}{'-finetune' if pretrained is not None else ''}"
+    
+    base_model = pretrained if pretrained is not None else "usp-mlm-absolute-micro"
 
     wandb.init(project=project, entity="michael-ginn", name=run_name, config={
         "train-size": train_size if train_size else "full",
@@ -115,6 +119,7 @@ def train(model_type: str, train_size: int, seed: int,
         "type": model_type,
         "epochs": epochs,
         "weight_decay": weight_decay,
+        "base_model": base_model
     })
 
     random.seed(seed)
@@ -134,27 +139,27 @@ def train(model_type: str, train_size: int, seed: int,
 
     dataset = DatasetDict()
     
-    additional_train = []
     if additional_train_data is not None:
-        additional_train = load_data_file(additional_train_data)
-
+        additional_train_data = load_data_file(additional_train_data)
+        train_data += additional_train_data
+    
     if model_type == 'multitask' or model_type == 'multistage':
-        dataset['train'] = prepare_multitask_dataset(data=train_data + additional_train, tokenizer=tokenizer, labels=glosses,
+        dataset['train'] = prepare_multitask_dataset(data=train_data, tokenizer=tokenizer, labels=glosses,
                                                      device=device)
         dataset['dev'] = prepare_multitask_dataset(data=dev_data, tokenizer=tokenizer, labels=glosses, device=device)
     else:
-        dataset['train'] = prepare_dataset(data=train_data + additional_train, tokenizer=tokenizer, labels=glosses, device=device)
+        dataset['train'] = prepare_dataset(data=train_data, tokenizer=tokenizer, labels=glosses, device=device)
         dataset['dev'] = prepare_dataset(data=dev_data, tokenizer=tokenizer, labels=glosses, device=device)
 
     if model_type != 'multistage':
         if model_type == 'multitask':
-            model = MultitaskModel.from_pretrained("../models/usp-mlm-absolute-micro",
+            model = MultitaskModel.from_pretrained(base_model,
                                                    classifier_head_sizes=[66, 21, 19, 10])
         elif model_type == 'flat':
-            model = AutoModelForTokenClassification.from_pretrained("../models/usp-mlm-absolute-micro",
+            model = AutoModelForTokenClassification.from_pretrained(base_model,
                                                                     num_labels=len(glosses))
         elif model_type == 'denoised':
-            model = DenoisedModel.from_pretrained("../models/usp-mlm-absolute-micro",
+            model = DenoisedModel.from_pretrained(base_model,
                                                   num_labels=len(glosses))
         elif model_type == 'relative_position_embeddings':
             model = AutoModelForTokenClassification.from_pretrained("../models/usp-mlm-relative_key_query-full",
@@ -172,10 +177,10 @@ def train(model_type: str, train_size: int, seed: int,
             model = RobertaForMaskedLM(config=config)
         else:
             if model_type == 'tax_loss':
-                model = TaxonomicLossModel.from_pretrained("../models/usp-mlm-absolute-micro", num_labels=len(glosses),
+                model = TaxonomicLossModel.from_pretrained(base_model, num_labels=len(glosses),
                                                            loss_sum='linear')
             elif model_type == 'harmonic_loss':
-                model = TaxonomicLossModel.from_pretrained("../models/usp-mlm-absolute-micro", num_labels=len(glosses),
+                model = TaxonomicLossModel.from_pretrained(base_model, num_labels=len(glosses),
                                                            loss_sum='harmonic')
             model.use_morphology_tree(morphology_tree, max_depth=5)
 
@@ -184,7 +189,7 @@ def train(model_type: str, train_size: int, seed: int,
         trainer.train()
     else:
         # Train in multiple stages
-        model = MultistageModel.from_pretrained("../models/usp-mlm-absolute-micro",
+        model = MultistageModel.from_pretrained(base_model,
                                                 classifier_head_sizes=[66, 21, 19, 10])
 
         for stage in [3, 2, 1, 0]:
