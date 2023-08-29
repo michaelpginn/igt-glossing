@@ -23,4 +23,4 @@ pip install -r ~/scratch/taxo-morph/requirements.txt
 cd ~/scratch/taxo-morph/src
 
 # python3 pretrain_language_model.py --arch_size micro --project genbench-taxo-morph-pretrain --train_data ../data/GenBench/train.txt --eval_data ../data/GenBench/eval_id.txt --position_embeddings absolute
-python3 pretrain_language_model.py --arch_size micro --project genbench-taxo-morph-pretrain --train_data ../data/GenBench/train_it1 --eval_data ../data/GenBench/eval_id.txt --position_embeddings absolute
+python3 pretrain_language_model.py --arch_size micro --project genbench-taxo-morph-pretrain --train_data ../data/GenBench/train.txt --additional_train_data ../data/GenBench/pred_eval_ood.txt --eval_data ../data/GenBench/eval_id.txt --position_embeddings absolute

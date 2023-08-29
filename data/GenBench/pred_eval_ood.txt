@@ -1,0 +1,1060 @@
+\t Pores tijb'ij taq li ójor taq tziij.
+\m pores ti-j-b'ij taq li ójor taq tziij
+\p ADV INC-E3S-VT PL DEM ADV PL S
+\l Por eso dicían antiguamente.
+
+\t il xan jun ra ák'al,
+\m il x-b'an jun ra ák'el
+\p VT COM-VT NUM DIM S
+\l Mire lo que le pasó a un niñito.
+
+\t nik'i pech jun tziij,
+\m nik'-i' pech jun tziij
+\p ADV-ENF S NUM S
+\l Es igual a una palabra.
+
+\t ri' kom ri' kostumbr re ójor taq kristyan.
+\m ri' koom ri' kostumbr re ójor taq kirtyaan
+\p DEM PART DEM S PRON ADV PL S
+\l eso como ya es costumbre de los antepasados.
+
+\t porke ta' qetam oj natun nad,
+\m porke ta' q-etam oj natun nad
+\p ADV NEG E1P-S PRON VI ADV
+\l Porque no sabemos leer nada.
+
+\t mejor tok taq juun no'j re.
+\m mejor tok taq jun no'j re
+\p ADV VT PL NUM S PRON
+\l que mata la riqueza de la tierra
+
+\t i keske re jalaan kertyaan mosiib' xkan jkoje' chuuch,
+\m i keske re jalaan kirtyaan mosiib' x-kan j-koj-e' chuuch
+\p CONJ S PRON ADV S S COM-VI E3S-VT-ENF S
+\l Y que si otra gente dejó metido allí.
+
+\t tq'ax q'iij
+\m t-q'ax q'iij
+\p INC-VI S
+\l Pasa el dia.
+
+\t kom li tiyoox kla',
+\m koom li tyóox kla'
+\p PART DEM S ADV
+\l como es el santo allí,
+
+\t Nimaq taq chee',
+\m nimaq taq chee'
+\p ADJ PL S
+\l Grandes árboles.
+
+\t laq k'eche'laaj.
+\m laq k'ichelaaj
+\p PREP S
+\l En las montañas.
+
+\t Xkam chik juun awaaj juun lado,
+\m x-kam chik juun awaaj juun laad
+\p COM-VI PART NUM S NUM ADV
+\l se muere otro animal por otro lado
+
+\t maq re jun k'ulaaj kertyaan li.
+\m maq re jun k'ulaaj kirtyaan li
+\p ART PRON NUM S S DEM
+\l Esa pareja de personas.
+
+\t tqat'o chee'.
+\m t-qa-t'o chee'
+\p INC-E1P-VT S
+\l Ayudemos a los arboles.
+
+\t xk'ii kijab' junaab',
+\m x-k'ii kijab' junaab'
+\p COM-ADV NUM S
+\l aguanto hasta cuatro años
+
+\t oj b'e kla' ójr,
+\m oj b'ee kla' ójor
+\p PRON S ADV ADV
+\l Nos vamos allí antes.
+
+\t xojchap taq chib' quleew,
+\m x-oj-chap taq chib' q-uleew
+\p COM-PRON-VT PL SREL E1P-S
+\l nos tienen bien controlado por nuestros terreno.
+
+\t ójor taq kristyan saber
+\m ójor taq kirtyaan saber
+\p ADV PL S ADV
+\l Los ante pasados saber
+
+\t ójor taq tziij li.
+\m ójor taq tziij li
+\p ADV PL S DEM
+\l Antiguamente es.
+
+\t Ay dyos taat,
+\m ay dyoos taat
+\p VOC S S
+\l ¡Ay dios señor!
+
+\t pero bween ab'iix tran,
+\m peer bween ab'iix ti-r-b'an
+\p ADV ADV S INC-E3S-VT
+\l y sí se producia buan milpa
+
+\t xtok ánm,
+\m x-tok ánim
+\p COM-VT S
+\l Buscó mujer.
+
+\t tos ri k'u li' qaaj,
+\m entoons ri k'u li qaaj
+\p ADV DEM PART DEM S
+\l Entonces eso es señor.
+
+\t wi' moo tqab'an qelen qe,
+\m wi' mod t-qa-b'an qelen qe
+\p EXS ADV INC-E1P-VT S PART
+\l Hay modo o como hacer nuestras cosas.
+
+\t mas re jxaar,
+\m mas r-e j-xaar
+\p ADV E3S-SREL E3S-S
+\l Más su jarro.
+
+\t man moos.
+\m man moos
+\p ART S
+\l Esa ladino.
+
+\t pi ri k'ichelaaj chaq pero niri laq tilmiit ta' chiki'n.
+\m pi ri k'ichelaaj chaq peer niri li-aq tilmiit ta' chik-i'n
+\p PREP DEM S PART ADV ADV DEM-PL S NEG PART-ENF
+\l ya solo en las montañas, aquí en el casco urbano ya no se produce
+
+\t Ya or komoo tijb'ij taq ójor taq kristyan,
+\m ya or komoo ti-j-b'ij taq ójor taq kirtyaan
+\p VOC ADV ADV INC-E3S-VT PL ADV PL S
+\l Ya ahora como decen la gente de antes.
+
+\t saber jurub' rijil maq nimaq taq kandel tijk'am taq li
+\m saber jurub' (rijil) maq nimaq taq kandel ti-j-k'am taq li
+\p ADV ADV S ART ADJ PL S INC-E3S-VT PL DEM
+\l saber cuanto cuesta esas grandes candelas que llevan
+
+\t Toos ta' moo tqyoq' chee',
+\m entoons ta' moo t-q-yoq' chee'
+\p ADV NEG ADV INC-E1P-VT S
+\l Entonces no podemo maltratar a los árboles.
+
+\t i nojeel q'iij tiqab'aan maas k'ex re uleew.
+\m i nojeel q'iij ti-qa-b'an maas k'ex r-e uleew
+\p CONJ ADV S INC-E1P-VT ADV ADJ E3S-SREL S
+\l y con esto cada día se esta dañando mas los terrenos.
+
+\t Tose ri' k'u li pwes tren taq qaqaaj,
+\m entoons ri' k'u li pwees t-r-en taq qa-qaaj
+\p ADV DEM PART DEM ADV INC-E3S-VT PL E1P-S
+\l Entonces eso es lo que hacen nuestros padres.
+
+\t juntiir tib'e taq kla'.
+\m juntiir ti-b'e taq kla'
+\p ADV INC-VI PL ADV
+\l Todos se van para alla.
+
+\t juntiir maq ek'el li.
+\m juntiir maq ák'el li
+\p ADV ART S DEM
+\l Todos esos patojos.
+
+\t wi' ju juun nimaq raqan chuch ra itz'ab' ri.
+\m wi' ju juun nim-aq r-aqan chuch ra itz'ab' ri
+\p EXS NUM NUM ADJ-PL E3S-S SREL DIM S DEM
+\l es un poco mas grande que este juguete
+
+\t Ójor, ójor taq tziij,
+\m ójor ójor taq tziij
+\p ADV ADV PL S
+\l Antiguamente antiguamente.
+
+\t xe' q'iij xok aq'aab',
+\m xe' q'iij x-ok aq'aab'
+\p VI S COM-VI S
+\l Se fue la tarde y entro la noche.
+
+\t Kwando wi' jun bween k'ichelaaj,
+\m kwaand wi' jun bween k'iche'laaj
+\p ADV EXS NUM ADV S
+\l Cuando hay una buena montaña.
+
+\t porke ójor taq kristyan mas sk'aaj taq na.
+\m porke ójor taq kirtyaan maas sk'aaj taq na
+\p ADV ADV PL S ADV S PL PART
+\l porque antes las personas heran muy hacendosos.
+
+\t ta' mod,
+\m ta' mood
+\p NEG ADV
+\l no hay modo,
+
+\t i kib' anm.
+\m i kib' anim
+\p CONJ NUM S
+\l Y dos mujeres.
+
+\t Toos ri tijb'ij taq,
+\m entoons ri ti-j-b'ij taq
+\p ADV DEM INC-E3S-VT PL
+\l Entonces eso es lo dicen.
+
+\t Si pwees.
+\m si' pwees
+\p ADV ADV
+\l Si pues.
+
+\t ri qe li taat,
+\m ri qe li taat
+\p DEM PART DEM S
+\l Eso es señor.
+
+\t toos ri' limaq taq chee'.
+\m entoons ri' nim-aq taq chee'
+\p ADV DEM ADJ-PL PL S
+\l Entonces solo los grandes arboles.
+
+\t usiil xqej jchoq'w,
+\m usiil x-qej j-choq'w
+\p ADV COM-VI E3S-S
+\l poco a poco bajo de calidad
+
+\t e xkaan kib' wunaq,
+\m e x-kan kiib' wunaq
+\p SREL COM-VI NUM S
+\l Se quedarón dos mujeres.
+
+\t xe' taq chiki' kla',
+\m x-b'e taq chik-i'n kla'
+\p COM-VI PL PART-ENF ADV
+\l se trasladan para ese lugar
+
+\t ya xi' q'iij,
+\m ya xi' q'iij
+\p VOC VI S
+\l Ya es tarde.
+
+\t Porke chee' re nimi' jq'iij,
+\m porke chee' re nim-i' j-q'iij
+\p ADV S PRON ADJ-ENF E3S-S
+\l Porque el árbol tiene una gran importancia.
+
+\t Tpeti jaab',
+\m t-pet-i' jaab'
+\p INC-VI-ENF S
+\l Viene la lluvia.
+
+\t porke ta' retamaq nad
+\m porke ta' r-etam-aq nada
+\p ADV NEG E3S-S-PL ADV
+\l Porque no saben nada.
+
+\t porke saber neen mod li ri' tyemp ljori ta',
+\m porke saber neen mood li ri' tyeemp lajori ta'
+\p ADV ADV INT ADV DEM DEM S ADV NEG
+\l porque saber como es el tiempo ahora no,
+
+\t xaq li ri jaa wi' kla',
+\m xaq li ri jaa wi' kla'
+\p PART DEM DEM S EXS ADV
+\l Solo esa casa avía.
+
+\t Nimaq taq chee',
+\m nim-aq taq chee'
+\p ADJ-PL PL S
+\l Los grandes arboles.
+
+\t qachuuch ójor.
+\m qa-chuuch ójor
+\p E1P-S ADV
+\l Asi como nuestros mamas antiguamente. (nuestros padres)
+
+\t jaan tche',
+\m jaan t-che'
+\p ADV INC-VT
+\l Esta bien dijo.
+
+\t o twila' jun kwalkyer
+\m o t-wi'l-a' jun kwalkyer
+\p CONJ INC-SREL-ENF NUM ADV
+\l O miro un cualquier.
+
+\t Porke maq ra chee' nimi' jq'iij.
+\m porke maq ra chee' nim-i' j-q'iij
+\p ADV ART DIM S ADJ-ENF E3S-S
+\l Porque los arbolitos son de mucha importancia.
+
+\t xpek'u kinaq' li,
+\m x-pe-k'u kinaq' li
+\p COM-VI-PART S DEM
+\l Viene el frijoles pues. (abundancia en cosechas)
+
+\t Kwand ooj,
+\m kwand ooj
+\p ADV PRON
+\l Cuando nosotros.
+
+\t i jun chik re, ra anm
+\m i jun chik re ra anim
+\p CONJ NUM PART PRON DIM S
+\l Y otro ella es mujercita.
+
+\t titik chi bween,
+\m ti-tik chi bween
+\p INC-VT PREP ADV
+\l y que le guste comer mucho
+
+\t ri maq neri,
+\m ri maq niri
+\p DEM ART ADV
+\l Los que estan aquí.
+
+\t k'omo qe li wee laq kinaq',
+\m k'omo qe li we laq kinaq'
+\p ADV PART DEM SREL PREP S
+\l Gracias si encaso que sea entre el frijol.
+
+\t oj b'it chik juntir chik,
+\m oj b'it chik juntir chik
+\p PRON VI PART ADV PART
+\l Nos levantamos otra vez.
+
+\t per ta' looq'.
+\m peer ta' looq'
+\p ADV NEG ADV
+\l Pero no es posible.
+
+\t xta' man jun chik
+\m x-ta' man jun chik
+\p COM-NEG ART NUM PART
+\l Encontro a otra.
+
+\t tonse ri' k'u li pwes.
+\m entoons ri' k'u li pwees
+\p ADV DEM PART DEM ADV
+\l Entonces eso es pues.
+
+\t Che' re man rxóqil.
+\m che' re man r-ixoqil
+\p VT PRON ART E3S-S
+\l Le decia a su esposa.
+
+\t Xen miix,
+\m x-en miix
+\p COM-VT S
+\l Hizo la misa.
+
+\t tijkoj taq nimaq taq kandel
+\m tij-koj taq nimaq taq kandel
+\p VT-VT PL ADJ PL S
+\l ponen grandes candelas,
+
+\t lajori pur chaq saq.
+\m laj'ori puro chaq saq
+\p ADV ADV PART ADJ
+\l Ahora ya esta despejado.
+
+\t per man ánm xii'n.
+\m per man ánim x-i-i'n
+\p ADV ART S COM-CONJ-ENF
+\l Pero esa mujer se fue.
+
+\t Chee' pok nim jq'iij,
+\m chee' pok nim j-q'iij
+\p S ADV ADJ E3S-S
+\l El árbol es muy importante.
+
+\t Pero komo ori ta'chki'n,
+\m peer komo ori ta'-chk-i'n
+\p ADV ADV ADV NEG-PART-ENF
+\l Pero como ahora ya no hay.
+
+\t Tosee xen taq li jinon li xen miix li,
+\m antonses x-en taq li jilon li x-en miix li
+\p ADV COM-VT PL DEM DEM DEM COM-VT S DEM
+\l Entonces asi hizieron e hizo la misa.
+
+\t Porke si aat,
+\m porke si aat
+\p ADV ADV PRON
+\l Porque si tú.
+
+\t xkaan taq le b'iis
+\m x-kaan taq le b'iis
+\p COM-VI PL PREP S
+\l Se quedaron en la tristeza.
+
+\t O si noo taq ra anm,
+\m o' si noo taq ra ánim
+\p CONJ ADV ADV PL DIM S
+\l O si es una mujercita.
+
+\t xaq jun chi jaa ri xb'ansaj neri.
+\m xaq jun chi jaa ri x-b'an-sáj niri
+\p PART NUM PREP S DEM COM-VT-PAS ADV
+\l Solamente una casa que hicieron aquí.
+
+\t kandela ooj,
+\m kanteel ooj
+\p S PRON
+\l Candela nosotros.
+
+\t b'an taq,
+\m b'an taq
+\p VT PL
+\l Haganlo.
+
+\t tij taq waa b'an,
+\m tij taq waa b'an
+\p VT PL S VT
+\l Coman pues.
+
+\t xpee chik re chik,
+\m x-pee chik re chik
+\p COM-VI PART PRON PART
+\l Vino él otra vez.
+
+\t ri'ti chi jch'ool re,
+\m ri'-ti chi j-ch'ool re
+\p DEM-INC PREP E3S-S PRON
+\l Ella penso.
+
+\t man qarajuwexik taat,
+\m man qa-rejwex taat
+\p ART E1P-S S
+\l Esa nuestra necesidad señor.
+
+\t Re jun ánm
+\m r-e jun ánim
+\p E3S-SREL NUM S
+\l ¿Para una mujer?
+
+\t qachuuch ójor taq tziij.
+\m qa-chuuch ójor taq tziij
+\p E1P-S ADV PL S
+\l Nuestras mamás antiguamente.
+
+\t xaq jun jaa ri,
+\m xaq jun jaa ri
+\p PART NUM S DEM
+\l Solamente esta casa.
+
+\t Dyos por lajori taat,
+\m dyoos por laj'ori taat
+\p S ADV ADV S
+\l (Haay dios pero ahora papá) pero
+
+\t Kwando wi' jun bween k'ichelaaj,
+\m kwaand wi' jun bween k'iche'laaj
+\p ADV EXS NUM ADV S
+\l Cuando hay una buena montaña.
+
+\t Toos kwand wi' chee',
+\m entoons kwand wi' chee'
+\p ADV ADV EXS S
+\l Entonces cuando hay árboles.
+
+\t b'an qamisa ori b'an qamiix ori,
+\m b'an qa-misa ori b'an qa-miix ori
+\p VT E1P-S ADV VT E1P-S ADV
+\l Haga nuestra misa, ahora haga nuestra misa.
+
+\t Toos ri' mism,
+\m entoons ri' miim
+\p ADV DEM ADV
+\l Entonces es el mismo.
+
+\t pwees titok a'n
+\m pwees ti-tok i'n
+\p ADV INC-VT ENF
+\l pues el busca
+
+\t ta' chki' tijye' taq jq'iij.
+\m ta' chk-i' ti-j-ye' taq j-q'iij
+\p NEG PART-ENF INC-E3S-VT PL E3S-S
+\l Ya no le dan importancia.
+
+\t Juntir tich'aw taq laj qayolj.
+\m juntiir ti-ch'aw taq laj qa-yol-j
+\p ADV INC-VI PL PREP E1P-VT-E3S
+\l ¿Todos hablan en nuestro idioma?
+
+\t ta' chiki' oj kwin re.
+\m ta' chik-i' ooj kwin re
+\p NEG PART-ENF PRON VI PRON
+\l no podemos nosotras.
+
+\t tinb'ij iin li qamaam ójor taq tziij.
+\m t-in-b'ij iin li qa-maam ójor taq tziij
+\p INC-E1S-VT PRON DEM E1P-S ADV PL S
+\l digo yo nuestros abuelos y antiguamente.
+
+\t ri koj che' taq re,
+\m ri koj che' taq re
+\p DEM VT VT PL PRON
+\l (el que le dicen León a el) al que le dicen León.
+
+\t B'antaj chik almwers chik
+\m b'an-taj chik almwers chik
+\p VT-PART PART S PART
+\l Terminar de hacer el almuerzo otra vez.
+
+\t wi' wakix.
+\m wi' wakix
+\p EXS S
+\l Hay vacas.
+
+\t entons ri' li tijb'ij taq.
+\m entoons ri' li ti-j-b'ij taq
+\p ADV DEM DEM INC-E3S-VT PL
+\l Entonces eso es lo que dicen.
+
+\t Tijk'am taq b'i poom,
+\m ti-j-k'am taq b'i poom
+\p INC-E3S-VT PL DIR S
+\l Llevan estoraque.
+
+\t laq, laq nim q'iij li
+\m laq laq nim q'iij li
+\p PREP PREP ADJ S DEM
+\l en en las fiestas
+
+\t tren k'otob'.
+\m t-r-en k'otob'
+\p INC-E3S-VT S
+\l Hace pozos.
+
+\t Kirneer wa'kx,
+\m kirneer wakix
+\p S S
+\l Ovejas y vacas.
+
+\t Toos jinon li tqab'ij re chee' ooj,
+\m entoons jilon li t-qa-b'ij re chee' ooj
+\p ADV DEM DEM INC-E1P-VT PRON S PRON
+\l Entonces así le decimos a los arboles.
+
+\t uxub' junab' ljori
+\m oxib' junaab' lajori
+\p NUM S ADV
+\l hace tres años ahora
+
+\t Xe' jol re ánm.
+\m xe' jol re ánim
+\p VI VI PRON S
+\l Se fue corriendo la mujercita.
+
+\t Tpeti jaab',
+\m t-pet-i' jaab'
+\p INC-VI-ENF S
+\l Viene la lluvia.
+
+\t kom wi' kirneer,
+\m koom wi' kirneer
+\p PART EXS S
+\l Como hay ovejas.
+
+\t I antons ri' man jun re Kobaan li ri' man rka',
+\m i antonses ri' man jun re kobaan li ri' man rka'
+\p CONJ ADV DEM ART NUM PRON VT DEM DEM ART PART
+\l Y entonces es el otro de Coban eso es el de.
+
+\t Toos ri' li,
+\m entoons ri' li
+\p ADV DEM DEM
+\l Entonces eso es.
+
+\t mas re jb'o'j,
+\m mas re j-b'o'j
+\p ADV PRON E3S-S
+\l Más su olla.
+
+\t Ta chi ta'an.
+\m ta' chi ti-b'an
+\p NEG PREP INC-VT
+\l Pero ahora ya no lo hace.
+
+\t Toos ri' li,
+\m entoons ri' li
+\p ADV DEM DEM
+\l Entonces eso es.
+
+\t ri' mis chee' tijkoj taq.
+\m ri' mis chee' ti-j-koj taq
+\p DEM ADV S INC-E3S-VT PL
+\l Es la misma madeera el aue usan.
+
+\t ta' chik i'n
+\m ta' chik i'n
+\p NEG PART ENF
+\l ya no hay de esa calidad
+
+\t nada ta' ka'n pake awaas,
+\m nada ta' ka'n pake awaas
+\p ADV NEG S ADV S
+\l No hay animal para que decir.
+
+\t Qame' ja'
+\m q-k'am ja'
+\p E1P-VT S
+\l (Traemos agua) ívamos a traer agua.
+
+\t Ooj titawtina b'i na xílij,
+\m ooj ti-taw-ti-na b'i na xílij
+\p PRON INC-VT-INC-PART DIR PART SREL
+\l Ojala que llegáramos a ese deseo.
+
+\t Noo ta' tijkoj taq taat,
+\m noo ta' j-koj taq taat
+\p ADV NEG E3S-VT PL S
+\l (Ellos no usan señor) no necesitan de cualquier persona. (No usan señor) no necesitan señor.
+
+\t ¿Tons taqejastaqa kirneer kla' ójr?
+\m entoons (taqejastaqa) kirneer kla' ójor
+\p ADV S S ADV ADV
+\l (Entonces bajaban a las ovejas allí antes)
+
+\t pwes syempr twil,
+\m pwees syempre t-wi'l
+\p ADV ADV INC-SREL
+\l pues siempre miro,
+
+\t no'j i'n kirtyaan extranjerb' xpetaq,
+\m no'j i'n kirtyaan extranjerb' x-pet-aq
+\p ADV ENF S S COM-VI-PL
+\l fueron las ideas de las personas extranjeras que vinieron,
+
+\t Byeen byeen xojchap taq chib' qaaw,
+\m byeen byeen x-oj-chap taq chib' qa-wa
+\p ADV ADV COM-PRON-VT PL SREL E1P-S
+\l Bien, pero bien nos tienen controlado
+
+\t tqat'o chee'.
+\m t-qa-t'o chee'
+\p INC-E1P-VT S
+\l Ayudemos a los arboles.
+
+\t loke xataw ójr taq tziij
+\m loke (xataw) ójor taq tziij
+\p ADV S ADV PL S
+\l Loque usred vió en aquellos tiempos.
+
+\t i despwes xtaw re la jaa li rk'il in chuuch li.
+\m i despwes x-taw re la jaa li r-k'il iin chuuch li
+\p CONJ ADV COM-VT PRON PREP S DEM E3S-SREL PRON S DEM
+\l Y despues llego él en la casa con mi mamá.
+
+\t pwes tkanqach'aje' qlen qe chik
+\m pwes t-kan-qa-ch'aj-e' qlen qe chik
+\p ADV INC-VI-E1P-VT-ENF S PART PART
+\l Pues dejamos lavado nuestra cosas otra vez.
+
+\t Kom emoo pech nik'i,
+\m koom e-moo pech nik'-i'
+\p PART SREL-ADV S ADV-ENF
+\l Como de que manera si es igual.
+
+\t xwa'xi'n taat,
+\m x-wa'x-i'n taat
+\p COM-VI-ENF S
+\l Huvo señor.
+
+\t ójor taq kristyan mas sk'aaj taq na,
+\m ójor taq kirtyaan maas sik'aj taq na
+\p ADV PL S ADV S PL PART
+\l Los ante pasados las personas son más hacendosos,
+
+\t poraalg galan taq chaj,
+\m poraalg galaan taq chaj
+\p ADV ADJ PL VT
+\l Poralgo buenos ocotes.
+
+\t Tose ri' k'u li pwes tren taq qaqaaj,
+\m entoons ri' k'u li pwees t-r-en taq qa-qaaj
+\p ADV DEM PART DEM ADV INC-E3S-VT PL E1P-S
+\l Entonces eso es lo que hacen nuestros padres.
+
+\t Pero qas tijb'ij taq ójor taq tziij.
+\m peer qas ti-j-b'ij taq ójor taq tziij
+\p ADV ITS INC-E3S-VT PL ADV PL S
+\l Pero loque decian antiguamente.
+
+\t puur lajori taat
+\m puro laj'ori taat
+\p ADV ADV S
+\l Pero ahora señor.
+
+\t ta' chiki' oj kwin nad,
+\m ta' chik-i' ooj kwin nada
+\p NEG PART-ENF PRON VI ADV
+\l ya no podemos nada,
+
+\t kerneer wi' qakerneer,
+\m kirneer wi' qa-kirneer
+\p S EXS E1P-S
+\l Ovejas si tenemos ovejas.
+
+\t Tz'eti'n chuuch.
+\m tz'eet-i'n chuuch
+\p ADV-ENF S
+\l Es cierto señora.
+
+\t wron wi'.
+\m woron wi'
+\p S EXS
+\l Montes hay.
+
+\t Porke chee' re nimi' jq'iij,
+\m porke chee' re nim-i' j-q'iij
+\p ADV S PRON ADJ-ENF E3S-S
+\l Porque el árbol tiene una gran importancia.
+
+\t en donde rejwexi'n
+\m en donde rejwex-i'n
+\p VT ADV S-ENF
+\l En donde es necesario.
+
+\t tinb'ij iin li qamaam ójor taq tziij.
+\m t-in-b'ij iin li qa-maam ójor taq tziij
+\p INC-E1S-VT PRON DEM E1P-S ADV PL S
+\l digo yo nuestros abuelos y antiguamente.
+
+\t Noo b'aan ori,
+\m noo b'an ori
+\p ADV VT ADV
+\l No hagalo ahora.
+
+\t dyos juntiir,
+\m dyoos juntiir
+\p S ADV
+\l Hay dios todos.
+
+\t wi' lamaas wi' kirneer,
+\m wi' lamaas wi' kirneer
+\p EXS ADV EXS S
+\l se produce donde hay ovejas
+
+\t Toons ri' li,
+\m entoons ri' li
+\p ADV DEM DEM
+\l Entoces eso es.
+
+\t No ta' chi ki tzii pur chaq algo laj ja',
+\m no' ta' chi ki tzii puro chaq algo laj ja'
+\p ADV NEG PREP PART ADJ ADV PART ADV PREP S
+\l Ya no es bueno como que ya no tiene la misma calidad
+
+\t ta' mas nim tqa'an.
+\m ta' mas nim t-qa-'an
+\p NEG ADV ADJ INC-E1P-VT
+\l No podemos hacer más grande.
+
+\t Nimaq taq chee',
+\m nim-aq taq chee'
+\p ADJ-PL PL S
+\l Los grandes arboles.
+
+\t lo ke xqa'an pasar ójr taq tzij,
+\m lo ke x-qa-b'an pasar ójor taq tziij
+\p PART PART COM-E1P-VT VT ADV PL S
+\l Loque nos pasó en tiempos anteriores.
+
+\t jaan tche'
+\m jaan t-che'
+\p ADV INC-VT
+\l Esta bien dijo.
+
+\t per ri k'u li
+\m peer ri k'u li
+\p ADV DEM PART DEM
+\l peroeso si.
+
+\t Noke mism jwi'li' chee',
+\m noke miim j-wi'l-i' chee'
+\p ADV ADV E3S-SREL-ENF S
+\l Es por lo@mismo, por los árboles.
+
+\t xaq li jun ánm li tk'uli' taq
+\m xaq li jun ánim li t-k'ul-i' taq
+\p PART DEM NUM S DEM INC-VT-ENF PL
+\l Solo es una mujer que se casan.
+
+\t xkan jye' taq li na
+\m x-kan j-ye' taq li na
+\p COM-VI E3S-VT PL DEM PART
+\l lo habian dejado
+
+\t Porke maq ra chee' nimi' jq'iij.
+\m porke maq ra chee' nim-i' j-q'iij
+\p ADV ART DIM S ADJ-ENF E3S-S
+\l Porque los arbolitos son de mucha importancia.
+
+\t si ta' tijach taq pix,
+\m si ta' ti-jach taq pix
+\p ADV NEG INC-VT PL S
+\l si no entregan el tomate,
+
+\t xaq k'u kiib'
+\m xaq k'u kiib'
+\p PART PART NUM
+\l Solamente dos.
+
+\t ee tib'ij taq rechaq re tijt'o taq meb'a'.
+\m e ti-b'ij taq r-ech-aq r-e ti-j-t'o taq meb'a'
+\p SREL INC-VT PL E3S-SREL-PL E3S-SREL INC-E3S-VT PL S
+\l decían ellos que era para ayudar a la gente desfavorecida
+
+\t xu' chik juun padre padre laj chootx,
+\m x-yu' chik jun padre padre laj chootx
+\p COM-VI PART NUM S S PREP S
+\l vino otro padre a la Iglesia Católica
+
+\t ójor taq tziij li.
+\m ójor taq tziij li
+\p ADV PL S DEM
+\l Antiguamente es.
+
+\t Lajori ta' chik i'n ma ra woroon ri,
+\m lijori ta' chik i'n ma ra woroon ri
+\p ADV NEG PART ENF ART DIM S DEM
+\l Pero ahora ya no existen estos tipos de hongos
+
+\t qachuuch ójor taq tziij.
+\m qa-chuuch ójor taq tziij
+\p E1P-S ADV PL S
+\l Nuestras mamás antiguamente.
+
+\t Pores tijb'ij taq li ójor taq tziij.
+\m pores ti-j-b'ij taq li ójor taq tziij
+\p ADV INC-E3S-VT PL DEM ADV PL S
+\l Por eso dicían antiguamente.
+
+\t Jaan tij tij waa.
+\m jaan tij tij waa
+\p ADV VT VT S
+\l Esta bien coma coma.
+
+\t tren k'otob'.
+\m t-r-en k'otob'
+\p INC-E3S-VT S
+\l Hace pozos.
+
+\t nik'i pech jun tziij,
+\m nik'-i' pech jun tziij
+\p ADV-ENF S NUM S
+\l Es igual a una palabra.
+
+\t we in qaaj,
+\m we iin qaaj
+\p SREL PRON S
+\l A yo señor.
+
+\t i tijye' tzilaj taq ab'iix,
+\m i ti-j-ye' tzi-laj taq ab'iix
+\p CONJ INC-E3S-VT ADV-PREP PL S
+\l y se daba buena milpa
+
+\t I xaan qechooch kla',
+\m i xab'an q-ichooch kla'
+\p CONJ VI E1P-S ADV
+\l Hizo nuestra casa allí.
+
+\t wi' juun xuman jwaaq kla'.
+\m wi' jun xumaan j-wa-aq kla'
+\p EXS NUM S E3S-S-PL ADV
+\l tienen una semana de comina por allí
+
+\t jun taq bwelt,
+\m jun taq bweelt
+\p NUM PL ADV
+\l En algunas veces.
+
+\t Toos jun li,
+\m entoons jun li
+\p ADV NUM DEM
+\l Entonces uno asi.
+
+\t Jurub' awelk'waal wi' lajori chuuch.
+\m jurub' aw-elk'waal wi' lajori chuuch
+\p ADV E2S-S EXS ADV S
+\l Cuantos hijos tienes ahora señora.
+
+\t Ya t'ok aq'ab' chik,
+\m ya t'-ok aq'ab' chik
+\p VOC INC-VI ADV PART
+\l Ya entra la noche otra vez.
+
+\t Kla' k'u li
+\m kla' k'u li
+\p ADV PART DEM
+\l De allí es.
+
+\t titaw jun jwebes wi' qapwaq
+\m ti-taw jun jwebes wi' qa-pwaq
+\p INC-VT NUM S EXS E1P-S
+\l Llega el día jueves tenemos nuestro dinero.
+
+\t ri' kond ri kirneer,
+\m ri' kwaand ri kirneer
+\p DEM ADV DEM S
+\l Entoces cuando las ovejas.
+
+\t Kla' k'u li
+\m kla' k'u li
+\p ADV PART DEM
+\l De alli pues.
+
+\t tche' me re q'apooj re.
+\m t-che' me re q'apooj re
+\p INC-VT VT PRON S PRON
+\l Le dijo la señorita a ella.
+
+\t Or lojori miij jo'
+\m or lojori miij jo'
+\p ADV ADV S VI
+\l Ahora mija vamos.
+
+\t wi' jchoq'w pwees jswerte wunaq,
+\m wi' j-choq'w pwees j-swerte wunaq
+\p EXS E3S-S ADV E3S-S S
+\l tenían muicha suerte
+
+\t tij waa taat.
+\m tij waa taat
+\p VT S S
+\l Come papá.
+
+\t ¿Tons ma xiq ta qe wákix tb'e kla'?
+\m entoons ma xaq ta' qe wakix t-b'e kla'
+\p ADV ART PART NEG PART S INC-VI ADV
+\l Entonce no solo las vacas se van allá.
+
+\t pero pi jun lado chik xan taq k'ex chi qe,
+\m peer pi jun laad chik x-b'an taq k'ex chi q-e
+\p ADV PREP NUM ADV PART COM-VT PL ADJ PREP E1P-SREL
+\l pero por otro lado, solo nos hicieron daño,
+
+\t Ta' chiki' nada,
+\m ta' chik-i' nada
+\p NEG PART-ENF ADV
+\l Ya no esta.
+
+\t Tonses ójor taq tzij pwes jili Pinal,
+\m entoons ójor taq tziij pwees jili Pinal
+\p ADV ADV PL S ADV ADV S
+\l Entonces antiguamente pues allá en Pinal,
+
+\t tons ri' li tijb'ij taq qamaam qet' ooj ójor taq tziij.
+\m entoons ri' li ti-j-b'ij taq qa-maam q-et' ooj ójor taq tziij
+\p ADV DEM DEM INC-E3S-VT PL E1P-S E1P-S PRON ADV PL S
+\l Entonces eso es loque decían nuestros abuelos antiguamente.
+
+\t ma xaq ta wákx kerneer, wa'kix kwa'y,
+\m ma xaq ta' ichaaj kirneer wakix kwa'y
+\p ART PART NEG S S S S
+\l No solo las vacas, ovejas y caballos.
+
+\t kiib' qe wunaq li qaaj,
+\m kiib' qe wunaq li qaaj
+\p NUM PART S DEM S
+\l Solo dos hombres señor.
+
+\t Kiib' qe wunaq li,
+\m kiib' qe wunaq li
+\p NUM PART S DEM
+\l Solo dos hombres ellos.
+
+\t porke ilka' li qe oj ójor qaqaaj qachuuch ta' xye' qestudy
+\m porke il-ka' li qe oj ójor qa-qaaj qa-chuuch ta' x-ye' qe-estudy
+\p ADV VT-PART DEM PART PRON ADV E1P-S E1P-S NEG COM-VT PART-S
+\l Porque miren pues a nosotros antes nuestros padres no nos dieron estudio.
+
+\t Xi' chiki' chi rchooch,
+\m xi' chik-i' chi r-chooch
+\p VI PART-ENF PREP E3S-S
+\l Se fue otra vez en su casa.
+
+\t porke si jun wunaq wi' jpuwaq
+\m porke si jun wunaq wi' j-pwaq
+\p ADV ADV NUM S EXS E3S-S
+\l Porque si un hombre tiene dinero.
+
+\t Pero ajki' maas ójor
+\m peer ajki' maas ójor
+\p ADV PART ADV ADV
+\l Pero no hace mucho tiempo
+
+\t kwando wi' ta't.
+\m kwaand wi' ta'-t
+\p ADV EXS NEG-INC
+\l cuando hay .
+
+\t tos lajori,
+\m entoons laj'ori
+\p ADV ADV
+\l Entoces ahora.
+
+\t jun niim laj táj
+\m jun nim laj táq'aj
+\p NUM ADJ PREP S
+\l Un gran plan.
+
+\t qame' ja' kla',
+\m q-k'am ja' kla'
+\p E1P-VT S ADV
+\l Traemos agua allí) asta allí vamos a traer agua.
+
+\t Pero qas tijb'ij taq ójor taq tziij.
+\m peer qas ti-j-b'ij taq ójor taq tziij
+\p ADV ITS INC-E3S-VT PL ADV PL S
+\l Pero loque decian antiguamente.
+
+\t Tijk'am taq b'i poom,
+\m ti-j-k'am taq b'i poom
+\p INC-E3S-VT PL DIR S
+\l Llevan estoraque.
+
+\t Toos jun li,
+\m entoons jun li
+\p ADV NUM DEM
+\l Entonces uno asi.
+
+\t chi xik'a'y.
+\m chi xik'a'y
+\p PREP S
+\l Con un chirivisco.
+
+\t lajori tamb'iij kib' oxib' tziij,
+\m lajori t-am-b'iij kib' oxib' tziij
+\p ADV INC-VT-S NUM NUM S
+\l Ahora dire unos dos o tres plabras.
+
+\t o neen moo, pwes ójor taq tzij pwes
+\m o neen mod pwes ójor taq tziij pwes
+\p CONJ INT ADV ADV ADV PL S ADV
+\l O que modo pues antiguamente pues.
+
+\t i jun chik re jkab' ék'el
+\m i jun chik re j-kab' ék'el
+\p CONJ NUM PART PRON E3S-NUM S
+\l Y el otro él seguno niño.
+
+\t I kond naq xk'uli' ánm,
+\m i kwand na-aq x-k'uli' ánim
+\p CONJ ADV PART-PL COM-VT S
+\l Cuando se casarón las mujeres.
+
+\t kandela ooj,
+\m kanteel ooj
+\p S PRON
+\l Candela nosotros.
+
