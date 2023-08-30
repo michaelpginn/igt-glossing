@@ -111,7 +111,7 @@ def train(model_type: str, train_size: int, seed: int,
 
     run_name = f"{train_size if train_size else 'full'}-{model_type}-{seed}{'-finetune' if pretrained is not None else ''}"
     
-    base_model = pretrained if pretrained is not None else "usp-mlm-absolute-micro"
+    base_model = pretrained if pretrained is not None else "../usp-mlm-absolute-micro"
 
     wandb.init(project=project, entity="michael-ginn", name=run_name, config={
         "train-size": train_size if train_size else "full",
