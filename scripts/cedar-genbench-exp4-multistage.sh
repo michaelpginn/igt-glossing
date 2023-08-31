@@ -3,8 +3,8 @@
 #SBATCH --gpus-per-node=v100l:1
 #SBATCH --mem=32G
 #SBATCH --time=12:00:00          # Max walltime
-#SBATCH --out=train_genbench_exp1.%j.out      # Output file name
-#SBATCH --error=train_genbench_exp1.%j.err
+#SBATCH --out=train_genbench_exp4.%j.out      # Output file name
+#SBATCH --error=train_genbench_exp4.%j.err
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=michael.ginn@colorado.edu
 
