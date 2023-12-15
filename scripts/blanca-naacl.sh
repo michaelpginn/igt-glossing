@@ -18,6 +18,6 @@ module load anaconda
 conda activate AutoIGT
 cd "/projects/migi8081/taxo-morph/src"
 
-python3 finetune_token_classifier.py train --model_type flat --seed 1
-python3 finetune_token_classifier.py train --model_type tax_loss --seed 1
-python3 finetune_token_classifier.py train --model_type harmonic_loss --seed 1
+python3 finetune_token_classifier.py train --model_type flat --seed 1  --train_data ../data/usp-train-track2-uncovered --eval_data ../data/usp-dev-track2-uncovered
+python3 finetune_token_classifier.py train --model_type tax_loss --seed 1 --train_data ../data/usp-train-track2-uncovered --eval_data ../data/usp-dev-track2-uncovered
+python3 finetune_token_classifier.py train --model_type harmonic_loss --seed 1 --train_data ../data/usp-train-track2-uncovered --eval_data ../data/usp-dev-track2-uncovered
