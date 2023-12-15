@@ -89,7 +89,7 @@ def create_trainer(model: RobertaForTokenClassification, dataset: Optional[Datas
         save_strategy="epoch",
         save_total_limit=3,
         num_train_epochs=max_epochs,
-        load_best_model_at_end=False,
+        load_best_model_at_end=True,
         logging_strategy='epoch',
         report_to=report_to
     )
@@ -122,7 +122,7 @@ def cli():
 @click.option("--eval_data", type=click.Path(exists=True))
 @click.option("--seed", help="Random seed", type=int)
 @click.option("--epochs", help="Max # epochs", type=int)
-@click.option("--project", type=str)
+@click.option("--project", type=str, default='taxo-morph-naacl')
 def train(model_type: str, train_size: int, seed: int,
           train_data: str = "../data/usp-train-track2-uncovered",
           eval_data: str = "../data/usp-dev-track2-uncovered",
