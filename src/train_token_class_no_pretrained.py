@@ -120,12 +120,14 @@ def cli():
 @click.option("--train_size", help="Number of items to sample from the training data", type=int)
 @click.option("--train_data", type=click.Path(exists=True))
 @click.option("--eval_data", type=click.Path(exists=True))
+@click.option("--test_data", type=click.Path(exists=True))
 @click.option("--seed", help="Random seed", type=int)
 @click.option("--epochs", help="Max # epochs", type=int)
 @click.option("--project", type=str, default='taxo-morph-naacl')
 def train(model_type: str, train_size: int, seed: int,
           train_data: str = "../data/usp-train-track2-uncovered",
           eval_data: str = "../data/usp-dev-track2-uncovered",
+          test_data: str = "../data/usp-test-track2-uncovered",
           epochs: int = 200,
           project: str = 'taxo-morph-naacl'):
     MODEL_INPUT_LENGTH = 64
@@ -146,6 +148,7 @@ def train(model_type: str, train_size: int, seed: int,
 
     train_data = load_data_file(train_data)
     dev_data = load_data_file(eval_data)
+    test_data = load_data_file(test_data)
 
     train_vocab = create_vocab([line.morphemes() for line in train_data], threshold=1)
     tokenizer = WordLevelTokenizer(vocab=train_vocab, model_max_length=MODEL_INPUT_LENGTH)
@@ -159,6 +162,7 @@ def train(model_type: str, train_size: int, seed: int,
 
     dataset['train'] = prepare_dataset(data=train_data, tokenizer=tokenizer, labels=glosses, device=device)
     dataset['dev'] = prepare_dataset(data=dev_data, tokenizer=tokenizer, labels=glosses, device=device)
+    dataset['test'] = prepare_dataset(data=test_data, tokenizer=tokenizer, labels=glosses, device=device)
 
     config = RobertaConfig(
         vocab_size=tokenizer.vocab_size,
@@ -182,6 +186,10 @@ def train(model_type: str, train_size: int, seed: int,
     trainer.train()
 
     trainer.save_model(f'../models/{run_name}')
+
+    test_eval = trainer.evaluate(dataset['test'])
+    test_eval = {k.replace('eval', 'test'): test_eval[k] for k in test_eval}
+    wandb.log(test_eval)
 
 
 if __name__ == "__main__":
