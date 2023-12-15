@@ -173,7 +173,7 @@ def train(model_type: str, train_size: int, seed: int,
     )
 
     if model_type == 'flat':
-        model = RobertaForMaskedLM(config=config)
+        model = RobertaForTokenClassification(config=config)
     elif model_type == 'tax_loss':
         model = TaxonomicLossModel(config=config, loss_sum='linear')
         model.use_morphology_tree(morphology_tree, max_depth=5)
