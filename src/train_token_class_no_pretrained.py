@@ -4,7 +4,8 @@ from typing import Optional, List
 import click
 import torch
 import wandb
-from datasets import DatasetDict
+from datasets import DatasetDict, load_dataset
+import pandas as pd
 from transformers import (
     TrainerCallback,
     EarlyStoppingCallback,
@@ -13,13 +14,16 @@ from transformers import (
     TrainerState,
     TrainerControl,
     RobertaForTokenClassification,
-    RobertaForMaskedLM,
-    RobertaConfig
+    RobertaConfig,
+    XLMRobertaConfig,
+    XLMRobertaTokenizerFast,
+    XLMRobertaForTokenClassification,
+    DataCollatorForTokenClassification
 )
 
-from data_handling import prepare_dataset, load_data_file, create_vocab, create_gloss_vocab, prepare_multitask_dataset
-from eval import eval_accuracy
-from taxonomic_loss_model import TaxonomicLossModel
+from data_handling import prepare_dataset, create_vocab, create_gloss_vocab, split_line
+from eval import compute_metrics
+from taxonomic_loss_model import TaxonomicLossModel, XLMTaxonomicLossModel, get_hierarchy_matrix
 from tokenizer import WordLevelTokenizer
 from uspanteko_morphology import morphology as full_morphology_tree
 
@@ -46,69 +50,6 @@ class DelayedEarlyStoppingCallback(EarlyStoppingCallback):
             self.patience = 0
 
 
-def create_trainer(model: RobertaForTokenClassification, dataset: Optional[DatasetDict], tokenizer: WordLevelTokenizer,
-                   labels: List[str], batch_size, max_epochs, report_to):
-    print("Creating trainer...")
-
-    def compute_metrics(eval_preds):
-        preds, gold_labels = eval_preds
-        if isinstance(preds, tuple):
-            preds = preds[0]
-
-        print("PREDS", preds)
-        print("LABELS", gold_labels)
-        if len(gold_labels.shape) > 2:
-            gold_labels = gold_labels.take(axis=1, indices=0)
-
-        print(gold_labels.shape)
-
-        # Decode predicted output
-        decoded_preds = [[labels[index] for index in pred_seq if len(labels) > index >= 0] for pred_seq in preds]
-
-        # Decode (gold) labels
-        decoded_labels = [[labels[index] for index in label_seq if len(labels) > index >= 0] for label_seq in
-                          gold_labels]
-
-        # Trim preds to the same length as the labels
-        decoded_preds = [pred_seq[:len(label_seq)] for pred_seq, label_seq in zip(decoded_preds, decoded_labels)]
-
-        print('Preds:\t', decoded_preds[0])
-        print('Labels:\t', decoded_labels[0])
-
-        return eval_accuracy(decoded_preds, decoded_labels)
-
-    def preprocess_logits_for_metrics(logits, labels):
-        return logits.argmax(dim=2)
-
-    args = TrainingArguments(
-        output_dir=f"../finetune-training-checkpoints",
-        evaluation_strategy="epoch",
-        per_device_train_batch_size=batch_size,
-        per_device_eval_batch_size=batch_size,
-        gradient_accumulation_steps=3,
-        save_strategy="epoch",
-        save_total_limit=3,
-        num_train_epochs=max_epochs,
-        load_best_model_at_end=True,
-        logging_strategy='epoch',
-        report_to=report_to
-    )
-
-    trainer = Trainer(
-        model,
-        args,
-        train_dataset=dataset["train"] if dataset else None,
-        eval_dataset=dataset["dev"] if dataset else None,
-        compute_metrics=compute_metrics,
-        preprocess_logits_for_metrics=preprocess_logits_for_metrics,
-        callbacks=[
-            LogCallback,
-            DelayedEarlyStoppingCallback(early_stopping_patience=3)
-        ],
-    )
-    return trainer
-
-
 @click.group()
 def cli():
     pass
@@ -117,72 +58,111 @@ def cli():
 @cli.command()
 @click.option('--model_type',
               type=click.Choice(['flat', 'tax_loss', 'harmonic_loss']))
-@click.option("--train_size", help="Number of items to sample from the training data", type=int)
-@click.option("--train_data", type=click.Path(exists=True))
-@click.option("--eval_data", type=click.Path(exists=True))
-@click.option("--test_data", type=click.Path(exists=True))
+@click.option("--arch", type=click.Choice(['roberta', 'xlm-roberta']))
 @click.option("--seed", help="Random seed", type=int)
 @click.option("--epochs", help="Max # epochs", type=int)
 @click.option("--project", type=str, default='taxo-morph-naacl')
-def train(model_type: str, train_size: int, seed: int,
-          train_data: str = "../data/usp-train-track2-uncovered",
-          eval_data: str = "../data/usp-dev-track2-uncovered",
-          test_data: str = "../data/usp-test-track2-uncovered",
+def train(model_type: str, seed: int,
+          arch: str = "roberta",
           epochs: int = 200,
           project: str = 'taxo-morph-naacl'):
-    MODEL_INPUT_LENGTH = 64
     BATCH_SIZE = 64
 
-    run_name = f"{train_size if train_size else 'full'}-{model_type}-{seed}"
+    run_name = f"{model_type}-{arch}-{seed}"
 
     wandb.init(project=project, entity="michael-ginn", name=run_name, config={
-        "train-size": train_size if train_size else "full",
         "random-seed": seed,
         "type": model_type,
         "epochs": epochs,
+        "arch": arch,
     })
 
     random.seed(seed)
 
     morphology_tree = full_morphology_tree
-
-    train_data = load_data_file(train_data)
-    dev_data = load_data_file(eval_data)
-    test_data = load_data_file(test_data)
-
-    train_vocab = create_vocab([line.morphemes() for line in train_data], threshold=1)
-    tokenizer = WordLevelTokenizer(vocab=train_vocab, model_max_length=MODEL_INPUT_LENGTH)
-
-    if train_size:
-        train_data = random.sample(train_data, train_size)
-
     glosses = create_gloss_vocab(morphology_tree)
+    hierarchy_matrix = pd.DataFrame(get_hierarchy_matrix(morphology_tree, len(glosses), 5))
 
-    dataset = DatasetDict()
+    dataset = load_dataset('lecslab/usp-igt', download_mode="force_redownload")
 
-    dataset['train'] = prepare_dataset(data=train_data, tokenizer=tokenizer, labels=glosses, device=device)
-    dataset['dev'] = prepare_dataset(data=dev_data, tokenizer=tokenizer, labels=glosses, device=device)
-    dataset['test'] = prepare_dataset(data=test_data, tokenizer=tokenizer, labels=glosses, device=device)
+    def segment(row):
+        row["morphemes"] = split_line(row["segmentation"], prefix="usp_")
+        row["glosses"] = split_line(row["pos_glosses"], prefix=None)
+        return row
 
-    config = RobertaConfig(
-        vocab_size=tokenizer.vocab_size,
-        max_position_embeddings=MODEL_INPUT_LENGTH,
-        pad_token_id=tokenizer.PAD_ID,
-        position_embedding_type='absolute',
-        num_labels=len(glosses)
+    dataset = dataset.map(segment, load_from_cache_file=False)
+    train_vocab = create_vocab(dataset['train']['morphemes'], threshold=1)
+
+    if arch == 'roberta':
+        # No pretrained model, start from random
+        tokenizer = WordLevelTokenizer(vocab=train_vocab, model_max_length=64)
+
+        config = RobertaConfig(
+            vocab_size=tokenizer.vocab_size,
+            max_position_embeddings=512,
+            pad_token_id=tokenizer.PAD_ID,
+            position_embedding_type='absolute',
+            num_labels=len(glosses)
+        )
+    elif arch == 'xlm-roberta':
+        tokenizer = XLMRobertaTokenizerFast.from_pretrained('xlm-roberta-base', model_max_length=64)
+        tokenizer.add_tokens(train_vocab)
+        config = XLMRobertaConfig.from_pretrained('xlm-roberta-base', num_labels=len(glosses))
+
+    dataset = prepare_dataset(dataset, tokenizer, glosses)
+
+    if arch == 'roberta':
+        if model_type == 'flat':
+            model = RobertaForTokenClassification(config=config)
+        elif model_type == 'tax_loss':
+            model = TaxonomicLossModel(config=config, loss_sum='linear')
+            model.use_morphology_tree(morphology_tree, max_depth=5)
+        elif model_type == 'harmonic_loss':
+            model = TaxonomicLossModel(config=config, loss_sum='harmonic')
+            model.use_morphology_tree(morphology_tree, max_depth=5)
+    elif arch == 'xlm-roberta':
+        if model_type == 'flat':
+            model = XLMRobertaForTokenClassification(config=config)
+        elif model_type == 'tax_loss':
+            model = XLMTaxonomicLossModel(config=config, loss_sum='linear')
+            model.use_morphology_tree(morphology_tree, max_depth=5)
+        elif model_type == 'harmonic_loss':
+            model = XLMTaxonomicLossModel(config=config, loss_sum='harmonic')
+            model.use_morphology_tree(morphology_tree, max_depth=5)
+        # Since we use a pretrained model, we need to update with our added vocabulary
+        model.resize_token_embeddings(len(tokenizer))
+
+    def preprocess_logits_for_metrics(logits, _):
+        return logits.argmax(dim=2)
+
+    args = TrainingArguments(
+        output_dir=f"../finetune-training-checkpoints",
+        evaluation_strategy="epoch",
+        per_device_train_batch_size=BATCH_SIZE,
+        per_device_eval_batch_size=BATCH_SIZE,
+        gradient_accumulation_steps=3,
+        save_strategy="epoch",
+        save_total_limit=3,
+        num_train_epochs=epochs,
+        load_best_model_at_end=True,
+        logging_strategy='epoch',
+        report_to='wandb'
     )
 
-    if model_type == 'flat':
-        model = RobertaForTokenClassification(config=config)
-    elif model_type == 'tax_loss':
-        model = TaxonomicLossModel(config=config, loss_sum='linear')
-        model.use_morphology_tree(morphology_tree, max_depth=5)
-    elif model_type == 'harmonic_loss':
-        model = TaxonomicLossModel(config=config, loss_sum='harmonic')
-        model.use_morphology_tree(morphology_tree, max_depth=5)
+    trainer = Trainer(
+        model,
+        args,
+        train_dataset=dataset["train"] if dataset else None,
+        eval_dataset=dataset["eval"] if dataset else None,
+        compute_metrics=compute_metrics(glosses, hierarchy_matrix),
+        preprocess_logits_for_metrics=preprocess_logits_for_metrics,
+        callbacks=[
+            LogCallback,
+            DelayedEarlyStoppingCallback(early_stopping_patience=3)
+        ],
+        data_collator=DataCollatorForTokenClassification(tokenizer=tokenizer)
+    )
 
-    trainer = create_trainer(model, dataset=dataset, tokenizer=tokenizer, labels=glosses, batch_size=BATCH_SIZE,
-                             max_epochs=epochs, report_to='wandb')
     trainer.train()
 
     trainer.save_model(f'../models/{run_name}')
