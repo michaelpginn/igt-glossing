@@ -109,7 +109,7 @@ def train(model_type: str, seed: int,
         tokenizer.add_tokens(train_vocab)
         config = XLMRobertaConfig.from_pretrained('xlm-roberta-base', num_labels=len(glosses))
 
-    dataset = prepare_dataset(dataset, tokenizer, glosses)
+    dataset = prepare_dataset(dataset, train_vocab, tokenizer, glosses)
 
     if arch == 'roberta':
         if model_type == 'flat':
