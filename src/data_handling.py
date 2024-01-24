@@ -63,11 +63,13 @@ def create_gloss_vocab(morphology):
 #     return raw_dataset.map(process)
 
 
-def prepare_dataset(dataset: DatasetDict, tokenizer, glosses: list[str]):
+def prepare_dataset(dataset: DatasetDict, train_vocab, tokenizer, glosses: list[str]):
     """Encodes and pads inputs and creates attention mask"""
 
     def tokenize_and_align_labels(row):
-        tokenized_inputs = tokenizer(row["morphemes"], truncation=True, is_split_into_words=True)
+        morphemes = [[morph if morph in train_vocab else tokenizer.unk_token for morph in morphemes] for morphemes in
+                     row["morphemes"]]
+        tokenized_inputs = tokenizer(morphemes, truncation=True, is_split_into_words=True)
 
         labels = []
         for i, label in enumerate(row["glosses"]):
