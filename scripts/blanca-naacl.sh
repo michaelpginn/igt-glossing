@@ -19,6 +19,9 @@ conda activate AutoIGT
 cd "/projects/migi8081/taxo-morph/src"
 
 #python3 train_model.py train --model_type flat --seed 1  --train_data ../data/usp-train-track2-uncovered --eval_data ../data/usp-dev-track2-uncovered --test_data ../data/usp-test-track2-uncovered --project taxo-morph-naacl --epochs 200
-python3 train_token_class_no_pretrained.py train --model_type flat --arch xlm-roberta --seed 1 --project taxo-morph-naacl --epochs 200
-python3 train_token_class_no_pretrained.py train --model_type tax_loss --arch xlm-roberta --seed 1 --project taxo-morph-naacl --epochs 200
-python3 train_token_class_no_pretrained.py train --model_type harmonic_loss --arch xlm-roberta --seed 1 --project taxo-morph-naacl --epochs 200
+for seed in 1 2 3 4 5
+do
+  python3 train_token_class_no_pretrained.py train --model_type flat --arch xlm-roberta --seed $seed --project taxo-morph-naacl --epochs 200
+  python3 train_token_class_no_pretrained.py train --model_type tax_loss --arch xlm-roberta --seed $seed --project taxo-morph-naacl --epochs 200
+  python3 train_token_class_no_pretrained.py train --model_type harmonic_loss --arch xlm-roberta --seed $seed --project taxo-morph-naacl --epochs 200
+done
