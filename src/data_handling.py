@@ -80,8 +80,6 @@ def prepare_dataset(dataset: DatasetDict, tokenizer, glosses: list[str]):
                 elif word_idx != previous_word_idx:  # Only label the first token of a given word.
                     gloss = label[word_idx]
                     label_ids.append(glosses.index(gloss) if gloss in glosses else glosses.index('<unk>'))
-                else:
-                    label_ids.append(-100)
                 previous_word_idx = word_idx
             labels.append(label_ids)
 

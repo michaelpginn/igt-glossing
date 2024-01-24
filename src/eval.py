@@ -6,11 +6,12 @@ from torchtext.data.metrics import bleu_score
 import click
 import json
 import evaluate
+from transformers import EvalPrediction
 from sklearn.metrics import f1_score
 
 
 def compute_metrics(labels, hierarchy_matrix):
-    def _compute_metrics(eval_preds):
+    def _compute_metrics(eval_preds: EvalPrediction):
         preds, gold_labels = eval_preds
         if isinstance(preds, tuple):
             preds = preds[0]
@@ -25,20 +26,23 @@ def compute_metrics(labels, hierarchy_matrix):
         def decode(pred_label_seq, gold_label_seq):
             decoded_labels = []
             decoded_preds = []
+            decoded_label_categories = []
+            decoded_pred_categories = []
             for pred_label, gold_label in zip(pred_label_seq, gold_label_seq):
                 if gold_label == -100:
                     continue
-                decoded_labels.append(labels[gold_label] if 0 <= gold_label < len(labels) else labels[-1])
-                decoded_preds.append(labels[pred_label] if 0 <= pred_label < len(labels) else labels[-1])
-            return decoded_preds, decoded_labels
+                decoded_labels.append(labels[gold_label] if 0 <= gold_label < len(labels) else labels[0])
+                decoded_preds.append(labels[pred_label] if 0 <= pred_label < len(labels) else labels[0])
+
+                decoded_label_categories.append(
+                    hierarchy_matrix[2][gold_label] if 0 <= gold_label < len(labels) else -1)
+                decoded_pred_categories.append(hierarchy_matrix[2][pred_label] if 0 <= pred_label < len(labels) else -1)
+
+            return decoded_preds, decoded_labels, decoded_pred_categories, decoded_label_categories
 
         print(preds.shape)
-        print(type(gold_labels))
-        decoded_preds, decoded_gold = zip(
+        decoded_preds, decoded_gold, decoded_pred_categories, decoded_label_categories = zip(
             *[decode(pred_seq, gold_seq) for pred_seq, gold_seq in zip(preds, gold_labels)])
-
-        # Trim preds to the same length as the labels
-        # decoded_preds = [pred_seq[:len(label_seq)] for pred_seq, label_seq in zip(decoded_preds, decoded_gold)]
 
         print('Preds:\t', decoded_preds[0])
         print('Labels:\t', decoded_gold[0])
@@ -65,19 +69,14 @@ def compute_metrics(labels, hierarchy_matrix):
 
             return correct / total if total > 0 else 0
 
-        pred_indices = [[index for index in pred_seq if len(labels) > index >= 0] for pred_seq in preds]
-        true_indices = [[index for index in label_seq if len(labels) > index >= 0] for label_seq in gold_labels]
-        pred_indices = [pred_seq[:len(label_seq)] for pred_seq, label_seq in zip(pred_indices, true_indices)]
-        pred_categories = [[hierarchy_matrix[2][index] for index in pred_seq] for pred_seq in pred_indices]
-        true_categories = [[hierarchy_matrix[2][index] for index in gold_labels] for gold_labels in true_indices]
-        flat_pred_categories = [label for sublist in pred_categories for label in sublist]
-        flat_true_categories = [label for sublist in true_categories for label in sublist]
+        flat_pred_categories = [label for sublist in decoded_pred_categories for label in sublist]
+        flat_true_categories = [label for sublist in decoded_label_categories for label in sublist]
 
-        print("PRED CATEGORIES", pred_categories[0])
-        print("TRUE CATEGORIES", true_categories[0])
+        print("PRED CATEGORIES", decoded_pred_categories[0])
+        print("TRUE CATEGORIES", decoded_label_categories[0])
 
         # Compute accuracy between two lists
-        category_accuracy = compute_list_of_lists_accuracy(true_categories, pred_categories)
+        category_accuracy = compute_list_of_lists_accuracy(decoded_label_categories, decoded_pred_categories)
 
         category_f1 = f1_score(flat_true_categories, flat_pred_categories, average='macro')
 
