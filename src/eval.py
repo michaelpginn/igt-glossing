@@ -16,8 +16,8 @@ def compute_metrics(labels, hierarchy_matrix):
         if isinstance(preds, tuple):
             preds = preds[0]
 
-        print("PREDS", preds)
-        print("LABELS", gold_labels)
+        print("PREDS", preds[0])
+        print("LABELS", gold_labels[0])
         if len(gold_labels.shape) > 2:
             gold_labels = gold_labels.take(axis=1, indices=0)
 
@@ -28,15 +28,17 @@ def compute_metrics(labels, hierarchy_matrix):
             decoded_preds = []
             decoded_label_categories = []
             decoded_pred_categories = []
-            for pred_label, gold_label in zip(pred_label_seq, gold_label_seq):
-                if gold_label == -100:
-                    continue
-                decoded_labels.append(labels[gold_label] if 0 <= gold_label < len(labels) else labels[0])
-                decoded_preds.append(labels[pred_label] if 0 <= pred_label < len(labels) else labels[0])
 
-                decoded_label_categories.append(
-                    hierarchy_matrix[2][gold_label] if 0 <= gold_label < len(labels) else -1)
-                decoded_pred_categories.append(hierarchy_matrix[2][pred_label] if 0 <= pred_label < len(labels) else -1)
+            for pred_label, gold_label in zip(pred_label_seq, gold_label_seq):
+                if gold_label < 0 or gold_label >= len(labels):
+                    continue
+                decoded_labels.append(labels[gold_label])
+                decoded_preds.append(labels[pred_label])
+
+                if hierarchy_matrix[2][gold_label] != 1:
+                    decoded_label_categories.append(
+                        hierarchy_matrix[2][gold_label])
+                    decoded_pred_categories.append(hierarchy_matrix[2][pred_label])
 
             return decoded_preds, decoded_labels, decoded_pred_categories, decoded_label_categories
 
