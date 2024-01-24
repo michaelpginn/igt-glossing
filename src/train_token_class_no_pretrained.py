@@ -96,6 +96,7 @@ def train(model_type: str, seed: int,
     if arch == 'roberta':
         # No pretrained model, start from random
         tokenizer = WordLevelTokenizer(vocab=train_vocab, model_max_length=64)
+        tokenizer.add_tokens(train_vocab)
 
         config = RobertaConfig(
             vocab_size=tokenizer.vocab_size,
