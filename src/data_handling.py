@@ -9,7 +9,7 @@ import torch
 from datasets import Dataset, DatasetDict
 
 from tokenizer import morpheme_tokenize_no_punc as tokenizer, WordLevelTokenizer
-from transformers import Trainer
+from transformers import Trainer, PreTrainedTokenizerFast, PreTrainedTokenizer
 
 special_chars = ["[UNK]", "[SEP]", "[PAD]", "[MASK]"]
 
@@ -73,16 +73,20 @@ def prepare_dataset(dataset: DatasetDict, train_vocab, tokenizer, glosses: list[
 
         labels = []
         for i, label in enumerate(row["glosses"]):
-            word_ids = tokenized_inputs.word_ids(batch_index=i)  # Map tokens to their respective word.
-            previous_word_idx = None
-            label_ids = []
-            for word_idx in word_ids:  # Set the special tokens to -100.
-                if word_idx is None:
-                    label_ids.append(-100)
-                elif word_idx != previous_word_idx:  # Only label the first token of a given word.
-                    gloss = label[word_idx]
-                    label_ids.append(glosses.index(gloss) if gloss in glosses else glosses.index('<unk>'))
-                previous_word_idx = word_idx
+            if isinstance(tokenizer, PreTrainedTokenizerFast):
+                word_ids = tokenized_inputs.word_ids(batch_index=i)  # Map tokens to their respective word.
+                previous_word_idx = None
+                label_ids = []
+                for word_idx in word_ids:  # Set the special tokens to -100.
+                    if word_idx is None:
+                        label_ids.append(-100)
+                    elif word_idx != previous_word_idx:  # Only label the first token of a given word.
+                        gloss = label[word_idx]
+                        label_ids.append(glosses.index(gloss) if gloss in glosses else glosses.index('<unk>'))
+                    previous_word_idx = word_idx
+            else:
+                # Slow tokenizer
+                label_ids = [glosses.index(gloss) if gloss in glosses else glosses.index('<unk>') for gloss in label]
             labels.append(label_ids)
 
         tokenized_inputs["labels"] = labels
@@ -129,10 +133,8 @@ def split_line(line: str, prefix: Union[str, None]):
     # Insert [SEP] between words
     words = reduce(lambda r, v: r + ["<sep>", v], words[1:], words[:1])
     morphemes = [word.split('-') for word in words]
-    return [prefix + morpheme if morpheme != '<sep>'
-                                 and morpheme != ''
-                                 and prefix is not None else morpheme
-            for word in morphemes for morpheme in word]
+    return [prefix + morpheme if morpheme != '<sep>' and prefix is not None else morpheme
+            for word in morphemes for morpheme in word if morpheme != '']
 
 # def prepare_multitask_dataset(data: List[IGTLine], tokenizer: WordLevelTokenizer, labels: list[str], device):
 #     """Encodes and pads inputs and creates attention mask"""
