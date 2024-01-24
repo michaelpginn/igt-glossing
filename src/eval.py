@@ -43,10 +43,10 @@ def compute_metrics(labels, hierarchy_matrix):
         print('Preds:\t', decoded_preds[0])
         print('Labels:\t', decoded_gold[0])
 
-        accuracy = eval_accuracy(decoded_preds, decoded_labels)
+        accuracy = eval_accuracy(decoded_preds, decoded_gold)
 
         # Calculate f1 between decoded_preds and decoded_labels
-        flat_true_labels = [label for sublist in decoded_labels for label in sublist]
+        flat_true_labels = [label for sublist in decoded_gold for label in sublist]
         flat_predicted_labels = [label for sublist in decoded_preds for label in sublist]
 
         # Compute F1 score
